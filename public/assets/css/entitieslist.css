@@ -9,32 +9,37 @@
 }
 
 /* Specific Styles for Item Description and Custom Fields */
-[data-bs-theme='dark'] .item-desc,
-[data-bs-theme='dark'] .custom-fields {
+[data-bs-theme="dark"] .item-desc,
+[data-bs-theme="dark"] .custom-fields {
   border: 1px solid #3c4652;
   background-color: #121e2d;
   color: #f9f9f9;
 }
 
 /* Styles for Placeholders */
-[data-bs-theme='light'] .picture-placeholder,
-[data-bs-theme='light'] #filePreview {
+[data-bs-theme="light"] .picture-placeholder,
+[data-bs-theme="light"] #filePreview {
   background-color: #f9f9f9;
   color: #333; /* Ensure light mode placeholder text is visible */
 }
 
-[data-bs-theme='dark'] .picture-placeholder,
-[data-bs-theme='dark'] #filePreview {
+[data-bs-theme="dark"] .picture-placeholder,
+[data-bs-theme="dark"] #filePreview {
   border: 2px dashed #3c4652;
   background-color: #121e2d;
   color: #f9f9f9;
 }
+/**/
+/* [data-bs-theme='light'] #filePreview, */
+/* [data-bs-theme='dark'] #filePreview { */
+/*   border-style: solid; */
+/* } */
 
 [data-bs-theme='dark'] #filePreview {
   border-style: solid;
 }
 
-[data-bs-theme='dark'] .items-card-text.editable {
+[data-bs-theme="dark"] .items-card-text.editable {
   color: #333;
 }
 
@@ -238,7 +243,9 @@ section {
   line-height: 1.4;
   padding: 4px 8px;
   border-radius: 6px;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
   cursor: text;
   background-color: #f9f9f9;
 }
@@ -278,7 +285,9 @@ section {
   color: #374151;
   cursor: pointer;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
 }
 
 .project-alpha-action-button:hover {
@@ -363,7 +372,9 @@ section {
   border: 1px solid #d1d5db;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   cursor: pointer;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
   display: none;
 }
 
@@ -395,7 +406,9 @@ section {
   justify-content: center;
   align-items: center;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
   position: absolute;
   bottom: 20px; /* Position it at the bottom */
   right: 20px; /* Keep it aligned to the right */
@@ -671,15 +684,21 @@ section {
   }
 
   .mobile-stack .accordion-container {
-    transition: min-height 0.15s ease-out, max-height 0.15s ease-out;
+    transition:
+      min-height 0.15s ease-out,
+      max-height 0.15s ease-out;
   }
 
   /* container accordion close */
   .mobile-stack .accordion-container.triggered {
     --accordion-column-to-show: 1;
     --accordion-column-height: 44px;
-    min-height: calc(var(--accordion-column-height) * var(--accordion-column-to-show));
-    max-height: calc(var(--accordion-column-height) * var(--accordion-column-to-show));
+    min-height: calc(
+      var(--accordion-column-height) * var(--accordion-column-to-show)
+    );
+    max-height: calc(
+      var(--accordion-column-height) * var(--accordion-column-to-show)
+    );
     overflow: hidden;
   }
 
@@ -689,11 +708,15 @@ section {
     visibility: hidden;
     opacity: 0;
     transition-behavior: allow-discrete;
-    transition: opacity 0.15s ease-out, visibility 0.15s ease-out;
+    transition:
+      opacity 0.15s ease-out,
+      visibility 0.15s ease-out;
   }
 
   .mobile-stack .accordion-container > *:not(:nth-child(1)) {
-    transition: transform 0.15s ease-out, opacity 0.15s ease-out;
+    transition:
+      transform 0.15s ease-out,
+      opacity 0.15s ease-out;
   }
 
   .mobile-stack .accordion-container.triggering > *:not(:nth-child(1)) {
@@ -722,23 +745,33 @@ section {
     color: inherit;
   }
 
-  .mobile-stack .accordion-container.triggered .accordion-trigger .accordion-meta,
+  .mobile-stack
+    .accordion-container.triggered
+    .accordion-trigger
+    .accordion-meta,
   .mobile-stack .accordion-container.triggered .accordion-trigger {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
   }
 
-  .mobile-stack .accordion-container.triggered .accordion-trigger .accordion-meta {
+  .mobile-stack
+    .accordion-container.triggered
+    .accordion-trigger
+    .accordion-meta {
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 0.1s ease-in, transform 0.1s ease-in;
+    transition:
+      opacity 0.1s ease-in,
+      transform 0.1s ease-in;
   }
 
   .mobile-stack .accordion-container .accordion-trigger .accordion-meta {
     opacity: 0;
     transform: translateY(10px);
-    transition: opacity 0.1s ease-out, transform 0.1s ease-out;
+    transition:
+      opacity 0.1s ease-out,
+      transform 0.1s ease-out;
   }
 
   /* icon */
@@ -749,7 +782,8 @@ section {
   }
 
   .mobile-stack .accordion-container td:has(.accordion-trigger) {
-    border-bottom: var(--falcon-border-width) var(--falcon-border-style) var(--falcon-border-color);
+    border-bottom: var(--falcon-border-width) var(--falcon-border-style)
+      var(--falcon-border-color);
   }
 
   .mobile-stack .accordion-container .accordion-trigger .accor-open {
@@ -785,7 +819,9 @@ section {
   justify-content: center;
   align-items: center;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
   border: none;
 }
 
@@ -878,7 +914,10 @@ section {
 .pictures-section {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ensure a responsive design */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  ); /* ensure a responsive design */
   /* max-height: 350px; */
   /* to ensure there is no overflow */
   gap: 32px;
@@ -925,11 +964,14 @@ section {
   cursor: pointer;
   border-radius: 4px;
   overflow: hidden;
-  transition: border-color 0.1s ease, background-color 0.1s ease, max-height 0.1s ease;
+  transition:
+    border-color 0.1s ease,
+    background-color 0.1s ease,
+    max-height 0.1s ease;
 }
 
-.picture-placeholder:has(.uploaded-image[data-modular='90']) .uploaded-image,
-.picture-placeholder:has(.uploaded-image[data-modular='270']) .uploaded-image {
+.picture-placeholder:has(.uploaded-image[data-modular="90"]) .uploaded-image,
+.picture-placeholder:has(.uploaded-image[data-modular="270"]) .uploaded-image {
   max-width: 350px;
 }
 
@@ -946,7 +988,9 @@ section {
   background-color: inherit; /* git the background from parents instead for dark/light mode */
   border-radius: 4px;
   transform-origin: center;
-  transition: transform 0.2s ease, max-width 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    max-width 0.2s ease;
 }
 
 /* Add hover effect for better user experience */
@@ -1528,19 +1572,27 @@ div.gslide-media.gslide-inline {
 }
 
 @media (max-width: 768px) {
+<<<<<<< HEAD
   [data-bs-theme='light'] #filePreview,
   [data-bs-theme='light'] .picture-placeholder:has(img) {
+=======
+  [data-bs-theme="light"] .picture-placeholder:has(img) {
+>>>>>>> 01df1c3 (fix: remove border for the file attachment)
     border-style: solid;
     border-width: 1px;
     /* border-color: #3c465280; */
   }
 
+<<<<<<< HEAD
   [data-bs-theme='light'] .picture-placeholder
   {
+=======
+  [data-bs-theme="light"] .picture-placeholder {
+>>>>>>> 01df1c3 (fix: remove border for the file attachment)
     border-color: transparent;
   }
 
-  [data-bs-theme='dark'] .picture-placeholder {
+  [data-bs-theme="dark"] .picture-placeholder {
     border-style: solid;
     border-width: 1px;
   }
@@ -1577,8 +1629,9 @@ div.gslide-media.gslide-inline {
     min-height: 350px;
   }
 
-  .picture-placeholder:has(.uploaded-image[data-modular='90']) .uploaded-image,
-  .picture-placeholder:has(.uploaded-image[data-modular='270']) .uploaded-image {
+  .picture-placeholder:has(.uploaded-image[data-modular="90"]) .uploaded-image,
+  .picture-placeholder:has(.uploaded-image[data-modular="270"])
+    .uploaded-image {
     /* height: 90%; */
     max-height: 92%;
   }
@@ -1588,6 +1641,8 @@ div.gslide-media.gslide-inline {
   .post1:hover .gallery-menu {
     visibility: visible;
     opacity: 100;
-    transition: visibility 0s linear 0.15s, opacity 0.25s ease-in-out;
+    transition:
+      visibility 0s linear 0.15s,
+      opacity 0.25s ease-in-out;
   }
 }
