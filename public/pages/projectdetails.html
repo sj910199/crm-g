@@ -2443,9 +2443,9 @@
                           </a>
                         </div>
 
-                        <!-- TODO: fallback should trigger a new tab  -->
                         <!-- Div to display PDF -->
                         <div id="pdfDisplay" style="margin: 10px; display: none">
+                          <!-- the data below is using wrong document on purpose to simulate error. Please update to the correct one -->
                           <object
                             data="../assets/docs/sample.csv"
                             type="application/pdf"
@@ -2456,10 +2456,10 @@
                             title="PDF Preview"
                             onerror="handlePDFError(this)"
                           >
-                            <!-- <p>
+                                      <p>
                                           Your browser does not support PDFs.
                                           <a href="../assets/docs/dummy-file.pdf">Download the PDF</a>
-                                       </p> -->
+                                       </p>
                           </object>
                         </div>
 
@@ -4383,13 +4383,24 @@
        */
       function handlePDFError(objectElement) {
         const pdfPath = objectElement.getAttribute('data');
+        const glightBtn = document.querySelector('.gcontainer .gclose.gbtn');
+        console.log(glightBtn);
+        console.log(pdfPath);
 
-        // Open the PDF in a new tab if a path is found
-        if (pdfPath) {
-          window.open(pdfPath, '_blank');
-        } else {
-          console.error('No PDF path found in the data attribute');
+        // Close the lightbox
+        if (glightBtn) {
+          glightBtn.click();
         }
+
+        // Use setTimeout to allow the click event to process, bypassing the popup blocker
+        setTimeout(() => {
+          if (pdfPath) {
+            console.log('Opening PDF in new tab');
+            window.open(pdfPath, '_blank');
+          } else {
+            console.error('No PDF path found');
+          }
+        }, 100); // Small delay to tie the open to the user action
       }
     </script>
 
