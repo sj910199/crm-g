@@ -1609,31 +1609,14 @@ div.gslide-media.gslide-inline {
 }
 
 @media (max-width: 768px) {
-<<<<<<< HEAD
-<<<<<<< HEAD
   [data-bs-theme='light'] #filePreview,
   [data-bs-theme='light'] .picture-placeholder:has(img) {
-=======
-  [data-bs-theme="light"] .picture-placeholder:has(img) {
->>>>>>> 01df1c3 (fix: remove border for the file attachment)
-=======
-  [data-bs-theme='light'] .picture-placeholder:has(img) {
->>>>>>> 7bd4e06 (feat: left side bar for desktop)
     border-style: solid;
     border-width: 1px;
     /* border-color: #3c465280; */
   }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-  [data-bs-theme='light'] .picture-placeholder
-  {
-=======
-  [data-bs-theme="light"] .picture-placeholder {
->>>>>>> 01df1c3 (fix: remove border for the file attachment)
-=======
   [data-bs-theme='light'] .picture-placeholder {
->>>>>>> 7bd4e06 (feat: left side bar for desktop)
     border-color: transparent;
   }
 
