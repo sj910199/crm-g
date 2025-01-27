@@ -142,9 +142,9 @@ section {
   font-weight: 600;
   font-size: 14px;
 }
-
+.hide-dropdown-caret::before,
 .hide-dropdown-caret::after {
-  display: none;
+  display: none !important;
 }
 
 /* Media Queries ----------------------------- */
@@ -1686,5 +1686,83 @@ div.gslide-media.gslide-inline {
     visibility: visible;
     opacity: 100;
     transition: visibility 0s linear 0.15s, opacity 0.25s ease-in-out;
+  }
+}
+
+/*-----------------------------------------------
+|   Invoice Page
+-----------------------------------------------*/
+.invoice-navbar-overrides {
+  max-width: 1140px;
+}
+
+/* for statuses of invoice */
+/* If data-status="due" */
+[data-status='due'] svg,
+[data-status='due'] p {
+  --falcon-text-opacity: 1;
+  color: rgba(var(--falcon-danger-rgb), var(--falcon-text-opacity)) !important;
+  /* Add SVG fill */
+  fill: rgba(var(--falcon-danger-rgb), var(--falcon-text-opacity)) !important;
+}
+
+/* If data-status="completed" (better than "not-due") */
+[data-status='settled'] svg,
+[data-status='settled'] p {
+  --falcon-text-opacity: 1;
+  color: rgba(var(--falcon-success-rgb), var(--falcon-text-opacity)) !important;
+  /* Add SVG fill */
+  fill: rgba(var(--falcon-success-rgb), var(--falcon-text-opacity)) !important;
+}
+
+.invoice-content p {
+  margin: 0;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.invoice-dropdown-menu {
+  transform: translate3d(-25px, 05px, 0px) !important;
+}
+
+/*-------------- media queries -------------------*/
+
+@media (max-width: 320px) {
+  .invoice-navbar-overrides {
+    padding: 0.5rem !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .invoice-card-container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+
+  .invoice-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .invoice-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  .invoice-button-container button {
+    padding: 0.3rem 0.5rem;
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .invoice-card-container {
+    grid-template-columns: 1fr 0.2fr;
   }
 }
