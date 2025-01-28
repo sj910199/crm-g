@@ -68,8 +68,17 @@
 
   <body>
     <!-- Hidden checkboxes must be before #page-wrapper in DOM -->
-    <!-- <input type="checkbox" id="toggle-navbar" hidden /> -->
+    <input type="checkbox" id="toggle-navbar" hidden />
     <!-- the wrapper for the page content  -->
+
+    <label
+      for="toggle-navbar"
+      type="button"
+      class="d-none d-lg-block btn bg-primary-subtle toggle-btn main-toggle"
+      aria-label="left nav toggle"
+    >
+      <span class="fas fa-chevron-circle-left text-primary fs-8"></span>
+    </label>
     <div id="page-wrapper" class="">
       <!-- ===============================================-->
       <!--    Main Content-->
@@ -3664,22 +3673,11 @@
             </button>
           </li>
           <li class="bg-primary-subtle text-primary">
-            <button type="button" aria-label="settings">
-              <span class="fas fa-sliders-h fs-8"></span>
-              Settings
-            </button>
+            <label id="left-nav-trigger" for="toggle-navbar" type="button" aria-label="left nav toggle">
+              <span class="fas fa-chevron-circle-right fs-8"></span>
+            </label>
           </li>
         </ul>
-        <div id="toggle-nav-container">
-          <button
-            type="button"
-            id="toggle-navbar"
-            class="d-none d-lg-block btn bg-primary-subtle toggle-btn main-toggle"
-            aria-label="left nav toggle"
-          >
-            <span class="fas fa-chevron-circle-left text-primary"></span>
-          </button>
-        </div>
       </nav>
 
       <!-- make this grid with its children grid-area: 1/1
@@ -3708,8 +3706,11 @@
               </div>
               <p class="mb-0 fs-10 text-white opacity-75">Set your own customized style</p>
             </div>
-            <div class="z-1 ms-1" data-bs-theme="dark">
-              <!-- <button class="btn-close z-1 mt-0" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
+
+            <!-- <div class="z-1 ms-1" data-bs-theme="dark">
+              <button class="btn-close z-1 mt-0" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div> -->
+            <div class="z-1 position-lg-absolute top-0 end-0">
               <button class="btn-close z-1 mt-0" type="button" aria-label="close article"></button>
             </div>
           </div>
@@ -3926,9 +3927,13 @@
         </article>
 
         <!-- Price content -->
-        <article class="price-article bg-body">
+        <article class="price-article bg-body position-lg-relative">
           <h5 class="bg-primary">Price Content here</h5>
           <div class="bg-primary-subtle">
+            <div class="z-1 position-lg-absolute top-0 end-0">
+              <button class="btn-close z-1 mt-0" type="button" aria-label="close article"></button>
+            </div>
+
             <p>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores ab tenetur nulla esse iusto vel, aperiam
               saepe sed nihil explicabo, impedit voluptatem iste. Veniam, laborum officiis doloremque molestias adipisci
@@ -3938,9 +3943,12 @@
         </article>
 
         <!-- Calendar content -->
-        <article class="calendar-article bg-body">
+        <article class="calendar-article bg-body position-lg-relative">
           <h5 class="bg-primary">Calendar</h5>
           <div class="bg-primary-subtle">
+            <div class="z-1 position-lg-absolute top-0 end-0">
+              <button class="btn-close z-1 mt-0" type="button" aria-label="close article"></button>
+            </div>
             <p>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores ab tenetur nulla esse iusto vel, aperiam
               saepe sed nihil explicabo, impedit voluptatem iste. Veniam, laborum officiis doloremque molestias adipisci
@@ -3950,9 +3958,12 @@
         </article>
 
         <!-- Inbox content -->
-        <article class="inbox-article bg-body">
+        <article class="inbox-article bg-body position-lg-relative">
           <h5 class="bg-primary">Inbox</h5>
           <div class="bg-primary-subtle">
+            <div class="z-1 position-lg-absolute top-0 end-0">
+              <button class="btn-close z-1 mt-0" type="button" aria-label="close article"></button>
+            </div>
             <p>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores ab tenetur nulla esse iusto vel, aperiam
               saepe sed nihil explicabo, impedit voluptatem iste. Veniam, laborum officiis doloremque molestias adipisci
@@ -3962,9 +3973,12 @@
         </article>
 
         <!-- Settings content -->
-        <article class="settings-article bg-body">
+        <article class="settings-article bg-body position-lg-relative">
           <h5 class="bg-primary">Settings</h5>
           <div class="bg-primary-subtle">
+            <div class="z-1 position-lg-absolute top-0 end-0">
+              <button class="btn-close z-1 mt-0" type="button" aria-label="close article"></button>
+            </div>
             <p>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores ab tenetur nulla esse iusto vel, aperiam
               saepe sed nihil explicabo, impedit voluptatem iste. Veniam, laborum officiis doloremque molestias adipisci

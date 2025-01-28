@@ -123,47 +123,9 @@
     z-index: 2;
   }
 
-  /* #left-nav-bar button[aria-label='customize'].is-active .customize-article,
-  #left-nav-bar button[aria-label='price'].is-active .price-article,
-  #left-nav-bar button[aria-label='calendar'].is-active .calendar-article,
-  #left-nav-bar button[aria-label='inbox'].is-active .inbox-article,
-  #left-nav-bar button[aria-label='settings'].is-active .settings-article {
-    z-index: 3;
-  } */
-
-  /* .left-sidebar-container .customize-article {
-    z-index: 5;
-  }
-  .left-sidebar-container .price-article {
-    z-index: 4;
-  }
-  .left-sidebar-container .calendar-article {
-    z-index: 3;
-  }
-  .left-sidebar-container .inbox-article {
-    z-index: 2;
-  }
-  .left-sidebar-container .settings-article {
-    z-index: 1;
-  } */
-
   .left-sticky-nav {
-    /* position: sticky !important;
-    top: 0; */
     height: 100dvh;
-
-    /* for hiding the element
-    min-width: 0;
-    max-width: 0;
-    overflow: hidden; */
-
     max-width: var(--left-nav-width);
-    /* width: fit-content; */
-    /* min-width: 0; */
-    /* width: 100%; */
-
-    /* bottom: 0;
-    right: 0; */
     /* z-index: 1016; */
   }
 
@@ -182,6 +144,7 @@
     overflow: hidden;
   }
 
+  /* #toggle-navbar ~ .toggle-btn, */
   .left-sticky-nav ul li {
     display: flex;
     flex-direction: column;
@@ -195,7 +158,9 @@
   }
 
   /* --falcon-link-color-rgb: 44, 123, 229; */
-  .left-sticky-nav ul li button {
+
+  .left-sticky-nav ul li button,
+  .left-sticky-nav ul li label {
     display: flex;
     color: rgba(var(--falcon-link-color-rgb), 1);
     background: inherit;
@@ -211,37 +176,52 @@
     width: 100%;
   }
 
-  #toggle-nav-container {
-    margin-left: auto;
-    margin-right: auto;
-    min-height: 45px;
+  .left-sticky-nav ul li label {
+    margin: 0;
   }
 
-  /* Toggle button styling */
-  .toggle-btn {
-    width: fit-content;
-    padding: 0.3rem 1rem;
-    background: transparent;
-    /* border: 1px solid #ddd; */
-    border-radius: 4px;
-    /* transition: all 0.2s ease; */
-    max-width: var(--left-nav-width);
-  }
-
-  /* Main toggle button positioning */
-  .main-toggle {
+  #toggle-navbar ~ label.toggle-btn {
     position: fixed;
     bottom: 0.5rem;
-    right: 0.1rem;
-    z-index: 1000;
+    right: 0.25rem;
+    margin: 0;
+    width: fit-content;
+    max-width: var(--left-nav-width);
+    padding: 0;
+    border: transparent;
+    /* highest z-index in this page */
+    z-index: 1031;
+    padding: 0.6rem 1rem 0.6rem 0.2rem;
+    transition: padding 0.3s ease-in-out;
   }
 
-  .main-toggle.open-left-nav-n-content,
-  .main-toggle.open-just-left-nav {
-    position: relative;
-    bottom: unset;
-    right: unset;
+  #toggle-navbar ~ label.toggle-btn:hover {
+    padding-left: 1rem;
   }
+
+  #toggle-navbar:checked ~ .toggle-btn {
+    opacity: 0;
+    visibility: hidden;
+    z-index: -100;
+    padding: 0.6rem 1rem 0.6rem 0.2rem;
+    transition: padding 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out,
+      z-index 0.3s ease-in-out;
+  }
+
+  #toggle-navbar:checked ~ .toggle-btn svg {
+    transform: rotate(180deg);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  #toggle-navbar ~ .toggle-btn svg {
+    transform: rotate(0deg);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  /* #toggle-navbar ~ #page-wrapper #left-nav-bar #left-nav-trigger {
+    transform: rotate(0deg);
+    transition: transform 0.2s ease-in-out;
+  } */
 }
 
 /*-----------------------------------------------
