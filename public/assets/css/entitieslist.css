@@ -6,6 +6,7 @@
   --falcon-body-color: 51, 51, 51;
   /* --falcon-table-color: #333 !important;
   --falcon-table-striped-color: #333 !important; */
+  --left-nav-width: 55px;
 }
 
 /* Specific Styles for Item Description and Custom Fields */
@@ -29,8 +30,12 @@
   background-color: #121e2d;
   color: #f9f9f9;
 }
+/**/
+/* [data-bs-theme='light'] #filePreview, */
+/* [data-bs-theme='dark'] #filePreview { */
+/*   border-style: solid; */
+/* } */
 
-[data-bs-theme='light'] #filePreview,
 [data-bs-theme='dark'] #filePreview {
   border-style: solid;
 }
@@ -137,12 +142,87 @@ section {
   font-weight: 600;
   font-size: 14px;
 }
-
+.hide-dropdown-caret::before,
 .hide-dropdown-caret::after {
-  display: none;
+  display: none !important;
 }
 
 /* Media Queries ----------------------------- */
+
+/* laptop media queries */
+@media (min-width: 992px) and (max-width: 1250px) {
+  /* .left-sticky-nav ul li {
+    font-weight: bold;
+    padding: 0.1rem;
+    width: 80%;
+    border-radius: 10px;
+  } */
+
+  #list-example-desktop {
+    left: calc(50% - (var(--left-nav-width) / 2));
+  }
+}
+
+/* left nav bar desktop */
+@media (min-width: 992px) {
+  .main {
+    margin-right: calc(var(--left-nav-width));
+  }
+  #cardcontainer {
+    padding-left: calc(var(--left-nav-width) / 3);
+    padding-right: calc(var(--left-nav-width) / 3);
+  }
+
+  .left-sticky-nav {
+    position: fixed;
+    height: 100dvh;
+    max-width: var(--left-nav-width);
+    width: fit-content;
+
+    bottom: 0;
+    right: 0;
+    z-index: 1016;
+  }
+
+  .left-sticky-nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+    height: 100%;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0.5rem 0.3rem 0;
+    margin-bottom: 1rem;
+  }
+
+  .left-sticky-nav ul li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.5rem !important;
+    font-weight: bold;
+    min-height: 45px;
+    width: 100%;
+    border-radius: 6px;
+  }
+
+  /* --falcon-link-color-rgb: 44, 123, 229; */
+  .left-sticky-nav ul li a {
+    display: flex;
+    color: rgba(var(--falcon-link-color-rgb), 1);
+    flex-direction: column;
+    list-style: none;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3rem 1rem;
+    gap: 0.3rem;
+    width: 100%;
+  }
+}
 
 @media (max-width: 580px) {
   .navbar.navbar-overrides {
@@ -1529,6 +1609,7 @@ div.gslide-media.gslide-inline {
 }
 
 @media (max-width: 768px) {
+  [data-bs-theme='light'] #filePreview,
   [data-bs-theme='light'] .picture-placeholder:has(img) {
     border-style: solid;
     border-width: 1px;
@@ -1588,5 +1669,83 @@ div.gslide-media.gslide-inline {
     visibility: visible;
     opacity: 100;
     transition: visibility 0s linear 0.15s, opacity 0.25s ease-in-out;
+  }
+}
+
+/*-----------------------------------------------
+|   Invoice Page
+-----------------------------------------------*/
+.invoice-navbar-overrides {
+  max-width: 1140px;
+}
+
+/* for statuses of invoice */
+/* If data-status="due" */
+[data-status='due'] svg,
+[data-status='due'] p {
+  --falcon-text-opacity: 1;
+  color: rgba(var(--falcon-danger-rgb), var(--falcon-text-opacity)) !important;
+  /* Add SVG fill */
+  fill: rgba(var(--falcon-danger-rgb), var(--falcon-text-opacity)) !important;
+}
+
+/* If data-status="completed" (better than "not-due") */
+[data-status='settled'] svg,
+[data-status='settled'] p {
+  --falcon-text-opacity: 1;
+  color: rgba(var(--falcon-success-rgb), var(--falcon-text-opacity)) !important;
+  /* Add SVG fill */
+  fill: rgba(var(--falcon-success-rgb), var(--falcon-text-opacity)) !important;
+}
+
+.invoice-content p {
+  margin: 0;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.invoice-dropdown-menu {
+  transform: translate3d(-25px, 05px, 0px) !important;
+}
+
+/*-------------- media queries -------------------*/
+
+@media (max-width: 320px) {
+  .invoice-navbar-overrides {
+    padding: 0.5rem !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .invoice-card-container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+
+  .invoice-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .invoice-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  .invoice-button-container button {
+    padding: 0.3rem 0.5rem;
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .invoice-card-container {
+    grid-template-columns: 1fr 0.2fr;
   }
 }
