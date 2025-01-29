@@ -3676,7 +3676,13 @@
             </button>
           </li>
           <li class="bg-primary-subtle text-primary">
-            <label id="left-nav-trigger" for="toggle-navbar" type="button" aria-label="left nav toggle">
+            <label
+              id="left-nav-trigger"
+              class="bg-primary-subtle"
+              for="toggle-navbar"
+              type="button"
+              aria-label="left nav toggle"
+            >
               <span class="fas fa-chevron-circle-right fs-8"></span>
             </label>
           </li>
@@ -3694,12 +3700,17 @@
         <!-- customize button content -->
         <!-- class="offcanvas offcanvas-end settings-panel border-0" -->
         <!-- aria-labelledby="settings-offcanvas" -->
-        <article class="customize-article p-0 settings-panel border-0" id="settings-offcanvas" tabindex="-1">
+        <article
+          class="position-relative customize-article p-0 settings-panel border-0"
+          id="settings-offcanvas"
+          tabindex="-1"
+        >
           <div class="offcanvas-header settings-panel-header bg-shape w-100">
             <div class="z-1 py-1 w-100 px-1">
               <div class="d-flex justify-content-between align-items-center mb-1">
                 <h5 class="text-white mb-0 me-2"><span class="fas fa-palette me-2 fs-9"></span>Settings</h5>
                 <button
+                  type="button"
                   class="btn btn-primary btn-sm rounded-pill mt-0 mb-0"
                   data-theme-control="reset"
                   style="font-size: 12px"
@@ -3713,8 +3724,9 @@
             <!-- <div class="z-1 ms-1" data-bs-theme="dark">
               <button class="btn-close z-1 mt-0" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div> -->
+
             <div class="z-1 position-lg-absolute top-0 end-0">
-              <button class="btn-close z-1 mt-0" type="button" aria-label="close article"></button>
+              <button class="btn-close mt-0" type="button" aria-label="close article"></button>
             </div>
           </div>
           <div class="offcanvas-body scrollbar-overlay bg-primary-subtle px-x1 h-100" id="themeController">
@@ -3930,11 +3942,11 @@
         </article>
 
         <!-- Price content -->
-        <article class="price-article bg-body position-lg-relative">
+        <article class="price-article bg-body position-relative">
           <h5 class="bg-primary">Price Content here</h5>
           <div class="bg-primary-subtle">
-            <div class="z-1 position-lg-absolute top-0 end-0">
-              <button class="btn-close z-1 mt-0" type="button" aria-label="close article"></button>
+            <div class="position-absolute top-0 end-0">
+              <button class="btn-close mt-0" type="button" aria-label="close article"></button>
             </div>
 
             <p>
@@ -3946,11 +3958,11 @@
         </article>
 
         <!-- Calendar content -->
-        <article class="calendar-article bg-body position-lg-relative">
+        <article class="calendar-article bg-body position-relative">
           <h5 class="bg-primary">Calendar</h5>
           <div class="bg-primary-subtle">
-            <div class="z-1 position-lg-absolute top-0 end-0">
-              <button class="btn-close z-1 mt-0" type="button" aria-label="close article"></button>
+            <div class="position-absolute top-0 end-0">
+              <button class="btn-close mt-0" type="button" aria-label="close article"></button>
             </div>
             <p>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores ab tenetur nulla esse iusto vel, aperiam
@@ -3961,11 +3973,11 @@
         </article>
 
         <!-- Inbox content -->
-        <article class="inbox-article bg-body position-lg-relative">
+        <article class="inbox-article bg-body position-relative">
           <h5 class="bg-primary">Inbox</h5>
           <div class="bg-primary-subtle">
-            <div class="z-1 position-lg-absolute top-0 end-0">
-              <button class="btn-close z-1 mt-0" type="button" aria-label="close article"></button>
+            <div class="position-absolute top-0 end-0">
+              <button class="btn-close mt-0" type="button" aria-label="close article"></button>
             </div>
             <p>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores ab tenetur nulla esse iusto vel, aperiam
@@ -3976,10 +3988,10 @@
         </article>
 
         <!-- Settings content -->
-        <article class="settings-article bg-body position-lg-relative">
+        <article class="settings-article bg-body position-relative">
           <h5 class="bg-primary">Settings</h5>
           <div class="bg-primary-subtle">
-            <div class="z-1 position-lg-absolute top-0 end-0">
+            <div class="position-absolute top-0 end-0">
               <button class="btn-close z-1 mt-0" type="button" aria-label="close article"></button>
             </div>
             <p>
@@ -5473,24 +5485,17 @@
         // in order for the toggle to save the current state of the side bar
         let leftNavTracker = 'open-just-left-nav';
 
+        const mobileMediaQuery = window.matchMedia('(max-width: 768px)');
+        const leftNavBar = document.getElementById('left-nav-bar');
         const pageWrapper = document?.getElementById('page-wrapper');
+        const toggleInputElement = document?.getElementById('toggle-navbar');
+
         document.addEventListener('click', function (event) {
           const toggleInput = event.target.closest('#toggle-navbar');
           const isBothOpen = toggleInput?.classList.contains('open-left-nav-n-content');
           const isJustNavOpen = toggleInput?.classList.contains('open-just-left-nav');
-          const mobileMediaQuery = window.matchMedia('(max-width: 768px)');
-          const leftNavBar = document.getElementById('left-nav-bar');
 
           if (leftNavBar && isBothOpen && mobileMediaQuery.matches) {
-            // if it matches the media it means we are at mobile/tablet size
-            // then when toggleInput is clicked it will not close all the side panels
-            // instead it will only switch to 'open-just-left-nav' mode
-            // option: 1
-            // it will just dropdown the animation
-            // option2:
-            // make it a sequence instead. when toggle input is clicked
-            // it will go to 'open-just-left-nav' mode and then remove it.
-
             leftNavTracker = 'open-left-nav-n-content';
             toggleInput.classList.toggle(leftNavTracker);
 
@@ -5503,11 +5508,7 @@
             toggleInput.classList.toggle(leftNavTracker);
             const pageWrapperClass = leftNavTracker === 'open-just-left-nav' ? 'nav-only' : 'nav-n-content';
             pageWrapper.classList.toggle(pageWrapperClass);
-            pageWrapper.style.willChange = 'grid-template-columns';
           }
-
-          // get the actual element fo the toggle button to avoid toggling outside of the element
-          const toggleInputElement = document?.getElementById('toggle-navbar');
 
           const leftNavBtn = event.target.closest('#left-nav-bar button');
           if (leftNavBtn) {
@@ -5519,13 +5520,10 @@
             const inboxArticle = document.querySelector('.inbox-article');
             const settingsArticle = document.querySelector('.settings-article');
 
-            // pageWrapper.style.willChange = 'grid-template-columns';
-
             // logic for switching articles
-            switch (leftNavBtn?.ariaLabel) {
+            switch (leftNavBtn.ariaLabel) {
               case 'customize':
                 if (!isBothOpen) {
-                  console.log('foobar bar');
                   leftNavTracker = 'open-left-nav-n-content';
                   toggleInputElement.classList.replace('open-just-left-nav', 'open-left-nav-n-content');
                   pageWrapper.classList.replace('nav-only', 'nav-n-content');
@@ -5619,8 +5617,6 @@
           if (closeArticle) {
             leftNavTracker = 'open-just-left-nav';
 
-            pageWrapper.style.willChange = 'grid-template-columns';
-
             toggleInputElement.classList.replace('open-left-nav-n-content', 'open-just-left-nav');
             pageWrapper.classList.replace('nav-n-content', 'nav-only');
 
@@ -5630,16 +5626,17 @@
               leftNavBar.classList.toggle('left-nav-collapse');
             }
           }
+        });
 
-          // Remove will-change after transition completes
-          // pageWrapper.addEventListener(
-          // 'transitionend',
-          // () => {
-          // console.log('removed');
-          //  pageWrapper.style.willChange = 'auto';
-          // },
-          // { once: true }
-          // ); // Use once: true to auto cleanup for better memory management
+        document.addEventListener('touchstart', function (event) {
+          const mainElement = event.target.closest('main');
+          if (!mainElement || !mobileMediaQuery.matches || leftNavBar.classList.contains('left-nav-collapse')) return;
+
+          if (!leftNavBar.classList.contains('left-nav-collapse')) {
+            toggleInputElement.classList.remove('open-just-left-nav');
+            pageWrapper.classList.remove('nav-only');
+            // leftNavBar.classList.add('left-nav-collapse');
+          }
         });
       });
     </script>
