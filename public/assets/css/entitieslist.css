@@ -48,7 +48,7 @@
 /*-----------------------------------------------
 |   Page Wrapper, left vertical Navbar, and triggers
 -----------------------------------------------*/
-.page-container {
+.page-wrapper {
   grid-template-columns: 1fr;
   /* height: 100%; */
 }
@@ -65,7 +65,7 @@
     width: 100%;
   }
 
-  .page-container.nav-n-content #themeSwitchDropdown {
+  .page-wrapper.nav-n-content #themeSwitchDropdown {
     display: none !important;
   }
 
@@ -77,15 +77,15 @@
 /* left nav bar desktop */
 @media (min-width: 992px) {
   /* the hide/show logic */
-  .page-container.nav-only {
+  .page-wrapper.nav-only {
     grid-template-columns: 1fr var(--left-nav-width) 0;
   }
 
-  .page-container.nav-n-content {
+  .page-wrapper.nav-n-content {
     grid-template-columns: 1fr var(--left-nav-width) var(--left-content-width);
   }
 
-  .page-container {
+  .page-wrapper {
     display: grid !important;
     grid-template-columns: 1fr 0 0;
     height: 100dvh;
@@ -93,7 +93,7 @@
     /* transition: grid-template-columns 0.3s ease-in-out; */
   }
 
-  .page-container main {
+  .page-wrapper main {
     overflow-y: auto;
   }
 
@@ -217,7 +217,7 @@
     transition: transform 0.2s ease-in-out;
   }
 
-  /* .navbar-toggle ~ .page-container #left-nav-bar #left-nav-trigger {
+  /* .navbar-toggle ~ .page-wrapper #left-nav-bar #left-nav-trigger {
     transform: rotate(0deg);
     transition: transform 0.2s ease-in-out;
   } */
