@@ -20,24 +20,24 @@
 
 /* Styles for Placeholders */
 [data-bs-theme='light'] .picture-placeholder,
-[data-bs-theme='light'] #filePreview {
+[data-bs-theme='light'] .file-container {
   background-color: #f9f9f9;
   color: #333; /* Ensure light mode placeholder text is visible */
 }
 
 [data-bs-theme='dark'] .picture-placeholder,
-[data-bs-theme='dark'] #filePreview {
+[data-bs-theme='dark'] .file-container {
   border: 2px dashed #3c4652;
   background-color: #121e2d;
   color: #f9f9f9;
 }
 /**/
-/* [data-bs-theme='light'] #filePreview, */
-/* [data-bs-theme='dark'] #filePreview { */
+/* [data-bs-theme='light'] .file-container */
+/* [data-bs-theme='dark'] .file-container { */
 /*   border-style: solid; */
 /* } */
 
-[data-bs-theme='dark'] #filePreview {
+[data-bs-theme='dark'] .file-container {
   border-style: solid;
 }
 
@@ -133,7 +133,6 @@
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   overflow-y: scroll;
-  /* max-width: 350px; */
   max-width: 100%;
   max-height: 100%;
   width: 100%;
@@ -147,7 +146,7 @@
 .left-sidebar-container .customize-article {
   grid-area: 1/1;
   z-index: 1;
-  max-width: var(--left-content-width);
+  max-width: 100%;
   width: 100%;
   height: 100%;
 }
@@ -232,11 +231,11 @@
     width: 100%;
   }
 
-  .page-wrapper.nav-n-content #themeSwitchDropdown {
+  .page-wrapper.nav-n-content .theme-switch-dropdown {
     display: none !important;
   }
 
-  #list-example-desktop {
+  .sub-top-nav-desktop {
     left: calc(50% - var(--left-content-width) / 2);
   }
 }
@@ -384,11 +383,6 @@
     transform: rotate(0deg);
     transition: transform 0.2s ease-in-out;
   }
-
-  /* .navbar-toggle ~ .page-wrapper #left-nav-bar #left-nav-trigger {
-    transform: rotate(0deg);
-    transition: transform 0.2s ease-in-out;
-  } */
 }
 
 /*-----------------------------------------------
@@ -447,14 +441,14 @@ section {
 
 /*-------main-top-nav-start here------------------*/
 
-.navbar.navbar-overrides .navbar-nav #themeSwitchDropdown::after {
+.navbar.navbar-overrides .navbar-nav .theme-switch-dropdown::after {
   border: none;
 }
 
 .navbar-glass,
-#navbarStandard,
+.navbar-standard,
 .navbar-collapse {
-  z-index: 101; /*to have a higher stacking context than #list-example-desktop*/
+  z-index: 101; /*to have a higher stacking context than .sub-top-nav-desktop
 }
 
 .list-group-item.active .icon {
@@ -465,13 +459,13 @@ section {
   transition: fill 0.3s ease; /* Optional: Smooth color transition */
 }
 
-#list-example-mobile {
+.sub-top-nav-mobile {
   margin-top: 70px;
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-#list-example-desktop {
+.sub-top-nav-desktop {
   position: absolute;
   width: 75%; /* Set a fixed width, adjust as needed */
   max-width: 1400px; /* Limit the maximum width */
@@ -512,7 +506,7 @@ section {
     width: 120px;
   }
 
-  .navbar.navbar-overrides .navbar-nav #themeSwitchDropdown::after {
+  .navbar.navbar-overrides .navbar-nav .theme-switch-dropdown::after {
     border: none;
   }
 }
@@ -526,28 +520,28 @@ section {
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  #list-example-desktop {
+  .sub-top-nav-desktop {
     width: 90%;
     max-width: 1000px;
   }
 }
 
 @media (min-width: 1540px) and (max-width: 1900px) {
-  #list-example-desktop {
+  .sub-top-nav-desktop {
     width: 100%;
     max-width: 1400px;
   }
 }
 
 @media (min-width: 1025px) and (max-width: 1199px) {
-  #list-example-desktop {
+  .sub-top-nav-desktop {
     width: 90%;
     max-width: 900px;
   }
 }
 
 @media (min-width: 1200px) and (max-width: 1439px) {
-  #list-example-desktop {
+  .sub-top-nav-desktop {
     width: 90%;
     max-width: 1080px;
   }
@@ -558,7 +552,7 @@ section {
 -----------------------------------------------*/
 
 /* Card container spacing for sticky menu */
-#cardcontainer {
+.card-container {
   padding-top: 30px;
 }
 
@@ -644,19 +638,19 @@ section {
 }
 
 /* Set default width for the display and dropdown */
-#customer-display,
-#customer-dropdown {
+.customer-display,
+.customer-dropdown {
   width: 100px; /* Adjust as necessary */
 }
 
 /* Select2 width */
 /* Set default width for the display and dropdown */
-#customer-display,
-#customer-dropdown {
+.customer-display,
+.customer-dropdown {
   width: 70%; /* Adjust as necessary */
 }
 
-#customer-dropdown + .select2-container--bootstrap-5 {
+.customer-dropdown + .select2-container--bootstrap-5 {
   display: block !important;
   width: 70% !important;
 }
@@ -807,7 +801,7 @@ section {
   width: 100%; /* Ensure the form is full width */
 }
 
-#userRoleSearch {
+.user-role-search {
   position: relative;
   width: 100%; /* Make sure the input is full width */
   box-sizing: border-box; /* Include padding in width calculation */
@@ -889,7 +883,7 @@ section {
 }
 
 @media (min-width: 601px) and (max-width: 767px) {
-  #right-card {
+  .right-card {
     margin-top: 1rem;
   }
 }
@@ -1213,7 +1207,7 @@ section {
   padding: 5px 10px;
 }
 
-#header-mobile {
+.header-mobile {
   display: none;
 }
 
@@ -1745,20 +1739,20 @@ canvas {
 
 /* Media Queries ----------------------------- */
 @media (max-width: 800px) {
-  #table-purchase-body .task-mobile-bg {
+  .table-purchase-body .task-mobile-bg {
     background-color: var(--falcon-gray-100);
   }
 
-  #table-purchase-body .task-mobile-bg.triggered {
+  .table-purchase-body .task-mobile-bg.triggered {
     min-height: 30px;
     max-height: 30px;
   }
 
-  #table-purchase-body .task-mobile-bg th {
+  .table-purchase-body .task-mobile-bg th {
     padding: 4px;
     color: rgba(var(--falcon-link-color-rgb), var(--falcon-link-opacity, 1));
   }
-  #table-purchase-body .task-mobile-bg .accordion-trigger {
+  .table-purchase-body .task-mobile-bg .accordion-trigger {
     font-weight: 600;
     align-items: center;
     justify-content: center;
@@ -1872,8 +1866,7 @@ div.gslide-media.gslide-inline {
 }
 
 @media (max-width: 768px) {
-  [data-bs-theme='light'] #filePreview,
-  [data-bs-theme='light'] .picture-placeholder:has(img) {
+  [data-bs-theme='light'] .file-container [data-bs-theme='light'] .picture-placeholder:has(img) {
     border-style: solid;
     border-width: 1px;
     /* border-color: #3c465280; */

@@ -168,7 +168,7 @@
                   </div>
                 </a>
 
-                <div class="collapse navbar-collapse scrollbar" id="navbarStandard">
+                <div class="collapse navbar-collapse scrollbar navbar-standard" id="navbarStandard">
                   <ul class="navbar-nav" data-top-nav-dropdowns="data-top-nav-dropdowns">
                     <li class="nav-item dropdown">
                       <a
@@ -301,7 +301,7 @@
                   <li class="nav-item ps-2 pe-0">
                     <div class="dropdown theme-control-dropdown">
                       <a
-                        class="nav-link d-flex align-items-center dropdown-toggle fa-icon-wait fs-9 pe-1 py-0"
+                        class="theme-switch-dropdown nav-link d-flex align-items-center dropdown-toggle fa-icon-wait fs-9 pe-1 py-0"
                         href="#"
                         role="button"
                         id="themeSwitchDropdown"
@@ -863,7 +863,7 @@
                 <div class="col-3 d-block d-md-none d-lg-none">
                   <div
                     id="list-example-mobile"
-                    class="list-group d-flex flex-row align-items-center justify-content-center position-absolute fixed-top"
+                    class="sub-top-nav-mobile list-group d-flex flex-row align-items-center justify-content-center position-absolute fixed-top"
                   >
                     <a
                       class="list-group-item list-group-item-action d-flex align-items-center justify-content-center"
@@ -990,7 +990,7 @@
                 <!-- For desktop, display the list horizontally -->
                 <div
                   id="list-example-desktop"
-                  class="d-none d-md-flex list-group d-flex flex-row justify-content-start fixed-top"
+                  class="sub-top-nav-desktop d-none d-md-flex list-group d-flex flex-row justify-content-start fixed-top"
                 >
                   <a class="list-group-item list-group-item-action" href="#list-item-1">Project Overview</a>
                   <a class="list-group-item list-group-item-action" href="#list-item-2">Entities</a>
@@ -1006,7 +1006,7 @@
               <!--    Project Details-->
               <!-- ===============================================-->
 
-              <div class="col-12" id="cardcontainer">
+              <div class="col-12 card-container" id="cardcontainer">
                 <div
                   data-bs-spy="scroll"
                   data-bs-target="#list-example"
@@ -1031,8 +1031,8 @@
                               type="text"
                             />
 
-                            <div class="project-alpha-card-text" id="customer-display">Customer 1</div>
-                            <select class="project-alpha-dropdown" id="customer-dropdown">
+                            <div class="project-alpha-card-text customer-display" id="customer-display">Customer 1</div>
+                            <select class="project-alpha-dropdown customer-dropdown" id="customer-dropdown">
                               <option>Customer 1</option>
                               <option>Customer 2</option>
                               <option>Customer 3</option>
@@ -1122,7 +1122,7 @@
                         </div>
 
                         <!-- Right card -->
-                        <div class="col-md-6 d-flex" id="right-card">
+                        <div class="col-md-6 d-flex right-card" id="right-card">
                           <div class="card project-alpha-card flex-grow-1 d-flex flex-column">
                             <h3>Project Scope</h3>
                             <div class="project-alpha-card-text" style="width: 100%; height: 170px" id="scope-field">
@@ -1569,7 +1569,7 @@
                         </div>
 
                         <div class="border-top mt-2 pt-3">
-                          <div class="row" id="header-mobile">
+                          <div class="row header-mobile" id="header-mobile">
                             <div class="col-4 col-sm-4 col-md">
                               <div class="header">Quantity</div>
                               <p class="editable">01</p>
@@ -1977,7 +1977,7 @@
                             </th>
                           </tr>
                         </thead>
-                        <tbody class="list" id="table-purchase-body">
+                        <tbody class="list table-purchase-body" id="table-purchase-body">
                           <tr class="task-mobile-bg accordion-container triggered btn-reveal-trigger">
                             <th class="align-middle white-space-nowrap name">
                               <!-- <a href="../../app/e-commerce/customer-details.html">Client Meeting - Meeting</a> -->
