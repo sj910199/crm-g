@@ -58,7 +58,7 @@ naturally have a higher one because of the navbar change in
 layout(float) and is being dependent on top level input(#toggle-navbar) state */
 
 /* Mobile/tablet */
-@media (max-width: 768px) {
+@media (max-width: 991px) {
   .page-wrapper {
     display: grid;
     height: 100dvh;
