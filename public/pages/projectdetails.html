@@ -168,7 +168,7 @@
                   </div>
                 </a>
 
-                <div class="collapse navbar-collapse scrollbar navbar-standard" id="navbarStandard">
+                <div class="collapse navbar-collapse scrollbar navbar-standard bg-body" id="navbarStandard">
                   <ul class="navbar-nav" data-top-nav-dropdowns="data-top-nav-dropdowns">
                     <li class="nav-item dropdown">
                       <a
@@ -863,7 +863,7 @@
                 <div class="col-3 d-block d-md-none d-lg-none">
                   <div
                     id="list-example-mobile"
-                    class="sub-top-nav-mobile list-group d-flex flex-row align-items-center justify-content-center position-absolute fixed-top"
+                    class="w-100 sub-top-nav-mobile list-group d-flex flex-row align-items-center justify-content-center position-absolute fixed-top"
                   >
                     <a
                       class="list-group-item list-group-item-action d-flex align-items-center justify-content-center"
@@ -5630,13 +5630,22 @@
 
         document.addEventListener('touchstart', function (event) {
           const mainElement = event.target.closest('main');
-          if (!mainElement || !mobileMediaQuery.matches || leftNavBar.classList.contains('left-nav-collapse')) return;
+          const asideElement = event.target.closest('aside');
+          console.log(asideElement);
+          if (!mobileMediaQuery.matches) return;
 
-          if (!leftNavBar.classList.contains('left-nav-collapse')) {
+          if (mainElement && toggleInputElement.classList.contains('open-just-left-nav')) {
             toggleInputElement.classList.remove('open-just-left-nav');
             pageWrapper.classList.remove('nav-only');
-            // leftNavBar.classList.add('left-nav-collapse');
+            return;
           }
+
+          if (asideElement && !leftNavBar.classList.contains('left-nav-collapse')) {
+            leftNavBar.classList.add('left-nav-collapse');
+            return;
+          }
+
+          return;
         });
       });
     </script>

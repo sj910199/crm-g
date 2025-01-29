@@ -462,11 +462,11 @@ section {
 .navbar.navbar-overrides .navbar-nav .theme-switch-dropdown::after {
   border: none;
 }
-
+.navbar.navbar-overrides > ul,
 .navbar-glass,
 .navbar-standard,
 .navbar-collapse {
-  z-index: 101; /*to have a higher stacking context than .sub-top-nav-desktop
+  z-index: 1031; /*to have a higher stacking context than .sub-top-nav-desktop
 }
 
 .list-group-item.active .icon {
