@@ -63,6 +63,7 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     display: grid;
     height: 100dvh;
     grid-template-columns: 1fr 0;
+    transition: grid-template-columns 0.2s ease-in-out;
   }
 
   .page-wrapper > main {
@@ -74,13 +75,10 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     --falcon-bg-opacity: 1;
     height: fit-content;
     max-width: var(--left-nav-width);
-
     bottom: 0.5rem;
     right: 0.25rem;
-
     z-index: 1016;
     transition: transform 0.1s linear;
-
     border-radius: 8px;
   }
 
@@ -142,6 +140,14 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
 
   /*mobile  left navbar layout ends here */
 
+  /* mobile animation for left content starts here */
+
+  .navbar-toggle.nav-n-content ~ .page-wrapper {
+    grid-template-columns: 0 1fr;
+  }
+
+  /* mobile animation left content ends here */
+
   /*mobile  left sidebar layout starts here */
 
   .left-sidebar-container {
@@ -173,21 +179,21 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
 
   /* mobile animation for left nav bar starts here */
   /* open state */
-  .navbar-toggle.open-left-nav-n-content ~ .page-wrapper > .left-nav-bar,
-  .navbar-toggle.open-just-left-nav ~ .page-wrapper > .left-nav-bar {
+  .navbar-toggle.nav-n-content ~ .page-wrapper > .left-nav-bar,
+  .navbar-toggle.nav-only ~ .page-wrapper > .left-nav-bar {
     transform: translateX(0);
     transition-delay: 0s;
   }
 
-  .navbar-toggle.open-left-nav-n-content ~ .page-wrapper > .left-nav-bar ul,
-  .navbar-toggle.open-just-left-nav ~ .page-wrapper > .left-nav-bar ul {
+  .navbar-toggle.nav-n-content ~ .page-wrapper > .left-nav-bar ul,
+  .navbar-toggle.nav-only ~ .page-wrapper > .left-nav-bar ul {
     gap: 0.5rem;
 
     transition-delay: 0.11s;
   }
 
-  .navbar-toggle.open-left-nav-n-content ~ .page-wrapper > .left-nav-bar ul li:not(:last-child),
-  .navbar-toggle.open-just-left-nav ~ .page-wrapper > .left-nav-bar ul li:not(:last-child) {
+  .navbar-toggle.nav-n-content ~ .page-wrapper > .left-nav-bar ul li:not(:last-child),
+  .navbar-toggle.nav-only ~ .page-wrapper > .left-nav-bar ul li:not(:last-child) {
     transform: translateY(0);
     opacity: 1;
     max-height: 100%;
@@ -197,25 +203,25 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     transition-delay: 0.11s;
   }
 
-  .navbar-toggle.open-left-nav-n-content ~ .page-wrapper > .left-nav-bar > ul li > label > svg,
-  .navbar-toggle.open-just-left-nav ~ .page-wrapper > .left-nav-bar > ul li > label > svg {
+  .navbar-toggle.nav-n-content ~ .page-wrapper > .left-nav-bar > ul li > label > svg,
+  .navbar-toggle.nav-only ~ .page-wrapper > .left-nav-bar > ul li > label > svg {
     transform: rotate(360deg);
   }
 
   /* close state */
-  .navbar-toggle.open-left-nav-n-content ~ .page-wrapper > .left-nav-bar.left-nav-collapse,
+  .navbar-toggle.nav-n-content ~ .page-wrapper > .left-nav-bar.left-nav-collapse,
   .navbar-toggle ~ .page-wrapper > .left-nav-bar {
     transform: translateX(1.5rem);
     transition-delay: 0.21s;
   }
 
-  .navbar-toggle.open-left-nav-n-content ~ .page-wrapper > .left-nav-bar.left-nav-collapse ul,
+  .navbar-toggle.nav-n-content ~ .page-wrapper > .left-nav-bar.left-nav-collapse ul,
   .navbar-toggle ~ .page-wrapper > .left-nav-bar ul {
     gap: 0;
     transition-delay: 0s;
   }
 
-  .navbar-toggle.open-left-nav-n-content ~ .page-wrapper > .left-nav-bar.left-nav-collapse ul li:not(:last-child),
+  .navbar-toggle.nav-n-content ~ .page-wrapper > .left-nav-bar.left-nav-collapse ul li:not(:last-child),
   .navbar-toggle ~ .page-wrapper > .left-nav-bar ul li:not(:last-child) {
     transform: translateY(20px);
     opacity: 0;
@@ -225,20 +231,12 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     transition-delay: 0s;
   }
 
-  .navbar-toggle.open-left-nav-n-content ~ .page-wrapper > .left-nav-bar.left-nav-collapse > ul li > label > svg,
+  .navbar-toggle.nav-n-content ~ .page-wrapper > .left-nav-bar.left-nav-collapse > ul li > label > svg,
   .navbar-toggle ~ .page-wrapper > .left-nav-bar > ul li > label > svg {
     transform: rotate(180deg);
   }
 
   /* mobile animation for left nav bar ends here */
-
-  /* mobile animation for main and left content starts here */
-
-  .navbar-toggle.open-left-nav-n-content ~ .page-wrapper {
-    grid-template-columns: 0 1fr;
-  }
-
-  /* mobile animation for main and left content ends here */
 }
 
 /* laptop media queries */
@@ -264,11 +262,14 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
 @media (min-width: 992px) {
   /* @media (min-width: 768px) { */
   /* the hide/show logic */
-  .page-wrapper.nav-only {
+  /* nav-only */
+  .navbar-toggle.nav-only ~ .page-wrapper {
+    /* .page-wrapper.nav-only { */
     grid-template-columns: 1fr var(--left-nav-width) 0 !important;
   }
 
-  .page-wrapper.nav-n-content {
+  .navbar-toggle.nav-n-content ~ .page-wrapper {
+    /* .page-wrapper.nav-n-content { */
     grid-template-columns: 1fr var(--left-nav-width) var(--left-content-width) !important;
   }
 
@@ -277,7 +278,8 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     grid-template-columns: 1fr 0 0;
     height: 100dvh;
     overflow: hidden;
-    /* transition: grid-template-columns 0.3s ease-in-out; */
+
+    transition: grid-template-columns 0.2s ease-in-out;
   }
 
   .page-wrapper main {

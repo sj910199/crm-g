@@ -5479,7 +5479,215 @@
     <!-- left nav bar and side panel implementation  -->
 
     <script>
-      document.addEventListener('DOMContentLoaded', function () {
+      // Constants
+      const SELECTORS = {
+        PAGE_WRAPPER: '#page-wrapper',
+        LEFT_CONTENT: '#left-content',
+        LEFT_NAV_BAR: '#left-nav-bar',
+        TOGGLE_INPUT: '#toggle-navbar',
+        NAV_BUTTON: '#left-nav-bar button',
+        CLOSE_BUTTON: 'button[aria-label="close article"]',
+      };
+
+      const CLASSES = {
+        NAV_ONLY: 'nav-only',
+        NAV_CONTENT: 'nav-n-content',
+        NAV_COLLAPSE: 'left-nav-collapse',
+        CONTENT_OPEN: 'content-open',
+        TRANSITIONING: 'is-transitioning',
+      };
+
+      // Article configuration for better maintainability
+      const ARTICLES = {
+        customize: { selector: '.customize-article' },
+        price: { selector: '.price-article' },
+        calendar: { selector: '.calendar-article' },
+        inbox: { selector: '.inbox-article' },
+        settings: { selector: '.settings-article' },
+      };
+
+      class SidebarManager {
+        constructor() {
+          this.leftNavTracker = CLASSES.NAV_ONLY;
+          this.mobileMediaQuery = window.matchMedia('(max-width: 991px)');
+          this.elements = {};
+          this.articleElements = {};
+          this.isTransitioning = false;
+          this.rafId = null;
+        }
+
+        init() {
+          this.cacheElements();
+          this.setupEventListeners();
+          this.initializeArticles();
+        }
+
+        cacheElements() {
+          this.elements = {
+            leftNavBar: document.querySelector(SELECTORS.LEFT_NAV_BAR),
+            pageWrapper: document.querySelector(SELECTORS.PAGE_WRAPPER),
+            toggleInput: document.querySelector(SELECTORS.TOGGLE_INPUT),
+            leftContent: document.querySelector(SELECTORS.LEFT_CONTENT),
+          };
+
+          // Cache article elements
+          Object.entries(ARTICLES).forEach(([key, { selector }]) => {
+            this.articleElements[key] = document.querySelector(selector);
+          });
+        }
+
+        setupEventListeners() {
+          document.addEventListener('click', this.handleClick.bind(this));
+          document.addEventListener('touchstart', this.handleTouchStart.bind(this));
+        }
+
+        initializeArticles() {
+          Object.entries(this.articleElements).forEach(([key, element]) => {
+            if (!element) return;
+            element.style.zIndex = key === 'customize' ? '3' : '2';
+
+            // Performance optimization: mark inactive articles
+            // to be not interactible if not visible
+            if (key !== 'customize') {
+              element.setAttribute('inert', '');
+              element.style.visibility = 'hidden';
+              element.style.opacity = '0';
+            }
+          });
+        }
+
+        handleArticleSwitch(articleKey) {
+          if (this.isTransitioning) return;
+          this.isTransitioning = true;
+
+          // Cancel any existing animation frame
+          if (this.rafId) {
+            cancelAnimationFrame(this.rafId);
+          }
+
+          this.rafId = requestAnimationFrame(() => {
+            this.updateArticleStates(articleKey);
+
+            // Reset transition flag after animation completes
+            setTimeout(() => {
+              this.isTransitioning = false;
+            }, 300); // Match your CSS transition duration
+          });
+        }
+
+        updateArticleStates(activeKey) {
+          Object.entries(this.articleElements).forEach(([key, element]) => {
+            const isActive = key === activeKey;
+            element.style.zIndex = isActive ? '3' : '2';
+
+            // Performance optimization: toggle interactivity and visibility
+            if (isActive) {
+              element.removeAttribute('inert');
+              element.style.visibility = 'visible';
+              element.style.opacity = '1';
+              element.style.height = '100%';
+            } else {
+              element.setAttribute('inert', '');
+              element.style.visibility = 'hidden';
+              element.style.opacity = '0';
+              element.style.height = '0'; // so that it wont interrupt for the non overflowed articles
+            }
+          });
+        }
+
+        handleNavigation(button) {
+          const { toggleInput, leftNavBar } = this.elements; // get caches elements
+          const isBothOpen = toggleInput.classList.contains(CLASSES.NAV_CONTENT);
+
+          if (!isBothOpen) {
+            this.leftNavTracker = CLASSES.NAV_CONTENT;
+            toggleInput.classList.replace(CLASSES.NAV_ONLY, CLASSES.NAV_CONTENT);
+
+            if (this.mobileMediaQuery.matches) {
+              leftNavBar.classList.add(CLASSES.NAV_COLLAPSE);
+            }
+          }
+
+          this.handleArticleSwitch(button.ariaLabel);
+        }
+
+        handleClose() {
+          const { toggleInput, leftNavBar } = this.elements;
+          this.leftNavTracker = CLASSES.NAV_ONLY;
+          toggleInput.classList.replace(CLASSES.NAV_CONTENT, CLASSES.NAV_ONLY);
+
+          if (this.mobileMediaQuery.matches) {
+            toggleInput.classList.remove(CLASSES.NAV_ONLY);
+            leftNavBar.classList.toggle(CLASSES.NAV_COLLAPSE);
+          }
+        }
+
+        handleClick(event) {
+          const { toggleInput, leftNavBar } = this.elements;
+          const clickedToggle = event.target.closest(SELECTORS.TOGGLE_INPUT);
+          const clickedNavButton = event.target.closest(SELECTORS.NAV_BUTTON);
+          const clickedClose = event.target.closest(SELECTORS.CLOSE_BUTTON);
+
+          if (clickedToggle) {
+            this.handleToggleClick(clickedToggle);
+          } else if (clickedNavButton) {
+            this.handleNavigation(clickedNavButton);
+          } else if (clickedClose) {
+            this.handleClose();
+          }
+        }
+
+        handleToggleClick(toggleInput) {
+          const isBothOpen = toggleInput.classList.contains(CLASSES.NAV_CONTENT);
+          const isJustNavOpen = toggleInput.classList.contains(CLASSES.NAV_ONLY);
+
+          if (this.elements.leftNavBar && isBothOpen && this.mobileMediaQuery.matches) {
+            this.leftNavTracker = CLASSES.NAV_CONTENT;
+            toggleInput.classList.toggle(this.leftNavTracker);
+            this.elements.leftNavBar.classList.toggle(CLASSES.NAV_COLLAPSE);
+          }
+
+          if (!isJustNavOpen || !isBothOpen) {
+            toggleInput.classList.toggle(this.leftNavTracker);
+          }
+        }
+
+        handleTouchStart(event) {
+          if (!this.mobileMediaQuery.matches) return;
+
+          const mainElement = event.target.closest('main');
+          const asideElement = event.target.closest(SELECTORS.LEFT_CONTENT);
+          const { toggleInput, leftNavBar } = this.elements;
+
+          if (mainElement && toggleInput.classList.contains(CLASSES.NAV_ONLY)) {
+            toggleInput.classList.remove(CLASSES.NAV_ONLY);
+          } else if (asideElement && !leftNavBar.classList.contains(CLASSES.NAV_COLLAPSE)) {
+            leftNavBar.classList.add(CLASSES.NAV_COLLAPSE);
+          }
+        }
+      }
+
+      // Initialize when DOM is ready
+      document.addEventListener('DOMContentLoaded', () => {
+        const sidebarManager = new SidebarManager();
+        sidebarManager.init();
+      });
+    </script>
+
+    <!-- Load jQuery (if needed) and Flatpickr JS from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!-- date picker -->
+    <script src="../vendors/flatpickr/flatpickr.min.js"></script>
+    <!-- multiple select -->
+    <script src="../vendors/jquery/jquery.min.js"></script>
+    <script src="../vendors/select2/select2.min.js"></script>
+    <script src="../vendors/select2/select2.full.min.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <script src="../vendors/glightbox/glightbox.min.js"></script>
+  </body>
+</html>
+
+<!-- document.addEventListener('DOMContentLoaded', function () {
         // initial value when you first open the nav
         // this will track how many column is currently open
         // in order for the toggle to save the current state of the side bar
@@ -5647,18 +5855,184 @@
 
           return;
         });
-      });
-    </script>
+      }); -->
 
-    <!-- Load jQuery (if needed) and Flatpickr JS from CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <!-- date picker -->
-    <script src="../vendors/flatpickr/flatpickr.min.js"></script>
-    <!-- multiple select -->
-    <script src="../vendors/jquery/jquery.min.js"></script>
-    <script src="../vendors/select2/select2.min.js"></script>
-    <script src="../vendors/select2/select2.full.min.js"></script>
-    <script src="../assets/js/theme.js"></script>
-    <script src="../vendors/glightbox/glightbox.min.js"></script>
-  </body>
-</html>
+<!-- itteration 2 -->
+
+<!-- // TODO: ADD INERT TO THE INACTIVE GRID COLUMNS,OPACITY 0 , VISIBILITY hidden
+      // being: NAV_ONLY means SELECTORS.LEFT_CONTENT is inactive
+      // in mobileMediaQuery case true means NAV_CONTENT means mainElement is inactive
+      // for the acticles. The one that has the highest z-index is the one that is active rest is inactive
+      document.addEventListener('DOMContentLoaded', function () {
+        // CSS classes and selectors
+        const SELECTORS = {
+          PAGE_WRAPPER: '#page-wrapper',
+          LEFT_CONTENT: '#left-content',
+          LEFT_NAV_BAR: '#left-nav-bar',
+          TOGGLE_INPUT: '#toggle-navbar',
+          NAV_BUTTON: '#left-nav-bar button',
+          CLOSE_BUTTON: 'button[aria-label="close article"]',
+        };
+
+        const CLASSES = {
+          NAV_ONLY: 'nav-only',
+          NAV_CONTENT: 'nav-n-content',
+          NAV_COLLAPSE: 'left-nav-collapse',
+          CONTENT_OPEN: 'content-open',
+          TRANSITIONING: 'is-transitioning',
+        };
+
+        // initial value when you first open the nav
+        // this will track how many column is currently open
+        // in order for the toggle to save the current state of the side bar
+        let leftNavTracker = CLASSES.NAV_ONLY;
+        let rafId = null;
+
+        const mobileMediaQuery = window.matchMedia('(max-width: 991px)');
+        const leftNavBar = document?.querySelector(SELECTORS.LEFT_NAV_BAR);
+        const pageWrapper = document?.querySelector(SELECTORS.PAGE_WRAPPER);
+        const toggleInputElement = document?.querySelector(SELECTORS.TOGGLE_INPUT);
+        const leftContent = document?.querySelector(SELECTORS.LEFT_CONTENT);
+
+        document.addEventListener('click', function (event) {
+          const toggleInput = event.target.closest(SELECTORS.TOGGLE_INPUT);
+          const isBothOpen = toggleInput?.classList.contains(CLASSES.NAV_CONTENT);
+          const isJustNavOpen = toggleInput?.classList.contains(CLASSES.NAV_ONLY);
+
+          if (leftNavBar && isBothOpen && mobileMediaQuery.matches) {
+            leftNavTracker = CLASSES.NAV_CONTENT;
+            toggleInput.classList.toggle(leftNavTracker);
+
+            leftNavBar.classList.toggle(CLASSES.NAV_COLLAPSE);
+          }
+
+          if (toggleInput && (!isJustNavOpen || !isBothOpen)) {
+            toggleInput.classList.toggle(leftNavTracker);
+          }
+
+          const leftNavBtn = event.target.closest(SELECTORS.NAV_BUTTON);
+          if (leftNavBtn) {
+            const customizeArticle = document.querySelector('.customize-article');
+            const priceArticle = document.querySelector('.price-article');
+            const calendarArticle = document.querySelector('.calendar-article');
+            const inboxArticle = document.querySelector('.inbox-article');
+            const settingsArticle = document.querySelector('.settings-article');
+
+            // logic for switching articles
+            switch (leftNavBtn.ariaLabel) {
+              case 'customize':
+                if (!isBothOpen) {
+                  leftNavTracker = CLASSES.NAV_CONTENT;
+                  toggleInputElement.classList.replace(CLASSES.NAV_ONLY, CLASSES.NAV_CONTENT);
+                  mobileMediaQuery.matches && leftNavBar.classList.add(CLASSES.NAV_COLLAPSE);
+                }
+
+                customizeArticle.style.zIndex = 3;
+                priceArticle.style.zIndex = 2;
+                calendarArticle.style.zIndex = 2;
+                inboxArticle.style.zIndex = 2;
+                settingsArticle.style.zIndex = 2;
+
+                customizeArticle.style.height = '100%';
+                break;
+
+              case 'price':
+                if (!isBothOpen) {
+                  leftNavTracker = CLASSES.NAV_CONTENT;
+                  toggleInputElement.classList.replace(CLASSES.NAV_ONLY, CLASSES.NAV_CONTENT);
+                  mobileMediaQuery.matches && leftNavBar.classList.add(CLASSES.NAV_COLLAPSE);
+                }
+
+                customizeArticle.style.zIndex = 2;
+                priceArticle.style.zIndex = 3;
+                calendarArticle.style.zIndex = 2;
+                inboxArticle.style.zIndex = 2;
+                settingsArticle.style.zIndex = 2;
+
+                customizeArticle.style.height = '0';
+                break;
+
+              case 'calendar':
+                if (!isBothOpen) {
+                  leftNavTracker = CLASSES.NAV_CONTENT;
+                  toggleInputElement.classList.replace(CLASSES.NAV_ONLY, CLASSES.NAV_CONTENT);
+                  mobileMediaQuery.matches && leftNavBar.classList.add(CLASSES.NAV_COLLAPSE);
+                }
+
+                customizeArticle.style.zIndex = 2;
+                priceArticle.style.zIndex = 2;
+                calendarArticle.style.zIndex = 3;
+                inboxArticle.style.zIndex = 2;
+                settingsArticle.style.zIndex = 2;
+
+                customizeArticle.style.height = '0';
+                break;
+
+              case 'inbox':
+                if (!isBothOpen) {
+                  leftNavTracker = CLASSES.NAV_CONTENT;
+                  toggleInputElement.classList.replace(CLASSES.NAV_ONLY, CLASSES.NAV_CONTENT);
+                  mobileMediaQuery.matches && leftNavBar.classList.add(CLASSES.NAV_COLLAPSE);
+                }
+
+                customizeArticle.style.zIndex = 2;
+                priceArticle.style.zIndex = 2;
+                calendarArticle.style.zIndex = 2;
+                inboxArticle.style.zIndex = 3;
+                settingsArticle.style.zIndex = 2;
+
+                customizeArticle.style.height = '0';
+                break;
+
+              case 'settings':
+                if (!isBothOpen) {
+                  leftNavTracker = CLASSES.NAV_CONTENT;
+                  toggleInputElement.classList.replace(CLASSES.NAV_ONLY, CLASSES.NAV_CONTENT);
+                  mobileMediaQuery.matches && leftNavBar.classList.add(CLASSES.NAV_COLLAPSE);
+                }
+
+                customizeArticle.style.zIndex = 2;
+                priceArticle.style.zIndex = 2;
+                calendarArticle.style.zIndex = 2;
+                inboxArticle.style.zIndex = 2;
+                settingsArticle.style.zIndex = 3;
+
+                customizeArticle.style.height = '0';
+                break;
+              default:
+                return;
+            }
+          }
+
+          // logic for closing the left sidebar
+          const closeArticle = event.target.closest(SELECTORS.CLOSE_BUTTON);
+          if (closeArticle) {
+            leftNavTracker = CLASSES.NAV_ONLY;
+
+            toggleInputElement.classList.replace(CLASSES.NAV_CONTENT, CLASSES.NAV_ONLY);
+
+            if (mobileMediaQuery.matches) {
+              toggleInputElement.classList.remove(CLASSES.NAV_ONLY);
+              leftNavBar.classList.toggle(CLASSES.NAV_COLLAPSE);
+            }
+          }
+        });
+
+        document.addEventListener('touchstart', function (event) {
+          const mainElement = event.target.closest('main');
+          const asideElement = event.target.closest(SELECTORS.LEFT_CONTENT);
+          if (!mobileMediaQuery.matches) return;
+
+          if (mainElement && toggleInputElement.classList.contains(CLASSES.NAV_ONLY)) {
+            toggleInputElement.classList.remove(CLASSES.NAV_ONLY);
+            return;
+          }
+
+          if (asideElement && !leftNavBar.classList.contains(CLASSES.NAV_COLLAPSE)) {
+            leftNavBar.classList.add(CLASSES.NAV_COLLAPSE);
+            return;
+          }
+
+          return;
+        });
+      }); -->
