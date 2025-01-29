@@ -68,8 +68,7 @@
 
   <body>
     <!-- Hidden checkboxes must be before #page-wrapper in DOM -->
-    <input type="checkbox" id="toggle-navbar" hidden />
-    <!-- the wrapper for the page content  -->
+    <input type="checkbox" id="toggle-navbar" class="navbar-toggle" hidden />
 
     <label
       for="toggle-navbar"
@@ -79,7 +78,9 @@
     >
       <span class="fas fa-chevron-circle-left text-primary fs-8"></span>
     </label>
-    <div id="page-wrapper" class="">
+
+    <!-- the wrapper for the page content  -->
+    <div id="page-wrapper" class="page-container">
       <!-- ===============================================-->
       <!--    Main Content-->
       <!-- ===============================================-->
@@ -5469,6 +5470,7 @@
         // this will track how many column is currently open
         // in order for the toggle to save the current state of the side bar
         let leftNavTracker = 'open-just-left-nav';
+
         const pageWrapper = document?.getElementById('page-wrapper');
         document.addEventListener('click', function (event) {
           const toggleInput = event.target.closest('#toggle-navbar');
@@ -5479,6 +5481,7 @@
             toggleInput.classList.toggle(leftNavTracker);
             const pageWrapperClass = leftNavTracker === 'open-just-left-nav' ? 'nav-only' : 'nav-n-content';
             pageWrapper.classList.toggle(pageWrapperClass);
+            pageWrapper.style.willChange = 'grid-template-columns';
           }
 
           // get the actual element fo the toggle button to avoid toggling outside of the element
@@ -5493,6 +5496,8 @@
             const calendarArticle = document.querySelector('.calendar-article');
             const inboxArticle = document.querySelector('.inbox-article');
             const settingsArticle = document.querySelector('.settings-article');
+
+            pageWrapper.style.willChange = 'grid-template-columns';
 
             // logic for switching articles
             switch (leftNavBtn?.ariaLabel) {
@@ -5584,11 +5589,22 @@
 
           const closeArticle = event.target.closest('button[aria-label="close article"]');
           if (closeArticle) {
+            pageWrapper.style.willChange = 'grid-template-columns';
             leftNavTracker = 'open-just-left-nav';
 
             toggleInputElement.classList.replace('open-left-nav-n-content', 'open-just-left-nav');
             pageWrapper.classList.replace('nav-n-content', 'nav-only');
           }
+
+          // Remove will-change after transition completes
+          pageWrapper.addEventListener(
+            'transitionend',
+            () => {
+              console.log('removed');
+              pageWrapper.style.willChange = 'auto';
+            },
+            { once: true }
+          ); // Use once: true to auto cleanup for better memory management
         });
       });
     </script>
