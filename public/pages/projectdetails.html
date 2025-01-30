@@ -2502,13 +2502,14 @@
                           <!-- Div to display text file -->
                           <div id="textDisplay" style="margin: 10px; display: none">
                             <object
-                              data="../assets/docs/sample.txt"
+                              data="../assets/docs/sample.csv"
                               type="text/plain"
                               width="100%"
                               height="100%"
                               style="border: none"
                               aria-labelledby="Text Preview"
                               title="Text Preview"
+                              onerror="handlePDFError(this)"
                             >
                               <p>
                                 Your browser does not support viewing text files.
@@ -2518,110 +2519,6 @@
                           </div>
                         </div>
                       </div>
-                      <!-- **** Image Gallery Implementation **** -->
-                      <!-- <div class="row mx-n1"> -->
-                      <!--   <div class="col-6 p-1"> -->
-                      <!--     <a class="post1" href="../assets/img/generic/4.jpg" data-gallery="gallery-1"> -->
-                      <!--       <img class="img-fluid rounded" src="../assets/img/generic/4.jpg" alt="" /> -->
-                      <!--     </a> -->
-                      <!--   </div> -->
-                      <!--   <div class="col-6 p-1"> -->
-                      <!--     <a class="post1" href="../assets/img/generic/5.jpg" data-gallery="gallery-1"> -->
-                      <!--       <img class="img-fluid rounded" src="../assets/img/generic/5.jpg" alt="" /> -->
-                      <!--     </a> -->
-                      <!--   </div> -->
-                      <!--   <div class="col-4 p-1"> -->
-                      <!--     <a class="post1" href="../assets/img/gallery/4.jpg" data-gallery="gallery-1"> -->
-                      <!--       <img class="img-fluid rounded" src="../assets/img/gallery/4.jpg" alt="" /> -->
-                      <!--     </a> -->
-                      <!--   </div> -->
-                      <!---->
-                      <!--   <div class="col-4 p-1"> -->
-                      <!--     <a class="post1" href="#pdfDisplay" data-gallery="gallery-1" data-type="inline"> -->
-                      <!--       <div class="file-preview"> -->
-                      <!--         <i class="fas fa-file-pdf fa-3x"></i> -->
-                      <!--         <p class="file-name">dummy-file.PDF</p> -->
-                      <!--       </div> -->
-                      <!--     </a> -->
-                      <!--   </div> -->
-                      <!--   <div class="col-4 p-1"> -->
-                      <!--     <a class="post1" href="../assets/img/gallery/3.jpg" data-gallery="gallery-1"> -->
-                      <!--       <img class="img-fluid rounded" src="../assets/img/gallery/3.jpg" alt="" /> -->
-                      <!--     </a> -->
-                      <!--   </div> -->
-                      <!--   <div class="col-6 p-1"> -->
-                      <!--       <a class="post1" href="../assets/video/beach.mp4" data-gallery="gallery-1" data-type="video"> -->
-                      <!--         <div class="file-preview"> -->
-                      <!--           <i class="fas fa-video fa-3x"></i> -->
-                      <!--           <p class="file-name">beach.mp4</p> -->
-                      <!--         </div> -->
-                      <!--       </a> -->
-                      <!--   </div> -->
-                      <!--   <div class="col-6 p-1"> -->
-                      <!--     <a class="post1" href="#pdfDisplay" data-gallery="gallery-1" data-type="inline"> -->
-                      <!--       <div class="file-preview"> -->
-                      <!--         <i class="fas fa-file-pdf fa-3x"></i> -->
-                      <!--         <p class="file-name">dummy-file.PDF</p> -->
-                      <!--       </div> -->
-                      <!--     </a> -->
-                      <!--   </div> -->
-                      <!---->
-                      <!--    Div to display PDF -->
-                      <!--   <div id="pdfDisplay" style="margin: 10px; display: none"> -->
-                      <!--     <object -->
-                      <!--       data="../assets/docs/dummy-file.pdf" -->
-                      <!--       type="application/pdf" -->
-                      <!--       width="100%" -->
-                      <!--       height="100%" -->
-                      <!--       style="border: none;" -->
-                      <!--       aria-labelledby="PDF Preview" -->
-                      <!--       title="PDF Preview" -->
-                      <!--     > -->
-                      <!--       <p> -->
-                      <!--         Your browser does not support PDFs. -->
-                      <!--         <a href="../assets/docs/dummy-file.pdf">Download the PDF</a> -->
-                      <!--       </p> -->
-                      <!--     </object> -->
-                      <!--   </div> -->
-                      <!-- </div> -->
-
-                      <!-- ****FILE LIST IMPLEMENTATION**** -->
-
-                      <!-- <h5 class="mt-3">File List</h5> -->
-                      <!-- <div class="files"> -->
-                      <!--   <div class="file-upload"> -->
-                      <!--     <label for="fileInput">Upload Files:</label> -->
-                      <!--     <input type="file" id="fileInput" multiple onchange="handleFileSelection(event)"> -->
-                      <!--   </div> -->
-                      <!---->
-                      <!--   <div class="file-viewer"> -->
-                      <!--     <div class="file-list"> -->
-                      <!--       <h6>Files</h6> -->
-                      <!--       <ul id="fileList"> -->
-                      <!-- File items will be added here dynamically -->
-                      <!--       </ul> -->
-                      <!--     </div> -->
-                      <!--   </div> -->
-                      <!---->
-                      <!-- Modal -->
-                      <!--   <div class="modal fade" id="filePreviewModal" tabindex="-1" role="dialog" aria-hidden="true"> -->
-                      <!--     <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 1000px;"> -->
-                      <!--       <div class="modal-content position-relative"> -->
-                      <!--         <div class="position-absolute top-0 end-0 mt-2 me-2 z-1"> -->
-                      <!--           <button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-bs-dismiss="modal" aria-label="Close"></button> -->
-                      <!--         </div> -->
-                      <!--         <div class="modal-body p-0"> -->
-                      <!--           <div class="rounded-top-3 py-3 ps-4 pe-6 bg-body-tertiary"> -->
-                      <!--             <div class="header mb-1" id="modalExampleDemoLabel">File Preview</div> -->
-                      <!--           </div> -->
-                      <!--           <div id="modalContent" class="p-4"> -->
-                      <!-- Preview content will be dynamically inserted here -->
-                      <!--           </div> -->
-                      <!--         </div> -->
-                      <!--       </div> -->
-                      <!--     </div> -->
-                      <!--   </div> -->
-                      <!-- </div> -->
                     </section>
 
                     <!-- Find the JS file for the following chart at: src/js/charts/chartjs/chart-polar.js-->
@@ -3976,7 +3873,7 @@
         <article class="inbox-article bg-body position-relative">
           <h5 class="bg-primary">Inbox</h5>
           <div class="bg-primary-subtle">
-            <div class="position-absolute top-0 end-0">
+            <div class="position-absolute top-0 end-0 ">
               <button class="btn-close mt-0" type="button" aria-label="close article"></button>
             </div>
             <p>
@@ -4597,7 +4494,7 @@
         // Check if the error occurred in the CURRENT slide
         const parentSlide = objectElement.closest('.gslide');
         const childObject = parentSlide.querySelector('#glightbox-slider .gslide.loaded.current object');
-        return;
+
         if (!childObject && (!parentSlide || !parentSlide.classList.contains('current'))) {
           console.log('Ignoring error from non-active slide');
           return; // Exit if not in active slide
@@ -4627,6 +4524,7 @@
       function getFileExtension(fileSrc) {
         return fileSrc.split('.').pop();
       }
+
       document.addEventListener(
         'click',
         function (event) {
@@ -5594,7 +5492,8 @@
               element.style.height = '0'; // so that it wont interrupt for the non overflowed articles
             }
           });
-        }
+          }
+
 
         handleNavigation(button) {
           const { toggleInput, leftNavBar } = this.elements; // get caches elements
