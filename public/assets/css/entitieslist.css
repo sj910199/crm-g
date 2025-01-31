@@ -2056,18 +2056,27 @@ and so that the second child will maintain in 100dvh*/
   margin-bottom: 0;
 }
 
-/*-------------nav area / inbox list ------------*/
+/*--------------------------------*/
 /* core logic for switching the navigation area
 first column: inbox list
 second column: email/chat content
 */
-
 .inbox-container {
   display: grid;
   grid-template-columns: 0 1fr;
   overflow: hidden;
 }
 
+/* this is another core logic for controlling
+which content to show the email or chat content
+*/
+.inbox-content {
+  grid-template-columns: 0 1fr;
+  overflow: hidden;
+}
+/*--------------------------------*/
+
+/*-------------nav area / inbox list ------------*/
 nav[aria-label='messages inbox'] {
   overflow-y: auto;
 }
@@ -2098,14 +2107,6 @@ nav[aria-label='messages inbox'] .inbox-item .item-subject {
 
 /*-------------Inbox content area  ------------*/
 
-/* this is another core logic for controlling
-which content to show the email or chat content
-*/
-.inbox-content {
-  grid-template-columns: 0 1fr;
-  overflow: hidden;
-}
-
 .email-content {
   overflow-y: auto;
   border-top-right-radius: 8px;
@@ -2125,11 +2126,6 @@ which content to show the email or chat content
   opacity: 0.85;
 }
 
-.chat-container section {
-  grid-template-rows: 1fr auto;
-  overflow: hidden;
-}
-
 .chat-container div[data-flow='sent'],
 .chat-container div[data-flow='received'] {
   border-top-right-radius: 12px;
@@ -2142,7 +2138,7 @@ which content to show the email or chat content
 
 .chat-container div[data-flow='received'] {
   border-bottom-right-radius: 12px;
-  background-color: var(--falcon-primary-bg-subtle);
+  background-color: var(--falcon-secondary-bg-subtle);
   margin-right: auto;
   margin-left: 0;
 }
@@ -2151,6 +2147,15 @@ which content to show the email or chat content
   background-color: rgba(var(--falcon-primary-rgb), var(--falcon-bg-opacity));
   margin-right: 0;
   margin-left: auto;
+}
+
+.chat-container div[data-flow='date'] {
+  border-radius: 12px;
+  background-color: var(--falcon-primary-bg-subtle);
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0.3rem 0.5rem;
+  font-size: x-small;
 }
 
 .chat-container div time {
@@ -2165,7 +2170,7 @@ which content to show the email or chat content
   opacity: 0.8;
 }
 
-.auto-grow {
+.auto-grow-textarea {
   --line-height: 1.5;
   --grow-line-limit: 5;
 
