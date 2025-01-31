@@ -3871,18 +3871,20 @@
 
         <!-- Inbox content -->
         <article class="inbox-article d-grid bg-body position-relative" aria-labelledby="inbox-article-heading">
-          <!-- <header class="sticky-top d-flex justify-content-between gap-2 align-items-center ps-2 ps-md-3 pe-5 py-2"> -->
-          <header class="d-flex gap-2 bg-secondary-subtle align-items-center ps-2 ps-md-3 pe-5 py-2">
+          <header class="d-flex gap-2 navbar-glass navbar-glass-shadow align-items-center ps-2 ps-md-3 pe-5 py-2">
             <div>
               <!-- on inbox list we show this -->
-              <h2 id="inbox-article-heading" class="me-auto mb-0">Inbox</h2>
+              <h2 id="inbox-article-heading" class="d-none me-auto mb-0">Inbox</h2>
 
               <!-- on email and chat content we show this  -->
-              <span class="d-none fas fa-arrow-left fs-8"></span>
+              <div class="d-flex gap-3 align-items-center">
+                <span class="fas fa-arrow-left fs-8"></span>
+                <h2 class="me-auto mb-0">Chats</h2>
+              </div>
             </div>
 
             <!-- on inbox list -->
-            <div class="">
+            <div class="d-none">
               <span class="fas fa-search fs-8"></span>
             </div>
 
@@ -4120,7 +4122,7 @@
 
               <!-- for chat content -->
               <article id="chat-message" class="overflow-hidden h-100 chat-container">
-                <div class="card card-chat overflow-hidden">
+                <div class="card card-chat overflow-hidden h-100">
                   <div class="card-body d-flex p-0 h-100">
                     <div class="chat-sidebar">
                       <div class="contacts-list scrollbar-overlay">
