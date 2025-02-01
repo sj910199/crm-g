@@ -9,6 +9,7 @@
   --falcon-table-striped-color: #333 !important; */
   --left-nav-width: 55px;
   --left-content-width: 350px;
+  --inset-shadow-sm: inset 0 2px 4px rgb(0 0 0 / 0.05);
 }
 
 /* Specific Styles for Item Description and Custom Fields */
@@ -2063,7 +2064,7 @@ second column: email/chat content
 */
 .inbox-container {
   display: grid;
-  grid-template-columns: 0 1fr;
+  grid-template-columns: 1fr 0;
   overflow: hidden;
 }
 
@@ -2076,6 +2077,56 @@ which content to show the email or chat content
 }
 /*--------------------------------*/
 
+/*------------- inbox menu header   ------------*/
+
+.contacts-body h5:hover,
+.contacts-body h5:focus-visible,
+.inbox-menu-nav ul li a h4:hover,
+.inbox-menu-nav ul li a h4:focus-visible,
+.inbox-menu-trigger:hover,
+.inbox-menu-trigger:focus-visible {
+  opacity: 0.5;
+}
+
+.inbox-menu-nav {
+  display: grid;
+  grid-auto-rows: auto 1fr;
+}
+
+.inbox-tag {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+}
+
+.inbox-type-email {
+  /* background-color: #e6f2ff; */
+  background-color: var(--falcon-btn-falcon-info-color);
+}
+
+.inbox-type-chat {
+  /* background-color: #e6ffe6; */
+  background-color: var(--falcon-success);
+}
+.inbox-type-sns {
+  background-color: #fff2e6;
+}
+
+.fa-long-arrow-alt-up.rotated,
+.fa-long-arrow-alt-down.rotated {
+  transform: rotate(45deg);
+}
+
+.inbox-active {
+  background-color: rgba(var(--falcon-secondary-bg-rgb), 0.5);
+  box-shadow: var(--inset-shadow-sm); /* inset 0 2px 4px rgb(0 0 0 / 0.05) */
+}
+
+.accordion-body.contacts-body {
+  grid-template-rows: auto 1fr;
+}
+
 /*-------------nav area / inbox list ------------*/
 nav[aria-label='messages inbox'] {
   overflow-y: auto;
@@ -2086,8 +2137,11 @@ nav[aria-label='messages inbox'] ul {
 }
 
 nav[aria-label='messages inbox'] .inbox-item-container {
-  grid-template-columns: auto 1fr;
+  /* grid-template-columns: auto 1fr; */
   padding: 1rem;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
 }
 
 nav[aria-label='messages inbox'] .inbox-item-container .avatar {
@@ -2142,6 +2196,7 @@ nav[aria-label='messages inbox'] .inbox-item .item-subject {
   margin-right: auto;
   margin-left: 0;
 }
+
 .chat-container div[data-flow='sent'] {
   border-bottom-left-radius: 12px;
   background-color: rgba(var(--falcon-primary-rgb), var(--falcon-bg-opacity));
@@ -2189,4 +2244,12 @@ nav[aria-label='messages inbox'] .inbox-item .item-subject {
   font-family: Arial;
   border: 1px solid #ccc;
   resize: none;
+}
+
+.inbox-chat-content {
+  font-size: 0.8333333333rem;
+  color: var(--falcon-gray-600);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

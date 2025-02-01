@@ -3584,17 +3584,7 @@
         </ul>
       </nav>
 
-      <!-- make this grid with its children grid-area: 1/1
-       change the z-index of the children depending on who is in focus -->
-      <!-- <aside id="left-content" class="d-none d-lg-grid left-sidebar-container"> -->
-      <!-- customize button content -->
-
-      <!-- make this grid with its children grid-area: 1/1
-       change the z-index of the children depending on who is in focus -->
       <aside id="left-content" class="d-grid left-sidebar-container">
-        <!-- customize button content -->
-        <!-- class="offcanvas offcanvas-end settings-panel border-0" -->
-        <!-- aria-labelledby="settings-offcanvas" -->
         <article
           class="position-relative customize-article p-0 settings-panel border-0"
           id="settings-offcanvas"
@@ -3873,29 +3863,37 @@
         <article class="inbox-article d-grid bg-body position-relative" aria-labelledby="inbox-article-heading">
           <header class="d-flex gap-2 navbar-glass navbar-glass-shadow align-items-center ps-2 ps-md-3 pe-5 py-2">
             <div>
-              <!-- on inbox list we show this -->
-              <h2 id="inbox-article-heading" class="d-none me-auto mb-0">Inbox</h2>
-
-              <!-- on email and chat content we show this  -->
-              <div class="d-flex gap-3 align-items-center">
-                <span class="fas fa-arrow-left fs-8"></span>
-                <h2 class="me-auto mb-0">Chats</h2>
+              <div>
+                <button
+                  class="btn border-none outline-none shadow-none inbox-menu-trigger"
+                  type="button"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#inbox-menu"
+                  aria-controls="offcanvasLeft"
+                  aria-label="trigger inbox menu"
+                >
+                  <span class="fas fa-grip-vertical text-primary fs-7"></span>
+                </button>
               </div>
             </div>
 
-            <!-- on inbox list -->
-            <div class="d-none">
-              <span class="fas fa-search fs-8"></span>
+            <div>
+              <h2 id="inbox-article-heading" class="me-auto mb-0">Inbox</h2>
             </div>
+
+            <!-- on inbox list -->
+            <!-- <div class="d-none">
+              <span class="fas fa-search fs-8"></span>
+            </div> -->
 
             <!-- email -->
-            <div class="ms-auto d-flex d-none gap-3">
+            <!-- <div class="ms-auto d-flex d-none gap-3">
               <span class="far fa-star fs-8"></span>
               <span class="far fa-trash-alt fs-8"></span>
-            </div>
+            </div> -->
 
             <!-- chat messages -->
-            <div class="d-none d-flex ms-2 w-100 align-items-center">
+            <!-- <div class="d-none d-flex ms-2 w-100 align-items-center">
               <div class="avatar avatar-2xl me-3">
                 <img class="rounded-circle" src="../assets/img/team/2-thumb.png" alt="message avatar" />
               </div>
@@ -3908,181 +3906,525 @@
                 <span class="fas fa-phone-alt fs-7 text-primary"></span>
                 <span class="fas fa-video fs-7 text-primary"></span>
               </div>
-            </div>
+            </div> -->
 
+            <!-- for closing the inbox menu panel -->
             <button
               class="btn-close mt-0 position-absolute top-0 end-0 fs-11 p-2"
               type="button"
               aria-label="close article"
             ></button>
+
+            <!-- inbox menu off canvas-->
+            <div
+              class="inbox-menu offcanvas offcanvas-start position-absolute"
+              id="inbox-menu"
+              tabindex="-1"
+              aria-labelledby="offcanvasLeftLabel"
+            >
+              <div class="offcanvas-header">
+                <h3 id="offcanvasLeftLabel">Inbox Menu</h3>
+                <button
+                  class="btn-close text-reset"
+                  type="button"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <nav class="offcanvas-body px-0 inbox-menu-nav" aria-label="Inbox menu list">
+                <ul class="list-unstyled">
+                  <li>
+                    <a
+                      href="#chat-panel"
+                      class="inbox-item-container inbox-active p-3 d-flex justify-content-between align-items-center text-decoration-none"
+                    >
+                      <div class="d-flex align-items-center gap-2 fs-8">
+                        <span class="far fa-list-alt fs-8"></span>
+
+                        <h4 class="mb-0 fs-9">All Conversation</h4>
+                      </div>
+                      <p class="opacity-75 text-secondary-emphasis fs-9">60</p>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      href="#chat-panel"
+                      class="inbox-item-container p-3 d-flex justify-content-between align-items-center text-decoration-none"
+                    >
+                      <div class="d-flex align-items-center gap-2 fs-8">
+                        <span class="fas fa-clock fs-8"></span>
+
+                        <h4 class="mb-0 fs-9">Snoozed</h4>
+                      </div>
+                      <p class="opacity-75 text-secondary-emphasis fs-9">60</p>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      href="#chat-panel"
+                      class="inbox-item-container p-3 d-flex justify-content-between align-items-center text-decoration-none"
+                    >
+                      <div class="d-flex align-items-center gap-2 fs-8">
+                        <span class="far fa-envelope fs-8"></span>
+
+                        <h4 class="mb-0 fs-9">Emails</h4>
+                      </div>
+                      <p class="opacity-75 text-secondary-emphasis fs-9">60</p>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      href="#chat-panel"
+                      class="inbox-item-container p-3 d-flex justify-content-between align-items-center text-decoration-none"
+                    >
+                      <div class="d-flex align-items-center gap-2 fs-8">
+                        <span class="far fa-comment fs-8"></span>
+
+                        <h4 class="mb-0 fs-9">Chats</h4>
+                      </div>
+                      <p class="opacity-75 text-secondary-emphasis fs-9">60</p>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      href="#chat-panel"
+                      class="inbox-item-container p-3 d-flex justify-content-between align-items-center text-decoration-none"
+                    >
+                      <div class="d-flex align-items-center gap-2 fs-8">
+                        <span class="far fa-comments fs-8"></span>
+
+                        <h4 class="mb-0 fs-9">SNS</h4>
+                      </div>
+                      <p class="opacity-75 text-secondary-emphasis fs-9">60</p>
+                    </a>
+                  </li>
+                </ul>
+                <div class="accordion" id="contacts-accordion">
+                  <div class="accordion-item">
+                    <h4 class="accordion-header fs-9" id="contacts-heading">
+                      <button
+                        class="accordion-button d-flex align-items-center gap-2 fs-9"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapse1"
+                        aria-expanded="true"
+                        aria-controls="collapse1"
+                      >
+                        <span class="fas fa-phone-square-alt fs-8"></span>
+                        Contacts
+                      </button>
+                    </h4>
+                    <div
+                      class="accordion-collapse collapse show"
+                      id="collapse1"
+                      aria-labelledby="heading1"
+                      data-bs-parent="#accordionExample"
+                    >
+                      <div class="accordion-body contacts-body d-grid gap-4">
+                        <nav class="d-flex align-items-center justify-content-between" aria-label="Contacts Menu">
+                          <h5 class="inbox-active w-100 mb-0 text-center p-2 fs-10">
+                            <button type="button" style="display: contents">Call History</button>
+                          </h5>
+                          <div class="vr text-400"></div>
+                          <h5 class="w-100 mb-0 text-center p-2 fs-10">
+                            <button type="button" style="display: contents">Contacts</button>
+                          </h5>
+                        </nav>
+
+                        <div class="overflow-y-auto">
+                          <div aria-label="Call history Content">
+                            <ul class="list-unstyled d-flex flex-column gap-4">
+                              <li class="w-100 d-flex align-items-center gap-2 fs-8">
+                                <div class="avatar avatar-2xl me-3">
+                                  <img
+                                    class="rounded-circle"
+                                    src="../assets/img/team/1-thumb.png"
+                                    alt="message avatar"
+                                  />
+                                </div>
+                                <div class="d-flex flex-column align-items-start">
+                                  <h3 class="m-0 text-opacity-100 fs-9">Jane Smith</h3>
+                                  <div class="d-flex align-items-center gap-3">
+                                    <span class="fas fa-long-arrow-alt-down rotated fs-9"></span>
+                                    <time class="fs-10" datetime="2023-10-06T04:00:00Z">Today</time>
+                                  </div>
+                                </div>
+                                <span class="ms-auto fas fa-phone-alt fs-8"></span>
+                              </li>
+                              <li class="w-100 d-flex align-items-center gap-2 fs-8">
+                                <div class="avatar avatar-2xl me-3">
+                                  <img
+                                    class="rounded-circle"
+                                    src="../assets/img/team/1-thumb.png"
+                                    alt="message avatar"
+                                  />
+                                </div>
+                                <div class="d-flex flex-column align-items-start">
+                                  <h3 class="m-0 text-opacity-100 fs-9">Jane Smith</h3>
+                                  <div class="d-flex align-items-center gap-3">
+                                    <span class="fas fa-long-arrow-alt-down rotated fs-9"></span>
+                                    <time class="fs-10" datetime="2023-10-05T04:00:00Z">Yesterday</time>
+                                  </div>
+                                </div>
+                                <span class="ms-auto fas fa-phone-alt fs-8"></span>
+                              </li>
+                              <li class="w-100 d-flex align-items-center gap-2 fs-8">
+                                <div class="avatar avatar-2xl me-3">
+                                  <img
+                                    class="rounded-circle"
+                                    src="../assets/img/team/1-thumb.png"
+                                    alt="message avatar"
+                                  />
+                                </div>
+                                <div class="d-flex flex-column align-items-start">
+                                  <h3 class="m-0 text-opacity-100 fs-9">Jane Smith</h3>
+                                  <div class="d-flex align-items-center gap-3">
+                                    <span class="fas fa-long-arrow-alt-up rotated fs-9"></span>
+                                    <time class="fs-10" datetime="2025-01-24T04:00:00Z">Friday</time>
+                                  </div>
+                                </div>
+                                <span class="ms-auto fas fa-phone-alt fs-8"></span>
+                              </li>
+                              <li class="w-100 d-flex align-items-center gap-2 fs-8">
+                                <div class="avatar avatar-2xl me-3">
+                                  <img
+                                    class="rounded-circle"
+                                    src="../assets/img/team/1-thumb.png"
+                                    alt="message avatar"
+                                  />
+                                </div>
+                                <div class="d-flex flex-column align-items-start">
+                                  <h3 class="m-0 text-opacity-100 fs-9">Jane Smith</h3>
+                                  <div class="d-flex align-items-center gap-3">
+                                    <span class="fas fa-long-arrow-alt-up rotated fs-9"></span>
+                                    <time class="fs-10" datetime="2023-01-10T00:00:00Z">Jan 10</time>
+                                  </div>
+                                </div>
+                                <span class="ms-auto fas fa-phone-alt fs-8"></span>
+                              </li>
+                            </ul>
+                          </div>
+
+                          <div aria-label="Contacts"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+            </div>
           </header>
+
           <div class="p-0 inbox-container d-grid">
-            <nav aria-label="messages inbox">
-              <ul class="inbox-list list-unstyled overflow-y-scroll">
-                <li>
-                  <a class="inbox-item-container d-grid text-decoration-none" href="#email-message">
-                    <div class="avatar avatar-2xl me-3">
-                      <img class="rounded-circle" src="../assets/img/team/1-thumb.png" alt="message avatar" />
-                    </div>
-                    <div class="text-truncate inbox-item">
-                      <div class="d-flex justify-content-between align-items-center">
-                        <h3 class="m-0 fs-8 text-opacity-100">Jane Smith</h3>
-                        <time class="fs-10">Today</time>
+            <!-- the inbox overview  -->
+            <section class="py-0 overflow-y-auto">
+              <nav aria-label="messages inbox">
+                <ul class="inbox-list list-unstyled overflow-y-scroll p-2">
+                  <li>
+                    <a style="display: contents" class="" href="#chat-message">
+                      <div class="d-flex p-3">
+                        <div class="avatar avatar-xl">
+                          <img class="rounded-circle" src="../assets/img/team/1.jpg" alt="" />
+                        </div>
+                        <div class="flex-1 chat-contact-body ms-2 d-lg-block">
+                          <div class="d-flex mb-1 justify-content-between">
+                            <h6 class="mb-0 chat-contact-title fs-9 bold">Emma Watson</h6>
+                            <span class="message-time fs-11">Sun</span>
+                          </div>
+                          <div class="min-w-0">
+                            <div class="chat-contact-content pe-3">About The Project</div>
+                            <div class="position-absolute bottom-0 end-0 hover-hide">
+                              <p class="inbox-type-email inbox-tag text-black-50">Email</p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <p class="m-0 item-subject text-opacity-100">This is subject</p>
-                      <p class="m-0 text-truncate fs-10 inbox-info">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, voluptate.
-                      </p>
-                    </div>
-                  </a>
-                </li>
+                    </a>
+                  </li>
 
-                <li>
-                  <a class="inbox-item-container d-grid text-decoration-none" href="#chat-message">
-                    <div class="avatar avatar-2xl me-3">
-                      <img class="rounded-circle" src="../assets/img/team/2-thumb.png" alt="message avatar" />
-                    </div>
-                    <div class="text-truncate inbox-item">
-                      <div class="d-flex justify-content-between align-items-center">
-                        <h3 class="m-0 fs-8 text-opacity-100">John Doe</h3>
-                        <time class="fs-10">Today</time>
+                  <li>
+                    <a>
+                      <div class="d-flex p-3">
+                        <div class="avatar avatar-xl status-online">
+                          <img class="rounded-circle" src="../assets/img/team/15.jpg" alt="" />
+                        </div>
+                        <div class="flex-1 chat-contact-body ms-2 d-lg-block">
+                          <div class="d-flex justify-content-between mb-1">
+                            <h6 class="mb-0 chat-contact-title fs-9 bold">Anna Karinina</h6>
+                            <span class="message-time fs-11">Sat</span>
+                          </div>
+                          <div class="min-w-0">
+                            <div class="chat-contact-content pe-3">What are you doing?</div>
+                            <div class="position-absolute bottom-0 end-0 hover-hide">
+                              <p class="inbox-type-chat inbox-tag text-secondary text-black-50">Chat</p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <p class="m-0 item-subject text-opacity-100">This is subject</p>
-                      <p class="m-0 text-truncate fs-10 inbox-info">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, voluptate.
-                      </p>
-                    </div>
-                  </a>
-                </li>
+                    </a>
+                  </li>
 
-                <li>
-                  <a class="inbox-item-container d-grid text-decoration-none" href="#message-3">
-                    <div class="avatar avatar-2xl me-3">
-                      <img class="rounded-circle" src="../assets/img/team/3-thumb.png" alt="message avatar" />
-                    </div>
-                    <div class="text-truncate inbox-item">
-                      <div class="d-flex justify-content-between align-items-center">
-                        <h3 class="m-0 fs-8 text-opacity-100">Alice Williams</h3>
-                        <time class="fs-10">Today</time>
+                  <li>
+                    <a>
+                      <div class="d-flex p-3">
+                        <div class="avatar avatar-xl status-online">
+                          <img class="rounded-circle" src="../assets/img/team/12.jpg" alt="" />
+                        </div>
+                        <div class="flex-1 chat-contact-body ms-2 d-lg-block">
+                          <div class="d-flex justify-content-between mb-1">
+                            <h6 class="mb-0 chat-contact-title bold fs-9">John Smith</h6>
+                            <span class="message-time fs-11">Sat</span>
+                          </div>
+                          <div class="min-w-0">
+                            <div class="chat-contact-content pe-3">Hello There</div>
+                            <div class="position-absolute bottom-0 end-0 hover-hide">
+                              <p class="inbox-type-sns inbox-tag text-secondary text-black-50">SNS</p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <p class="m-0 item-subject text-opacity-100">This is subject</p>
-                      <p class="m-0 text-truncate fs-10 inbox-info">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, voluptate.
-                      </p>
-                    </div>
-                  </a>
-                </li>
+                    </a>
+                  </li>
 
-                <li>
-                  <a class="inbox-item-container d-grid text-decoration-none" href="#email-message">
-                    <div class="avatar avatar-2xl me-3">
-                      <img class="rounded-circle" src="../assets/img/team/1-thumb.png" alt="message avatar" />
-                    </div>
-                    <div class="text-truncate inbox-item">
-                      <div class="d-flex justify-content-between align-items-center">
-                        <h3 class="m-0 fs-8 text-opacity-100">Jane Smith</h3>
-                        <time class="fs-10">Today</time>
+                  <li>
+                    <a style="display: contents" class="" href="#chat-message">
+                      <div class="d-flex p-3">
+                        <div class="avatar avatar-xl">
+                          <img class="rounded-circle" src="../assets/img/team/1.jpg" alt="" />
+                        </div>
+                        <div class="flex-1 chat-contact-body ms-2 d-lg-block">
+                          <div class="d-flex mb-1 justify-content-between">
+                            <h6 class="mb-0 chat-contact-title fs-9 bold">Emma Watson</h6>
+                            <span class="message-time fs-11">Sun</span>
+                          </div>
+                          <div class="min-w-0">
+                            <div class="chat-contact-content pe-3">About The Project</div>
+                            <div class="position-absolute bottom-0 end-0 hover-hide">
+                              <p class="inbox-type-email inbox-tag text-black-50">Email</p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <p class="m-0 item-subject text-opacity-100">This is subject</p>
-                      <p class="m-0 text-truncate fs-10 inbox-info">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, voluptate.
-                      </p>
-                    </div>
-                  </a>
-                </li>
+                    </a>
+                  </li>
 
-                <li>
-                  <a class="inbox-item-container d-grid text-decoration-none" href="#chat-message">
-                    <div class="avatar avatar-2xl me-3">
-                      <img class="rounded-circle" src="../assets/img/team/2-thumb.png" alt="message avatar" />
-                    </div>
-                    <div class="text-truncate inbox-item">
-                      <div class="d-flex justify-content-between align-items-center">
-                        <h3 class="m-0 fs-8 text-opacity-100">John Doe</h3>
-                        <time class="fs-10">Today</time>
+                  <li>
+                    <a>
+                      <div class="d-flex p-3">
+                        <div class="avatar avatar-xl status-online">
+                          <img class="rounded-circle" src="../assets/img/team/15.jpg" alt="" />
+                        </div>
+                        <div class="flex-1 chat-contact-body ms-2 d-lg-block">
+                          <div class="d-flex justify-content-between mb-1">
+                            <h6 class="mb-0 chat-contact-title fs-9 bold">Anna Karinina</h6>
+                            <span class="message-time fs-11">Sat</span>
+                          </div>
+                          <div class="min-w-0">
+                            <div class="chat-contact-content pe-3">What are you doing?</div>
+                            <div class="position-absolute bottom-0 end-0 hover-hide">
+                              <p class="inbox-type-chat inbox-tag text-secondary text-black-50">Chat</p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <p class="m-0 item-subject text-opacity-100">This is subject</p>
-                      <p class="m-0 text-truncate fs-10 inbox-info">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, voluptate.
-                      </p>
-                    </div>
-                  </a>
-                </li>
+                    </a>
+                  </li>
 
-                <li>
-                  <a class="inbox-item-container d-grid text-decoration-none" href="#message-3">
-                    <div class="avatar avatar-2xl me-3">
-                      <img class="rounded-circle" src="../assets/img/team/3-thumb.png" alt="message avatar" />
-                    </div>
-                    <div class="text-truncate inbox-item">
-                      <div class="d-flex justify-content-between align-items-center">
-                        <h3 class="m-0 fs-8 text-opacity-100">Alice Williams</h3>
-                        <time class="fs-10">Today</time>
+                  <li>
+                    <a>
+                      <div class="d-flex p-3">
+                        <div class="avatar avatar-xl status-online">
+                          <img class="rounded-circle" src="../assets/img/team/12.jpg" alt="" />
+                        </div>
+                        <div class="flex-1 chat-contact-body ms-2 d-lg-block">
+                          <div class="d-flex justify-content-between mb-1">
+                            <h6 class="mb-0 chat-contact-title bold fs-9">John Smith</h6>
+                            <span class="message-time fs-11">Sat</span>
+                          </div>
+                          <div class="min-w-0">
+                            <div class="chat-contact-content pe-3">Hello There</div>
+                            <div class="position-absolute bottom-0 end-0 hover-hide">
+                              <p class="inbox-type-sns inbox-tag text-secondary text-black-50">SNS</p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <p class="m-0 item-subject text-opacity-100">This is subject</p>
-                      <p class="m-0 text-truncate fs-10 inbox-info">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, voluptate.
-                      </p>
-                    </div>
-                  </a>
-                </li>
+                    </a>
+                  </li>
 
-                <li>
-                  <a class="inbox-item-container d-grid text-decoration-none" href="#email-message">
-                    <div class="avatar avatar-2xl me-3">
-                      <img class="rounded-circle" src="../assets/img/team/1-thumb.png" alt="message avatar" />
-                    </div>
-                    <div class="text-truncate inbox-item">
-                      <div class="d-flex justify-content-between align-items-center">
-                        <h3 class="m-0 fs-8 text-opacity-100">Jane Smith</h3>
-                        <time class="fs-10">Today</time>
+                  <li>
+                    <a style="display: contents" class="" href="#chat-message">
+                      <div class="d-flex p-3">
+                        <div class="avatar avatar-xl">
+                          <img class="rounded-circle" src="../assets/img/team/1.jpg" alt="" />
+                        </div>
+                        <div class="flex-1 chat-contact-body ms-2 d-lg-block">
+                          <div class="d-flex mb-1 justify-content-between">
+                            <h6 class="mb-0 chat-contact-title fs-9 bold">Emma Watson</h6>
+                            <span class="message-time fs-11">Sun</span>
+                          </div>
+                          <div class="min-w-0">
+                            <div class="chat-contact-content pe-3">About The Project</div>
+                            <div class="position-absolute bottom-0 end-0 hover-hide">
+                              <p class="inbox-type-email inbox-tag text-black-50">Email</p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <p class="m-0 item-subject text-opacity-100">This is subject</p>
-                      <p class="m-0 text-truncate fs-10 inbox-info">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, voluptate.
-                      </p>
-                    </div>
-                  </a>
-                </li>
+                    </a>
+                  </li>
 
-                <li>
-                  <a class="inbox-item-container d-grid text-decoration-none" href="#chat-message">
-                    <div class="avatar avatar-2xl me-3">
-                      <img class="rounded-circle" src="../assets/img/team/2-thumb.png" alt="message avatar" />
-                    </div>
-                    <div class="text-truncate inbox-item">
-                      <div class="d-flex justify-content-between align-items-center">
-                        <h3 class="m-0 fs-8 text-opacity-100">John Doe</h3>
-                        <time class="fs-10">Today</time>
+                  <li>
+                    <a>
+                      <div class="d-flex p-3">
+                        <div class="avatar avatar-xl status-online">
+                          <img class="rounded-circle" src="../assets/img/team/15.jpg" alt="" />
+                        </div>
+                        <div class="flex-1 chat-contact-body ms-2 d-lg-block">
+                          <div class="d-flex justify-content-between mb-1">
+                            <h6 class="mb-0 chat-contact-title fs-9 bold">Anna Karinina</h6>
+                            <span class="message-time fs-11">Sat</span>
+                          </div>
+                          <div class="min-w-0">
+                            <div class="chat-contact-content pe-3">What are you doing?</div>
+                            <div class="position-absolute bottom-0 end-0 hover-hide">
+                              <p class="inbox-type-chat inbox-tag text-secondary text-black-50">Chat</p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <p class="m-0 item-subject text-opacity-100">This is subject</p>
-                      <p class="m-0 text-truncate fs-10 inbox-info">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, voluptate.
-                      </p>
-                    </div>
-                  </a>
-                </li>
+                    </a>
+                  </li>
 
-                <li>
-                  <a class="inbox-item-container d-grid text-decoration-none" href="#message-3">
-                    <div class="avatar avatar-2xl me-3">
-                      <img class="rounded-circle" src="../assets/img/team/3-thumb.png" alt="message avatar" />
-                    </div>
-                    <div class="text-truncate inbox-item">
-                      <div class="d-flex justify-content-between align-items-center">
-                        <h3 class="m-0 fs-8 text-opacity-100">Alice Williams</h3>
-                        <time class="fs-10">Today</time>
+                  <li>
+                    <a>
+                      <div class="d-flex p-3">
+                        <div class="avatar avatar-xl status-online">
+                          <img class="rounded-circle" src="../assets/img/team/12.jpg" alt="" />
+                        </div>
+                        <div class="flex-1 chat-contact-body ms-2 d-lg-block">
+                          <div class="d-flex justify-content-between mb-1">
+                            <h6 class="mb-0 chat-contact-title bold fs-9">John Smith</h6>
+                            <span class="message-time fs-11">Sat</span>
+                          </div>
+                          <div class="min-w-0">
+                            <div class="chat-contact-content pe-3">Hello There</div>
+                            <div class="position-absolute bottom-0 end-0 hover-hide">
+                              <p class="inbox-type-sns inbox-tag text-secondary text-black-50">SNS</p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <p class="m-0 item-subject text-opacity-100">This is subject</p>
-                      <p class="m-0 text-truncate fs-10 inbox-info">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, voluptate.
-                      </p>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </nav>
+                    </a>
+                  </li>
 
+                  <li>
+                    <a style="display: contents" class="" href="#chat-message">
+                      <div class="d-flex p-3">
+                        <div class="avatar avatar-xl">
+                          <img class="rounded-circle" src="../assets/img/team/1.jpg" alt="" />
+                        </div>
+                        <div class="flex-1 chat-contact-body ms-2 d-lg-block">
+                          <div class="d-flex mb-1 justify-content-between">
+                            <h6 class="mb-0 chat-contact-title fs-9 bold">Emma Watson</h6>
+                            <span class="message-time fs-11">Sun</span>
+                          </div>
+                          <div class="min-w-0">
+                            <div class="chat-contact-content pe-3">About The Project</div>
+                            <div class="position-absolute bottom-0 end-0 hover-hide">
+                              <p class="inbox-type-email inbox-tag text-black-50">Email</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a>
+                      <div class="d-flex p-3">
+                        <div class="avatar avatar-xl status-online">
+                          <img class="rounded-circle" src="../assets/img/team/15.jpg" alt="" />
+                        </div>
+                        <div class="flex-1 chat-contact-body ms-2 d-lg-block">
+                          <div class="d-flex justify-content-between mb-1">
+                            <h6 class="mb-0 chat-contact-title fs-9 bold">Anna Karinina</h6>
+                            <span class="message-time fs-11">Sat</span>
+                          </div>
+                          <div class="min-w-0">
+                            <div class="chat-contact-content pe-3">What are you doing?</div>
+                            <div class="position-absolute bottom-0 end-0 hover-hide">
+                              <p class="inbox-type-chat inbox-tag text-secondary text-black-50">Chat</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a>
+                      <div class="d-flex p-3">
+                        <div class="avatar avatar-xl status-online">
+                          <img class="rounded-circle" src="../assets/img/team/12.jpg" alt="" />
+                        </div>
+                        <div class="flex-1 chat-contact-body ms-2 d-lg-block">
+                          <div class="d-flex justify-content-between mb-1">
+                            <h6 class="mb-0 chat-contact-title bold fs-9">John Smith</h6>
+                            <span class="message-time fs-11">Sat</span>
+                          </div>
+                          <div class="min-w-0">
+                            <div class="chat-contact-content pe-3">Hello There</div>
+                            <div class="position-absolute bottom-0 end-0 hover-hide">
+                              <p class="inbox-type-sns inbox-tag text-secondary text-black-50">SNS</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <!-- <li>
+                    <a class="inbox-item-container d-grid text-decoration-none" href="#message-3">
+                      <div class="avatar avatar-2xl me-3">
+                        <img class="rounded-circle" src="../assets/img/team/3-thumb.png" alt="message avatar" />
+                      </div>
+                      <div class="text-truncate inbox-item">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <h3 class="m-0 fs-8 text-opacity-100">Alice Williams</h3>
+                          <time class="fs-10">Today</time>
+                        </div>
+                        <p class="m-0 item-subject text-opacity-100">This is subject</p>
+                        <p class="m-0 text-truncate fs-10 inbox-info">
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, voluptate.
+                        </p>
+                      </div>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a class="inbox-item-container d-grid text-decoration-none" href="#email-message">
+                      <div class="avatar avatar-2xl me-3">
+                        <img class="rounded-circle" src="../assets/img/team/1-thumb.png" alt="message avatar" />
+                      </div>
+                      <div class="text-truncate inbox-item">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <h3 class="m-0 fs-8 text-opacity-100">Jane Smith</h3>
+                          <time class="fs-10">Today</time>
+                        </div>
+                        <p class="m-0 item-subject text-opacity-100">This is subject</p>
+                        <p class="m-0 text-truncate fs-10 inbox-info">
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, voluptate.
+                        </p>
+                      </div>
+                    </a>
+                  </li> -->
+                </ul>
+              </nav>
+            </section>
             <!-- inbox messages content area -->
             <section class="inbox-content d-grid p-0">
               <!-- for email content -->
@@ -4121,7 +4463,7 @@
               </article>
 
               <!-- for chat content -->
-              <article id="chat-message" class="overflow-hidden h-100 chat-container">
+              <article id="chat-panel" class="overflow-hidden h-100 chat-container">
                 <div class="card card-chat overflow-hidden h-100">
                   <div class="card-body d-flex p-0 h-100">
                     <div class="chat-sidebar">
