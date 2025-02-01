@@ -2088,6 +2088,10 @@ which content to show the email or chat content
   opacity: 0.5;
 }
 
+.inbox-menu ~ .offcanvas-backdrop {
+  position: absolute !important;
+}
+
 .inbox-menu-nav {
   display: grid;
   grid-auto-rows: auto 1fr;
