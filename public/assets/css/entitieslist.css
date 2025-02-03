@@ -2046,7 +2046,8 @@ div.gslide-media.gslide-inline {
     |   inbox article content
     -----------------------------------------------*/
 /* to have a sticky effect for header
-and so that the second child will maintain in 100dvh*/
+and so that the second child will maintain in 100dvh
+header first row, contents second row*/
 .inbox-article {
   grid-template-rows: auto 1fr;
   max-height: 100dvh !important;
@@ -2058,23 +2059,44 @@ and so that the second child will maintain in 100dvh*/
 }
 
 /*--------------------------------*/
-/* core logic for switching the navigation area
-first column: inbox list
-second column: email/chat content
-*/
+/* this holds the panels together */
 .inbox-container {
   display: grid;
-  grid-template-columns: 1fr 0;
+  grid-template-columns: 1fr;
   overflow: hidden;
 }
 
+/* attach all panels in one column*/
+.inbox-container > * {
+  grid-area: 1/1;
+  padding: 0; /*remove the default padding*/
+  height: 0 !important; /* so it doesnt interfer with the active panel */
+  opacity: 0;
+  visibility: hidden;
+}
+/* core logic for switching the panels*/
+.active-inbox-panel {
+  z-index: 1;
+  height: auto !important;
+  opacity: 1;
+  visibility: visible;
+}
+
 /* this is another core logic for controlling
-which content to show the email or chat content
+which content to show on each sub panel
 */
-.inbox-content {
-  grid-template-columns: 0 1fr;
+.panel-show-nav {
+  /* grid-template-columns: 0 1fr; */
+  /* grid-template-columns: 1fr 1fr; */
+  grid-template-columns: 1fr 0; /*default*/
+
   overflow: hidden;
 }
+
+.panel-show-content {
+  grid-template-columns: 0 1fr; /*default*/
+}
+
 /*--------------------------------*/
 
 /*------------- inbox menu header   ------------*/
@@ -2086,6 +2108,10 @@ which content to show the email or chat content
 .inbox-menu-trigger:hover,
 .inbox-menu-trigger:focus-visible {
   opacity: 0.5;
+}
+
+.inbox-menu {
+  width: var(--left-content-width) !important;
 }
 
 .inbox-menu ~ .offcanvas-backdrop {
@@ -2163,7 +2189,7 @@ nav[aria-label='messages inbox'] .inbox-item .item-subject {
   font-weight: 600;
 }
 
-/*-------------Inbox content area  ------------*/
+/*------------- email panel area  ------------*/
 
 .email-content {
   overflow-y: auto;
@@ -2184,76 +2210,7 @@ nav[aria-label='messages inbox'] .inbox-item .item-subject {
   opacity: 0.85;
 }
 
-.chat-container div[data-flow='sent'],
-.chat-container div[data-flow='received'] {
-  border-top-right-radius: 12px;
-  border-top-left-radius: 12px;
-  width: 75%;
-  padding: 0.5rem;
-  padding-bottom: 0.7rem;
-  position: relative;
-}
-
-.chat-container div[data-flow='received'] {
-  border-bottom-right-radius: 12px;
-  background-color: var(--falcon-secondary-bg-subtle);
-  margin-right: auto;
-  margin-left: 0;
-}
-
-.chat-container div[data-flow='sent'] {
-  border-bottom-left-radius: 12px;
-  background-color: rgba(var(--falcon-primary-rgb), var(--falcon-bg-opacity));
-  margin-right: 0;
-  margin-left: auto;
-}
-
-.chat-container div[data-flow='date'] {
-  border-radius: 12px;
-  background-color: var(--falcon-primary-bg-subtle);
-  margin-right: auto;
-  margin-left: auto;
-  padding: 0.3rem 0.5rem;
-  font-size: x-small;
-}
-
-.chat-container div time {
-  position: absolute;
-  font-size: x-small;
-  bottom: 0rem;
-  right: 0.5rem;
-  pointer-events: none;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  opacity: 0.8;
-}
-
-.auto-grow-textarea {
-  --line-height: 1.5;
-  --grow-line-limit: 5;
-
-  /* Initial min-height (1 line) */
-  min-height: var(--line-height);
-
-  /* Maximum height (5 lines) */
-  max-height: calc(var(--grow-line-limit) * var(--line-height));
-
-  /* Scroll & styling */
-  overflow-y: auto;
-  width: 300px;
-  padding: 8px;
-  font-size: 16px;
-  line-height: 1.5;
-  font-family: Arial;
-  border: 1px solid #ccc;
-  resize: none;
-}
-
-.inbox-chat-content {
-  font-size: 0.8333333333rem;
-  color: var(--falcon-gray-600);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+/*------ chat panel area---------*/
+.chat-sidebar-overrides {
+  left: unset !important;
 }

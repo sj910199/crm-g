@@ -3860,7 +3860,11 @@
         </article>
 
         <!-- Inbox content -->
-        <article class="inbox-article d-grid bg-body position-relative" aria-labelledby="inbox-article-heading">
+        <article
+          id="inbox-article"
+          class="inbox-article d-grid bg-body position-relative"
+          aria-labelledby="inbox-article-heading"
+        >
           <header class="d-flex gap-2 navbar-glass navbar-glass-shadow align-items-center ps-2 ps-md-3 pe-5 py-2">
             <div>
               <div>
@@ -3925,17 +3929,18 @@
               <div class="offcanvas-header">
                 <h3 id="offcanvasLeftLabel">Inbox Menu</h3>
                 <button
+                  id="menu-close-btn"
                   class="btn-close text-reset"
                   type="button"
                   data-bs-dismiss="offcanvas"
                   aria-label="Close"
                 ></button>
               </div>
-              <nav class="offcanvas-body px-0 inbox-menu-nav" aria-label="Inbox menu list">
+              <nav id="inbox-menu-nav" class="offcanvas-body px-0 inbox-menu-nav" aria-label="Inbox menu list">
                 <ul class="list-unstyled">
                   <li>
                     <a
-                      href="#chat-panel"
+                      href="inbox/all"
                       class="inbox-item-container inbox-active p-3 d-flex justify-content-between align-items-center text-decoration-none"
                     >
                       <div class="d-flex align-items-center gap-2 fs-8">
@@ -3949,7 +3954,7 @@
 
                   <li>
                     <a
-                      href="#chat-panel"
+                      href="inbox/snoozed"
                       class="inbox-item-container p-3 d-flex justify-content-between align-items-center text-decoration-none"
                     >
                       <div class="d-flex align-items-center gap-2 fs-8">
@@ -3963,7 +3968,7 @@
 
                   <li>
                     <a
-                      href="#chat-panel"
+                      href="inbox/email"
                       class="inbox-item-container p-3 d-flex justify-content-between align-items-center text-decoration-none"
                     >
                       <div class="d-flex align-items-center gap-2 fs-8">
@@ -3977,7 +3982,7 @@
 
                   <li>
                     <a
-                      href="#chat-panel"
+                      href="inbox/chat"
                       class="inbox-item-container p-3 d-flex justify-content-between align-items-center text-decoration-none"
                     >
                       <div class="d-flex align-items-center gap-2 fs-8">
@@ -3991,7 +3996,7 @@
 
                   <li>
                     <a
-                      href="#chat-panel"
+                      href="inbox/sns"
                       class="inbox-item-container p-3 d-flex justify-content-between align-items-center text-decoration-none"
                     >
                       <div class="d-flex align-items-center gap-2 fs-8">
@@ -4120,8 +4125,8 @@
           </header>
 
           <div class="p-0 inbox-container d-grid">
-            <!-- the inbox overview  -->
-            <section class="py-0 overflow-y-auto">
+            <!-- the inbox overview - all conversation panel  -->
+            <section id="all-inbox" class="active-inbox-panel panel-show-nav py-0 overflow-y-auto">
               <nav aria-label="messages inbox">
                 <ul class="inbox-list list-unstyled overflow-y-scroll p-2">
                   <li>
@@ -4425,9 +4430,13 @@
                 </ul>
               </nav>
             </section>
-            <!-- inbox messages content area -->
-            <section class="inbox-content d-grid p-0">
-              <!-- for email content -->
+
+            <section id="snoozed-inbox" class="panel-show-nav">Place holder for snoozed</section>
+
+            <!-- email panel content -->
+            <section id="email-inbox" class="panel-show-nav">
+              <!-- split this into two -->
+              <!-- nav area and content -->
               <article id="email-message" class="card d-flex flex-column gap-4 email-content">
                 <header class="d-flex flex-column gap-4 px-3 pt-3">
                   <h3>This is an Email Content</h3>
@@ -4461,615 +4470,618 @@
                   consequuntur cum expedita nisi!
                 </section>
               </article>
+            </section>
 
-              <!-- for chat content -->
-              <article id="chat-panel" class="overflow-hidden h-100 chat-container">
-                <div class="card card-chat overflow-hidden h-100">
-                  <div class="card-body d-flex p-0 h-100">
-                    <div class="chat-sidebar">
-                      <div class="contacts-list scrollbar-overlay">
-                        <div class="nav nav-tabs border-0 flex-column" role="tablist" aria-orientation="vertical">
-                          <div
-                            class="hover-actions-trigger chat-contact nav-item active"
-                            role="tab"
-                            id="chat-link-0"
-                            data-bs-toggle="tab"
-                            data-bs-target="#chat-0"
-                            aria-controls="chat-0"
-                            aria-selected="true"
+            <!-- chat panel content area -->
+            <section id="chat-inbox" class="panel-show-nav d-grid p-0">
+              <div class="chat-sidebar chat-sidebar-overrides w-100 position-relative">
+                <div class="contacts-list scrollbar-overlay">
+                  <div class="nav nav-tabs border-0 flex-column" role="tablist" aria-orientation="vertical">
+                    <div
+                      class="hover-actions-trigger chat-contact nav-item active"
+                      role="tab"
+                      id="chat-link-0"
+                      data-bs-toggle="tab"
+                      data-bs-target="#chat-0"
+                      aria-controls="chat-0"
+                      aria-selected="true"
+                    >
+                      <div class="">
+                        <div class="dropdown dropdown-active-trigger dropdown-chat">
+                          <button
+                            class="hover-actions btn btn-link btn-sm text-400 dropdown-caret-none dropdown-toggle end-0 fs-9 mt-4 me-1 z-1 pb-2 mb-n2"
+                            type="button"
+                            data-boundary="viewport"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
                           >
-                            <div class="d-md-none d-lg-block">
-                              <div class="dropdown dropdown-active-trigger dropdown-chat">
-                                <button
-                                  class="hover-actions btn btn-link btn-sm text-400 dropdown-caret-none dropdown-toggle end-0 fs-9 mt-4 me-1 z-1 pb-2 mb-n2"
-                                  type="button"
-                                  data-boundary="viewport"
-                                  data-bs-toggle="dropdown"
-                                  aria-haspopup="true"
-                                  aria-expanded="false"
-                                >
-                                  <span class="fas fa-cog" data-fa-transform="shrink-3 down-4"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end border py-2 rounded-2">
-                                  <a class="dropdown-item" href="#!">Mute</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#!">Archive</a
-                                  ><a class="dropdown-item text-danger" href="#!">Delete</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#!">Mark as Unread</a
-                                  ><a class="dropdown-item" href="#!">Something's Wrong</a
-                                  ><a class="dropdown-item" href="#!">Ignore Messsages</a
-                                  ><a class="dropdown-item" href="#!">Block Messages</a>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="d-flex p-3">
-                              <div class="avatar avatar-xl status-online">
-                                <img class="rounded-circle" src="../assets/img/team/2.jpg" alt="" />
-                              </div>
-                              <div class="flex-1 chat-contact-body ms-2 d-md-none d-lg-block">
-                                <div class="d-flex justify-content-between">
-                                  <h6 class="mb-0 chat-contact-title">Antony Hopkins</h6>
-                                  <span class="message-time fs-11">Tue</span>
-                                </div>
-                                <div class="min-w-0">
-                                  <div class="chat-contact-content pe-3">Antony sent 6 photos</div>
-                                  <div class="position-absolute bottom-0 end-0 hover-hide"></div>
-                                </div>
-                              </div>
+                            <span class="fas fa-cog" data-fa-transform="shrink-3 down-4"></span>
+                          </button>
+                          <div class="dropdown-menu dropdown-menu-end border py-2 rounded-2">
+                            <a class="dropdown-item" href="#!">Mute</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Archive</a
+                            ><a class="dropdown-item text-danger" href="#!">Delete</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Mark as Unread</a
+                            ><a class="dropdown-item" href="#!">Something's Wrong</a
+                            ><a class="dropdown-item" href="#!">Ignore Messsages</a
+                            ><a class="dropdown-item" href="#!">Block Messages</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-flex p-3">
+                        <div class="avatar avatar-xl status-online">
+                          <img class="rounded-circle" src="../assets/img/team/2.jpg" alt="" />
+                        </div>
+                        <div class="flex-1 chat-contact-body ms-2">
+                          <div class="d-flex justify-content-between">
+                            <h6 class="mb-0 chat-contact-title">Antony Hopkins</h6>
+                            <span class="message-time fs-11">Tue</span>
+                          </div>
+                          <div class="min-w-0">
+                            <div class="chat-contact-content pe-3">Antony sent 6 photos</div>
+                            <div class="position-absolute bottom-0 end-0 hover-hide"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      class="hover-actions-trigger chat-contact nav-item"
+                      role="tab"
+                      id="chat-link-1"
+                      data-bs-toggle="tab"
+                      data-bs-target="#chat-1"
+                      aria-controls="chat-1"
+                      aria-selected="false"
+                    >
+                      <div class="">
+                        <div class="dropdown dropdown-active-trigger dropdown-chat">
+                          <button
+                            class="hover-actions btn btn-link btn-sm text-400 dropdown-caret-none dropdown-toggle end-0 fs-9 mt-4 me-1 z-1 pb-2 mb-n2"
+                            type="button"
+                            data-boundary="viewport"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            <span class="fas fa-cog" data-fa-transform="shrink-3 down-4"></span>
+                          </button>
+                          <div class="dropdown-menu dropdown-menu-end border py-2 rounded-2">
+                            <a class="dropdown-item" href="#!">Mute</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Archive</a
+                            ><a class="dropdown-item text-danger" href="#!">Delete</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Mark as Unread</a
+                            ><a class="dropdown-item" href="#!">Something's Wrong</a
+                            ><a class="dropdown-item" href="#!">Ignore Messsages</a
+                            ><a class="dropdown-item" href="#!">Block Messages</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-flex p-3">
+                        <div class="avatar avatar-xl">
+                          <div class="rounded-circle overflow-hidden h-100 d-flex">
+                            <div class="w-50 border-end"><img src="../assets/img/team/1.jpg" alt="" /></div>
+                            <div class="w-50 d-flex flex-column">
+                              <img class="h-50 border-bottom" src="../assets/img/team/2.jpg" alt="" /><img
+                                class="h-50"
+                                src="../assets/img/team/3.jpg"
+                                alt=""
+                              />
                             </div>
                           </div>
-
-                          <div
-                            class="hover-actions-trigger chat-contact nav-item"
-                            role="tab"
-                            id="chat-link-1"
-                            data-bs-toggle="tab"
-                            data-bs-target="#chat-1"
-                            aria-controls="chat-1"
-                            aria-selected="false"
-                          >
-                            <div class="d-md-none d-lg-block">
-                              <div class="dropdown dropdown-active-trigger dropdown-chat">
-                                <button
-                                  class="hover-actions btn btn-link btn-sm text-400 dropdown-caret-none dropdown-toggle end-0 fs-9 mt-4 me-1 z-1 pb-2 mb-n2"
-                                  type="button"
-                                  data-boundary="viewport"
-                                  data-bs-toggle="dropdown"
-                                  aria-haspopup="true"
-                                  aria-expanded="false"
-                                >
-                                  <span class="fas fa-cog" data-fa-transform="shrink-3 down-4"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end border py-2 rounded-2">
-                                  <a class="dropdown-item" href="#!">Mute</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#!">Archive</a
-                                  ><a class="dropdown-item text-danger" href="#!">Delete</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#!">Mark as Unread</a
-                                  ><a class="dropdown-item" href="#!">Something's Wrong</a
-                                  ><a class="dropdown-item" href="#!">Ignore Messsages</a
-                                  ><a class="dropdown-item" href="#!">Block Messages</a>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="d-flex p-3">
-                              <div class="avatar avatar-xl">
-                                <div class="rounded-circle overflow-hidden h-100 d-flex">
-                                  <div class="w-50 border-end"><img src="../assets/img/team/1.jpg" alt="" /></div>
-                                  <div class="w-50 d-flex flex-column">
-                                    <img class="h-50 border-bottom" src="../assets/img/team/2.jpg" alt="" /><img
-                                      class="h-50"
-                                      src="../assets/img/team/3.jpg"
-                                      alt=""
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="flex-1 chat-contact-body ms-2 d-md-none d-lg-block">
-                                <div class="d-flex justify-content-between">
-                                  <h6 class="mb-0 chat-contact-title">Avengers</h6>
-                                  <span class="message-time fs-11">Sun</span>
-                                </div>
-                                <div class="min-w-0">
-                                  <div class="chat-contact-content pe-3">
-                                    Bucky: <a href="#!" class="text-primary">@Emma</a> What do you think about the plan?
-                                  </div>
-                                  <div class="position-absolute bottom-0 end-0 hover-hide">
-                                    <span class="fas fa-check text-success" data-fa-transform="shrink-5 down-4"></span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+                        </div>
+                        <div class="flex-1 chat-contact-body ms-2">
+                          <div class="d-flex justify-content-between">
+                            <h6 class="mb-0 chat-contact-title">Avengers</h6>
+                            <span class="message-time fs-11">Sun</span>
                           </div>
-
-                          <div
-                            class="hover-actions-trigger chat-contact nav-item"
-                            role="tab"
-                            id="chat-link-2"
-                            data-bs-toggle="tab"
-                            data-bs-target="#chat-2"
-                            aria-controls="chat-2"
-                            aria-selected="false"
-                          >
-                            <div class="d-md-none d-lg-block">
-                              <div class="dropdown dropdown-active-trigger dropdown-chat">
-                                <button
-                                  class="hover-actions btn btn-link btn-sm text-400 dropdown-caret-none dropdown-toggle end-0 fs-9 mt-4 me-1 z-1 pb-2 mb-n2"
-                                  type="button"
-                                  data-boundary="viewport"
-                                  data-bs-toggle="dropdown"
-                                  aria-haspopup="true"
-                                  aria-expanded="false"
-                                >
-                                  <span class="fas fa-cog" data-fa-transform="shrink-3 down-4"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end border py-2 rounded-2">
-                                  <a class="dropdown-item" href="#!">Mute</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#!">Archive</a
-                                  ><a class="dropdown-item text-danger" href="#!">Delete</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#!">Mark as Unread</a
-                                  ><a class="dropdown-item" href="#!">Something's Wrong</a
-                                  ><a class="dropdown-item" href="#!">Ignore Messsages</a
-                                  ><a class="dropdown-item" href="#!">Block Messages</a>
-                                </div>
-                              </div>
+                          <div class="min-w-0">
+                            <div class="chat-contact-content pe-3">
+                              Bucky: <a href="#!" class="text-primary">@Emma</a> What do you think about the plan?
                             </div>
-                            <div class="d-flex p-3">
-                              <div class="avatar avatar-xl">
-                                <img class="rounded-circle" src="../assets/img/team/1.jpg" alt="" />
-                              </div>
-                              <div class="flex-1 chat-contact-body ms-2 d-md-none d-lg-block">
-                                <div class="d-flex justify-content-between">
-                                  <h6 class="mb-0 chat-contact-title">Emma Watson</h6>
-                                  <span class="message-time fs-11">Sun</span>
-                                </div>
-                                <div class="min-w-0">
-                                  <div class="chat-contact-content pe-3">You: 🙂</div>
-                                  <div class="position-absolute bottom-0 end-0 hover-hide">
-                                    <span class="fas fa-check text-success" data-fa-transform="shrink-5 down-4"></span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div
-                            class="hover-actions-trigger chat-contact nav-item unread-message"
-                            role="tab"
-                            id="chat-link-3"
-                            data-bs-toggle="tab"
-                            data-bs-target="#chat-3"
-                            aria-controls="chat-3"
-                            aria-selected="false"
-                          >
-                            <div class="d-md-none d-lg-block">
-                              <div class="dropdown dropdown-active-trigger dropdown-chat">
-                                <button
-                                  class="hover-actions btn btn-link btn-sm text-400 dropdown-caret-none dropdown-toggle end-0 fs-9 mt-4 me-1 z-1 pb-2 mb-n2"
-                                  type="button"
-                                  data-boundary="viewport"
-                                  data-bs-toggle="dropdown"
-                                  aria-haspopup="true"
-                                  aria-expanded="false"
-                                >
-                                  <span class="fas fa-cog" data-fa-transform="shrink-3 down-4"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end border py-2 rounded-2">
-                                  <a class="dropdown-item" href="#!">Mute</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#!">Archive</a
-                                  ><a class="dropdown-item text-danger" href="#!">Delete</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#!">Mark as Unread</a
-                                  ><a class="dropdown-item" href="#!">Something's Wrong</a
-                                  ><a class="dropdown-item" href="#!">Ignore Messsages</a
-                                  ><a class="dropdown-item" href="#!">Block Messages</a>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="d-flex p-3">
-                              <div class="avatar avatar-xl status-online">
-                                <img class="rounded-circle" src="../assets/img/team/13.jpg" alt="" />
-                              </div>
-                              <div class="flex-1 chat-contact-body ms-2 d-md-none d-lg-block">
-                                <div class="d-flex justify-content-between">
-                                  <h6 class="mb-0 chat-contact-title">Anna Karinina</h6>
-                                  <span class="message-time fs-11">Sat</span>
-                                </div>
-                                <div class="min-w-0">
-                                  <div class="chat-contact-content pe-3">What are you doing?</div>
-                                  <div class="position-absolute bottom-0 end-0 hover-hide"></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div
-                            class="hover-actions-trigger chat-contact nav-item unread-message"
-                            role="tab"
-                            id="chat-link-4"
-                            data-bs-toggle="tab"
-                            data-bs-target="#chat-4"
-                            aria-controls="chat-4"
-                            aria-selected="false"
-                          >
-                            <div class="d-md-none d-lg-block">
-                              <div class="dropdown dropdown-active-trigger dropdown-chat">
-                                <button
-                                  class="hover-actions btn btn-link btn-sm text-400 dropdown-caret-none dropdown-toggle end-0 fs-9 mt-4 me-1 z-1 pb-2 mb-n2"
-                                  type="button"
-                                  data-boundary="viewport"
-                                  data-bs-toggle="dropdown"
-                                  aria-haspopup="true"
-                                  aria-expanded="false"
-                                >
-                                  <span class="fas fa-cog" data-fa-transform="shrink-3 down-4"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end border py-2 rounded-2">
-                                  <a class="dropdown-item" href="#!">Mute</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#!">Archive</a
-                                  ><a class="dropdown-item text-danger" href="#!">Delete</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#!">Mark as Unread</a
-                                  ><a class="dropdown-item" href="#!">Something's Wrong</a
-                                  ><a class="dropdown-item" href="#!">Ignore Messsages</a
-                                  ><a class="dropdown-item" href="#!">Block Messages</a>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="d-flex p-3">
-                              <div class="avatar avatar-xl status-online">
-                                <img class="rounded-circle" src="../assets/img/team/4.jpg" alt="" />
-                              </div>
-                              <div class="flex-1 chat-contact-body ms-2 d-md-none d-lg-block">
-                                <div class="d-flex justify-content-between">
-                                  <h6 class="mb-0 chat-contact-title">John Lee</h6>
-                                  <span class="message-time fs-11">Mon</span>
-                                </div>
-                                <div class="min-w-0">
-                                  <div class="chat-contact-content pe-3">How are you?</div>
-                                  <div class="position-absolute bottom-0 end-0 hover-hide"></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div
-                            class="hover-actions-trigger chat-contact nav-item"
-                            role="tab"
-                            id="chat-link-5"
-                            data-bs-toggle="tab"
-                            data-bs-target="#chat-5"
-                            aria-controls="chat-5"
-                            aria-selected="false"
-                          >
-                            <div class="d-md-none d-lg-block">
-                              <div class="dropdown dropdown-active-trigger dropdown-chat">
-                                <button
-                                  class="hover-actions btn btn-link btn-sm text-400 dropdown-caret-none dropdown-toggle end-0 fs-9 mt-4 me-1 z-1 pb-2 mb-n2"
-                                  type="button"
-                                  data-boundary="viewport"
-                                  data-bs-toggle="dropdown"
-                                  aria-haspopup="true"
-                                  aria-expanded="false"
-                                >
-                                  <span class="fas fa-cog" data-fa-transform="shrink-3 down-4"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end border py-2 rounded-2">
-                                  <a class="dropdown-item" href="#!">Mute</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#!">Archive</a
-                                  ><a class="dropdown-item text-danger" href="#!">Delete</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#!">Mark as Unread</a
-                                  ><a class="dropdown-item" href="#!">Something's Wrong</a
-                                  ><a class="dropdown-item" href="#!">Ignore Messsages</a
-                                  ><a class="dropdown-item" href="#!">Block Messages</a>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="d-flex p-3">
-                              <div class="avatar avatar-xl status-online">
-                                <div class="avatar-name rounded-circle"><span>BR</span></div>
-                              </div>
-                              <div class="flex-1 chat-contact-body ms-2 d-md-none d-lg-block">
-                                <div class="d-flex justify-content-between">
-                                  <h6 class="mb-0 chat-contact-title">Bucky Robert</h6>
-                                  <span class="message-time fs-11">Wed</span>
-                                </div>
-                                <div class="min-w-0">
-                                  <div class="chat-contact-content pe-3">You: 👋</div>
-                                  <div class="position-absolute bottom-0 end-0 hover-hide">
-                                    <span class="fas fa-check text-400" data-fa-transform="shrink-5 down-4"></span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div
-                            class="hover-actions-trigger chat-contact nav-item"
-                            role="tab"
-                            id="chat-link-6"
-                            data-bs-toggle="tab"
-                            data-bs-target="#chat-6"
-                            aria-controls="chat-6"
-                            aria-selected="false"
-                          >
-                            <div class="d-md-none d-lg-block">
-                              <div class="dropdown dropdown-active-trigger dropdown-chat">
-                                <button
-                                  class="hover-actions btn btn-link btn-sm text-400 dropdown-caret-none dropdown-toggle end-0 fs-9 mt-4 me-1 z-1 pb-2 mb-n2"
-                                  type="button"
-                                  data-boundary="viewport"
-                                  data-bs-toggle="dropdown"
-                                  aria-haspopup="true"
-                                  aria-expanded="false"
-                                >
-                                  <span class="fas fa-cog" data-fa-transform="shrink-3 down-4"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end border py-2 rounded-2">
-                                  <a class="dropdown-item" href="#!">Mute</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#!">Archive</a
-                                  ><a class="dropdown-item text-danger" href="#!">Delete</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#!">Mark as Unread</a
-                                  ><a class="dropdown-item" href="#!">Something's Wrong</a
-                                  ><a class="dropdown-item" href="#!">Ignore Messsages</a
-                                  ><a class="dropdown-item" href="#!">Block Messages</a>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="d-flex p-3">
-                              <div class="avatar avatar-xl status-online">
-                                <img class="rounded-circle" src="../assets/img/team/10.jpg" alt="" />
-                              </div>
-                              <div class="flex-1 chat-contact-body ms-2 d-md-none d-lg-block">
-                                <div class="d-flex justify-content-between">
-                                  <h6 class="mb-0 chat-contact-title">John Bradley</h6>
-                                  <span class="message-time fs-11">Fri</span>
-                                </div>
-                                <div class="min-w-0">
-                                  <div class="chat-contact-content pe-3">Hello!</div>
-                                  <div class="position-absolute bottom-0 end-0 hover-hide"></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div
-                            class="hover-actions-trigger chat-contact nav-item"
-                            role="tab"
-                            id="chat-link-7"
-                            data-bs-toggle="tab"
-                            data-bs-target="#chat-7"
-                            aria-controls="chat-7"
-                            aria-selected="false"
-                          >
-                            <div class="d-md-none d-lg-block">
-                              <div class="dropdown dropdown-active-trigger dropdown-chat">
-                                <button
-                                  class="hover-actions btn btn-link btn-sm text-400 dropdown-caret-none dropdown-toggle end-0 fs-9 mt-4 me-1 z-1 pb-2 mb-n2"
-                                  type="button"
-                                  data-boundary="viewport"
-                                  data-bs-toggle="dropdown"
-                                  aria-haspopup="true"
-                                  aria-expanded="false"
-                                >
-                                  <span class="fas fa-cog" data-fa-transform="shrink-3 down-4"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end border py-2 rounded-2">
-                                  <a class="dropdown-item" href="#!">Mute</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#!">Archive</a
-                                  ><a class="dropdown-item text-danger" href="#!">Delete</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#!">Mark as Unread</a
-                                  ><a class="dropdown-item" href="#!">Something's Wrong</a
-                                  ><a class="dropdown-item" href="#!">Ignore Messsages</a
-                                  ><a class="dropdown-item" href="#!">Block Messages</a>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="d-flex p-3">
-                              <div class="avatar avatar-xl status-online">
-                                <img class="rounded-circle" src="../assets/img/team/11.jpg" alt="" />
-                              </div>
-                              <div class="flex-1 chat-contact-body ms-2 d-md-none d-lg-block">
-                                <div class="d-flex justify-content-between">
-                                  <h6 class="mb-0 chat-contact-title">Rory McCann</h6>
-                                  <span class="message-time fs-11">Sun</span>
-                                </div>
-                                <div class="min-w-0">
-                                  <div class="chat-contact-content pe-3">You: 😮</div>
-                                  <div class="position-absolute bottom-0 end-0 hover-hide">
-                                    <span class="fas fa-check text-400" data-fa-transform="shrink-5 down-4"></span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div
-                            class="hover-actions-trigger chat-contact nav-item"
-                            role="tab"
-                            id="chat-link-8"
-                            data-bs-toggle="tab"
-                            data-bs-target="#chat-8"
-                            aria-controls="chat-8"
-                            aria-selected="false"
-                          >
-                            <div class="d-md-none d-lg-block">
-                              <div class="dropdown dropdown-active-trigger dropdown-chat">
-                                <button
-                                  class="hover-actions btn btn-link btn-sm text-400 dropdown-caret-none dropdown-toggle end-0 fs-9 mt-4 me-1 z-1 pb-2 mb-n2"
-                                  type="button"
-                                  data-boundary="viewport"
-                                  data-bs-toggle="dropdown"
-                                  aria-haspopup="true"
-                                  aria-expanded="false"
-                                >
-                                  <span class="fas fa-cog" data-fa-transform="shrink-3 down-4"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end border py-2 rounded-2">
-                                  <a class="dropdown-item" href="#!">Mute</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#!">Archive</a
-                                  ><a class="dropdown-item text-danger" href="#!">Delete</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#!">Mark as Unread</a
-                                  ><a class="dropdown-item" href="#!">Something's Wrong</a
-                                  ><a class="dropdown-item" href="#!">Ignore Messsages</a
-                                  ><a class="dropdown-item" href="#!">Block Messages</a>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="d-flex p-3">
-                              <div class="avatar avatar-xl">
-                                <img class="rounded-circle" src="../assets/img/team/12.jpg" alt="" />
-                              </div>
-                              <div class="flex-1 chat-contact-body ms-2 d-md-none d-lg-block">
-                                <div class="d-flex justify-content-between">
-                                  <h6 class="mb-0 chat-contact-title">Joe Bempsie</h6>
-                                  <span class="message-time fs-11">Wed</span>
-                                </div>
-                                <div class="min-w-0">
-                                  <div class="chat-contact-content pe-3">Hello!</div>
-                                  <div class="position-absolute bottom-0 end-0 hover-hide"></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div
-                            class="hover-actions-trigger chat-contact nav-item"
-                            role="tab"
-                            id="chat-link-9"
-                            data-bs-toggle="tab"
-                            data-bs-target="#chat-9"
-                            aria-controls="chat-9"
-                            aria-selected="false"
-                          >
-                            <div class="d-md-none d-lg-block">
-                              <div class="dropdown dropdown-active-trigger dropdown-chat">
-                                <button
-                                  class="hover-actions btn btn-link btn-sm text-400 dropdown-caret-none dropdown-toggle end-0 fs-9 mt-4 me-1 z-1 pb-2 mb-n2"
-                                  type="button"
-                                  data-boundary="viewport"
-                                  data-bs-toggle="dropdown"
-                                  aria-haspopup="true"
-                                  aria-expanded="false"
-                                >
-                                  <span class="fas fa-cog" data-fa-transform="shrink-3 down-4"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end border py-2 rounded-2">
-                                  <a class="dropdown-item" href="#!">Mute</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#!">Archive</a
-                                  ><a class="dropdown-item text-danger" href="#!">Delete</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#!">Mark as Unread</a
-                                  ><a class="dropdown-item" href="#!">Something's Wrong</a
-                                  ><a class="dropdown-item" href="#!">Ignore Messsages</a
-                                  ><a class="dropdown-item" href="#!">Block Messages</a>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="d-flex p-3">
-                              <div class="avatar avatar-xl">
-                                <img class="rounded-circle" src="../assets/img/team/22.jpg" alt="" />
-                              </div>
-                              <div class="flex-1 chat-contact-body ms-2 d-md-none d-lg-block">
-                                <div class="d-flex justify-content-between">
-                                  <h6 class="mb-0 chat-contact-title">Diana Rigg</h6>
-                                  <span class="message-time fs-11">Mon</span>
-                                </div>
-                                <div class="min-w-0">
-                                  <div class="chat-contact-content pe-3">
-                                    You: Yes, in an organization stature, this is a must. Besides, we need to quickly
-                                    establish all other professional appearances, e.g., having a website where members’
-                                    profile will be displayed along with additional organizational information.
-                                    Providing services to existing members is more important than attracting new members
-                                    at this moment, in my opinion..
-                                  </div>
-                                  <div class="position-absolute bottom-0 end-0 hover-hide">
-                                    <span class="fas fa-check text-400" data-fa-transform="shrink-5 down-4"></span>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div
-                            class="hover-actions-trigger chat-contact nav-item"
-                            role="tab"
-                            id="chat-link-10"
-                            data-bs-toggle="tab"
-                            data-bs-target="#chat-10"
-                            aria-controls="chat-10"
-                            aria-selected="false"
-                          >
-                            <div class="d-md-none d-lg-block">
-                              <div class="dropdown dropdown-active-trigger dropdown-chat">
-                                <button
-                                  class="hover-actions btn btn-link btn-sm text-400 dropdown-caret-none dropdown-toggle end-0 fs-9 mt-4 me-1 z-1 pb-2 mb-n2"
-                                  type="button"
-                                  data-boundary="viewport"
-                                  data-bs-toggle="dropdown"
-                                  aria-haspopup="true"
-                                  aria-expanded="false"
-                                >
-                                  <span class="fas fa-cog" data-fa-transform="shrink-3 down-4"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end border py-2 rounded-2">
-                                  <a class="dropdown-item" href="#!">Mute</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#!">Archive</a
-                                  ><a class="dropdown-item text-danger" href="#!">Delete</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item" href="#!">Mark as Unread</a
-                                  ><a class="dropdown-item" href="#!">Something's Wrong</a
-                                  ><a class="dropdown-item" href="#!">Ignore Messsages</a
-                                  ><a class="dropdown-item" href="#!">Block Messages</a>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="d-flex p-3">
-                              <div class="avatar avatar-xl">
-                                <img class="rounded-circle" src="../assets/img/team/23.jpg" alt="" />
-                              </div>
-                              <div class="flex-1 chat-contact-body ms-2 d-md-none d-lg-block">
-                                <div class="d-flex justify-content-between">
-                                  <h6 class="mb-0 chat-contact-title">Gemma Whelan</h6>
-                                </div>
-                                <div class="min-w-0">
-                                  <div class="chat-contact-content pe-3">Say hi to your new friend</div>
-                                  <div class="position-absolute bottom-0 end-0 hover-hide"></div>
-                                </div>
-                              </div>
+                            <div class="position-absolute bottom-0 end-0 hover-hide">
+                              <span class="fas fa-check text-success" data-fa-transform="shrink-5 down-4"></span>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <form class="contacts-search-wrapper">
-                        <div class="form-group mb-0 position-relative d-md-none d-lg-block w-100 h-100">
-                          <input
-                            class="form-control form-control-sm chat-contacts-search border-0 h-100"
-                            type="text"
-                            placeholder="Search contacts ..."
-                          /><span class="fas fa-search contacts-search-icon"></span>
-                        </div>
-                        <button class="btn btn-sm btn-transparent d-none d-md-inline-block d-lg-none">
-                          <span class="fas fa-search fs-10"></span>
-                        </button>
-                      </form>
                     </div>
+
+                    <div
+                      class="hover-actions-trigger chat-contact nav-item"
+                      role="tab"
+                      id="chat-link-2"
+                      data-bs-toggle="tab"
+                      data-bs-target="#chat-2"
+                      aria-controls="chat-2"
+                      aria-selected="false"
+                    >
+                      <div class="">
+                        <div class="dropdown dropdown-active-trigger dropdown-chat">
+                          <button
+                            class="hover-actions btn btn-link btn-sm text-400 dropdown-caret-none dropdown-toggle end-0 fs-9 mt-4 me-1 z-1 pb-2 mb-n2"
+                            type="button"
+                            data-boundary="viewport"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            <span class="fas fa-cog" data-fa-transform="shrink-3 down-4"></span>
+                          </button>
+                          <div class="dropdown-menu dropdown-menu-end border py-2 rounded-2">
+                            <a class="dropdown-item" href="#!">Mute</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Archive</a
+                            ><a class="dropdown-item text-danger" href="#!">Delete</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Mark as Unread</a
+                            ><a class="dropdown-item" href="#!">Something's Wrong</a
+                            ><a class="dropdown-item" href="#!">Ignore Messsages</a
+                            ><a class="dropdown-item" href="#!">Block Messages</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-flex p-3">
+                        <div class="avatar avatar-xl">
+                          <img class="rounded-circle" src="../assets/img/team/1.jpg" alt="" />
+                        </div>
+                        <div class="flex-1 chat-contact-body ms-2">
+                          <div class="d-flex justify-content-between">
+                            <h6 class="mb-0 chat-contact-title">Emma Watson</h6>
+                            <span class="message-time fs-11">Sun</span>
+                          </div>
+                          <div class="min-w-0">
+                            <div class="chat-contact-content pe-3">You: 🙂</div>
+                            <div class="position-absolute bottom-0 end-0 hover-hide">
+                              <span class="fas fa-check text-success" data-fa-transform="shrink-5 down-4"></span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      class="hover-actions-trigger chat-contact nav-item unread-message"
+                      role="tab"
+                      id="chat-link-3"
+                      data-bs-toggle="tab"
+                      data-bs-target="#chat-3"
+                      aria-controls="chat-3"
+                      aria-selected="false"
+                    >
+                      <div class="">
+                        <div class="dropdown dropdown-active-trigger dropdown-chat">
+                          <button
+                            class="hover-actions btn btn-link btn-sm text-400 dropdown-caret-none dropdown-toggle end-0 fs-9 mt-4 me-1 z-1 pb-2 mb-n2"
+                            type="button"
+                            data-boundary="viewport"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            <span class="fas fa-cog" data-fa-transform="shrink-3 down-4"></span>
+                          </button>
+                          <div class="dropdown-menu dropdown-menu-end border py-2 rounded-2">
+                            <a class="dropdown-item" href="#!">Mute</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Archive</a
+                            ><a class="dropdown-item text-danger" href="#!">Delete</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Mark as Unread</a
+                            ><a class="dropdown-item" href="#!">Something's Wrong</a
+                            ><a class="dropdown-item" href="#!">Ignore Messsages</a
+                            ><a class="dropdown-item" href="#!">Block Messages</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-flex p-3">
+                        <div class="avatar avatar-xl status-online">
+                          <img class="rounded-circle" src="../assets/img/team/13.jpg" alt="" />
+                        </div>
+                        <div class="flex-1 chat-contact-body ms-2">
+                          <div class="d-flex justify-content-between">
+                            <h6 class="mb-0 chat-contact-title">Anna Karinina</h6>
+                            <span class="message-time fs-11">Sat</span>
+                          </div>
+                          <div class="min-w-0">
+                            <div class="chat-contact-content pe-3">What are you doing?</div>
+                            <div class="position-absolute bottom-0 end-0 hover-hide"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      class="hover-actions-trigger chat-contact nav-item unread-message"
+                      role="tab"
+                      id="chat-link-4"
+                      data-bs-toggle="tab"
+                      data-bs-target="#chat-4"
+                      aria-controls="chat-4"
+                      aria-selected="false"
+                    >
+                      <div class="">
+                        <div class="dropdown dropdown-active-trigger dropdown-chat">
+                          <button
+                            class="hover-actions btn btn-link btn-sm text-400 dropdown-caret-none dropdown-toggle end-0 fs-9 mt-4 me-1 z-1 pb-2 mb-n2"
+                            type="button"
+                            data-boundary="viewport"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            <span class="fas fa-cog" data-fa-transform="shrink-3 down-4"></span>
+                          </button>
+                          <div class="dropdown-menu dropdown-menu-end border py-2 rounded-2">
+                            <a class="dropdown-item" href="#!">Mute</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Archive</a
+                            ><a class="dropdown-item text-danger" href="#!">Delete</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Mark as Unread</a
+                            ><a class="dropdown-item" href="#!">Something's Wrong</a
+                            ><a class="dropdown-item" href="#!">Ignore Messsages</a
+                            ><a class="dropdown-item" href="#!">Block Messages</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-flex p-3">
+                        <div class="avatar avatar-xl status-online">
+                          <img class="rounded-circle" src="../assets/img/team/4.jpg" alt="" />
+                        </div>
+                        <div class="flex-1 chat-contact-body ms-2">
+                          <div class="d-flex justify-content-between">
+                            <h6 class="mb-0 chat-contact-title">John Lee</h6>
+                            <span class="message-time fs-11">Mon</span>
+                          </div>
+                          <div class="min-w-0">
+                            <div class="chat-contact-content pe-3">How are you?</div>
+                            <div class="position-absolute bottom-0 end-0 hover-hide"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      class="hover-actions-trigger chat-contact nav-item"
+                      role="tab"
+                      id="chat-link-5"
+                      data-bs-toggle="tab"
+                      data-bs-target="#chat-5"
+                      aria-controls="chat-5"
+                      aria-selected="false"
+                    >
+                      <div class="">
+                        <div class="dropdown dropdown-active-trigger dropdown-chat">
+                          <button
+                            class="hover-actions btn btn-link btn-sm text-400 dropdown-caret-none dropdown-toggle end-0 fs-9 mt-4 me-1 z-1 pb-2 mb-n2"
+                            type="button"
+                            data-boundary="viewport"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            <span class="fas fa-cog" data-fa-transform="shrink-3 down-4"></span>
+                          </button>
+                          <div class="dropdown-menu dropdown-menu-end border py-2 rounded-2">
+                            <a class="dropdown-item" href="#!">Mute</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Archive</a
+                            ><a class="dropdown-item text-danger" href="#!">Delete</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Mark as Unread</a
+                            ><a class="dropdown-item" href="#!">Something's Wrong</a
+                            ><a class="dropdown-item" href="#!">Ignore Messsages</a
+                            ><a class="dropdown-item" href="#!">Block Messages</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-flex p-3">
+                        <div class="avatar avatar-xl status-online">
+                          <div class="avatar-name rounded-circle"><span>BR</span></div>
+                        </div>
+                        <div class="flex-1 chat-contact-body ms-2">
+                          <div class="d-flex justify-content-between">
+                            <h6 class="mb-0 chat-contact-title">Bucky Robert</h6>
+                            <span class="message-time fs-11">Wed</span>
+                          </div>
+                          <div class="min-w-0">
+                            <div class="chat-contact-content pe-3">You: 👋</div>
+                            <div class="position-absolute bottom-0 end-0 hover-hide">
+                              <span class="fas fa-check text-400" data-fa-transform="shrink-5 down-4"></span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      class="hover-actions-trigger chat-contact nav-item"
+                      role="tab"
+                      id="chat-link-6"
+                      data-bs-toggle="tab"
+                      data-bs-target="#chat-6"
+                      aria-controls="chat-6"
+                      aria-selected="false"
+                    >
+                      <div class="">
+                        <div class="dropdown dropdown-active-trigger dropdown-chat">
+                          <button
+                            class="hover-actions btn btn-link btn-sm text-400 dropdown-caret-none dropdown-toggle end-0 fs-9 mt-4 me-1 z-1 pb-2 mb-n2"
+                            type="button"
+                            data-boundary="viewport"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            <span class="fas fa-cog" data-fa-transform="shrink-3 down-4"></span>
+                          </button>
+                          <div class="dropdown-menu dropdown-menu-end border py-2 rounded-2">
+                            <a class="dropdown-item" href="#!">Mute</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Archive</a
+                            ><a class="dropdown-item text-danger" href="#!">Delete</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Mark as Unread</a
+                            ><a class="dropdown-item" href="#!">Something's Wrong</a
+                            ><a class="dropdown-item" href="#!">Ignore Messsages</a
+                            ><a class="dropdown-item" href="#!">Block Messages</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-flex p-3">
+                        <div class="avatar avatar-xl status-online">
+                          <img class="rounded-circle" src="../assets/img/team/10.jpg" alt="" />
+                        </div>
+                        <div class="flex-1 chat-contact-body ms-2">
+                          <div class="d-flex justify-content-between">
+                            <h6 class="mb-0 chat-contact-title">John Bradley</h6>
+                            <span class="message-time fs-11">Fri</span>
+                          </div>
+                          <div class="min-w-0">
+                            <div class="chat-contact-content pe-3">Hello!</div>
+                            <div class="position-absolute bottom-0 end-0 hover-hide"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      class="hover-actions-trigger chat-contact nav-item"
+                      role="tab"
+                      id="chat-link-7"
+                      data-bs-toggle="tab"
+                      data-bs-target="#chat-7"
+                      aria-controls="chat-7"
+                      aria-selected="false"
+                    >
+                      <div class="">
+                        <div class="dropdown dropdown-active-trigger dropdown-chat">
+                          <button
+                            class="hover-actions btn btn-link btn-sm text-400 dropdown-caret-none dropdown-toggle end-0 fs-9 mt-4 me-1 z-1 pb-2 mb-n2"
+                            type="button"
+                            data-boundary="viewport"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            <span class="fas fa-cog" data-fa-transform="shrink-3 down-4"></span>
+                          </button>
+                          <div class="dropdown-menu dropdown-menu-end border py-2 rounded-2">
+                            <a class="dropdown-item" href="#!">Mute</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Archive</a
+                            ><a class="dropdown-item text-danger" href="#!">Delete</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Mark as Unread</a
+                            ><a class="dropdown-item" href="#!">Something's Wrong</a
+                            ><a class="dropdown-item" href="#!">Ignore Messsages</a
+                            ><a class="dropdown-item" href="#!">Block Messages</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-flex p-3">
+                        <div class="avatar avatar-xl status-online">
+                          <img class="rounded-circle" src="../assets/img/team/11.jpg" alt="" />
+                        </div>
+                        <div class="flex-1 chat-contact-body ms-2">
+                          <div class="d-flex justify-content-between">
+                            <h6 class="mb-0 chat-contact-title">Rory McCann</h6>
+                            <span class="message-time fs-11">Sun</span>
+                          </div>
+                          <div class="min-w-0">
+                            <div class="chat-contact-content pe-3">You: 😮</div>
+                            <div class="position-absolute bottom-0 end-0 hover-hide">
+                              <span class="fas fa-check text-400" data-fa-transform="shrink-5 down-4"></span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      class="hover-actions-trigger chat-contact nav-item"
+                      role="tab"
+                      id="chat-link-8"
+                      data-bs-toggle="tab"
+                      data-bs-target="#chat-8"
+                      aria-controls="chat-8"
+                      aria-selected="false"
+                    >
+                      <div class="">
+                        <div class="dropdown dropdown-active-trigger dropdown-chat">
+                          <button
+                            class="hover-actions btn btn-link btn-sm text-400 dropdown-caret-none dropdown-toggle end-0 fs-9 mt-4 me-1 z-1 pb-2 mb-n2"
+                            type="button"
+                            data-boundary="viewport"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            <span class="fas fa-cog" data-fa-transform="shrink-3 down-4"></span>
+                          </button>
+                          <div class="dropdown-menu dropdown-menu-end border py-2 rounded-2">
+                            <a class="dropdown-item" href="#!">Mute</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Archive</a
+                            ><a class="dropdown-item text-danger" href="#!">Delete</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Mark as Unread</a
+                            ><a class="dropdown-item" href="#!">Something's Wrong</a
+                            ><a class="dropdown-item" href="#!">Ignore Messsages</a
+                            ><a class="dropdown-item" href="#!">Block Messages</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-flex p-3">
+                        <div class="avatar avatar-xl">
+                          <img class="rounded-circle" src="../assets/img/team/12.jpg" alt="" />
+                        </div>
+                        <div class="flex-1 chat-contact-body ms-2">
+                          <div class="d-flex justify-content-between">
+                            <h6 class="mb-0 chat-contact-title">Joe Bempsie</h6>
+                            <span class="message-time fs-11">Wed</span>
+                          </div>
+                          <div class="min-w-0">
+                            <div class="chat-contact-content pe-3">Hello!</div>
+                            <div class="position-absolute bottom-0 end-0 hover-hide"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      class="hover-actions-trigger chat-contact nav-item"
+                      role="tab"
+                      id="chat-link-9"
+                      data-bs-toggle="tab"
+                      data-bs-target="#chat-9"
+                      aria-controls="chat-9"
+                      aria-selected="false"
+                    >
+                      <div class="">
+                        <div class="dropdown dropdown-active-trigger dropdown-chat">
+                          <button
+                            class="hover-actions btn btn-link btn-sm text-400 dropdown-caret-none dropdown-toggle end-0 fs-9 mt-4 me-1 z-1 pb-2 mb-n2"
+                            type="button"
+                            data-boundary="viewport"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            <span class="fas fa-cog" data-fa-transform="shrink-3 down-4"></span>
+                          </button>
+                          <div class="dropdown-menu dropdown-menu-end border py-2 rounded-2">
+                            <a class="dropdown-item" href="#!">Mute</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Archive</a
+                            ><a class="dropdown-item text-danger" href="#!">Delete</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Mark as Unread</a
+                            ><a class="dropdown-item" href="#!">Something's Wrong</a
+                            ><a class="dropdown-item" href="#!">Ignore Messsages</a
+                            ><a class="dropdown-item" href="#!">Block Messages</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-flex p-3">
+                        <div class="avatar avatar-xl">
+                          <img class="rounded-circle" src="../assets/img/team/22.jpg" alt="" />
+                        </div>
+                        <div class="flex-1 chat-contact-body ms-2">
+                          <div class="d-flex justify-content-between">
+                            <h6 class="mb-0 chat-contact-title">Diana Rigg</h6>
+                            <span class="message-time fs-11">Mon</span>
+                          </div>
+                          <div class="min-w-0">
+                            <div class="chat-contact-content pe-3">
+                              You: Yes, in an organization stature, this is a must. Besides, we need to quickly
+                              establish all other professional appearances, e.g., having a website where members’
+                              profile will be displayed along with additional organizational information. Providing
+                              services to existing members is more important than attracting new members at this moment,
+                              in my opinion..
+                            </div>
+                            <div class="position-absolute bottom-0 end-0 hover-hide">
+                              <span class="fas fa-check text-400" data-fa-transform="shrink-5 down-4"></span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      class="hover-actions-trigger chat-contact nav-item"
+                      role="tab"
+                      id="chat-link-10"
+                      data-bs-toggle="tab"
+                      data-bs-target="#chat-10"
+                      aria-controls="chat-10"
+                      aria-selected="false"
+                    >
+                      <div class="">
+                        <div class="dropdown dropdown-active-trigger dropdown-chat">
+                          <button
+                            class="hover-actions btn btn-link btn-sm text-400 dropdown-caret-none dropdown-toggle end-0 fs-9 mt-4 me-1 z-1 pb-2 mb-n2"
+                            type="button"
+                            data-boundary="viewport"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            <span class="fas fa-cog" data-fa-transform="shrink-3 down-4"></span>
+                          </button>
+                          <div class="dropdown-menu dropdown-menu-end border py-2 rounded-2">
+                            <a class="dropdown-item" href="#!">Mute</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Archive</a
+                            ><a class="dropdown-item text-danger" href="#!">Delete</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Mark as Unread</a
+                            ><a class="dropdown-item" href="#!">Something's Wrong</a
+                            ><a class="dropdown-item" href="#!">Ignore Messsages</a
+                            ><a class="dropdown-item" href="#!">Block Messages</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-flex p-3">
+                        <div class="avatar avatar-xl">
+                          <img class="rounded-circle" src="../assets/img/team/23.jpg" alt="" />
+                        </div>
+                        <div class="flex-1 chat-contact-body ms-2">
+                          <div class="d-flex justify-content-between">
+                            <h6 class="mb-0 chat-contact-title">Gemma Whelan</h6>
+                          </div>
+                          <div class="min-w-0">
+                            <div class="chat-contact-content pe-3">Say hi to your new friend</div>
+                            <div class="position-absolute bottom-0 end-0 hover-hide"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <form class="contacts-search-wrapper">
+                  <div class="form-group mb-0 position-relative w-100 h-100">
+                    <input
+                      class="form-control form-control-sm chat-contacts-search border-0 h-100"
+                      type="text"
+                      placeholder="Search contacts ..."
+                    /><span class="fas fa-search contacts-search-icon"></span>
+                  </div>
+                  <button class="btn btn-sm btn-transparent d-none d-md-inline-block d-lg-none">
+                    <span class="fas fa-search fs-10"></span>
+                  </button>
+                </form>
+              </div>
+
+              <article id="chat-panel" class="overflow-hidden h-100 chat-container">
+                <div class="card card-chat overflow-hidden h-100">
+                  <div class="card-body d-flex p-0 h-100">
                     <div class="tab-content card-chat-content">
                       <div
                         class="tab-pane card-chat-pane active"
@@ -9677,6 +9689,8 @@
                 </div>
               </article>
             </section>
+
+            <section id="sns-inbox" class="panel-show-nav">place holder for sns</section>
           </div>
         </article>
 
@@ -11389,32 +11403,183 @@
 
     <!-- Implementation for Inbox side panel  -->
     <script>
-      const messages = document.getElementById('chat-messages');
-      // this ensures that this code will execute before content loaded
-      messages.scrollTop = messages.scrollHeight;
+      const INBOX_PANEL_SELECTORS = {
+        ALL_CONVERSATIONS_ID: 'all-inbox',
+        SNOOZED_PANEL_ID: 'snoozed-inbox',
+        CHAT_PANEL_ID: 'chat-inbox',
+        EMAIL_PANEL_ID: 'email-inbox',
+        SNS_PANEL_ID: 'sns-inbox',
+        INBOX_ANCHOR_TAG: '#inbox-article a',
+        MENU_NAV: 'inbox-menu-nav',
+        MENU_CLOSE_BTN_ID: 'menu-close-btn',
+      };
 
-      document.addEventListener('DOMContentLoaded', function () {
-        const textarea = document.querySelector('#chat-textarea');
-        const maxHeight = calculateMaxHeight(textarea);
-
-        function calculateMaxHeight(textarea) {
-          const { lineHeight, fontSize } = getComputedStyle(textarea);
-          const lineHeightValue = parseFloat(lineHeight) || parseFloat(fontSize) * 1.2;
-          return lineHeightValue * 6; // 6 lines
+      class inboxPanelManager {
+        constructor() {
+          this.mobileMediaQuery = window.matchMedia('(max-width: 991px)');
+          this.elements = {};
+          this.menuAnchorElements = {};
+          this.panelElements = {};
+          this.isTransitioning = false;
+          this.rafId = null;
         }
 
-        function adjustTextareaHeight(textarea, maxHeight) {
-          textarea.style.height = 'auto';
-          const newHeight = textarea.scrollHeight;
-          textarea.style.height = `${Math.min(newHeight, maxHeight)}px`;
-          textarea.style.overflowY = newHeight > maxHeight ? 'auto' : 'hidden';
+        init() {
+          this.cacheElements();
+          this.setupEventListeners();
+          // this.initializeInboxPanel();
         }
 
-        let timeout;
-        textarea.addEventListener('input', () => {
-          cancelAnimationFrame(timeout);
-          timeout = requestAnimationFrame(() => adjustTextareaHeight(textarea, maxHeight));
-        });
+        /** cache the elements that we need to avoid multiple DOM queries
+         * @returns {void}
+         */
+        cacheElements() {
+          // add here the elements that you want to initialized
+          this.elements = {
+            all: document.getElementById(INBOX_PANEL_SELECTORS.ALL_CONVERSATIONS_ID),
+            chat: document.getElementById(INBOX_PANEL_SELECTORS.CHAT_PANEL_ID),
+            email: document.getElementById(INBOX_PANEL_SELECTORS.EMAIL_PANEL_ID),
+            sns: document.getElementById(INBOX_PANEL_SELECTORS.SNS_PANEL_ID),
+            snoozed: document.getElementById(INBOX_PANEL_SELECTORS.SNOOZED_PANEL_ID),
+          };
+
+          document.querySelectorAll(`#${INBOX_PANEL_SELECTORS.MENU_NAV} a`).forEach((anchor) => {
+            // get the raw href
+            const href = anchor.getAttribute('href');
+            // split the href with '/' and filter out empty strings then get the last item
+            const menuName = href.split('/').filter(Boolean).pop();
+
+            this.menuAnchorElements[menuName] = anchor;
+          });
+        }
+
+        setupEventListeners() {
+          document.addEventListener('click', this.handleClick.bind(this));
+          //  document.addEventListener('touchstart', this.handleTouchStart.bind(this));
+        }
+
+        /** Handles the active menu styling
+         *
+         * @param {string} menuName - the name that corresponds to the active inbox panel
+         * @returns {void}
+         */
+        switchToActiveMenu(menuName) {
+          const menuAnchor = this.menuAnchorElements[menuName];
+
+          if (menuAnchor) {
+            // remove the 'inbox-active' class from all menu anchors from caches elements
+            Object.values(this.menuAnchorElements).forEach((anchor) => {
+              if (anchor) {
+                anchor.classList.remove('inbox-active');
+              }
+            });
+
+            // then add the active
+            menuAnchor.classList.add('inbox-active');
+          }
+          return;
+        }
+
+        /** Handles the click event on the inbox panel.
+         * @example
+         * // Valid path patterns:
+         * handleSwitchPanel('/inbox/chat')
+         * handleSwitchPanel('/inbox/chat/1')
+         *
+         * @param {string} path - The raw href of the clicked anchor element that starts with /inbox
+         * @returns {void}
+         */
+        handleSwitchPanel(path) {
+          const parts = path.split('/').filter(Boolean);
+          let panelName = '';
+
+          // If there are two parts, this is a sub panel navigation.
+          if (parts.length === 2) {
+            // parts[1] is the panel type (e.g., "chat", "sns", "email")
+            panelName = parts[1];
+
+            // Make sure the panel exists in the cache.
+            if (panelName && this.elements[panelName]) {
+              // reset the z-index or active class for all panels.
+              Object.values(this.elements).forEach((panel) => {
+                if (panel) {
+                  panel.classList.remove('active-inbox-panel');
+                }
+              });
+
+              // Bring the selected panel to the front.
+              this.elements[panelName].classList.add('active-inbox-panel');
+
+              // remove first if ever we are at the subpanels content
+              this.elements[panelName].classList.remove('panel-show-content');
+              // brings the first column(nav) of the subpanels to the front
+              this.elements[panelName].classList.add('panel-show-nav');
+            }
+          }
+          // If there are three parts, this is a subpanel navigation.
+          else if (parts.length === 3) {
+            // parts[1] is the main panel type (e.g., "chat"),
+            // parts[2] is the subpanel identifier (e.g., "1")
+            panelName = parts[1];
+            const subpanelId = parts[2];
+
+            // Here we assume subpanels are identified with an ID pattern like "chat-1"
+            const subpanel = document.getElementById(`${panelName}-${subpanelId}`);
+            if (subpanel) {
+              // Optionally, if subpanels share a common class, you can reset them.
+              const subpanels = document.querySelectorAll(`.${panelName}-subpanel`);
+              subpanels.forEach((panel) => {
+                panel.style.zIndex = 1;
+                panel.classList.remove('active');
+              });
+
+              // Bring the chosen subpanel to the front.
+              subpanel.style.zIndex = 10;
+              subpanel.classList.add('active');
+
+              // remove first if ever we are at the subpanels nav
+              this.elements[panelName].classList.remove('panel-show-nav');
+              // brings the subpanels content, second column of the subpanels to the front
+              this.elements[panelName].classList.add('panel-show-content');
+            }
+          }
+
+          // add the active class to the inbox menu
+          this.switchToActiveMenu(panelName);
+          // close the inbox panel menu
+          document.getElementById(INBOX_PANEL_SELECTORS.MENU_CLOSE_BTN_ID).click();
+          return;
+        }
+
+        /**
+         * Handles the Anchor element click event on the inbox panel
+         * @param {Event} event - the click event
+         * @returns {void}
+         */
+        handleClick(event) {
+          const target = event.target;
+          const inboxAnchorElement = target.closest(INBOX_PANEL_SELECTORS.INBOX_ANCHOR_TAG);
+          if (!inboxAnchorElement) return;
+
+          // get the href itself not the url or the full path
+          const rawHref = inboxAnchorElement.getAttribute('href');
+
+          // avoid going to the actual link and reload the page
+          // only when the rawHref starts with /inbox
+          // so that we dont interrupt the oter anchor element
+          if (rawHref && (rawHref.startsWith('inbox') || rawHref.startsWith('/inbox'))) {
+            event.preventDefault();
+            this.handleSwitchPanel(rawHref);
+          }
+        }
+      }
+
+      // Initialize when DOM is ready
+      document.addEventListener('DOMContentLoaded', () => {
+        if (document.getElementById('inbox-article')) {
+          const inboxManager = new inboxPanelManager();
+          inboxManager.init();
+        }
       });
     </script>
 
