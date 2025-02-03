@@ -48,6 +48,13 @@
 }
 
 /*-----------------------------------------------
+|  class extensions / utility classes
+-----------------------------------------------*/
+.d-contents {
+  display: contents !important;
+}
+
+/*-----------------------------------------------
 |   Page Wrapper, left vertical Navbar, and triggers
 -----------------------------------------------*/
 
@@ -2160,10 +2167,12 @@ which content to show on each sub panel
 /*-------------nav area / inbox list ------------*/
 nav[aria-label='messages inbox'] {
   overflow-y: auto;
+  height: 100%;
 }
 
 nav[aria-label='messages inbox'] ul {
   display: grid;
+  height: 100%;
 }
 
 nav[aria-label='messages inbox'] .inbox-item-container {
@@ -2213,4 +2222,32 @@ nav[aria-label='messages inbox'] .inbox-item .item-subject {
 /*------ chat panel area---------*/
 .chat-sidebar-overrides {
   left: unset !important;
+}
+
+.chat-sidebar-overrides .simplebar-content-wrapper {
+  background-color: var(--falcon-chat-contact-bg);
+}
+
+.chat-content-overrides {
+  display: grid;
+}
+
+.chat-content-overrides > * {
+  grid-area: 1/1;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.active-chat {
+  z-index: 1;
+  height: 100%;
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (min-width: 992px) {
+  .chat-sidebar-overrides {
+    max-width: var(--left-content-width) !important;
+  }
 }
