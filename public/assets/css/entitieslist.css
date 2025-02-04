@@ -162,7 +162,8 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     /* overflow: hidden; */
-    overflow-y: auto;
+    overflow-y: auto !important;
+    overflow-x: hidden;
     max-width: 100%;
     max-height: 100%;
     width: 100%;
@@ -2081,7 +2082,9 @@ header first row, contents second row*/
   height: 0 !important; /* so it doesnt interfer with the active panel */
   opacity: 0;
   visibility: hidden;
+  transition: z-index 0.2s ease-in-out, opacity 0.2s ease-in-out, visibility 0.2s ease-in-out, height 0.2s ease-in-out;
 }
+
 /* core logic for switching the panels*/
 .active-inbox-panel {
   z-index: 1;
