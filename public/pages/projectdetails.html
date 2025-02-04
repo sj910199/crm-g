@@ -11381,6 +11381,7 @@
         NAV_COLLAPSE: 'left-nav-collapse',
         CONTENT_OPEN: 'content-open',
         TRANSITIONING: 'is-transitioning',
+        HIDE_LEFT_NAV_BAR: 'hide-left-nav-bar',
       };
 
       // Article configuration for better maintainability
@@ -11506,6 +11507,7 @@
           if (this.mobileMediaQuery.matches) {
             toggleInput.classList.remove(CLASSES.NAV_ONLY);
             leftNavBar.classList.toggle(CLASSES.NAV_COLLAPSE);
+            leftNavBar.classList.remove(CLASSES.HIDE_LEFT_NAV_BAR);
           }
         }
 
@@ -11573,6 +11575,7 @@
         MENU_NAV: 'inbox-menu-nav',
         MENU_CLOSE_BTN_ID: 'menu-close-btn',
         CHAT_CONTAINER: 'chats-container',
+        LEFT_NAV_BAR_ID: 'left-nav-bar',
       };
 
       const INBOX_TITLE_IDS = {
@@ -11611,6 +11614,7 @@
             email: document.getElementById(INBOX_PANEL_SELECTORS.EMAIL_PANEL_ID),
             sns: document.getElementById(INBOX_PANEL_SELECTORS.SNS_PANEL_ID),
             snoozed: document.getElementById(INBOX_PANEL_SELECTORS.SNOOZED_PANEL_ID),
+            leftNav: document.getElementById(INBOX_PANEL_SELECTORS.LEFT_NAV_BAR_ID),
           };
 
           this.titleElements = {
@@ -11629,6 +11633,24 @@
 
             this.menuAnchorElements[menuName] = anchor;
           });
+        }
+
+        /** hide the left nav bar on mobile
+         * @returns {void}
+         */
+        hideLeftNavBar() {
+          const leftNav = this.elements.leftNav;
+          console.log('hide');
+          leftNav.classList.add('hide-left-nav-bar');
+        }
+
+        /** unhide the left nav bar on mobile
+         * @returns {void}
+         */
+        unHideLeftNavBar() {
+          const leftNav = this.elements.leftNav;
+          console.log('unhide');
+          leftNav.classList.remove('hide-left-nav-bar');
         }
 
         /** Handles the active menu styling
@@ -11732,6 +11754,7 @@
             if (panelName && this.elements[panelName]) {
               this.switchToActivePanel(panelName);
               this.switchToActiveTitle(panelName);
+              this.unHideLeftNavBar();
 
               // remove first if ever we are at the subpanels content
               this.elements[panelName].classList.remove('panel-show-content');
@@ -11751,6 +11774,7 @@
               this.switchToActivePanel(panelName);
               this.switchToActiveTitle(panelName);
             }
+              this.hideLeftNavBar();
             this.switchToActiveChat(subpanelId);
 
             // remove first if ever we are at the subpanels nav
