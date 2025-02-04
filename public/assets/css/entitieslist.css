@@ -2247,8 +2247,7 @@ nav[aria-label='messages inbox'] .inbox-item .item-subject {
 
 .active-chat {
   z-index: 1;
-  height: 100dvh;
-  padding-bottom: 2rem;
+  height: 90dvh;
   opacity: 1;
   visibility: visible;
 }
