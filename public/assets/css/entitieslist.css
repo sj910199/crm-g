@@ -2112,6 +2112,22 @@ which content to show on each sub panel
 
 /*------------- inbox menu header   ------------*/
 
+.inbox-title-container {
+  display: grid;
+}
+
+.inbox-title-container > * {
+  grid-area: 1/1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+}
+
+.inbox-active-title {
+  opacity: 1;
+  visibility: visible;
+}
+
 .contacts-body h5:hover,
 .contacts-body h5:focus-visible,
 .inbox-menu-nav ul li a h4:hover,
@@ -2258,5 +2274,11 @@ nav[aria-label='messages inbox'] .inbox-item .item-subject {
 @media (min-width: 992px) {
   .chat-sidebar-overrides {
     max-width: var(--left-content-width) !important;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .non-hover-show-button {
+    display: inline-block !important;
   }
 }
