@@ -10,6 +10,7 @@
   --left-nav-width: 55px;
   --left-content-width: 350px;
   --inset-shadow-sm: inset 0 2px 4px rgb(0 0 0 / 0.05);
+  --inbox-header-max-height: 56px;
 }
 
 /* Specific Styles for Item Description and Custom Fields */
@@ -2117,6 +2118,10 @@ which content to show on each sub panel
 /*--------------------------------*/
 
 /*------------- inbox menu header   ------------*/
+.inbox-article > header {
+  max-height: var(--inbox-header-max-height);
+  height: 100%;
+}
 
 .inbox-title-container {
   display: grid;
@@ -2246,6 +2251,10 @@ nav[aria-label='messages inbox'] .inbox-item .item-subject {
 }
 
 /*------ chat panel area---------*/
+.chat-container {
+  height: calc(100vh - var(--inbox-header-max-height));
+}
+
 .chat-sidebar-overrides {
   left: unset !important;
 }
@@ -2256,7 +2265,6 @@ nav[aria-label='messages inbox'] .inbox-item .item-subject {
 
 .chat-content-overrides {
   display: grid;
-  flex: 1;
 }
 
 .chat-content-overrides > * {
@@ -2264,6 +2272,8 @@ nav[aria-label='messages inbox'] .inbox-item .item-subject {
   height: 0;
   opacity: 0;
   visibility: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 /* .chat-content-overrides .chat-content-body {
@@ -2272,7 +2282,7 @@ nav[aria-label='messages inbox'] .inbox-item .item-subject {
 
 .active-chat {
   z-index: 1;
-  height: 90dvh;
+  height: 100%;
   opacity: 1;
   visibility: visible;
 }
