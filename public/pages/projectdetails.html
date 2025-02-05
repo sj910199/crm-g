@@ -5134,7 +5134,6 @@
                           role="tabpanel"
                           aria-labelledby="chat-link-0"
                         >
-                          <!-- ^ id , aria-labbeledby  -->
                           <div class="chat-content-header">
                             <div class="row flex-between-center">
                               <div class="col-6 d-flex align-items-center">
@@ -5144,7 +5143,6 @@
                                 <div class="min-w-0">
                                   <h5 class="mb-0 text-truncate fs-9">Antony Hopkins</h5>
                                   <div class="fs-11 text-400">Active On Chat</div>
-                                  <!-- ^ h5 and div inner -->
                                 </div>
                               </div>
                               <div class="col-auto">
@@ -5156,7 +5154,6 @@
                                   data-bs-placement="top"
                                   title="Start a Call"
                                 >
-                                  <!-- ^ data-index -->
                                   <span class="fas fa-phone-alt"></span>
                                 </button>
                                 <button
@@ -5167,7 +5164,6 @@
                                   data-bs-placement="top"
                                   title="Start a Video Call"
                                 >
-                                  <!-- ^ data-index  -->
                                   <span class="fas fa-video"></span>
                                 </button>
                                 <button
@@ -5178,7 +5174,6 @@
                                   data-bs-placement="top"
                                   title="Conversation Information"
                                 >
-                                  <!-- ^ data-index  -->
                                   <span class="fas fa-info"></span>
                                 </button>
                               </div>
@@ -5186,13 +5181,10 @@
                           </div>
                           <div class="chat-content-body" style="display: inherit">
                             <div class="conversation-info" data-index="0">
-                              <!-- ^ data-index -->
                               <div class="h-100 overflow-auto scrollbar">
                                 <div class="d-flex position-relative align-items-center p-3 border-bottom">
                                   <div class="avatar avatar-xl status-online">
-                                    <!-- ^ status-online class -->
                                     <img class="rounded-circle" src="../assets/img/team/2.jpg" alt="" />
-                                    <!-- ^ this image if group it is div chat-2 -->
                                   </div>
                                   <div class="flex-1 ms-2 d-flex flex-between-center">
                                     <h6 class="mb-0">
@@ -5201,7 +5193,6 @@
                                         href="../pages/user/profile.html"
                                         >Antony Hopkins</a
                                       >
-                                      <!-- ^ inner link probably the href -->
                                     </h6>
                                     <div class="dropdown z-1">
                                       <button
@@ -5212,7 +5203,6 @@
                                         aria-haspopup="true"
                                         aria-expanded="false"
                                       >
-                                        <!-- ^ id corresponds to the id -->
                                         <span class="fas fa-cog"></span>
                                       </button>
                                       <div
@@ -5257,10 +5247,7 @@
                                 </div>
                                 <hr class="my-2" />
                                 <div class="px-3" id="others-info-0">
-                                  <!-- ^ others info id corresponds to the id -->
                                   <div class="title" id="shared-media-title-0">
-                                    <!-- ^ shared media id corresponds to the id
-                                for group it is member-title-1-->
                                     <a
                                       class="btn btn-link btn-accordion hover-text-decoration-none dropdown-indicator"
                                       href="#shared-media-0"
@@ -5269,10 +5256,6 @@
                                       aria-controls="shared-media-0"
                                       >Shared media</a
                                     >
-
-                                    <!-- ^ shared media href corresponds to the id
-                                  for group it is #members-1 -->
-                                    <!-- inner html Shared media for solo for groups members -->
                                   </div>
                                   <div
                                     class="collapse"
@@ -5280,10 +5263,6 @@
                                     aria-labelledby="shared-media-title-0"
                                     data-parent="#others-info-0"
                                   >
-                                    <!-- ^ shared media id corresponds to the id
-                                for group it is #members-1 where 1 is id -->
-                                    <!-- aria-labbled by , for groups its member-title-{num}  -->
-                                    <!-- data-parent-{num}  corresponds to the id -->
                                     <div class="row mx-n1">
                                       <div class="col-6 col-md-4 px-1">
                                         <a href="../assets/img/chat/1.jpg" data-gallery="images-1"
@@ -11774,7 +11753,7 @@
               this.switchToActivePanel(panelName);
               this.switchToActiveTitle(panelName);
             }
-              this.hideLeftNavBar();
+            this.hideLeftNavBar();
             this.switchToActiveChat(subpanelId);
 
             // remove first if ever we are at the subpanels nav
