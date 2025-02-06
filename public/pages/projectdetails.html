@@ -76,6 +76,9 @@
       type="button"
       class="d-none d-lg-block btn bg-primary-subtle toggle-btn main-toggle"
       aria-label="left nav toggle"
+      data-bs-toggle="tooltip"
+      data-bs-placement="left"
+      title="Toggle Side Nav"
     >
       <span class="fas fa-chevron-circle-left text-primary fs-8"></span>
     </label>
@@ -118,7 +121,7 @@
                 >
                   <span class="navbar-toggle-icon"><span class="toggle-line"></span></span>
                 </button>
-                <a class="navbar-brand me-1 me-sm-3" href="../index.html">
+                <a aria-label="glassma logo" class="navbar-brand me-1 me-sm-3" href="../index.html">
                   <div class="d-flex align-items-center">
                     <img class="me-2" src="../assets/img/logos/glassmalogo.webp" alt="" width="200" /><span
                       class="font-sans-serif text-primary"
@@ -4411,11 +4414,10 @@
             <!-- email panel content -->
             <section id="email-inbox" class="panel-show-nav d-grid p-0">
               <!-- email nav area -->
-
               <div class="card h-100 overflow-hidden">
-                <div class="card-header">
+                <div class="card-header email-nav-header">
                   <div class="row align-items-center">
-                    <div class="col d-flex align-items-center">
+                    <div class="col d-flex align-items-center max-w-fit w-fit mb-0">
                       <div class="form-check mb-0 d-none d-sm-block">
                         <input
                           class="form-check-input checkbox-bulk-select"
@@ -4423,7 +4425,12 @@
                           data-bulk-select='{"body":"emails","actions":"emails-actions"}'
                         />
                       </div>
-                      <button class="btn btn-falcon-default btn-sm ms-sm-1" type="button" onclick="location.reload()">
+                      <button
+                        aria-label="reload email"
+                        class="btn btn-falcon-default btn-sm ms-sm-1"
+                        type="button"
+                        onclick="location.reload()"
+                      >
                         <span class="fas fa-redo"></span>
                       </button>
                       <div class="dropdown font-sans-serif">
@@ -4496,7 +4503,10 @@
                     </div>
                   </div>
                 </div>
-                <div class="overflow-y-auto h-100 scrollbar card-body fs-10 border-top border-200 p-0" id="emails">
+                <div
+                  class="email-nav-body overflow-y-auto h-100 scrollbar card-body fs-10 border-top border-200 p-0"
+                  id="emails"
+                >
                   <h5 class="fs-9 px-3 pt-3 pb-2 mb-0 border-bottom border-200">Unread</h5>
                   <div
                     class="row border-bottom border-200 hover-actions-trigger hover-shadow py-2 px-1 mx-0 bg-white dark__bg-dark"
@@ -4558,7 +4568,7 @@
                         <div class="col-md-4 col-xl-3 col-xxl-2 ps-md-0 mb-1 mb-md-0">
                           <div class="d-flex position-relative">
                             <div class="avatar avatar-s">
-                              <img class="rounded-soft" src="../../assets/img/team/17.jpg" alt="" />
+                              <img class="rounded-soft" src="../assets/img/team/17.jpg" alt="" />
                             </div>
                             <div class="flex-1 ms-2">
                               <a class="fw-bold stretched-link inbox-link" href="../../app/email/email-detail.html"
@@ -4640,7 +4650,7 @@
                         <div class="col-md-4 col-xl-3 col-xxl-2 ps-md-0 mb-1 mb-md-0">
                           <div class="d-flex position-relative">
                             <div class="avatar avatar-s">
-                              <img class="rounded-soft" src="../../assets/img/logos/unsplash.png" alt="" />
+                              <img class="rounded-soft" src="../assets/img/logos/unsplash.png" alt="" />
                             </div>
                             <div class="flex-1 ms-2">
                               <a class="fw-bold stretched-link inbox-link" href="../../app/email/email-detail.html"
@@ -4656,13 +4666,13 @@
                             ><span>The link below is now clickable for Chrome users...</span></a
                           ><a
                             class="d-inline-flex align-items-center border rounded-pill px-3 py-1 me-2 mt-2 inbox-link"
-                            href="../../assets/img/generic/1.jpg"
+                            href="../assets/img/generic/1.jpg"
                             data-gallery="gallery-7"
                             ><span class="fas fa-image text-danger" data-fa-transform="grow-4"></span
                             ><span class="ms-2">Winter</span></a
                           ><a
                             class="d-inline-flex align-items-center border rounded-pill px-3 py-1 me-2 mt-2 inbox-link"
-                            href="../../assets/img/generic/8.jpg"
+                            href="../assets/img/generic/8.jpg"
                             data-gallery="gallery-7"
                             ><span class="fas fa-image text-danger" data-fa-transform="grow-4"></span
                             ><span class="ms-2">Coffee</span></a
@@ -4735,7 +4745,7 @@
                         <div class="col-md-4 col-xl-3 col-xxl-2 ps-md-0 mb-1 mb-md-0">
                           <div class="d-flex position-relative">
                             <div class="avatar avatar-s">
-                              <img class="rounded-soft" src="../../assets/img/logos/goodreads.png" alt="" />
+                              <img class="rounded-soft" src="../assets/img/logos/goodreads.png" alt="" />
                             </div>
                             <div class="flex-1 ms-2">
                               <a class="fw-bold stretched-link inbox-link" href="../../app/email/email-detail.html"
@@ -4821,7 +4831,7 @@
                         <div class="col-md-4 col-xl-3 col-xxl-2 ps-md-0 mb-1 mb-md-0">
                           <div class="d-flex position-relative">
                             <div class="avatar avatar-s">
-                              <img class="rounded-soft" src="../../assets/img/logos/github.png" alt="" />
+                              <img class="rounded-soft" src="../assets/img/logos/github.png" alt="" />
                             </div>
                             <div class="flex-1 ms-2">
                               <a class="stretched-link inbox-link" href="../../app/email/email-detail.html">GitHub</a>
@@ -4902,7 +4912,7 @@
                         <div class="col-md-4 col-xl-3 col-xxl-2 ps-md-0 mb-1 mb-md-0">
                           <div class="d-flex position-relative">
                             <div class="avatar avatar-s">
-                              <img class="rounded-soft" src="../../assets/img/logos/coursera.png" alt="" />
+                              <img class="rounded-soft" src="../assets/img/logos/coursera.png" alt="" />
                             </div>
                             <div class="flex-1 ms-2">
                               <a class="stretched-link inbox-link" href="../../app/email/email-detail.html">Coursera</a>
@@ -4987,7 +4997,7 @@
                         <div class="col-md-4 col-xl-3 col-xxl-2 ps-md-0 mb-1 mb-md-0">
                           <div class="d-flex position-relative">
                             <div class="avatar avatar-s">
-                              <img class="rounded-soft" src="../../assets/img/logos/spectrum.jpg" alt="" />
+                              <img class="rounded-soft" src="../assets/img/logos/spectrum.jpg" alt="" />
                             </div>
                             <div class="flex-1 ms-2">
                               <a class="stretched-link inbox-link" href="../../app/email/email-detail.html">Spectrum</a>
@@ -5068,7 +5078,7 @@
                         <div class="col-md-4 col-xl-3 col-xxl-2 ps-md-0 mb-1 mb-md-0">
                           <div class="d-flex position-relative">
                             <div class="avatar avatar-s">
-                              <img class="rounded-soft" src="../../assets/img/logos/pinterest.png" alt="" />
+                              <img class="rounded-soft" src="../assets/img/logos/pinterest.png" alt="" />
                             </div>
                             <div class="flex-1 ms-2">
                               <a class="stretched-link inbox-link" href="../../app/email/email-detail.html"
@@ -5150,7 +5160,7 @@
                         <div class="col-md-4 col-xl-3 col-xxl-2 ps-md-0 mb-1 mb-md-0">
                           <div class="d-flex position-relative">
                             <div class="avatar avatar-s">
-                              <img class="rounded-soft" src="../../assets/img/logos/medium.png" alt="" />
+                              <img class="rounded-soft" src="../assets/img/logos/medium.png" alt="" />
                             </div>
                             <div class="flex-1 ms-2">
                               <a class="stretched-link inbox-link" href="../../app/email/email-detail.html">Medium</a>
@@ -5233,7 +5243,7 @@
                         <div class="col-md-4 col-xl-3 col-xxl-2 ps-md-0 mb-1 mb-md-0">
                           <div class="d-flex position-relative">
                             <div class="avatar avatar-s">
-                              <img class="rounded-soft" src="../../assets/img/logos/stripe.png" alt="" />
+                              <img class="rounded-soft" src="../assets/img/logos/stripe.png" alt="" />
                             </div>
                             <div class="flex-1 ms-2">
                               <a class="stretched-link inbox-link" href="../../app/email/email-detail.html">Stripe</a>
@@ -5316,7 +5326,7 @@
                         <div class="col-md-4 col-xl-3 col-xxl-2 ps-md-0 mb-1 mb-md-0">
                           <div class="d-flex position-relative">
                             <div class="avatar avatar-s">
-                              <img class="rounded-soft" src="../../assets/img/team/4.jpg" alt="" />
+                              <img class="rounded-soft" src="../assets/img/team/4.jpg" alt="" />
                             </div>
                             <div class="flex-1 ms-2">
                               <a class="stretched-link inbox-link" href="../../app/email/email-detail.html"
@@ -5408,7 +5418,7 @@
                         <div class="col-md-4 col-xl-3 col-xxl-2 ps-md-0 mb-1 mb-md-0">
                           <div class="d-flex position-relative">
                             <div class="avatar avatar-s">
-                              <img class="rounded-soft" src="../../assets/img/logos/youtube.png" alt="" />
+                              <img class="rounded-soft" src="../assets/img/logos/youtube.png" alt="" />
                             </div>
                             <div class="flex-1 ms-2">
                               <a class="stretched-link inbox-link" href="../../app/email/email-detail.html">Youtube</a>
@@ -5496,7 +5506,7 @@
                         <div class="col-md-4 col-xl-3 col-xxl-2 ps-md-0 mb-1 mb-md-0">
                           <div class="d-flex position-relative">
                             <div class="avatar avatar-s">
-                              <img class="rounded-soft" src="../../assets/img/team/5.jpg" alt="" />
+                              <img class="rounded-soft" src="../assets/img/team/5.jpg" alt="" />
                             </div>
                             <div class="flex-1 ms-2">
                               <a class="stretched-link inbox-link" href="../../app/email/email-detail.html"
@@ -5524,7 +5534,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card-footer d-flex justify-content-between align-items-center">
+                <div class="email-nav-footer card-footer d-flex justify-content-between align-items-center">
                   <small>2.29 GB <span class="d-none d-sm-inline-block">(13%) </span> of 17 GB used</small>
                   <div>
                     <small>1-12 of 354</small>
@@ -12567,7 +12577,6 @@
     </script>
 
     <!-- left nav bar and side panel implementation  -->
-
     <script>
       // Constants
       const SELECTORS = {
@@ -12581,7 +12590,7 @@
 
       const CLASSES = {
         NAV_ONLY: 'nav-only',
-        NAV_CONTENT: 'nav-n-content',
+        PANEL_CONTENT: 'panel-content',
         NAV_COLLAPSE: 'left-nav-collapse',
         CONTENT_OPEN: 'content-open',
         TRANSITIONING: 'is-transitioning',
@@ -12689,11 +12698,11 @@
 
         handleNavigation(button) {
           const { toggleInput, leftNavBar } = this.elements; // get caches elements
-          const isBothOpen = toggleInput.classList.contains(CLASSES.NAV_CONTENT);
+          const isBothOpen = toggleInput.classList.contains(CLASSES.PANEL_CONTENT);
 
           if (!isBothOpen) {
-            this.leftNavTracker = CLASSES.NAV_CONTENT;
-            toggleInput.classList.replace(CLASSES.NAV_ONLY, CLASSES.NAV_CONTENT);
+            this.leftNavTracker = CLASSES.PANEL_CONTENT;
+            toggleInput.classList.replace(CLASSES.NAV_ONLY, CLASSES.PANEL_CONTENT);
 
             if (this.mobileMediaQuery.matches) {
               leftNavBar.classList.add(CLASSES.NAV_COLLAPSE);
@@ -12706,7 +12715,7 @@
         handleClose() {
           const { toggleInput, leftNavBar } = this.elements;
           this.leftNavTracker = CLASSES.NAV_ONLY;
-          toggleInput.classList.replace(CLASSES.NAV_CONTENT, CLASSES.NAV_ONLY);
+          toggleInput.classList.replace(CLASSES.PANEL_CONTENT, CLASSES.NAV_ONLY);
 
           if (this.mobileMediaQuery.matches) {
             toggleInput.classList.remove(CLASSES.NAV_ONLY);
@@ -12732,11 +12741,11 @@
 
         // TODO: add will change try to optimize
         handleToggleClick(toggleInput) {
-          const isBothOpen = toggleInput.classList.contains(CLASSES.NAV_CONTENT);
+          const isBothOpen = toggleInput.classList.contains(CLASSES.PANEL_CONTENT);
           const isJustNavOpen = toggleInput.classList.contains(CLASSES.NAV_ONLY);
 
           if (this.elements.leftNavBar && isBothOpen && this.mobileMediaQuery.matches) {
-            this.leftNavTracker = CLASSES.NAV_CONTENT;
+            this.leftNavTracker = CLASSES.PANEL_CONTENT;
             toggleInput.classList.toggle(this.leftNavTracker);
             this.elements.leftNavBar.classList.toggle(CLASSES.NAV_COLLAPSE);
           }
