@@ -9,6 +9,7 @@
   --falcon-table-striped-color: #333 !important; */
   --left-nav-width: 55px;
   --left-content-width: 350px;
+  --desktop-left-content-width: calc(var(--left-nav-width) + var(--left-content-width));
   --inset-shadow-sm: inset 0 2px 4px rgb(0 0 0 / 0.05);
   --inbox-header-max-height: 56px;
   --chat-content-header-max-height: 68px;
@@ -165,7 +166,7 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
 
   /* mobile animation for left content starts here */
 
-  .navbar-toggle.nav-n-content ~ .page-wrapper {
+  .navbar-toggle.panel-content ~ .page-wrapper {
     grid-template-columns: 0 1fr;
   }
 
@@ -204,20 +205,20 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
 
   /* mobile animation for left nav bar starts here */
   /* open state */
-  .navbar-toggle.nav-n-content ~ .page-wrapper > .left-nav-bar,
+  .navbar-toggle.panel-content ~ .page-wrapper > .left-nav-bar,
   .navbar-toggle.nav-only ~ .page-wrapper > .left-nav-bar {
     transform: translateX(0);
     transition-delay: 0s;
   }
 
-  .navbar-toggle.nav-n-content ~ .page-wrapper > .left-nav-bar ul,
+  .navbar-toggle.panel-content ~ .page-wrapper > .left-nav-bar ul,
   .navbar-toggle.nav-only ~ .page-wrapper > .left-nav-bar ul {
     gap: 0.5rem;
 
     transition-delay: 0.11s;
   }
 
-  .navbar-toggle.nav-n-content ~ .page-wrapper > .left-nav-bar ul li:not(:last-child),
+  .navbar-toggle.panel-content ~ .page-wrapper > .left-nav-bar ul li:not(:last-child),
   .navbar-toggle.nav-only ~ .page-wrapper > .left-nav-bar ul li:not(:last-child) {
     transform: translateY(0);
     opacity: 1;
@@ -228,25 +229,25 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     transition-delay: 0.11s;
   }
 
-  .navbar-toggle.nav-n-content ~ .page-wrapper > .left-nav-bar > ul li > label > svg,
+  .navbar-toggle.panel-content ~ .page-wrapper > .left-nav-bar > ul li > label > svg,
   .navbar-toggle.nav-only ~ .page-wrapper > .left-nav-bar > ul li > label > svg {
     transform: rotate(360deg);
   }
 
   /* close state */
-  .navbar-toggle.nav-n-content ~ .page-wrapper > .left-nav-bar.left-nav-collapse,
+  .navbar-toggle.panel-content ~ .page-wrapper > .left-nav-bar.left-nav-collapse,
   .navbar-toggle ~ .page-wrapper > .left-nav-bar {
     transform: translateX(1.5rem);
     transition-delay: 0.21s;
   }
 
-  .navbar-toggle.nav-n-content ~ .page-wrapper > .left-nav-bar.left-nav-collapse ul,
+  .navbar-toggle.panel-content ~ .page-wrapper > .left-nav-bar.left-nav-collapse ul,
   .navbar-toggle ~ .page-wrapper > .left-nav-bar ul {
     gap: 0;
     transition-delay: 0s;
   }
 
-  .navbar-toggle.nav-n-content ~ .page-wrapper > .left-nav-bar.left-nav-collapse ul li:not(:last-child),
+  .navbar-toggle.panel-content ~ .page-wrapper > .left-nav-bar.left-nav-collapse ul li:not(:last-child),
   .navbar-toggle ~ .page-wrapper > .left-nav-bar ul li:not(:last-child) {
     transform: translateY(20px);
     opacity: 0;
@@ -256,7 +257,7 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     transition-delay: 0s;
   }
 
-  .navbar-toggle.nav-n-content ~ .page-wrapper > .left-nav-bar.left-nav-collapse > ul li > label > svg,
+  .navbar-toggle.panel-content ~ .page-wrapper > .left-nav-bar.left-nav-collapse > ul li > label > svg,
   .navbar-toggle ~ .page-wrapper > .left-nav-bar > ul li > label > svg {
     transform: rotate(180deg);
   }
@@ -274,11 +275,11 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     width: 100%;
   }
 
-  .navbar-toggle.nav-n-content ~ .page-wrapper .theme-control-dropdown {
+  .navbar-toggle.panel-content ~ .page-wrapper .theme-control-dropdown {
     display: none !important;
   }
 
-  .navbar-toggle.nav-n-content ~ .page-wrapper .sub-top-nav-desktop {
+  .navbar-toggle.panel-content ~ .page-wrapper .sub-top-nav-desktop {
     left: calc(50% - (var(--left-nav-width) / 3));
   }
 }
@@ -293,15 +294,33 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
 @media (min-width: 992px) {
   /* @media (min-width: 768px) { */
   /* the hide/show logic */
-  /* nav-only */
   .navbar-toggle.nav-only ~ .page-wrapper {
-    /* .page-wrapper.nav-only { */
     grid-template-columns: 1fr var(--left-nav-width) 0 !important;
+    transition: grid-template-columns 0.2s linear;
   }
 
-  .navbar-toggle.nav-n-content ~ .page-wrapper {
-    /* .page-wrapper.nav-n-content { */
-    grid-template-columns: 1fr var(--left-nav-width) var(--left-content-width) !important;
+  .navbar-toggle.panel-content ~ .page-wrapper {
+    grid-template-columns: 1fr 0 calc(var(--desktop-left-content-width)) !important;
+    transition: grid-template-columns 0s linear 0.2s;
+    /* transition-delay: 0.2s; */
+  }
+
+  /* hide the left navbar on desktop view when left panel is shown */
+  .navbar-toggle.panel-content ~ .page-wrapper > .left-nav-bar {
+    max-width: 0 !important;
+    overflow: hidden;
+  }
+
+  .navbar-toggle.nav-only ~ .page-wrapper > .left-sidebar-container {
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .navbar-toggle.panel-content ~ .page-wrapper > .left-sidebar-container {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
   }
 
   .page-wrapper {
@@ -309,22 +328,24 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     grid-template-columns: 1fr 0 0;
     height: 100dvh;
     overflow: hidden;
-
-    transition: grid-template-columns 0.2s ease-in-out;
+    transition: grid-template-columns 0.2s linear;
   }
 
   .page-wrapper .main {
     overflow-y: auto;
+    transition: max-width 0.2s linear;
   }
 
   .left-sidebar-container {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     overflow-y: scroll;
-    max-width: 350px;
+    max-width: var(--desktop-left-content-width);
     max-height: 100%;
     width: 100%;
     height: 100%;
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+    /* transition-delay: 50ms; */
   }
 
   .left-sidebar-container .price-article,
@@ -332,10 +353,12 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
   .left-sidebar-container .inbox-article,
   .left-sidebar-container .settings-article,
   .left-sidebar-container .customize-article {
+    border: var(--falcon-border-width) var(--falcon-border-style) var(--falcon-border-color) !important;
     grid-area: 1/1;
     z-index: 1;
     width: 100%;
     height: 100%;
+    max-width: 100% !important;
   }
 
   .left-sidebar-container .price-article {
@@ -345,6 +368,7 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
   .left-nav-bar {
     height: 100dvh;
     max-width: var(--left-nav-width);
+    transition: max-width 0.2s ease-in-out;
     /* z-index: 1016; */
   }
 
@@ -354,7 +378,6 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     align-items: center;
     justify-content: end;
     width: 100%;
-    /* height: 100%; */
     height: 100dvh;
     gap: 0.5rem;
     list-style: none;
@@ -2250,7 +2273,7 @@ nav[aria-label='messages inbox'] .inbox-item .item-subject {
   padding-bottom: 1.5rem !important;
 }
 
-email-content {
+.email-content {
   overflow-y: auto;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
@@ -2342,18 +2365,22 @@ email-content {
 
 @media (min-width: 992px) {
   .chat-sidebar-overrides {
-    max-width: var(--left-content-width) !important;
+    max-width: var(--desktop-left-content-width) !important;
   }
 
   .chat-content-overrides .chat-content-body .offcanvas {
-    max-width: var(--left-content-width) !important;
+    max-width: var(--desktop-left-content-width) !important;
     z-index: 1041;
   }
 
   .chat-content-overrides .chat-content-body .offcanvas-backdrop {
-    width: var(--left-content-width) !important;
+    width: var(--desktop-left-content-width) !important;
     right: 0 !important;
     left: 100% !important;
+  }
+
+  .inbox-menu {
+    width: var(--desktop-left-content-width) !important;
   }
 }
 

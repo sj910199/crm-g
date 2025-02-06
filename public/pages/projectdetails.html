@@ -32,7 +32,7 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap"
       rel="stylesheet"
     />
-    <link href="../../vendors/prism/prism-okaidia.css" rel="stylesheet" />
+    <link href="../vendors/prism/prism-okaidia.css" rel="stylesheet" />
     <link href="../vendors/simplebar/simplebar.min.css" rel="stylesheet" />
     <link href="../assets/css/theme-rtl.css" rel="stylesheet" id="style-rtl" />
     <link href="../assets/css/theme.css" rel="stylesheet" id="style-default" />
@@ -3788,7 +3788,7 @@
         </article>
 
         <!-- Price content -->
-        <article class="price-article bg-body position-relative">
+        <article class="price-article bg-body-emphasis position-relative">
           <header>
             <h5 class="bg-primary">Price Content here</h5>
           </header>
@@ -3806,7 +3806,7 @@
         </article>
 
         <!-- Calendar content -->
-        <article class="calendar-article bg-body position-relative">
+        <article class="calendar-article bg-body-emphasis position-relative">
           <h5 class="bg-primary">Calendar</h5>
           <div class="bg-primary-subtle">
             <div class="position-absolute top-0 end-0">
@@ -3823,7 +3823,7 @@
         <!-- Inbox content -->
         <article
           id="inbox-article"
-          class="inbox-article d-grid bg-body position-relative"
+          class="inbox-article d-grid bg-body-emphasis position-relative"
           aria-labelledby="all-heading"
         >
           <header class="d-flex gap-2 navbar-glass navbar-glass-shadow align-items-center ps-2 ps-md-3 pe-5 py-2">
@@ -8940,7 +8940,7 @@
 
                     <form class="chat-editor-area">
                       <div class="emojiarea-editor outline-none scrollbar" contenteditable="true"></div>
-                      <input class="d-none" type="file" id="chat-file-upload-3" />
+                      <input class="d-none" type="file" id="chat-file-upload-4" />
                       <label class="chat-file-upload cursor-pointer" for="chat-file-upload"
                         ><span class="fas fa-paperclip"></span
                       ></label>
@@ -9319,7 +9319,7 @@
 
                     <form class="chat-editor-area">
                       <div class="emojiarea-editor outline-none scrollbar" contenteditable="true"></div>
-                      <input class="d-none" type="file" id="chat-file-upload-3" />
+                      <input class="d-none" type="file" id="chat-file-upload-5" />
                       <label class="chat-file-upload cursor-pointer" for="chat-file-upload"
                         ><span class="fas fa-paperclip"></span
                       ></label>
@@ -9697,7 +9697,7 @@
 
                     <form class="chat-editor-area">
                       <div class="emojiarea-editor outline-none scrollbar" contenteditable="true"></div>
-                      <input class="d-none" type="file" id="chat-file-upload-3" />
+                      <input class="d-none" type="file" id="chat-file-upload-6" />
                       <label class="chat-file-upload cursor-pointer" for="chat-file-upload"
                         ><span class="fas fa-paperclip"></span
                       ></label>
@@ -10075,7 +10075,7 @@
 
                     <form class="chat-editor-area">
                       <div class="emojiarea-editor outline-none scrollbar" contenteditable="true"></div>
-                      <input class="d-none" type="file" id="chat-file-upload-3" />
+                      <input class="d-none" type="file" id="chat-file-upload-7" />
                       <label class="chat-file-upload cursor-pointer" for="chat-file-upload"
                         ><span class="fas fa-paperclip"></span
                       ></label>
@@ -10453,7 +10453,7 @@
 
                     <form class="chat-editor-area">
                       <div class="emojiarea-editor outline-none scrollbar" contenteditable="true"></div>
-                      <input class="d-none" type="file" id="chat-file-upload-3" />
+                      <input class="d-none" type="file" id="chat-file-upload-8" />
                       <label class="chat-file-upload cursor-pointer" for="chat-file-upload"
                         ><span class="fas fa-paperclip"></span
                       ></label>
@@ -10834,7 +10834,7 @@
 
                     <form class="chat-editor-area">
                       <div class="emojiarea-editor outline-none scrollbar" contenteditable="true"></div>
-                      <input class="d-none" type="file" id="chat-file-upload-3" />
+                      <input class="d-none" type="file" id="chat-file-upload-9" />
                       <label class="chat-file-upload cursor-pointer" for="chat-file-upload"
                         ><span class="fas fa-paperclip"></span
                       ></label>
@@ -11045,7 +11045,7 @@
 
                     <form class="chat-editor-area">
                       <div class="emojiarea-editor outline-none scrollbar" contenteditable="true"></div>
-                      <input class="d-none" type="file" id="chat-file-upload-3" />
+                      <input class="d-none" type="file" id="chat-file-upload-10" />
                       <label class="chat-file-upload cursor-pointer" for="chat-file-upload"
                         ><span class="fas fa-paperclip"></span
                       ></label>
@@ -11070,7 +11070,7 @@
         </article>
 
         <!-- Settings content -->
-        <article class="settings-article bg-body position-relative">
+        <article class="settings-article bg-body-emphasis position-relative">
           <h5 class="bg-primary">Settings</h5>
           <div class="bg-primary-subtle">
             <div class="position-absolute top-0 end-0">
@@ -12353,16 +12353,16 @@
     </script>
 
     <script>
-      document.getElementById('uploadArea').addEventListener('dragover', (event) => {
+      document.getElementById('uploadArea')?.addEventListener('dragover', (event) => {
         event.preventDefault();
         document.getElementById('uploadArea').classList.add('dragging');
       });
 
-      document.getElementById('uploadArea').addEventListener('dragleave', () => {
+      document.getElementById('uploadArea')?.addEventListener('dragleave', () => {
         document.getElementById('uploadArea').classList.remove('dragging');
       });
 
-      document.getElementById('uploadArea').addEventListener('drop', (event) => {
+      document.getElementById('uploadArea')?.addEventListener('drop', (event) => {
         event.preventDefault();
         document.getElementById('uploadArea').classList.remove('dragging');
         const file = event.dataTransfer.files[0];
@@ -12686,12 +12686,12 @@
               element.removeAttribute('inert');
               element.style.visibility = 'visible';
               element.style.opacity = '1';
-              element.style.height = '100%';
+              element.style.maxHeight = '100%';
             } else {
               element.setAttribute('inert', '');
               element.style.visibility = 'hidden';
               element.style.opacity = '0';
-              element.style.height = '0'; // so that it wont interrupt for the non overflowed articles
+              element.style.maxHeight = '0'; // so that it wont interrupt for the non overflowed articles
             }
           });
         }
@@ -12713,8 +12713,9 @@
         }
 
         handleClose() {
-          const { toggleInput, leftNavBar } = this.elements;
+          const { toggleInput, leftNavBar, pageWrapper, leftContent } = this.elements;
           this.leftNavTracker = CLASSES.NAV_ONLY;
+
           toggleInput.classList.replace(CLASSES.PANEL_CONTENT, CLASSES.NAV_ONLY);
 
           if (this.mobileMediaQuery.matches) {
@@ -12739,7 +12740,6 @@
           }
         }
 
-        // TODO: add will change try to optimize
         handleToggleClick(toggleInput) {
           const isBothOpen = toggleInput.classList.contains(CLASSES.PANEL_CONTENT);
           const isJustNavOpen = toggleInput.classList.contains(CLASSES.NAV_ONLY);
@@ -13054,6 +13054,6 @@
     <!-- for emoji popup  -->
     <script src="../vendors/emoji-mart/browser.js"></script>
 
-    <script src="../../vendors/prism/prism.js"></script>
+    <script src="../vendors/prism/prism.js"></script>
   </body>
 </html>
