@@ -5847,7 +5847,7 @@
           aria-label="inbox panel"
         >
           <header
-            class="d-flex gap-2 navbar-glass navbar-glass-shadow align-items-center ps-2 ps-md-3 pe-5 py-2"
+            class="d-flex gap-2 navbar-glass navbar-glass-shadow align-items-center ps-2 pe-5 pe-md-4 py-2"
           >
             <div>
               <div>
@@ -5864,44 +5864,273 @@
               </div>
             </div>
 
-            <div id="inbox-title" class="inbox-title-container">
-              <div>
-                <h3 id="all-heading" class="inbox-active-title me-auto mb-0">
-                  Inbox
-                </h3>
+            <div id="inbox-title" class="inbox-title-container w-100">
+              <!--              all conversation header-->
+              <div
+                id="all-heading"
+                class="inbox-active-title d-flex gap-2 align-items-center justify-content-between"
+              >
+                <h3 class="title me-auto me-sm-0 mb-0">Inbox</h3>
+
+                <!-- Hidden checkbox placed here -->
+                <input
+                  type="checkbox"
+                  class="toggle-search"
+                  id="all-search-toggle"
+                  hidden
+                />
+
+                <!-- Label tied to the checkbox. Clicking it toggles the checkbox -->
+                <label for="all-search-toggle" class="toggle-label mb-0">
+                  <span class="fas fa-search fs-8"></span>
+                </label>
+
+                <div
+                  class="w-100 w-sm-75 mx-sm-auto search-field"
+                  data-list='{"valueNames":["title"]}'
+                >
+                  <form
+                    class="search-form position-relative"
+                    data-bs-toggle="search"
+                    data-bs-display="static"
+                  >
+                    <input
+                      class="rounded-20px px-3 form-control search-input fuzzy-search"
+                      type="search"
+                      placeholder="Search Inbox..."
+                      aria-label="Search"
+                    />
+                    <!--<div
+                      class="btn-close-falcon-container position-absolute end-0 top-50 translate-middle shadow-none"
+                      data-bs-dismiss="search"
+                    >
+                      <button
+                        class="btn btn-link btn-close-falcon p-0"
+                        aria-label="Close"
+                      ></button>
+                    </div>-->
+                  </form>
+                </div>
               </div>
-              <h3 id="snoozed-heading" class="me-auto mb-0">Snoozed</h3>
-              <h3 id="email-heading" class="me-auto mb-0">Emails</h3>
-              <h3 id="chat-heading" class="me-auto mb-0">Chats</h3>
-              <h3 id="sns-heading" class="me-auto mb-0">SNS</h3>
+
+              <!--              snoozed panel header-->
+              <div
+                id="snoozed-heading"
+                class="d-flex gap-2 align-items-center justify-content-between"
+              >
+                <h3 class="title me-auto me-sm-0 mb-0">Snoozed</h3>
+
+                <!-- Hidden checkbox placed here -->
+                <input
+                  id="sn-search-Toggle"
+                  type="checkbox"
+                  class="toggle-search"
+                  hidden
+                />
+
+                <!-- Label tied to the checkbox. Clicking it toggles the checkbox -->
+                <label for="sn-search-Toggle" class="toggle-label mb-0">
+                  <span class="fas fa-search fs-8"></span>
+                </label>
+
+                <div
+                  class="w-100 mx-sm-auto w-sm-75 search-field"
+                  data-list='{"valueNames":["title"]}'
+                >
+                  <form
+                    class="search-form position-relative"
+                    data-bs-toggle="search"
+                    data-bs-display="static"
+                  >
+                    <input
+                      class="rounded-20px px-3 form-control search-input fuzzy-search"
+                      type="search"
+                      placeholder="Search Snoozed..."
+                      aria-label="Search"
+                    />
+                    <!--<div
+                      class="btn-close-falcon-container position-absolute end-0 top-50 translate-middle shadow-none"
+                      data-bs-dismiss="search"
+                    >
+                      <button
+                        class="btn btn-link btn-close-falcon p-0"
+                        aria-label="Close"
+                      ></button>
+                    </div>-->
+                  </form>
+                </div>
+
+                <!--<div
+                  class="search-box w-100 search-field"
+                  data-list='{"valueNames":["title"]}'
+                >
+                  <form
+                    class="position-relative"
+                    data-bs-toggle="search"
+                    data-bs-display="static"
+                  >
+                    <input
+                      class="px-3 form-control search-input fuzzy-search"
+                      type="search"
+                      placeholder="Search Snoozed..."
+                      aria-label="Search"
+                    />
+                  </form>
+                  <div
+                    class="btn-close-falcon-container position-absolute end-0 top-50 translate-middle shadow-none"
+                    data-bs-dismiss="search"
+                  >
+                    <button
+                      class="btn btn-link btn-close-falcon p-0"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                </div>-->
+              </div>
+
+              <div
+                id="email-heading"
+                class="d-flex gap-2 align-items-center justify-content-between"
+              >
+                <h3 class="title me-auto me-sm-0 mb-0">Emails</h3>
+
+                <!-- Hidden checkbox placed here -->
+                <input
+                  id="email-search-toggle"
+                  type="checkbox"
+                  class="toggle-search"
+                  hidden
+                />
+
+                <!-- Label tied to the checkbox. Clicking it toggles the checkbox -->
+                <label for="email-search-toggle" class="toggle-label mb-0">
+                  <span class="fas fa-search fs-8"></span>
+                </label>
+
+                <div
+                  class="w-100 w-sm-75 mx-sm-auto search-field"
+                  data-list='{"valueNames":["title"]}'
+                >
+                  <form
+                    class="search-form position-relative"
+                    data-bs-toggle="search"
+                    data-bs-display="static"
+                  >
+                    <input
+                      class="rounded-20px px-3 form-control search-input fuzzy-search"
+                      type="search"
+                      placeholder="Search Emails..."
+                      aria-label="Search"
+                    />
+                    <!--<div
+                      class="btn-close-falcon-container position-absolute end-0 top-50 translate-middle shadow-none"
+                      data-bs-dismiss="search"
+                    >
+                      <button
+                        class="btn btn-link btn-close-falcon p-0"
+                        aria-label="Close"
+                      ></button>
+                    </div>-->
+                  </form>
+                </div>
+              </div>
+
+              <!--              chat heading title-->
+              <div
+                id="chat-heading"
+                class="d-flex gap-2 align-items-center justify-content-between"
+              >
+                <h3 class="title me-auto me-sm-0 mb-0">Chats</h3>
+
+                <!-- Hidden checkbox placed here -->
+                <input
+                  id="chat-search-toggle"
+                  type="checkbox"
+                  class="toggle-search"
+                  hidden
+                />
+
+                <!-- Label tied to the checkbox. Clicking it toggles the checkbox -->
+                <label for="chat-search-toggle" class="toggle-label mb-0">
+                  <span class="fas fa-search fs-8"></span>
+                </label>
+
+                <div
+                  class="w-100 w-sm-75 mx-sm-auto search-field"
+                  data-list='{"valueNames":["title"]}'
+                >
+                  <form
+                    class="search-form position-relative"
+                    data-bs-toggle="search"
+                    data-bs-display="static"
+                  >
+                    <input
+                      class="rounded-20px px-3 form-control search-input fuzzy-search"
+                      type="search"
+                      placeholder="Search Chat..."
+                      aria-label="Search"
+                    />
+                    <!--<div
+                      class="btn-close-falcon-container position-absolute end-0 top-50 translate-middle shadow-none"
+                      data-bs-dismiss="search"
+                    >
+                      <button
+                        class="btn btn-link btn-close-falcon p-0"
+                        aria-label="Close"
+                      ></button>
+                    </div>-->
+                  </form>
+                </div>
+              </div>
+
+              <!--              sns panel header-->
+              <div
+                id="sns-heading"
+                class="d-flex gap-2 align-items-center justify-content-between"
+              >
+                <h3 class="title me-auto me-sm-0 mb-0">SNS</h3>
+
+                <!-- Hidden checkbox placed here -->
+                <input
+                  id="sns-search-toggle"
+                  type="checkbox"
+                  class="toggle-search"
+                  hidden
+                />
+
+                <!-- Label tied to the checkbox. Clicking it toggles the checkbox -->
+                <label for="sns-search-toggle" class="toggle-label mb-0">
+                  <span class="fas fa-search fs-8"></span>
+                </label>
+
+                <div
+                  class="w-100 w-sm-75 mx-sm-auto search-field"
+                  data-list='{"valueNames":["title"]}'
+                >
+                  <form
+                    class="search-form position-relative"
+                    data-bs-toggle="search"
+                    data-bs-display="static"
+                  >
+                    <input
+                      class="rounded-20px px-3 form-control search-input fuzzy-search"
+                      type="search"
+                      placeholder="Search SNS..."
+                      aria-label="Search"
+                    />
+                    <!--<div
+                      class="btn-close-falcon-container position-absolute end-0 top-50 translate-middle shadow-none"
+                      data-bs-dismiss="search"
+                    >
+                      <button
+                        class="btn btn-link btn-close-falcon p-0"
+                        aria-label="Close"
+                      ></button>
+                    </div>-->
+                  </form>
+                </div>
+              </div>
             </div>
-
-            <!-- on inbox list -->
-            <!-- <div class="d-none">
-              <span class="fas fa-search fs-8"></span>
-            </div> -->
-
-            <!-- email -->
-            <!-- <div class="ms-auto d-flex d-none gap-3">
-              <span class="far fa-star fs-8"></span>
-              <span class="far fa-trash-alt fs-8"></span>
-            </div> -->
-
-            <!-- chat messages -->
-            <!-- <div class="d-none d-flex ms-2 w-100 align-items-center">
-              <div class="avatar avatar-2xl me-3">
-                <img class="rounded-circle" src="../assets/img/team/2-thumb.png" alt="message avatar" />
-              </div>
-              <div class="d-flex flex-column align-items-center">
-                <h3 class="m-0 fs-8 text-opacity-100">John Doe</h3>
-
-                <time class="fs-11 opacity-75" datetime="2023-10-10T12:00:00Z">active 1 hour ago</time>
-              </div>
-              <div class="me-0 ms-auto d-flex gap-3 align-items-center">
-                <span class="fas fa-phone-alt fs-7 text-primary"></span>
-                <span class="fas fa-video fs-7 text-primary"></span>
-              </div>
-            </div> -->
 
             <!-- for closing the inbox menu panel -->
             <button
@@ -6029,24 +6258,51 @@
                           class="d-flex align-items-center justify-content-between"
                           aria-label="Contacts Menu"
                         >
-                          <h5
-                            class="inbox-active w-100 mb-0 text-center p-2 fs-10"
+                          <div
+                            class="w-100 search-field"
+                            data-list='{"valueNames":["title"]}'
                           >
-                            <button type="button" style="display: contents">
-                              Call History
-                            </button>
-                          </h5>
-                          <div class="vr text-400"></div>
-                          <h5 class="w-100 mb-0 text-center p-2 fs-10">
-                            <button type="button" style="display: contents">
-                              Contacts
-                            </button>
-                          </h5>
+                            <form
+                              class="search-form position-relative"
+                              data-bs-toggle="search"
+                              data-bs-display="static"
+                            >
+                              <input
+                                class="rounded-20px px-3 form-control search-input fuzzy-search"
+                                type="search"
+                                placeholder="Search Contacts..."
+                                aria-label="Search"
+                              />
+                              <!--<div
+                                class="btn-close-falcon-container position-absolute end-0 top-50 translate-middle shadow-none"
+                                data-bs-dismiss="search"
+                              >
+                                <button
+                                  class="btn btn-link btn-close-falcon p-0"
+                                  aria-label="Close"
+                                ></button>
+                              </div>-->
+                            </form>
+                          </div>
+                          <!--                          <h5-->
+                          <!--                            class="inbox-active w-100 mb-0 text-center p-2 fs-10"-->
+                          <!--                          >-->
+                          <!--                            <button type="button" style="display: contents">-->
+                          <!--                              Call History-->
+                          <!--                            </button>-->
+                          <!--                          </h5>-->
+                          <!--                          <div class="vr text-400"></div>-->
+                          <!--                          <h5 class="w-100 mb-0 text-center p-2 fs-10">-->
+                          <!--                            <button type="button" style="display: contents">-->
+                          <!--                              Contacts-->
+                          <!--                            </button>-->
+                          <!--                          </h5>-->
                         </nav>
 
                         <div class="overflow-y-auto">
                           <div aria-label="Call history Content">
-                            <ul class="list-unstyled d-flex flex-column gap-4">
+                            Place holder for contacts
+                            <!--<ul class="list-unstyled d-flex flex-column gap-4">
                               <li
                                 class="w-100 d-flex align-items-center gap-2 fs-8"
                               >
@@ -6171,7 +6427,7 @@
                                   class="ms-auto fas fa-phone-alt fs-8"
                                 ></span>
                               </li>
-                            </ul>
+                            </ul>-->
                           </div>
 
                           <div aria-label="Contacts"></div>
@@ -6355,7 +6611,30 @@
                         </div>
                         <div class="flex-1 chat-contact-body ms-2">
                           <div class="d-flex justify-content-between mb-1">
-                            <h6 class="mb-0 chat-contact-title">Avengers</h6>
+                            <div class="d-flex gap-2 align-items-center">
+                              <h6 class="mb-0 chat-contact-title">Avengers</h6>
+                              <div class="vr text-400"></div>
+                              <div
+                                class="chat-group-mem text-truncate d-flex gap-1 justify-content-between align-items-center"
+                              >
+                                <!--                                  last three active members-->
+                                <p
+                                  class="message-time fs-11 text-secondary-emphasis"
+                                >
+                                  Antony
+                                </p>
+                                <p
+                                  class="message-time fs-11 text-secondary-emphasis"
+                                >
+                                  Bucky
+                                </p>
+                                <p
+                                  class="message-time fs-11 text-secondary-emphasis"
+                                >
+                                  John
+                                </p>
+                              </div>
+                            </div>
                             <span class="message-time fs-11">Fri</span>
                           </div>
                           <div
@@ -8219,7 +8498,7 @@
                 id="chat-nav"
                 class="chat-sidebar chat-sidebar-overrides w-100 position-relative"
               >
-                <div class="contacts-list scrollbar-overlay">
+                <div class="h-100 contacts-list scrollbar-overlay">
                   <div
                     id="chat-content-container"
                     class="nav nav-tabs border-0 flex-column"
@@ -8371,10 +8650,36 @@
                               </div>
                             </div>
                           </div>
+
                           <div class="flex-1 chat-contact-body ms-2">
-                            <div class="d-flex justify-content-between">
-                              <h6 class="mb-0 chat-contact-title">Avengers</h6>
-                              <span class="message-time fs-11">Sun</span>
+                            <div class="d-flex justify-content-between gap-4">
+                              <div class="d-flex gap-2 align-items-center">
+                                <h6 class="mb-0 chat-contact-title">
+                                  Avengers
+                                </h6>
+                                <div class="vr text-400"></div>
+                                <div
+                                  class="chat-group-mem text-truncate d-flex gap-1 justify-content-between align-items-center"
+                                >
+                                  <!--                                  last three active members-->
+                                  <p
+                                    class="message-time fs-11 text-secondary-emphasis"
+                                  >
+                                    Antony
+                                  </p>
+                                  <p
+                                    class="message-time fs-11 text-secondary-emphasis"
+                                  >
+                                    Bucky
+                                  </p>
+                                  <p
+                                    class="message-time fs-11 text-secondary-emphasis"
+                                  >
+                                    John
+                                  </p>
+                                </div>
+                              </div>
+                              <div class="message-time fs-11">Sun</div>
                             </div>
                             <div class="min-w-0">
                               <div class="chat-contact-content pe-3">
@@ -9101,23 +9406,130 @@
                         </a>
                       </div>
                     </div>
+
+                    <div
+                      class="hover-actions-trigger chat-contact nav-item"
+                      role="tab"
+                      id="chat-link-1"
+                      data-bs-toggle="tab"
+                      data-bs-target="#chat-1"
+                      aria-controls="chat-1"
+                      aria-selected="false"
+                    >
+                      <div class="">
+                        <div
+                          class="dropdown dropdown-active-trigger dropdown-chat"
+                        >
+                          <button
+                            class="non-hover-show-button hover-actions btn btn-link btn-sm text-400 dropdown-caret-none dropdown-toggle end-0 fs-9 mt-4 me-1 z-1 pb-2 mb-n2"
+                            type="button"
+                            data-boundary="viewport"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            <span
+                              class="fas fa-cog"
+                              data-fa-transform="shrink-3 down-4"
+                            ></span>
+                          </button>
+                          <div
+                            class="dropdown-menu dropdown-menu-end border py-2 rounded-2"
+                          >
+                            <a class="dropdown-item" href="#!">Mute</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Archive</a
+                            ><a class="dropdown-item text-danger" href="#!"
+                              >Delete</a
+                            >
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Mark as Unread</a
+                            ><a class="dropdown-item" href="#!"
+                              >Something's Wrong</a
+                            ><a class="dropdown-item" href="#!"
+                              >Ignore Messsages</a
+                            ><a class="dropdown-item" href="#!"
+                              >Block Messages</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-flex p-3">
+                        <a href="inbox/chat/1" class="d-contents">
+                          <div class="avatar avatar-xl">
+                            <div
+                              class="rounded-circle overflow-hidden h-100 d-flex"
+                            >
+                              <div class="w-50 border-end">
+                                <img src="../assets/img/team/1.jpg" alt="" />
+                              </div>
+                              <div class="w-50 d-flex flex-column">
+                                <img
+                                  class="h-50 border-bottom"
+                                  src="../assets/img/team/2.jpg"
+                                  alt=""
+                                /><img
+                                  class="h-50"
+                                  src="../assets/img/team/3.jpg"
+                                  alt=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="flex-1 chat-contact-body ms-2">
+                            <div class="d-flex justify-content-between gap-4">
+                              <div class="d-flex gap-2 align-items-center">
+                                <!-- simulation for no Group name -->
+                                <h6 class="d-none mb-0 chat-contact-title">
+                                  Avengers
+                                </h6>
+                                <div class="d-none vr text-400"></div>
+                                <!-- add the class "chat-no-group-name" to override the defaults-->
+                                <div
+                                  class="chat-no-group-name chat-group-mem text-truncate d-flex gap-1 justify-content-between align-items-center"
+                                >
+                                  <!--last three active members-->
+                                  <p
+                                    class="message-time fs-11 text-secondary-emphasis"
+                                  >
+                                    Antony
+                                  </p>
+                                  <p
+                                    class="message-time fs-11 text-secondary-emphasis"
+                                  >
+                                    Bucky
+                                  </p>
+                                  <p
+                                    class="message-time fs-11 text-secondary-emphasis"
+                                  >
+                                    John
+                                  </p>
+                                </div>
+                              </div>
+                              <div class="message-time fs-11">Sun</div>
+                            </div>
+                            <div class="min-w-0">
+                              <div class="chat-contact-content pe-3">
+                                Bucky:
+                                <a href="#!" class="text-primary">@Emma</a> What
+                                do you think about the plan?
+                              </div>
+                              <div
+                                class="position-absolute bottom-0 end-0 hover-hide"
+                              >
+                                <span
+                                  class="fas fa-check text-success"
+                                  data-fa-transform="shrink-5 down-4"
+                                ></span>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <form class="contacts-search-wrapper">
-                  <div class="form-group mb-0 position-relative w-100 h-100">
-                    <input
-                      class="fuzzy-search form-control form-control-sm chat-contacts-search border-0 h-100"
-                      type="text"
-                      aria-label="Search"
-                      placeholder="Search chats ..."
-                    /><span class="fas fa-search contacts-search-icon"></span>
-                  </div>
-                  <button
-                    class="btn btn-sm btn-transparent d-none d-md-inline-block d-lg-none"
-                  >
-                    <span class="fas fa-search fs-10"></span>
-                  </button>
-                </form>
               </div>
 
               <article id="chat-panel" class="chat-container">
