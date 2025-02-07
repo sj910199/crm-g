@@ -3545,7 +3545,7 @@
         </ul>
       </nav>
 
-      <aside id="left-content" class="scrollbar d-grid left-sidebar-container">
+      <aside id="left-content" style="overflow: clip !important;" class="  scrollbar d-grid left-sidebar-container ">
         <article
           class="position-relative customize-article p-0 settings-panel border-0"
           id="settings-offcanvas"
@@ -4093,7 +4093,7 @@
             <!-- the inbox overview - all conversation panel  -->
             <section id="all-inbox" class="active-inbox-panel panel-show-nav py-0 overflow-y-auto">
               <nav aria-label="messages inbox">
-                <ul class="inbox-list list-unstyled scrollbar overflow-y-scroll p-2">
+                <ul class="inbox-list list-unstyled scrollbar overflow-y-scroll overflow-x-hidden p-2">
                   <li>
                     <a style="display: contents" class="" href="#chat-message">
                       <div class="d-flex p-3">
@@ -4103,12 +4103,13 @@
                         <div class="flex-1 chat-contact-body ms-2 d-lg-block">
                           <div class="d-flex mb-1 justify-content-between">
                             <h6 class="mb-0 chat-contact-title fs-9 bold">Emma Watson</h6>
-                            <span class="message-time fs-11">Sun</span>
+                            <span class="message-time fs-11">10:30am</span>
                           </div>
-                          <div class="min-w-0">
+                          <div class="min-w-0 text-truncate d-grid col-1fr-auto align-items-center">
                             <div class="chat-contact-content pe-3">About The Project</div>
-                            <div class="position-absolute bottom-0 end-0 hover-hide">
-                              <p class="inbox-type-email inbox-tag text-black-50">Email</p>
+                            <div >
+                              <span class="far fa-envelope fs-8 inbox-type-email"></span>
+
                             </div>
                           </div>
                         </div>
@@ -4123,14 +4124,14 @@
                           <img class="rounded-circle" src="../assets/img/team/2.jpg" alt="" />
                         </div>
                         <div class="flex-1 chat-contact-body ms-2">
-                          <div class="d-flex justify-content-between">
+                          <div class="d-flex justify-content-between mb-1 ">
                             <h6 class="mb-0 chat-contact-title">Antony Hopkins</h6>
-                            <span class="message-time fs-11">Tue</span>
+                            <span class="message-time fs-11">Yesterday</span>
                           </div>
-                          <div class="min-w-0">
+                          <div class="min-w-0 text-truncate d-grid col-1fr-auto align-items-center">
                             <div class="chat-contact-content pe-3">Antony sent 6 photos</div>
-                            <div class="position-absolute bottom-0 end-0 hover-hide">
-                              <p class="inbox-type-chat inbox-tag text-secondary text-black-50">Chat</p>
+                            <div >
+                              <span class="inbox-type-chat far fa-comment fs-8"></span>
                             </div>
                           </div>
                         </div>
@@ -4147,12 +4148,12 @@
                         <div class="flex-1 chat-contact-body ms-2 d-lg-block">
                           <div class="d-flex justify-content-between mb-1">
                             <h6 class="mb-0 chat-contact-title bold fs-9">John Smith</h6>
-                            <span class="message-time fs-11">Sat</span>
+                            <span class="message-time fs-11">Sun</span>
                           </div>
-                          <div class="min-w-0">
+                          <div class="min-w-0 text-truncate d-grid col-1fr-auto align-items-center">
                             <div class="chat-contact-content pe-3">Hello There</div>
-                            <div class="position-absolute bottom-0 end-0 hover-hide">
-                              <p class="inbox-type-sns inbox-tag text-secondary text-black-50">SNS</p>
+                            <div >
+                                <span class="inbox-type-sns far fa-comments fs-8"></span>
                             </div>
                           </div>
                         </div>
@@ -4169,12 +4170,13 @@
                         <div class="flex-1 chat-contact-body ms-2 d-lg-block">
                           <div class="d-flex mb-1 justify-content-between">
                             <h6 class="mb-0 chat-contact-title fs-9 bold">Emma Watson</h6>
-                            <span class="message-time fs-11">Sun</span>
+                            <span class="message-time fs-11">Sat</span>
                           </div>
-                          <div class="min-w-0">
+                          <div class="min-w-0 text-truncate d-grid col-1fr-auto align-items-center">
                             <div class="chat-contact-content pe-3">About The Project</div>
-                            <div class="position-absolute bottom-0 end-0 hover-hide">
-                              <p class="inbox-type-email inbox-tag text-black-50">Email</p>
+                            <div >
+                              <span class="far fa-envelope fs-8 inbox-type-email"></span>
+
                             </div>
                           </div>
                         </div>
@@ -4198,19 +4200,19 @@
                           </div>
                         </div>
                         <div class="flex-1 chat-contact-body ms-2">
-                          <div class="d-flex justify-content-between">
+                          <div class="d-flex justify-content-between mb-1">
                             <h6 class="mb-0 chat-contact-title">Avengers</h6>
-                            <span class="message-time fs-11">Sun</span>
+                            <span class="message-time fs-11">Fri</span>
                           </div>
-                          <div class="min-w-0 text-truncate">
-                            <!-- TODO: fix this -->
-                            <div class="chat-contact-content d-none pe-3 text-truncate">
+                          <div class="min-w-0 text-truncate d-grid col-1fr-auto align-items-center">
+                            <div class="chat-contact-content pe-3 text-truncate" >
                               Bucky: <a href="#!" class="text-primary text-truncate">@Emma</a> What do you think about
                               the plan?
                             </div>
-                            <div class="position-absolute bottom-0 end-0 hover-hide">
-                              <p class="inbox-type-chat inbox-tag text-secondary text-black-50">Chat</p>
+                            <div>
+                              <span class="inbox-type-chat far fa-comment fs-8 "></span>
                             </div>
+
                           </div>
                         </div>
                       </div>
@@ -4226,12 +4228,13 @@
                         <div class="flex-1 chat-contact-body ms-2 d-lg-block">
                           <div class="d-flex justify-content-between mb-1">
                             <h6 class="mb-0 chat-contact-title bold fs-9">John Smith</h6>
-                            <span class="message-time fs-11">Sat</span>
+                            <span class="message-time fs-11">Thu</span>
                           </div>
-                          <div class="min-w-0">
+                          <div class="min-w-0 text-truncate d-grid col-1fr-auto align-items-center">
                             <div class="chat-contact-content pe-3">Hello There</div>
-                            <div class="position-absolute bottom-0 end-0 hover-hide">
-                              <p class="inbox-type-sns inbox-tag text-secondary text-black-50">SNS</p>
+                            <div >
+                              <span class="inbox-type-sns far fa-comments fs-8"></span>
+
                             </div>
                           </div>
                         </div>
@@ -4248,12 +4251,13 @@
                         <div class="flex-1 chat-contact-body ms-2 d-lg-block">
                           <div class="d-flex mb-1 justify-content-between">
                             <h6 class="mb-0 chat-contact-title fs-9 bold">Emma Watson</h6>
-                            <span class="message-time fs-11">Sun</span>
+                            <span class="message-time fs-11">Wed</span>
                           </div>
-                          <div class="min-w-0">
+                          <div class="min-w-0 text-truncate d-grid col-1fr-auto align-items-center">
                             <div class="chat-contact-content pe-3">About The Project</div>
-                            <div class="position-absolute bottom-0 end-0 hover-hide">
-                              <p class="inbox-type-email inbox-tag text-black-50">Email</p>
+                            <div >
+                              <span class="far fa-envelope fs-8 inbox-type-email"></span>
+
                             </div>
                           </div>
                         </div>
@@ -4270,12 +4274,14 @@
                         <div class="flex-1 chat-contact-body ms-2">
                           <div class="d-flex justify-content-between">
                             <h6 class="mb-0 chat-contact-title">Emma Watson</h6>
-                            <span class="message-time fs-11">Sun</span>
+                            <span class="message-time fs-11">Tue</span>
                           </div>
-                          <div class="min-w-0">
+                          <div class="min-w-0 text-truncate d-grid col-1fr-auto align-items-center">
                             <div class="chat-contact-content pe-3">You: 🙂</div>
-                            <div class="position-absolute bottom-0 end-0 hover-hide">
-                              <p class="inbox-type-chat inbox-tag text-secondary text-black-50">Chat</p>
+                            <div >
+                              <span class="inbox-type-chat far fa-comment fs-8"></span>
+
+
                             </div>
                           </div>
                         </div>
@@ -4292,12 +4298,13 @@
                         <div class="flex-1 chat-contact-body ms-2 d-lg-block">
                           <div class="d-flex justify-content-between mb-1">
                             <h6 class="mb-0 chat-contact-title bold fs-9">John Smith</h6>
-                            <span class="message-time fs-11">Sat</span>
+                            <span class="message-time fs-11">Jan 10</span>
                           </div>
-                          <div class="min-w-0">
+                          <div class="min-w-0 text-truncate d-grid col-1fr-auto align-items-center">
                             <div class="chat-contact-content pe-3">Hello There</div>
-                            <div class="position-absolute bottom-0 end-0 hover-hide">
-                              <p class="inbox-type-sns inbox-tag text-secondary text-black-50">SNS</p>
+                            <div >
+                              <span class="inbox-type-sns far fa-comments fs-8"></span>
+
                             </div>
                           </div>
                         </div>
@@ -4314,12 +4321,13 @@
                         <div class="flex-1 chat-contact-body ms-2 d-lg-block">
                           <div class="d-flex mb-1 justify-content-between">
                             <h6 class="mb-0 chat-contact-title fs-9 bold">Emma Watson</h6>
-                            <span class="message-time fs-11">Sun</span>
+                            <span class="message-time fs-11">Jan 9</span>
                           </div>
-                          <div class="min-w-0">
+                          <div class="min-w-0 text-truncate d-grid col-1fr-auto align-items-center">
                             <div class="chat-contact-content pe-3">About The Project</div>
-                            <div class="position-absolute bottom-0 end-0 hover-hide">
-                              <p class="inbox-type-email inbox-tag text-black-50">Email</p>
+                            <div >
+                              <span class="far fa-envelope fs-8 inbox-type-email"></span>
+
                             </div>
                           </div>
                         </div>
@@ -4336,12 +4344,13 @@
                         <div class="flex-1 chat-contact-body ms-2 d-lg-block">
                           <div class="d-flex justify-content-between mb-1">
                             <h6 class="mb-0 chat-contact-title fs-9 bold">Anna Karinina</h6>
-                            <span class="message-time fs-11">Sat</span>
+                            <span class="message-time fs-11">Jan 5</span>
                           </div>
-                          <div class="min-w-0">
+                          <div class="min-w-0 text-truncate d-grid col-1fr-auto align-items-center">
                             <div class="chat-contact-content pe-3">What are you doing?</div>
-                            <div class="position-absolute bottom-0 end-0 hover-hide">
-                              <p class="inbox-type-chat inbox-tag text-secondary text-black-50">Chat</p>
+                            <div >
+                              <span class="inbox-type-chat far fa-comment fs-8"></span>
+
                             </div>
                           </div>
                         </div>
@@ -4358,12 +4367,13 @@
                         <div class="flex-1 chat-contact-body ms-2 d-lg-block">
                           <div class="d-flex justify-content-between mb-1">
                             <h6 class="mb-0 chat-contact-title bold fs-9">John Smith</h6>
-                            <span class="message-time fs-11">Sat</span>
+                            <span class="message-time fs-11">Jan 5</span>
                           </div>
-                          <div class="min-w-0">
+                          <div class="min-w-0 text-truncate d-grid col-1fr-auto align-items-center">
                             <div class="chat-contact-content pe-3">Hello There</div>
-                            <div class="position-absolute bottom-0 end-0 hover-hide">
-                              <p class="inbox-type-sns inbox-tag text-secondary text-black-50">SNS</p>
+                            <div >
+                              <span class="inbox-type-sns far fa-comments fs-8"></span>
+
                             </div>
                           </div>
                         </div>

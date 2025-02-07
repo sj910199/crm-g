@@ -70,6 +70,14 @@
   height: 100dvh !important;
 }
 
+.col-1fr-auto {
+  grid-template-columns: 1fr auto !important;
+}
+
+.row-1fr{
+  grid-template-rows: 1fr !important;
+}
+
 /*-----------------------------------------------
 |   Page Wrapper, left vertical Navbar, and triggers
 -----------------------------------------------*/
@@ -2207,15 +2215,19 @@ which content to show on each sub panel
 
 .inbox-type-email {
   /* background-color: #e6f2ff; */
-  background-color: var(--falcon-btn-falcon-info-color);
+  /*background-color: var(--falcon-btn-falcon-info-color);*/
+  color: var(--falcon-btn-falcon-info-color);
 }
 
 .inbox-type-chat {
   /* background-color: #e6ffe6; */
-  background-color: var(--falcon-success);
+  /*background-color: var(--falcon-success);*/
+  color: var(--falcon-success);
 }
 .inbox-type-sns {
-  background-color: #fff2e6;
+  /*background-color: #fff2e6;*/
+  /*color: #fff2e6;*/
+  color: var(--falcon-warning);
 }
 
 .fa-long-arrow-alt-up.rotated,
