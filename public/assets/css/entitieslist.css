@@ -113,7 +113,7 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     display: grid;
     height: 100dvh;
     grid-template-columns: 1fr 0;
-    transition: grid-template-columns 0.2s ease-in-out;
+    /*transition: grid-template-columns 0.2s ease-in-out;*/
   }
 
   .page-wrapper > .main {
@@ -395,12 +395,6 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     max-width: 100% !important;
   }
 
-  /*.navbar-toggle.panel-content*/
-  /*  ~ .page-wrapper.panel-fullscreen*/
-  /*  > .left-nav-bar {*/
-  /*  max-width: 0 !important;*/
-  /*  overflow: hidden !important;*/
-  /*}*/
   /* logic for side panel fullscreen ends here*/
 
   .page-wrapper {
@@ -424,10 +418,6 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     max-height: 100%;
     width: 100%;
     height: 100%;
-    transition:
-      transform 0.2s ease-in-out,
-      opacity 0.2s ease-in-out,
-      visibility 0.2s ease-in-out;
   }
 
   .left-sidebar-container > * {
@@ -2368,7 +2358,6 @@ which content to show on each sub panel
 
 /* for fullscreen toggle*/
 .toggle-fullscreen {
-  order: 4;
   display: grid;
 }
 
@@ -2616,30 +2605,14 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
 
 /* side panel media queries */
 @container side-panel (min-width: 992px) {
-  /*FIX: remove this later*/
-  /*.left-sidebar-container .customize-article {*/
-  /*  z-index: 0 !important;*/
-  /*  visibility: hidden; !important;*/
-  /*  opacity: 0!important;*/
-  /*}*/
-
-  /*.left-sidebar-container .inbox-article {*/
-  /*  z-index: 5 !important;*/
-  /*  visibility: visible; !important;*/
-  /*  opacity: 1!important;*/
-  /*}*/
-
-  /*.left-sidebar-container .inbox-article header {*/
-  /*  visibility: visible; !important;*/
-  /*  opacity: 1!important;*/
-
-  /*}*/
-  /* until here */
-
   /*override for chat*/
   .inbox-article .chat-inbox-panel.panel-show-nav,
   .inbox-article .chat-inbox-panel.panel-show-content {
     grid-template-columns: auto 1fr;
     gap: 0.5rem;
+  }
+
+  .chat-sidebar-overrides {
+    max-width: 17.5rem !important;
   }
 }

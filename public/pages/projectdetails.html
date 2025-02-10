@@ -6080,7 +6080,7 @@
             <button
               id="fullscreen-btn"
               type="button"
-              class="btn toggle-fullscreen"
+              class="d-none d-lg-grid btn toggle-fullscreen"
             >
               <span class="fas fa-expand fs-8"></span>
               <span class="fas fa-compress fs-8"></span>
@@ -19063,6 +19063,55 @@
           });
         }
 
+        /**
+         * Animate a grid layout change using FLIP with requestAnimationFrame.
+         * @param {Function} layoutChange - A callback that applies the layout change.
+         */
+        animateGridChange(layoutChange) {
+          const container = this.elements.pageWrapper;
+          if (!container) return;
+          const items = Array.from(container.children);
+
+          // 1. First: Capture initial positions.
+          const firstRects = items.map((item) => item.getBoundingClientRect());
+
+          // Use RAF to apply the layout change.
+          requestAnimationFrame(() => {
+            layoutChange();
+            // Force a reflow so the new layout is applied.
+            container.offsetHeight;
+
+            // 2. Last: Capture final positions.
+            const lastRects = items.map((item) => item.getBoundingClientRect());
+
+            // 3. Invert and Play: For each item, compute delta and animate transform back to zero.
+            items.forEach((item, index) => {
+              const first = firstRects[index];
+              const last = lastRects[index];
+              const deltaX = first.left - last.left;
+              const deltaY = first.top - last.top;
+
+              // Set the inverse transform.
+              item.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+
+              // Force reflow so the browser registers the transform.
+              item.offsetHeight;
+
+              // Apply transition and remove the transform to animate back.
+              item.style.transition = "transform 0.2s linear";
+              item.style.transform = "";
+
+              // Cleanup after the transition ends.
+              item.addEventListener("transitionend", function handler(e) {
+                if (e.propertyName === "transform") {
+                  item.style.transition = "";
+                  item.removeEventListener("transitionend", handler);
+                }
+              });
+            });
+          });
+        }
+
         handleArticleSwitch(articleKey) {
           // throttling: to have uninterrupted transitioning
           if (this.isTransitioning) return;
@@ -19111,17 +19160,19 @@
             CLASSES.PANEL_CONTENT,
           );
 
-          if (!isBothOpen) {
-            this.leftNavTracker = CLASSES.PANEL_CONTENT;
-            toggleInput.classList.replace(
-              CLASSES.NAV_ONLY,
-              CLASSES.PANEL_CONTENT,
-            );
+          this.animateGridChange(() => {
+            if (!isBothOpen) {
+              this.leftNavTracker = CLASSES.PANEL_CONTENT;
+              toggleInput.classList.replace(
+                CLASSES.NAV_ONLY,
+                CLASSES.PANEL_CONTENT,
+              );
 
-            if (this.mobileMediaQuery.matches) {
-              leftNavBar.classList.add(CLASSES.NAV_COLLAPSE);
+              if (this.mobileMediaQuery.matches) {
+                leftNavBar.classList.add(CLASSES.NAV_COLLAPSE);
+              }
             }
-          }
+          });
 
           this.handleArticleSwitch(button.ariaLabel);
         }
@@ -19131,16 +19182,32 @@
             this.elements;
           this.leftNavTracker = CLASSES.NAV_ONLY;
 
-          toggleInput.classList.replace(
-            CLASSES.PANEL_CONTENT,
-            CLASSES.NAV_ONLY,
-          );
+          this.animateGridChange(() => {
+            toggleInput.classList.replace(
+              CLASSES.PANEL_CONTENT,
+              CLASSES.NAV_ONLY,
+            );
 
-          if (this.mobileMediaQuery.matches) {
-            toggleInput.classList.remove(CLASSES.NAV_ONLY);
-            leftNavBar.classList.toggle(CLASSES.NAV_COLLAPSE);
-            leftNavBar.classList.remove(CLASSES.HIDE_LEFT_NAV_BAR);
-          }
+            if (
+              this.elements.fullScreenBtn.classList.contains(
+                CLASSES.FULLSCREEN_TOGGLED,
+              )
+            ) {
+              // remove the fullscreen when sidepanel is close and untoggle the button
+              this.elements.fullScreenBtn.classList.toggle(
+                CLASSES.FULLSCREEN_TOGGLED,
+              );
+              this.elements.pageWrapper.classList.remove(
+                CLASSES.PANEL_FULLSCREEN,
+              );
+            }
+
+            if (this.mobileMediaQuery.matches) {
+              toggleInput.classList.remove(CLASSES.NAV_ONLY);
+              leftNavBar.classList.toggle(CLASSES.NAV_COLLAPSE);
+              leftNavBar.classList.remove(CLASSES.HIDE_LEFT_NAV_BAR);
+            }
+          });
         }
 
         /** handles the side panel fullscreen
@@ -19149,13 +19216,15 @@
         handleFullScreen(buttonElement) {
           buttonElement.classList.toggle(CLASSES.FULLSCREEN_TOGGLED);
 
-          if (buttonElement.classList.contains(CLASSES.FULLSCREEN_TOGGLED)) {
-            this.elements.pageWrapper.classList.add(CLASSES.PANEL_FULLSCREEN);
-          } else {
-            this.elements.pageWrapper.classList.remove(
-              CLASSES.PANEL_FULLSCREEN,
-            );
-          }
+          this.animateGridChange(() => {
+            if (buttonElement.classList.contains(CLASSES.FULLSCREEN_TOGGLED)) {
+              this.elements.pageWrapper.classList.add(CLASSES.PANEL_FULLSCREEN);
+            } else {
+              this.elements.pageWrapper.classList.remove(
+                CLASSES.PANEL_FULLSCREEN,
+              );
+            }
+          });
         }
 
         handleClick(event) {
@@ -19186,19 +19255,21 @@
             CLASSES.NAV_ONLY,
           );
 
-          if (
-            this.elements.leftNavBar &&
-            isBothOpen &&
-            this.mobileMediaQuery.matches
-          ) {
-            this.leftNavTracker = CLASSES.PANEL_CONTENT;
-            toggleInput.classList.toggle(this.leftNavTracker);
-            this.elements.leftNavBar.classList.toggle(CLASSES.NAV_COLLAPSE);
-          }
+          this.animateGridChange(() => {
+            if (
+              this.elements.leftNavBar &&
+              isBothOpen &&
+              this.mobileMediaQuery.matches
+            ) {
+              this.leftNavTracker = CLASSES.PANEL_CONTENT;
+              toggleInput.classList.toggle(this.leftNavTracker);
+              this.elements.leftNavBar.classList.toggle(CLASSES.NAV_COLLAPSE);
+            }
 
-          if (!isJustNavOpen || !isBothOpen) {
-            toggleInput.classList.toggle(this.leftNavTracker);
-          }
+            if (!isJustNavOpen || !isBothOpen) {
+              toggleInput.classList.toggle(this.leftNavTracker);
+            }
+          });
         }
 
         handleTouchStart(event) {
