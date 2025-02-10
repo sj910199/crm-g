@@ -5871,8 +5871,6 @@
                 id="all-heading"
                 class="inbox-active-title d-flex gap-2 align-items-center justify-content-between"
               >
-                <h3 class="title me-auto me-sm-0 mb-0">Inbox</h3>
-
                 <!-- Hidden checkbox placed here -->
                 <input
                   type="checkbox"
@@ -5881,8 +5879,13 @@
                   hidden
                 />
 
+                <a href="inbox/all" class="title">
+                  <span class="btn p-0 far fa-list-alt fs-8"></span>
+                  <h3 class="me-auto me-sm-0 mb-0">Inbox</h3>
+                </a>
+
                 <!-- Label tied to the checkbox. Clicking it toggles the checkbox -->
-                <label for="all-search-toggle" class="toggle-label mb-0">
+                <label for="all-search-toggle" class="btn toggle-label mb-0">
                   <span class="fas fa-search fs-8"></span>
                 </label>
 
@@ -5901,15 +5904,6 @@
                       placeholder="Search Inbox..."
                       aria-label="Search"
                     />
-                    <!--<div
-                      class="btn-close-falcon-container position-absolute end-0 top-50 translate-middle shadow-none"
-                      data-bs-dismiss="search"
-                    >
-                      <button
-                        class="btn btn-link btn-close-falcon p-0"
-                        aria-label="Close"
-                      ></button>
-                    </div>-->
                   </form>
                 </div>
               </div>
@@ -5919,8 +5913,6 @@
                 id="snoozed-heading"
                 class="d-flex gap-2 align-items-center justify-content-between"
               >
-                <h3 class="title me-auto me-sm-0 mb-0">Snoozed</h3>
-
                 <!-- Hidden checkbox placed here -->
                 <input
                   id="sn-search-Toggle"
@@ -5929,8 +5921,13 @@
                   hidden
                 />
 
+                <a href="inbox/snoozed" class="title">
+                  <span class="btn p-0 fas fa-clock fs-8"></span>
+                  <h3 class="me-auto me-sm-0 mb-0">Snoozed</h3>
+                </a>
+
                 <!-- Label tied to the checkbox. Clicking it toggles the checkbox -->
-                <label for="sn-search-Toggle" class="toggle-label mb-0">
+                <label for="sn-search-Toggle" class="btn toggle-label mb-0">
                   <span class="fas fa-search fs-8"></span>
                 </label>
 
@@ -5949,52 +5946,14 @@
                       placeholder="Search Snoozed..."
                       aria-label="Search"
                     />
-                    <!--<div
-                      class="btn-close-falcon-container position-absolute end-0 top-50 translate-middle shadow-none"
-                      data-bs-dismiss="search"
-                    >
-                      <button
-                        class="btn btn-link btn-close-falcon p-0"
-                        aria-label="Close"
-                      ></button>
-                    </div>-->
                   </form>
                 </div>
-
-                <!--<div
-                  class="search-box w-100 search-field"
-                  data-list='{"valueNames":["title"]}'
-                >
-                  <form
-                    class="position-relative"
-                    data-bs-toggle="search"
-                    data-bs-display="static"
-                  >
-                    <input
-                      class="px-3 form-control search-input fuzzy-search"
-                      type="search"
-                      placeholder="Search Snoozed..."
-                      aria-label="Search"
-                    />
-                  </form>
-                  <div
-                    class="btn-close-falcon-container position-absolute end-0 top-50 translate-middle shadow-none"
-                    data-bs-dismiss="search"
-                  >
-                    <button
-                      class="btn btn-link btn-close-falcon p-0"
-                      aria-label="Close"
-                    ></button>
-                  </div>
-                </div>-->
               </div>
 
               <div
                 id="email-heading"
                 class="d-flex gap-2 align-items-center justify-content-between"
               >
-                <h3 class="title me-auto me-sm-0 mb-0">Emails</h3>
-
                 <!-- Hidden checkbox placed here -->
                 <input
                   id="email-search-toggle"
@@ -6003,8 +5962,13 @@
                   hidden
                 />
 
+                <a href="inbox/email" class="title">
+                  <span class="btn p-0 far fa-envelope fs-8"></span>
+                  <h3 class="me-auto me-sm-0 mb-0">Emails</h3>
+                </a>
+
                 <!-- Label tied to the checkbox. Clicking it toggles the checkbox -->
-                <label for="email-search-toggle" class="toggle-label mb-0">
+                <label for="email-search-toggle" class="btn toggle-label mb-0">
                   <span class="fas fa-search fs-8"></span>
                 </label>
 
@@ -6023,15 +5987,6 @@
                       placeholder="Search Emails..."
                       aria-label="Search"
                     />
-                    <!--<div
-                      class="btn-close-falcon-container position-absolute end-0 top-50 translate-middle shadow-none"
-                      data-bs-dismiss="search"
-                    >
-                      <button
-                        class="btn btn-link btn-close-falcon p-0"
-                        aria-label="Close"
-                      ></button>
-                    </div>-->
                   </form>
                 </div>
               </div>
@@ -6041,8 +5996,6 @@
                 id="chat-heading"
                 class="d-flex gap-2 align-items-center justify-content-between"
               >
-                <h3 class="title me-auto me-sm-0 mb-0">Chats</h3>
-
                 <!-- Hidden checkbox placed here -->
                 <input
                   id="chat-search-toggle"
@@ -6051,8 +6004,13 @@
                   hidden
                 />
 
+                <a href="inbox/chat" class="title">
+                  <span class="btn p-0 far fa-comment fs-8"></span>
+                  <h3 class="me-auto me-sm-0 mb-0">Chats</h3>
+                </a>
+
                 <!-- Label tied to the checkbox. Clicking it toggles the checkbox -->
-                <label for="chat-search-toggle" class="toggle-label mb-0">
+                <label for="chat-search-toggle" class="btn toggle-label mb-0">
                   <span class="fas fa-search fs-8"></span>
                 </label>
 
@@ -6071,15 +6029,6 @@
                       placeholder="Search Chat..."
                       aria-label="Search"
                     />
-                    <!--<div
-                      class="btn-close-falcon-container position-absolute end-0 top-50 translate-middle shadow-none"
-                      data-bs-dismiss="search"
-                    >
-                      <button
-                        class="btn btn-link btn-close-falcon p-0"
-                        aria-label="Close"
-                      ></button>
-                    </div>-->
                   </form>
                 </div>
               </div>
@@ -6089,8 +6038,6 @@
                 id="sns-heading"
                 class="d-flex gap-2 align-items-center justify-content-between"
               >
-                <h3 class="title me-auto me-sm-0 mb-0">SNS</h3>
-
                 <!-- Hidden checkbox placed here -->
                 <input
                   id="sns-search-toggle"
@@ -6099,8 +6046,13 @@
                   hidden
                 />
 
+                <a href="inbox/sns" class="title">
+                  <span class="btn p-0 far fa-comments fs-8"></span>
+                  <h3 class="me-auto me-sm-0 mb-0">SNS</h3>
+                </a>
+
                 <!-- Label tied to the checkbox. Clicking it toggles the checkbox -->
-                <label for="sns-search-toggle" class="toggle-label mb-0">
+                <label for="sns-search-toggle" class="btn toggle-label mb-0">
                   <span class="fas fa-search fs-8"></span>
                 </label>
 
@@ -6119,19 +6071,20 @@
                       placeholder="Search SNS..."
                       aria-label="Search"
                     />
-                    <!--<div
-                      class="btn-close-falcon-container position-absolute end-0 top-50 translate-middle shadow-none"
-                      data-bs-dismiss="search"
-                    >
-                      <button
-                        class="btn btn-link btn-close-falcon p-0"
-                        aria-label="Close"
-                      ></button>
-                    </div>-->
                   </form>
                 </div>
               </div>
             </div>
+
+            <!-- toggle for side panel fullscreen-->
+            <button
+              id="fullscreen-btn"
+              type="button"
+              class="btn toggle-fullscreen"
+            >
+              <span class="fas fa-expand fs-8"></span>
+              <span class="fas fa-compress fs-8"></span>
+            </button>
 
             <!-- for closing the inbox menu panel -->
             <button
@@ -6462,8 +6415,12 @@
                           />
                         </div>
                         <div class="flex-1 chat-contact-body ms-2 d-lg-block">
-                          <div class="d-flex mb-1 justify-content-between">
-                            <h6 class="mb-0 chat-contact-title fs-9 bold">
+                          <div
+                            class="d-grid col-1fr-auto mb-1 gap-4 justify-content-between"
+                          >
+                            <h6
+                              class="mb-0 chat-contact-title text-truncate fs-9 bold"
+                            >
                               Emma Watson
                             </h6>
                             <span class="message-time fs-11">10:30am</span>
@@ -6496,8 +6453,10 @@
                           />
                         </div>
                         <div class="flex-1 chat-contact-body ms-2">
-                          <div class="d-flex justify-content-between mb-1">
-                            <h6 class="mb-0 chat-contact-title">
+                          <div
+                            class="d-grid col-1fr-auto gap-4 justify-content-between mb-1"
+                          >
+                            <h6 class="mb-0 chat-contact-title text-truncate">
                               Antony Hopkins
                             </h6>
                             <span class="message-time fs-11">Yesterday</span>
@@ -6530,8 +6489,12 @@
                           />
                         </div>
                         <div class="flex-1 chat-contact-body ms-2 d-lg-block">
-                          <div class="d-flex justify-content-between mb-1">
-                            <h6 class="mb-0 chat-contact-title bold fs-9">
+                          <div
+                            class="d-grid col-1fr-auto gap-4 justify-content-between mb-1"
+                          >
+                            <h6
+                              class="mb-0 chat-contact-title text-truncate bold fs-9"
+                            >
                               John Smith
                             </h6>
                             <span class="message-time fs-11">Sun</span>
@@ -6564,8 +6527,12 @@
                           />
                         </div>
                         <div class="flex-1 chat-contact-body ms-2 d-lg-block">
-                          <div class="d-flex mb-1 justify-content-between">
-                            <h6 class="mb-0 chat-contact-title fs-9 bold">
+                          <div
+                            class="d-grid col-1fr-auto mb-1 gap-4 justify-content-between"
+                          >
+                            <h6
+                              class="mb-0 chat-contact-title text-truncate fs-9 bold"
+                            >
                               Emma Watson
                             </h6>
                             <span class="message-time fs-11">Sat</span>
@@ -6611,9 +6578,13 @@
                           </div>
                         </div>
                         <div class="flex-1 chat-contact-body ms-2">
-                          <div class="d-flex justify-content-between mb-1">
+                          <div
+                            class="d-grid col-1fr-auto gap-4 justify-content-between mb-1"
+                          >
                             <div class="d-flex gap-2 align-items-center">
-                              <h6 class="mb-0 chat-contact-title">Avengers</h6>
+                              <h6 class="mb-0 chat-contact-title text-truncate">
+                                Avengers
+                              </h6>
                               <div class="vr text-400"></div>
                               <div
                                 class="chat-group-mem text-truncate d-flex gap-1 justify-content-between align-items-center"
@@ -6672,8 +6643,12 @@
                           />
                         </div>
                         <div class="flex-1 chat-contact-body ms-2 d-lg-block">
-                          <div class="d-flex justify-content-between mb-1">
-                            <h6 class="mb-0 chat-contact-title bold fs-9">
+                          <div
+                            class="d-grid col-1fr-auto gap-4 justify-content-between mb-1"
+                          >
+                            <h6
+                              class="mb-0 chat-contact-title text-truncate bold fs-9"
+                            >
                               John Smith
                             </h6>
                             <span class="message-time fs-11">Thu</span>
@@ -6706,8 +6681,12 @@
                           />
                         </div>
                         <div class="flex-1 chat-contact-body ms-2 d-lg-block">
-                          <div class="d-flex mb-1 justify-content-between">
-                            <h6 class="mb-0 chat-contact-title fs-9 bold">
+                          <div
+                            class="d-grid col-1fr-auto mb-1 gap-4 justify-content-between"
+                          >
+                            <h6
+                              class="mb-0 chat-contact-title text-truncate fs-9 bold"
+                            >
                               Emma Watson
                             </h6>
                             <span class="message-time fs-11">Wed</span>
@@ -6740,8 +6719,12 @@
                           />
                         </div>
                         <div class="flex-1 chat-contact-body ms-2">
-                          <div class="d-flex justify-content-between">
-                            <h6 class="mb-0 chat-contact-title">Emma Watson</h6>
+                          <div
+                            class="d-grid col-1fr-auto gap-4 justify-content-between"
+                          >
+                            <h6 class="mb-0 chat-contact-title text-truncate">
+                              Emma Watson
+                            </h6>
                             <span class="message-time fs-11">Tue</span>
                           </div>
                           <div
@@ -6770,8 +6753,12 @@
                           />
                         </div>
                         <div class="flex-1 chat-contact-body ms-2 d-lg-block">
-                          <div class="d-flex justify-content-between mb-1">
-                            <h6 class="mb-0 chat-contact-title bold fs-9">
+                          <div
+                            class="d-grid col-1fr-auto gap-4 justify-content-between mb-1"
+                          >
+                            <h6
+                              class="text-truncate mb-0 chat-contact-title bold fs-9"
+                            >
                               John Smith
                             </h6>
                             <span class="message-time fs-11">Jan 10</span>
@@ -6804,8 +6791,12 @@
                           />
                         </div>
                         <div class="flex-1 chat-contact-body ms-2 d-lg-block">
-                          <div class="d-flex mb-1 justify-content-between">
-                            <h6 class="mb-0 chat-contact-title fs-9 bold">
+                          <div
+                            class="d-grid col-1fr-auto gap-4 mb-1 justify-content-between"
+                          >
+                            <h6
+                              class="mb-0 text-truncate chat-contact-title fs-9 bold"
+                            >
                               Emma Watson
                             </h6>
                             <span class="message-time fs-11">Jan 9</span>
@@ -6838,8 +6829,12 @@
                           />
                         </div>
                         <div class="flex-1 chat-contact-body ms-2 d-lg-block">
-                          <div class="d-flex justify-content-between mb-1">
-                            <h6 class="mb-0 chat-contact-title fs-9 bold">
+                          <div
+                            class="d-grid col-1fr-auto gap-4 justify-content-between mb-1"
+                          >
+                            <h6
+                              class="mb-0 chat-contact-title text-truncate fs-9 bold"
+                            >
                               Anna Karinina
                             </h6>
                             <span class="message-time fs-11">Jan 5</span>
@@ -6872,8 +6867,12 @@
                           />
                         </div>
                         <div class="flex-1 chat-contact-body ms-2 d-lg-block">
-                          <div class="d-flex justify-content-between mb-1">
-                            <h6 class="mb-0 chat-contact-title bold fs-9">
+                          <div
+                            class="d-grid col-1fr-auto gap-4 justify-content-between mb-1"
+                          >
+                            <h6
+                              class="mb-0 chat-contact-title text-truncate bold fs-9"
+                            >
                               John Smith
                             </h6>
                             <span class="message-time fs-11">Jan 5</span>
@@ -6938,7 +6937,10 @@
             </section>
 
             <!-- email panel content -->
-            <section id="email-inbox" class="panel-show-nav d-grid p-0">
+            <section
+              id="email-inbox"
+              class="email-inbox-panel panel-show-nav d-grid p-0"
+            >
               <!-- email nav area -->
               <div class="card h-100 overflow-hidden">
                 <div class="card-header email-nav-header">
@@ -8492,7 +8494,10 @@
             </section>
 
             <!-- chat panel content area -->
-            <section id="chat-inbox" class="panel-show-nav d-grid p-0">
+            <section
+              id="chat-inbox"
+              class="chat-inbox-panel panel-show-nav d-grid p-0"
+            >
               <!-- chat nav area -->
 
               <div
@@ -8507,7 +8512,7 @@
                     aria-orientation="vertical"
                   >
                     <div
-                      class="hover-actions-trigger chat-contact nav-item"
+                      class="hover-actions-trigger chat-contact nav-item active"
                       role="tab"
                       id="chat-link-0"
                       data-bs-toggle="tab"
@@ -8563,8 +8568,12 @@
                             />
                           </div>
                           <div class="flex-1 chat-contact-body ms-2">
-                            <div class="d-flex justify-content-between">
-                              <h6 class="name mb-0 chat-contact-title">
+                            <div
+                              class="d-grid col-1fr-auto gap-4 justify-content-between"
+                            >
+                              <h6
+                                class="name mb-0 chat-contact-title text-truncate"
+                              >
                                 Antony Hopkins
                               </h6>
                               <span class="message-time fs-11">Tue</span>
@@ -8653,8 +8662,12 @@
                           </div>
 
                           <div class="flex-1 chat-contact-body ms-2">
-                            <div class="d-flex justify-content-between gap-4">
-                              <div class="d-flex gap-2 align-items-center">
+                            <div
+                              class="d-grid col-1fr-auto justify-content-between gap-4"
+                            >
+                              <div
+                                class="d-flex gap-2 align-items-center text-truncate"
+                              >
                                 <h6 class="mb-0 chat-contact-title">
                                   Avengers
                                 </h6>
@@ -8759,8 +8772,10 @@
                             />
                           </div>
                           <div class="flex-1 chat-contact-body ms-2">
-                            <div class="d-flex justify-content-between">
-                              <h6 class="mb-0 chat-contact-title">
+                            <div
+                              class="d-grid col-1fr-auto gap-4 justify-content-between"
+                            >
+                              <h6 class="mb-0 chat-contact-title text-truncate">
                                 Emma Watson
                               </h6>
                               <span class="message-time fs-11">Sun</span>
@@ -8840,8 +8855,10 @@
                             />
                           </div>
                           <div class="flex-1 chat-contact-body ms-2">
-                            <div class="d-flex justify-content-between">
-                              <h6 class="mb-0 chat-contact-title">
+                            <div
+                              class="d-grid col-1fr-auto gap-4 justify-content-between"
+                            >
+                              <h6 class="mb-0 chat-contact-title text-truncate">
                                 Anna Karinina
                               </h6>
                               <span class="message-time fs-11">Sat</span>
@@ -8916,8 +8933,12 @@
                             />
                           </div>
                           <div class="flex-1 chat-contact-body ms-2">
-                            <div class="d-flex justify-content-between">
-                              <h6 class="mb-0 chat-contact-title">John Lee</h6>
+                            <div
+                              class="d-grid col-1fr-auto gap-4 justify-content-between"
+                            >
+                              <h6 class="mb-0 chat-contact-title text-truncate">
+                                John Lee
+                              </h6>
                               <span class="message-time fs-11">Mon</span>
                             </div>
                             <div class="min-w-0">
@@ -8988,8 +9009,10 @@
                             </div>
                           </div>
                           <div class="flex-1 chat-contact-body ms-2">
-                            <div class="d-flex justify-content-between">
-                              <h6 class="mb-0 chat-contact-title">
+                            <div
+                              class="d-grid col-1fr-auto gap-4 justify-content-between"
+                            >
+                              <h6 class="mb-0 chat-contact-title text-truncate">
                                 Bucky Robert
                               </h6>
                               <span class="message-time fs-11">Wed</span>
@@ -9069,8 +9092,10 @@
                             />
                           </div>
                           <div class="flex-1 chat-contact-body ms-2">
-                            <div class="d-flex justify-content-between">
-                              <h6 class="mb-0 chat-contact-title">
+                            <div
+                              class="d-grid col-1fr-auto gap-4 justify-content-between"
+                            >
+                              <h6 class="mb-0 chat-contact-title text-truncate">
                                 John Bradley
                               </h6>
                               <span class="message-time fs-11">Fri</span>
@@ -9145,8 +9170,10 @@
                             />
                           </div>
                           <div class="flex-1 chat-contact-body ms-2">
-                            <div class="d-flex justify-content-between">
-                              <h6 class="mb-0 chat-contact-title">
+                            <div
+                              class="d-grid col-1fr-auto gap-4 justify-content-between"
+                            >
+                              <h6 class="mb-0 chat-contact-title text-truncate">
                                 Rory McCann
                               </h6>
                               <span class="message-time fs-11">Sun</span>
@@ -9226,8 +9253,10 @@
                             />
                           </div>
                           <div class="flex-1 chat-contact-body ms-2">
-                            <div class="d-flex justify-content-between">
-                              <h6 class="mb-0 chat-contact-title">
+                            <div
+                              class="d-grid col-1fr-auto gap-4 justify-content-between"
+                            >
+                              <h6 class="mb-0 chat-contact-title text-truncate">
                                 Joe Bempsie
                               </h6>
                               <span class="message-time fs-11">Wed</span>
@@ -9302,8 +9331,10 @@
                             />
                           </div>
                           <div class="flex-1 chat-contact-body ms-2">
-                            <div class="d-flex justify-content-between">
-                              <h6 class="mb-0 chat-contact-title">
+                            <div
+                              class="d-grid col-1fr-auto gap-4 justify-content-between"
+                            >
+                              <h6 class="mb-0 chat-contact-title text-truncate">
                                 Diana Rigg
                               </h6>
                               <span class="message-time fs-11">Mon</span>
@@ -9390,8 +9421,10 @@
                             />
                           </div>
                           <div class="flex-1 chat-contact-body ms-2">
-                            <div class="d-flex justify-content-between">
-                              <h6 class="mb-0 chat-contact-title">
+                            <div
+                              class="d-grid col-1fr-auto gap-4 justify-content-between"
+                            >
+                              <h6 class="mb-0 chat-contact-title text-truncate">
                                 Gemma Whelan
                               </h6>
                             </div>
@@ -9479,10 +9512,14 @@
                           </div>
 
                           <div class="flex-1 chat-contact-body ms-2">
-                            <div class="d-flex justify-content-between gap-4">
+                            <div
+                              class="d-grid col-1fr-auto gap-4 justify-content-between gap-4"
+                            >
                               <div class="d-flex gap-2 align-items-center">
                                 <!-- simulation for no Group name -->
-                                <h6 class="d-none mb-0 chat-contact-title">
+                                <h6
+                                  class="d-none mb-0 chat-contact-title text-truncate"
+                                >
                                   Avengers
                                 </h6>
                                 <div class="d-none vr text-400"></div>
@@ -16114,7 +16151,7 @@
                           </a>
                           <div class="min-w-0">
                             <div
-                              class="text-truncate d-flex gap-2 align-items-center"
+                              class="text-truncate d-flex gap-2 align-items-center text-truncate"
                             >
                               <!-- simulation for no Group name -->
 
@@ -18949,6 +18986,7 @@
         TOGGLE_INPUT: "#toggle-navbar",
         NAV_BUTTON: "#left-nav-bar button",
         CLOSE_BUTTON: 'button[aria-label="close article"]',
+        FULLSCREEN_BTN: "#fullscreen-btn",
       };
 
       const CLASSES = {
@@ -18958,6 +18996,8 @@
         CONTENT_OPEN: "content-open",
         TRANSITIONING: "is-transitioning",
         HIDE_LEFT_NAV_BAR: "hide-left-nav-bar",
+        PANEL_FULLSCREEN: "panel-fullscreen",
+        FULLSCREEN_TOGGLED: "toggled",
       };
 
       // Article configuration for better maintainability
@@ -18991,6 +19031,7 @@
             pageWrapper: document.querySelector(SELECTORS.PAGE_WRAPPER),
             toggleInput: document.querySelector(SELECTORS.TOGGLE_INPUT),
             leftContent: document.querySelector(SELECTORS.LEFT_CONTENT),
+            fullScreenBtn: document.querySelector(SELECTORS.FULLSCREEN_BTN),
           };
 
           // Cache article elements
@@ -19053,11 +19094,13 @@
               element.style.visibility = "visible";
               element.style.opacity = "1";
               element.style.maxHeight = "100%";
+              element.style.maxWidth = "100%";
             } else {
               element.setAttribute("inert", "");
               element.style.visibility = "hidden";
               element.style.opacity = "0";
               element.style.maxHeight = "0"; // so that it wont interrupt for the non overflowed articles
+              element.style.maxWidth = "0";
             }
           });
         }
@@ -19100,11 +19143,29 @@
           }
         }
 
+        /** handles the side panel fullscreen
+         * @param {HTMLButtonElement} buttonElement - fullscreen button element
+         */
+        handleFullScreen(buttonElement) {
+          buttonElement.classList.toggle(CLASSES.FULLSCREEN_TOGGLED);
+
+          if (buttonElement.classList.contains(CLASSES.FULLSCREEN_TOGGLED)) {
+            this.elements.pageWrapper.classList.add(CLASSES.PANEL_FULLSCREEN);
+          } else {
+            this.elements.pageWrapper.classList.remove(
+              CLASSES.PANEL_FULLSCREEN,
+            );
+          }
+        }
+
         handleClick(event) {
           const { toggleInput, leftNavBar } = this.elements;
           const clickedToggle = event.target.closest(SELECTORS.TOGGLE_INPUT);
           const clickedNavButton = event.target.closest(SELECTORS.NAV_BUTTON);
           const clickedClose = event.target.closest(SELECTORS.CLOSE_BUTTON);
+          const clickedFullscreen = event.target.closest(
+            SELECTORS.FULLSCREEN_BTN,
+          );
 
           if (clickedToggle) {
             this.handleToggleClick(clickedToggle);
@@ -19112,6 +19173,8 @@
             this.handleNavigation(clickedNavButton);
           } else if (clickedClose) {
             this.handleClose();
+          } else if (clickedFullscreen) {
+            this.handleFullScreen(clickedFullscreen);
           }
         }
 

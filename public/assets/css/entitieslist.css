@@ -66,8 +66,8 @@
 .max-w-fit {
   max-width: fit-content !important;
 }
-.max-w-auto {
-  max-width: auto !important;
+.max-w-none {
+  max-width: none !important;
 }
 .h-100dvh {
   height: 100dvh !important;
@@ -76,6 +76,7 @@
 .col-1fr-auto {
   grid-template-columns: 1fr auto !important;
 }
+
 .col-1fr-1fr {
   grid-template-columns: 1fr 1fr !important;
 }
@@ -91,6 +92,12 @@
 /*-----------------------------------------------
 |   Page Wrapper, left vertical Navbar, and triggers
 -----------------------------------------------*/
+
+/* in order to change layout when on full screen */
+.left-sidebar-container {
+  container-type: inline-size !important;
+  container-name: side-panel !important;
+}
 
 /* Media Queries ----------------------------- */
 
@@ -345,32 +352,15 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
 
 /* desktop  media queries*/
 @media (min-width: 992px) {
-  /*HACK: remove later start here*/
-  .page-wrapper {
-    grid-template-columns: 0 0 1fr !important;
-  }
-
-  /* need to add these when fullscreen is enabled */
-  .left-sidebar-container {
-    max-width: 100% !important;
-  }
-  .page-wrapper > .left-nav-bar {
-    max-width: 0 !important;
-    overflow: hidden !important;
-  }
-  /*HACK: remove later ends here*/
-
-
-  /* @media (min-width: 768px) { */
   /* the hide/show logic */
   .navbar-toggle.nav-only ~ .page-wrapper {
     grid-template-columns: 1fr var(--left-nav-width) 0 !important;
-    transition: grid-template-columns 0.2s linear;
+    /*transition: grid-template-columns 0.2s linear;*/
   }
 
   .navbar-toggle.panel-content ~ .page-wrapper {
     grid-template-columns: 1fr 0 calc(var(--desktop-left-content-width)) !important;
-    transition: grid-template-columns 0s linear 0.2s;
+    /*transition: grid-template-columns 0s linear 0.2s;*/
     /* transition-delay: 0.2s; */
   }
 
@@ -390,19 +380,40 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     transform: translateX(0);
     opacity: 1;
     visibility: visible;
+    max-width: var(--desktop-left-content-width);
   }
+
+  /* logic for side panel fullscreen starts here*/
+  .navbar-toggle.panel-content ~ .page-wrapper.panel-fullscreen {
+    grid-template-columns: 0 0 1fr !important;
+  }
+
+  /* need to add these when fullscreen is enabled */
+  .navbar-toggle.panel-content
+    ~ .page-wrapper.panel-fullscreen
+    > .left-sidebar-container {
+    max-width: 100% !important;
+  }
+
+  /*.navbar-toggle.panel-content*/
+  /*  ~ .page-wrapper.panel-fullscreen*/
+  /*  > .left-nav-bar {*/
+  /*  max-width: 0 !important;*/
+  /*  overflow: hidden !important;*/
+  /*}*/
+  /* logic for side panel fullscreen ends here*/
 
   .page-wrapper {
     display: grid !important;
     grid-template-columns: 1fr 0 0;
     height: 100dvh;
     overflow: hidden;
-    transition: grid-template-columns 0.2s linear;
+    /*transition: grid-template-columns 0.2s linear;*/
   }
 
   .page-wrapper .main {
     overflow-y: auto;
-    transition: max-width 0.2s linear;
+    /*transition: max-width 0.2s linear;*/
   }
 
   .left-sidebar-container {
@@ -417,28 +428,22 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
       transform 0.2s ease-in-out,
       opacity 0.2s ease-in-out,
       visibility 0.2s ease-in-out;
-    /* transition-delay: 50ms; */
   }
 
-  .left-sidebar-container .price-article,
-  .left-sidebar-container .calendar-article,
-  .left-sidebar-container .inbox-article,
-  .left-sidebar-container .settings-article,
-  .left-sidebar-container .customize-article {
+  .left-sidebar-container > * {
     border: var(--falcon-border-width) var(--falcon-border-style)
       var(--falcon-border-color) !important;
     grid-area: 1/1;
     z-index: 1;
     width: 100%;
     height: 100%;
-    max-width: 100% !important;
+    max-width: 100%;
   }
-
 
   .left-nav-bar {
     height: 100dvh;
     max-width: var(--left-nav-width);
-    transition: max-width 0.2s ease-in-out;
+    /*transition: max-width 0.2s ease-in-out;*/
     /* z-index: 1016; */
   }
 
@@ -496,7 +501,6 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     margin: 0;
     width: fit-content;
     max-width: var(--left-nav-width);
-    padding: 0;
     border: transparent;
     /* highest z-index in this page */
     z-index: 1031;
@@ -527,56 +531,6 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     transform: rotate(0deg);
     transition: transform 0.2s ease-in-out;
   }
-}
-
-/* in order to change layout when on full screen */
-.left-sidebar-container {
-  container-type: inline-size !important;
-  container-name: side-panel !important;
-}
-
-/* side panel media queries */
-@container side-panel (min-width: 992px) {
-/*FIX: remove this later*/
-  .left-sidebar-container .customize-article {
-    z-index: 0 !important;
-    visibility: hidden; !important;
-    opacity: 0!important;
-  }
-
-  .left-sidebar-container .inbox-article {
-    z-index: 5 !important;
-    visibility: visible; !important;
-    opacity: 1!important;
-  }
-
-  .left-sidebar-container .inbox-article header {
-    visibility: visible; !important;
-    opacity: 1!important;
-
-  }
-  /* until here */
-
-  .left-sidebar-container .price-article,
-  .left-sidebar-container .calendar-article,
-  .left-sidebar-container .inbox-article,
-  .left-sidebar-container .settings-article,
-  .left-sidebar-container .customize-article {
-    border: var(--falcon-border-width) var(--falcon-border-style)
-      var(--falcon-border-color) !important;
-    grid-area: 1/1;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    max-width: 100% !important;
-  }
-
- .inbox-article .panel-show-nav,
- .inbox-article .panel-show-content{
-   grid-template-columns: auto 1fr;
-   gap: .5rem;
-  }
-
 }
 
 /*-----------------------------------------------
@@ -2350,6 +2304,27 @@ which content to show on each sub panel
 /* for showing/hiding the search field and its logic*/
 .inbox-active-title > .title {
   order: 1;
+  display: grid;
+  place-items: center;
+}
+
+.inbox-active-title > .title > * {
+  grid-area: 1/1;
+}
+
+.inbox-active-title > .toggle-search:checked ~ .title > :not(svg),
+.inbox-active-title > .toggle-search ~ .title > svg {
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+  width: 0;
+}
+
+.inbox-active-title > .toggle-search:checked ~ .title > svg {
+  visibility: visible;
+  opacity: 1;
+  z-index: 1;
+  width: auto;
 }
 
 .inbox-active-title > .toggle-label {
@@ -2357,11 +2332,7 @@ which content to show on each sub panel
   order: 3;
 }
 
-.toggle-label > * {
-  color: var(--falcon-heading-color);
-}
-
-.toggle-search:checked + .toggle-label > * {
+.toggle-search:checked ~ .toggle-label > * {
   color: var(--falcon-primary);
   filter: drop-shadow(var(--drop-shadow-md)); /* 0 3px 3px rgb(0 0 0 / 0.12) */
 }
@@ -2385,8 +2356,41 @@ which content to show on each sub panel
   transform: scaleX(1);
 }
 
+.inbox-active-title > .toggle-search:checked ~ .title > svg,
+.inbox-active-title > .toggle-label,
+.toggle-fullscreen {
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 0.5rem;
+}
+
 /* show/hiding search field ends here */
 
+/* for fullscreen toggle*/
+.toggle-fullscreen {
+  order: 4;
+  display: grid;
+}
+
+.toggle-fullscreen > * {
+  grid-area: 1/1;
+}
+
+.toggle-fullscreen > .fa-compress,
+.toggle-fullscreen.toggled > .fa-expand {
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+}
+
+.toggle-fullscreen.toggled > .fa-compress {
+  visibility: visible;
+  opacity: 1;
+  z-index: 1;
+}
+/* fullscreen toggle ends here*/
+
+/* menu nav styling*/
 .contacts-body h5:hover,
 .contacts-body h5:focus-visible,
 .inbox-menu-nav ul li a h4:hover,
@@ -2506,6 +2510,7 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
 .chat-group-mem > p:not(:first-child)::before {
   content: "•";
   margin: 0 0.2rem;
+  overflow: hidden;
 }
 /*Overriding the defaults if no group name*/
 .chat-no-group-name > p {
@@ -2543,7 +2548,6 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
 .chat-content-overrides .chat-content-header {
   max-height: var(--chat-content-header-max-height);
 }
-
 
 .chat-content-overrides .chat-content-body {
   background: var(--falcon-emphasis-bg);
@@ -2607,5 +2611,35 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
 @media (hover: none), (pointer: coarse) {
   .non-hover-show-button {
     display: inline-block !important;
+  }
+}
+
+/* side panel media queries */
+@container side-panel (min-width: 992px) {
+  /*FIX: remove this later*/
+  /*.left-sidebar-container .customize-article {*/
+  /*  z-index: 0 !important;*/
+  /*  visibility: hidden; !important;*/
+  /*  opacity: 0!important;*/
+  /*}*/
+
+  /*.left-sidebar-container .inbox-article {*/
+  /*  z-index: 5 !important;*/
+  /*  visibility: visible; !important;*/
+  /*  opacity: 1!important;*/
+  /*}*/
+
+  /*.left-sidebar-container .inbox-article header {*/
+  /*  visibility: visible; !important;*/
+  /*  opacity: 1!important;*/
+
+  /*}*/
+  /* until here */
+
+  /*override for chat*/
+  .inbox-article .chat-inbox-panel.panel-show-nav,
+  .inbox-article .chat-inbox-panel.panel-show-content {
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem;
   }
 }
