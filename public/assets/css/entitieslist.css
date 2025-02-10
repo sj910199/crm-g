@@ -343,8 +343,24 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
   }
 }
 
-/* desktop  media quuries*/
+/* desktop  media queries*/
 @media (min-width: 992px) {
+  /*HACK: remove later start here*/
+  .page-wrapper {
+    grid-template-columns: 0 0 1fr !important;
+  }
+
+  /* need to add these when fullscreen is enabled */
+  .left-sidebar-container {
+    max-width: 100% !important;
+  }
+  .page-wrapper > .left-nav-bar {
+    max-width: 0 !important;
+    overflow: hidden !important;
+  }
+  /*HACK: remove later ends here*/
+
+
   /* @media (min-width: 768px) { */
   /* the hide/show logic */
   .navbar-toggle.nav-only ~ .page-wrapper {
@@ -418,9 +434,6 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     max-width: 100% !important;
   }
 
-  .left-sidebar-container .price-article {
-    z-index: 2;
-  }
 
   .left-nav-bar {
     height: 100dvh;
@@ -514,6 +527,56 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     transform: rotate(0deg);
     transition: transform 0.2s ease-in-out;
   }
+}
+
+/* in order to change layout when on full screen */
+.left-sidebar-container {
+  container-type: inline-size !important;
+  container-name: side-panel !important;
+}
+
+/* side panel media queries */
+@container side-panel (min-width: 992px) {
+/*FIX: remove this later*/
+  .left-sidebar-container .customize-article {
+    z-index: 0 !important;
+    visibility: hidden; !important;
+    opacity: 0!important;
+  }
+
+  .left-sidebar-container .inbox-article {
+    z-index: 5 !important;
+    visibility: visible; !important;
+    opacity: 1!important;
+  }
+
+  .left-sidebar-container .inbox-article header {
+    visibility: visible; !important;
+    opacity: 1!important;
+
+  }
+  /* until here */
+
+  .left-sidebar-container .price-article,
+  .left-sidebar-container .calendar-article,
+  .left-sidebar-container .inbox-article,
+  .left-sidebar-container .settings-article,
+  .left-sidebar-container .customize-article {
+    border: var(--falcon-border-width) var(--falcon-border-style)
+      var(--falcon-border-color) !important;
+    grid-area: 1/1;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    max-width: 100% !important;
+  }
+
+ .inbox-article .panel-show-nav,
+ .inbox-article .panel-show-content{
+   grid-template-columns: auto 1fr;
+   gap: .5rem;
+  }
+
 }
 
 /*-----------------------------------------------
@@ -2481,12 +2544,6 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
   max-height: var(--chat-content-header-max-height);
 }
 
-/* .chat-content-overrides
-  .chat-content-header
-  button[data-bs-toggle='offcanvas']
-  :has(.chat-content-overrides .chat-content-body .offcanvas.show) {
-  background-color: #007bff;
-} */
 
 .chat-content-overrides .chat-content-body {
   background: var(--falcon-emphasis-bg);

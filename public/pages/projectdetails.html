@@ -73,7 +73,7 @@
     <link
       href="../assets/css/entitieslist.css"
       rel="stylesheet"
-      id="user-style-default"
+      id="entities-style-default"
     />
     <link
       href="../vendors/select2-bootstrap-5-theme/select2-bootstrap-5-theme.min.css"
@@ -94,8 +94,12 @@
       if (isRTL) {
         var linkDefault = document.getElementById("style-default");
         var userLinkDefault = document.getElementById("user-style-default");
+        var entitiesLinkDefault = document.getElementById(
+          "entities-style-default",
+        );
         linkDefault.setAttribute("disabled", true);
         userLinkDefault.setAttribute("disabled", true);
+        entitiesLinkDefault.setAttribute("disabled", true);
         document.querySelector("html").setAttribute("dir", "rtl");
       } else {
         var linkRTL = document.getElementById("style-rtl");
@@ -5456,6 +5460,7 @@
         style="overflow: clip !important"
         class="scrollbar d-grid left-sidebar-container"
       >
+        <!--customize panel-->
         <article
           class="position-relative customize-article p-0 settings-panel border-0"
           id="settings-offcanvas"
@@ -5486,10 +5491,6 @@
                 Set your own customized style
               </p>
             </div>
-
-            <!-- <div class="z-1 ms-1" data-bs-theme="dark">
-              <button class="btn-close z-1 mt-0" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div> -->
 
             <div class="z-1 position-lg-absolute top-0 end-0">
               <button
@@ -19010,11 +19011,11 @@
           Object.entries(this.articleElements).forEach(([key, element]) => {
             if (!element) return;
             element.style.zIndex = key === "customize" ? "3" : "2";
-
             // Performance optimization: mark inactive articles
             // to be not interactible if not visible
             if (key !== "customize") {
-              element.setAttribute("inert", "");
+              // HACK: change later
+              // element.setAttribute("inert", "");
               element.style.visibility = "hidden";
               element.style.opacity = "0";
             }
@@ -19172,7 +19173,6 @@
         INBOX_ANCHOR_TAG: "#inbox-article a",
         MENU_NAV: "inbox-menu-nav",
         MENU_CLOSE_BTN_ID: "menu-close-btn",
-        CHAT_CONTAINER: "chats-container",
         LEFT_NAV_BAR_ID: "left-nav-bar",
       };
 
@@ -19184,6 +19184,11 @@
         sns: "sns-heading",
       };
 
+      const CHAT_PANEL_IDS = {
+        CHAT_CONTAINER: "chats-container",
+        CHAT_NAV_LINK: "chat-content-container",
+      };
+
       class inboxPanelManager {
         constructor() {
           this.mobileMediaQuery = window.matchMedia("(max-width: 991px)");
@@ -19191,6 +19196,7 @@
           this.titleElements = {};
           this.menuAnchorElements = {};
           this.panelElements = {};
+          this.chatPanelElements = {};
           this.isTransitioning = false;
           this.rafId = null;
         }
@@ -19205,7 +19211,7 @@
          * @returns {void}
          */
         cacheElements() {
-          // add here the elements that you want to initialized
+          // add here the elements that you want to initialize
           this.elements = {
             all: document.getElementById(
               INBOX_PANEL_SELECTORS.ALL_CONVERSATIONS_ID,
@@ -19231,6 +19237,10 @@
             snoozed: document.getElementById(INBOX_TITLE_IDS.snoozed),
           };
 
+          this.chatPanelElements = {
+            navLink: document.getElementById(CHAT_PANEL_IDS.CHAT_NAV_LINK),
+          };
+
           document
             .querySelectorAll(`#${INBOX_PANEL_SELECTORS.MENU_NAV} a`)
             .forEach((anchor) => {
@@ -19248,7 +19258,6 @@
          */
         hideLeftNavBar() {
           const leftNav = this.elements.leftNav;
-          console.log("hide");
           leftNav.classList.add("hide-left-nav-bar");
         }
 
@@ -19257,7 +19266,6 @@
          */
         unHideLeftNavBar() {
           const leftNav = this.elements.leftNav;
-          console.log("unhide");
           leftNav.classList.remove("hide-left-nav-bar");
         }
 
@@ -19280,7 +19288,6 @@
             // then add the active
             menuAnchor.classList.add("inbox-active");
           }
-          return;
         }
 
         /**  Handles inbox header title switching
@@ -19299,7 +19306,6 @@
             // then add the title to the corresponding active panel
             titleEl.classList.add("inbox-active-title");
           }
-          return;
         }
 
         /** Handles the active panel logic
@@ -19319,7 +19325,24 @@
             // then add the active
             panel.classList.add("active-inbox-panel");
           }
-          return;
+        }
+
+        /** add a visual active styling to the chat link
+         *
+         * @param {string | number }id - the id of the activated chat content
+         */
+        activateChatLink(id) {
+          const chatLink = document.getElementById(`chat-link-${id}`);
+
+          const navLink = this.chatPanelElements.navLink;
+          if (!navLink || !chatLink) return;
+
+          // Iterate over each child div of navLink and remove the 'active' class
+          Array.from(navLink.children).forEach((child) => {
+            child.classList.remove("active");
+          });
+
+          chatLink.classList.add("active");
         }
 
         /** switch to the active chat that corresponds the chat id
@@ -19327,7 +19350,7 @@
          * @returns {void}
          */
         switchToActiveChat(id) {
-          const chatContent = document.getElementById(`chat-${id}`);
+          const chatContent = document?.getElementById(`chat-${id}`);
 
           const chatsContainer = document.getElementById("chats-container");
           const children = chatsContainer.children;
@@ -19337,7 +19360,7 @@
           }
 
           chatContent.classList.add("active-chat");
-          return;
+          this.activateChatLink(id);
         }
 
         /** Handles the click event on the inbox panel.
@@ -19420,13 +19443,12 @@
 
           // avoid going to the actual link and reload the page
           // only when the rawHref starts with /inbox
-          // so that we dont interrupt the oter anchor element
+          // so that we don't interrupt the other anchor element
           if (
             rawHref &&
             (rawHref.startsWith("inbox") || rawHref.startsWith("/inbox"))
           ) {
             event.preventDefault();
-            console.log(rawHref);
             this.handleSwitchPanel(rawHref);
           }
         }
