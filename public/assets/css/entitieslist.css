@@ -2201,6 +2201,47 @@ div.gslide-media.gslide-inline {
 }
 
 /*-----------------------------------------------
+|   Banners Page
+-----------------------------------------------*/
+.banners-main,
+.banners-navbar-overrides {
+  max-width: 1140px;
+}
+
+.banners-content p {
+  margin: 0;
+  font-weight: 400;
+}
+
+/*-------------- media queries -------------------*/
+
+@media (max-width: 320px) {
+  .banners-navbar-overrides {
+    padding: 0.5rem !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .banners-card-container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+
+  .banners-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    padding: 1rem 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .banners-card-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*-----------------------------------------------
 |   Left panel articles content
 -----------------------------------------------*/
 
