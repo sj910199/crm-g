@@ -2209,6 +2209,11 @@ div.gslide-media.gslide-inline {
 }
 
 .banners-content p {
+  color: var(--falcon-card-title-color);
+}
+
+.banners-content p {
+  color: var(--falcon-secondary-text-emphasis) !important;
   margin: 0;
   font-weight: 400;
 }
@@ -2224,7 +2229,7 @@ div.gslide-media.gslide-inline {
 @media (min-width: 768px) {
   .banners-card-container {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr;
   }
 
   .banners-content {
@@ -2236,6 +2241,9 @@ div.gslide-media.gslide-inline {
 }
 
 @media (min-width: 992px) {
+  .banners-header img[role="presentation"] {
+    width: 90% !important;
+  }
   .banners-card-container {
     grid-template-columns: 1fr;
   }
@@ -2656,4 +2664,52 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
   .chat-sidebar-overrides {
     max-width: 17.5rem !important;
   }
+}
+
+/*contact list */
+
+.contact-list {
+  max-width: 600px; /* Adjust as needed, wider for two columns */
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow-y: auto; /* Still make the contact list scrollable */
+  max-height: 500px; /* Optional: set a max height */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: grid; /* Enable Grid Layout */
+  grid-template-columns: 50px 1fr; /* First column for letter, second for names - adjust width of letter column as needed */
+}
+
+.letter-group {
+  border-bottom: 1px solid #eee; /* Separator between letter groups */
+  display: contents; /* Important: Make letter-group not a grid item itself, but its children are */
+}
+
+.letter-header {
+  background-color: #f0f0f0;
+  padding: 10px 15px;
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  border-bottom: 1px solid #ddd;
+  grid-column: 1; /* Place letter header in the first grid column */
+  /* Make sure it spans only one row in grid layout */
+}
+
+.names-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  grid-column: 2; /* Place names list in the second grid column */
+}
+
+.names-list li {
+  padding: 10px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.names-list li:last-child {
+  border-bottom: none;
 }
