@@ -2241,9 +2241,6 @@ div.gslide-media.gslide-inline {
 }
 
 @media (min-width: 992px) {
-  .banners-header img[role="presentation"] {
-    width: 90% !important;
-  }
   .banners-card-container {
     grid-template-columns: 1fr;
   }
