@@ -6234,8 +6234,52 @@
                         <div class="scrollbar contact-list">
                           <div class="letter-group" data-letter="A">
                             <div class="letter-header">A</div>
-                            <ul class="names-list">
-                              <li>Alice</li>
+                            <ul class="names-list accordion" id="names-list">
+                              <li class="accordion-item">
+                                <div
+                                  id="contact-name-1"
+                                  class="d-flex align-items-center accordion-header"
+                                >
+                                  <button
+                                    class="contact-accordion-btn-overrides accordion-button"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#contact-info-1"
+                                    aria-expanded="true"
+                                    aria-controls="contact-info-1"
+                                  >
+                                    <span class="avatar avatar-xl">
+                                      <img
+                                        class="rounded-circle"
+                                        src="../assets/img/team/2.jpg"
+                                        alt="circle avatar"
+                                      />
+                                    </span>
+                                    <span
+                                      class="ms-2 mb-0 chat-contact-title text-truncate"
+                                    >
+                                      Antony Hopkins
+                                    </span>
+                                  </button>
+                                </div>
+                                <div
+                                  class="accordion-collapse collapse show"
+                                  id="contact-info-1"
+                                  aria-labelledby="contact-name-1"
+                                  data-bs-parent="names-list"
+                                >
+                                  <div class="accordion-body">
+                                    Once you’re set up, payouts arrive in your
+                                    bank account on a 2-day rolling basis. Or
+                                    you can opt to receive payouts weekly or
+                                    monthly.
+                                  </div>
+                                </div>
+                              </li>
+
+                              <!--<span
+                                      class="inbox-type-chat far fa-comment fs-8"
+                              ></span>-->
                               <li>Adam</li>
                               <li>Anna</li>
                               <li>Alex</li>
