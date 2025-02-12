@@ -9,9 +9,7 @@
   --falcon-table-striped-color: #333 !important; */
   --left-nav-width: 55px;
   --left-content-width: 350px;
-  --desktop-left-content-width: calc(
-    var(--left-nav-width) + var(--left-content-width)
-  );
+  --desktop-left-content-width: calc(var(--left-nav-width) + var(--left-content-width));
   --inset-shadow-sm: inset 0 2px 4px rgb(0 0 0 / 0.05);
   --drop-shadow-md: 0 3px 3px rgb(0 0 0 / 0.12);
   --inbox-header-max-height: 56px;
@@ -19,22 +17,22 @@
 }
 
 /* Specific Styles for Item Description and Custom Fields */
-[data-bs-theme="dark"] .item-desc,
-[data-bs-theme="dark"] .custom-fields {
+[data-bs-theme='dark'] .item-desc,
+[data-bs-theme='dark'] .custom-fields {
   border: 1px solid #3c4652;
   background-color: #121e2d;
   color: #f9f9f9;
 }
 
 /* Styles for Placeholders */
-[data-bs-theme="light"] .picture-placeholder,
-[data-bs-theme="light"] .file-container {
+[data-bs-theme='light'] .picture-placeholder,
+[data-bs-theme='light'] .file-container {
   background-color: #f9f9f9;
   color: #333; /* Ensure light mode placeholder text is visible */
 }
 
-[data-bs-theme="dark"] .picture-placeholder,
-[data-bs-theme="dark"] .file-container {
+[data-bs-theme='dark'] .picture-placeholder,
+[data-bs-theme='dark'] .file-container {
   border: 2px dashed #3c4652;
   background-color: #121e2d;
   color: #f9f9f9;
@@ -45,11 +43,11 @@
 /*   border-style: solid; */
 /* } */
 
-[data-bs-theme="dark"] .file-container {
+[data-bs-theme='dark'] .file-container {
   border-style: solid;
 }
 
-[data-bs-theme="dark"] .items-card-text.editable {
+[data-bs-theme='dark'] .items-card-text.editable {
   color: #333;
 }
 
@@ -243,16 +241,8 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     transition-delay: 0.11s;
   }
 
-  .navbar-toggle.panel-content
-    ~ .page-wrapper
-    > .left-nav-bar
-    ul
-    li:not(:last-child),
-  .navbar-toggle.nav-only
-    ~ .page-wrapper
-    > .left-nav-bar
-    ul
-    li:not(:last-child) {
+  .navbar-toggle.panel-content ~ .page-wrapper > .left-nav-bar ul li:not(:last-child),
+  .navbar-toggle.nav-only ~ .page-wrapper > .left-nav-bar ul li:not(:last-child) {
     transform: translateY(0);
     opacity: 1;
     max-height: 100%;
@@ -262,46 +252,25 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     transition-delay: 0.11s;
   }
 
-  .navbar-toggle.panel-content
-    ~ .page-wrapper
-    > .left-nav-bar
-    > ul
-    li
-    > label
-    > svg,
-  .navbar-toggle.nav-only
-    ~ .page-wrapper
-    > .left-nav-bar
-    > ul
-    li
-    > label
-    > svg {
+  .navbar-toggle.panel-content ~ .page-wrapper > .left-nav-bar > ul li > label > svg,
+  .navbar-toggle.nav-only ~ .page-wrapper > .left-nav-bar > ul li > label > svg {
     transform: rotate(360deg);
   }
 
   /* close state */
-  .navbar-toggle.panel-content
-    ~ .page-wrapper
-    > .left-nav-bar.left-nav-collapse,
+  .navbar-toggle.panel-content ~ .page-wrapper > .left-nav-bar.left-nav-collapse,
   .navbar-toggle ~ .page-wrapper > .left-nav-bar {
     transform: translateX(1.5rem);
     transition-delay: 0.21s;
   }
 
-  .navbar-toggle.panel-content
-    ~ .page-wrapper
-    > .left-nav-bar.left-nav-collapse
-    ul,
+  .navbar-toggle.panel-content ~ .page-wrapper > .left-nav-bar.left-nav-collapse ul,
   .navbar-toggle ~ .page-wrapper > .left-nav-bar ul {
     gap: 0;
     transition-delay: 0s;
   }
 
-  .navbar-toggle.panel-content
-    ~ .page-wrapper
-    > .left-nav-bar.left-nav-collapse
-    ul
-    li:not(:last-child),
+  .navbar-toggle.panel-content ~ .page-wrapper > .left-nav-bar.left-nav-collapse ul li:not(:last-child),
   .navbar-toggle ~ .page-wrapper > .left-nav-bar ul li:not(:last-child) {
     transform: translateY(20px);
     opacity: 0;
@@ -311,13 +280,7 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     transition-delay: 0s;
   }
 
-  .navbar-toggle.panel-content
-    ~ .page-wrapper
-    > .left-nav-bar.left-nav-collapse
-    > ul
-    li
-    > label
-    > svg,
+  .navbar-toggle.panel-content ~ .page-wrapper > .left-nav-bar.left-nav-collapse > ul li > label > svg,
   .navbar-toggle ~ .page-wrapper > .left-nav-bar > ul li > label > svg {
     transform: rotate(180deg);
   }
@@ -389,9 +352,7 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
   }
 
   /* need to add these when fullscreen is enabled */
-  .navbar-toggle.panel-content
-    ~ .page-wrapper.panel-fullscreen
-    > .left-sidebar-container {
+  .navbar-toggle.panel-content ~ .page-wrapper.panel-fullscreen > .left-sidebar-container {
     max-width: 100% !important;
   }
 
@@ -421,8 +382,7 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
   }
 
   .left-sidebar-container > * {
-    border: var(--falcon-border-width) var(--falcon-border-style)
-      var(--falcon-border-color) !important;
+    border: var(--falcon-border-width) var(--falcon-border-style) var(--falcon-border-color) !important;
     grid-area: 1/1;
     z-index: 1;
     width: 100%;
@@ -725,9 +685,7 @@ section {
   line-height: 1.4;
   padding: 4px 8px;
   border-radius: 6px;
-  transition:
-    background-color 0.3s,
-    box-shadow 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s;
   cursor: text;
   background-color: #f9f9f9;
 }
@@ -767,9 +725,7 @@ section {
   color: #374151;
   cursor: pointer;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  transition:
-    background-color 0.3s,
-    box-shadow 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .project-alpha-action-button:hover {
@@ -854,9 +810,7 @@ section {
   border: 1px solid #d1d5db;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   cursor: pointer;
-  transition:
-    background-color 0.3s,
-    box-shadow 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s;
   display: none;
 }
 
@@ -888,9 +842,7 @@ section {
   justify-content: center;
   align-items: center;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  transition:
-    background-color 0.3s,
-    box-shadow 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s;
   position: absolute;
   bottom: 20px; /* Position it at the bottom */
   right: 20px; /* Keep it aligned to the right */
@@ -1166,21 +1118,15 @@ section {
   }
 
   .mobile-stack .accordion-container {
-    transition:
-      min-height 0.15s ease-out,
-      max-height 0.15s ease-out;
+    transition: min-height 0.15s ease-out, max-height 0.15s ease-out;
   }
 
   /* container accordion close */
   .mobile-stack .accordion-container.triggered {
     --accordion-column-to-show: 1;
     --accordion-column-height: 44px;
-    min-height: calc(
-      var(--accordion-column-height) * var(--accordion-column-to-show)
-    );
-    max-height: calc(
-      var(--accordion-column-height) * var(--accordion-column-to-show)
-    );
+    min-height: calc(var(--accordion-column-height) * var(--accordion-column-to-show));
+    max-height: calc(var(--accordion-column-height) * var(--accordion-column-to-show));
     overflow: hidden;
   }
 
@@ -1190,15 +1136,11 @@ section {
     visibility: hidden;
     opacity: 0;
     transition-behavior: allow-discrete;
-    transition:
-      opacity 0.15s ease-out,
-      visibility 0.15s ease-out;
+    transition: opacity 0.15s ease-out, visibility 0.15s ease-out;
   }
 
   .mobile-stack .accordion-container > *:not(:nth-child(1)) {
-    transition:
-      transform 0.15s ease-out,
-      opacity 0.15s ease-out;
+    transition: transform 0.15s ease-out, opacity 0.15s ease-out;
   }
 
   .mobile-stack .accordion-container.triggering > *:not(:nth-child(1)) {
@@ -1227,33 +1169,23 @@ section {
     color: inherit;
   }
 
-  .mobile-stack
-    .accordion-container.triggered
-    .accordion-trigger
-    .accordion-meta,
+  .mobile-stack .accordion-container.triggered .accordion-trigger .accordion-meta,
   .mobile-stack .accordion-container.triggered .accordion-trigger {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
   }
 
-  .mobile-stack
-    .accordion-container.triggered
-    .accordion-trigger
-    .accordion-meta {
+  .mobile-stack .accordion-container.triggered .accordion-trigger .accordion-meta {
     opacity: 1;
     transform: translateY(0);
-    transition:
-      opacity 0.1s ease-in,
-      transform 0.1s ease-in;
+    transition: opacity 0.1s ease-in, transform 0.1s ease-in;
   }
 
   .mobile-stack .accordion-container .accordion-trigger .accordion-meta {
     opacity: 0;
     transform: translateY(10px);
-    transition:
-      opacity 0.1s ease-out,
-      transform 0.1s ease-out;
+    transition: opacity 0.1s ease-out, transform 0.1s ease-out;
   }
 
   /* icon */
@@ -1264,8 +1196,7 @@ section {
   }
 
   .mobile-stack .accordion-container td:has(.accordion-trigger) {
-    border-bottom: var(--falcon-border-width) var(--falcon-border-style)
-      var(--falcon-border-color);
+    border-bottom: var(--falcon-border-width) var(--falcon-border-style) var(--falcon-border-color);
   }
 
   .mobile-stack .accordion-container .accordion-trigger .accor-open {
@@ -1301,9 +1232,7 @@ section {
   justify-content: center;
   align-items: center;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  transition:
-    background-color 0.3s,
-    box-shadow 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s;
   border: none;
 }
 
@@ -1396,10 +1325,7 @@ section {
 .pictures-section {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(300px, 1fr)
-  ); /* ensure a responsive design */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ensure a responsive design */
   /* max-height: 350px; */
   /* to ensure there is no overflow */
   gap: 32px;
@@ -1446,14 +1372,11 @@ section {
   cursor: pointer;
   border-radius: 4px;
   overflow: hidden;
-  transition:
-    border-color 0.1s ease,
-    background-color 0.1s ease,
-    max-height 0.1s ease;
+  transition: border-color 0.1s ease, background-color 0.1s ease, max-height 0.1s ease;
 }
 
-.picture-placeholder:has(.uploaded-image[data-modular="90"]) .uploaded-image,
-.picture-placeholder:has(.uploaded-image[data-modular="270"]) .uploaded-image {
+.picture-placeholder:has(.uploaded-image[data-modular='90']) .uploaded-image,
+.picture-placeholder:has(.uploaded-image[data-modular='270']) .uploaded-image {
   max-width: 350px;
 }
 
@@ -1470,9 +1393,7 @@ section {
   background-color: inherit; /* git the background from parents instead for dark/light mode */
   border-radius: 4px;
   transform-origin: center;
-  transition:
-    transform 0.2s ease,
-    max-width 0.2s ease;
+  transition: transform 0.2s ease, max-width 0.2s ease;
 }
 
 /* Add hover effect for better user experience */
@@ -2054,20 +1975,17 @@ div.gslide-media.gslide-inline {
 }
 
 @media (max-width: 768px) {
-  [data-bs-theme="light"]
-    .file-container
-    [data-bs-theme="light"]
-    .picture-placeholder:has(img) {
+  [data-bs-theme='light'] .file-container [data-bs-theme='light'] .picture-placeholder:has(img) {
     border-style: solid;
     border-width: 1px;
     /* border-color: #3c465280; */
   }
 
-  [data-bs-theme="light"] .picture-placeholder {
+  [data-bs-theme='light'] .picture-placeholder {
     border-color: transparent;
   }
 
-  [data-bs-theme="dark"] .picture-placeholder {
+  [data-bs-theme='dark'] .picture-placeholder {
     border-style: solid;
     border-width: 1px;
   }
@@ -2104,9 +2022,8 @@ div.gslide-media.gslide-inline {
     min-height: 350px;
   }
 
-  .picture-placeholder:has(.uploaded-image[data-modular="90"]) .uploaded-image,
-  .picture-placeholder:has(.uploaded-image[data-modular="270"])
-    .uploaded-image {
+  .picture-placeholder:has(.uploaded-image[data-modular='90']) .uploaded-image,
+  .picture-placeholder:has(.uploaded-image[data-modular='270']) .uploaded-image {
     /* height: 90%; */
     max-height: 92%;
   }
@@ -2116,9 +2033,7 @@ div.gslide-media.gslide-inline {
   .post1:hover .gallery-menu {
     visibility: visible;
     opacity: 100;
-    transition:
-      visibility 0s linear 0.15s,
-      opacity 0.25s ease-in-out;
+    transition: visibility 0s linear 0.15s, opacity 0.25s ease-in-out;
   }
 }
 
@@ -2131,8 +2046,8 @@ div.gslide-media.gslide-inline {
 
 /* for statuses of invoice */
 /* If data-status="due" */
-[data-status="due"] svg,
-[data-status="due"] p {
+[data-status='due'] svg,
+[data-status='due'] p {
   --falcon-text-opacity: 1;
   color: rgba(var(--falcon-danger-rgb), var(--falcon-text-opacity)) !important;
   /* Add SVG fill */
@@ -2140,8 +2055,8 @@ div.gslide-media.gslide-inline {
 }
 
 /* If data-status="completed" (better than "not-due") */
-[data-status="settled"] svg,
-[data-status="settled"] p {
+[data-status='settled'] svg,
+[data-status='settled'] p {
   --falcon-text-opacity: 1;
   color: rgba(var(--falcon-success-rgb), var(--falcon-text-opacity)) !important;
   /* Add SVG fill */
@@ -2281,11 +2196,7 @@ header first row, contents second row*/
   height: 0 !important; /* so it doesnt interfer with the active panel */
   opacity: 0;
   visibility: hidden;
-  transition:
-    z-index 0.2s ease-in-out,
-    opacity 0.2s ease-in-out,
-    visibility 0.2s ease-in-out,
-    height 0.2s ease-in-out;
+  transition: z-index 0.2s ease-in-out, opacity 0.2s ease-in-out, visibility 0.2s ease-in-out, height 0.2s ease-in-out;
 }
 
 /* core logic for switching the panels*/
@@ -2327,9 +2238,7 @@ which content to show on each sub panel
   grid-area: 1/1;
   opacity: 0;
   visibility: hidden;
-  transition:
-    opacity 0.2s ease-in-out,
-    visibility 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
 }
 
 .inbox-active-title {
@@ -2380,10 +2289,7 @@ which content to show on each sub panel
   opacity: 0;
   transform: scaleX(0);
   transform-origin: right;
-  transition:
-    transform 0.2s ease,
-    opacity 0.2s ease,
-    visibility 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease, visibility 0.2s ease;
 }
 
 .toggle-search:checked ~ .search-field {
@@ -2480,18 +2386,98 @@ which content to show on each sub panel
   grid-template-rows: auto 1fr;
 }
 
+/*-------------contact list ------------*/
+
+.contact-list {
+  --falcon-text-opacity: 1;
+
+  width: 100%;
+  background-color: rgba(var(--falcon-emphasis-bg-rgb), var(--falcon-bg-opacity));
+
+  /* background-color: rgba(var(--falcon-secondary-bg-rgb)); */
+  /* background-color: rgba(var(--falcon-gray-200-rgb), var(--falcon-bg-opacity)) !important; */
+  /* background-color: #fff; */
+  border-radius: 8px;
+  overflow-y: auto; /* Still make the contact list scrollable */
+  max-height: 38dvh;
+  /* Optional: set a max height */
+  /* max-height: 500px; */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: grid; /* Enable Grid Layout */
+  grid-template-columns: auto 1fr; /* First column for letter, second for names - adjust width of letter column as needed */
+}
+
+.letter-group {
+  /* Separator between letter groups */
+  /* border-bottom: 1px solid #eee; */
+  display: contents; /* Important: Make letter-group not a grid item itself, but its children are */
+}
+
+.letter-header {
+  /* background-color: rgba(var(--falcon-secondary-bg-rgb)); */
+
+  background-color: rgba(var(--falcon-emphasis-bg-rgb), var(--falcon-bg-opacity));
+  color: var(--falcon-heading-color);
+  /* box-shadow: var(--inset-shadow-sm); */
+  /* background-color: #f0f0f0; */
+  padding: 10px 15px;
+  font-weight: bold;
+
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  /* border-bottom: 1px solid #ddd; */
+  /* Place letter header in the first grid column */
+  /* grid-column: 1; */
+  /* Make sure it spans only one row in grid layout */
+}
+
+.contact-accordion-btn-overrides {
+  padding: 0;
+}
+
+.contact-accordion-btn-overrides[aria-expanded='true'] {
+  padding-bottom: 0.5rem;
+}
+
+.contact-accordion-btn-overrides::before,
+.contact-accordion-btn-overrides::after {
+  display: none;
+}
+
+.names-list {
+  /* background-color: #fff; */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  /* Place names list in the second grid column */
+  /* grid-column: 2; */
+  /* color: rgba(var(--falcon-white-rgb), var(--falcon-text-opacity)) !important; */
+}
+
+.names-list li {
+  padding: 10px 15px;
+  border: none;
+  /* border-bottom: 1px solid #eee; */
+}
+
+.names-list li:last-child {
+  border-bottom: none;
+}
+
 /*-------------nav area / inbox list ------------*/
-nav[aria-label="messages inbox"] {
+nav[aria-label='messages inbox'] {
   /* overflow-y: auto; */
   height: 100%;
 }
 
-nav[aria-label="messages inbox"] ul {
+nav[aria-label='messages inbox'] ul {
   display: grid;
   height: 100%;
 }
 
-nav[aria-label="messages inbox"] .inbox-item-container {
+nav[aria-label='messages inbox'] .inbox-item-container {
   /* grid-template-columns: auto 1fr; */
   padding: 1rem;
   align-items: center;
@@ -2499,17 +2485,17 @@ nav[aria-label="messages inbox"] .inbox-item-container {
   justify-content: space-between;
 }
 
-nav[aria-label="messages inbox"] .inbox-item-container .avatar {
+nav[aria-label='messages inbox'] .inbox-item-container .avatar {
   place-self: start;
 }
 
-nav[aria-label="messages inbox"] .inbox-item .inbox-info,
-nav[aria-label="messages inbox"] .inbox-item time {
+nav[aria-label='messages inbox'] .inbox-item .inbox-info,
+nav[aria-label='messages inbox'] .inbox-item time {
   color: var(--falcon-heading-color);
   opacity: 0.85;
 }
 
-nav[aria-label="messages inbox"] .inbox-item .item-subject {
+nav[aria-label='messages inbox'] .inbox-item .item-subject {
   color: var(--falcon-heading-color);
   font-weight: 600;
 }
@@ -2543,7 +2529,7 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
 /*------ chat panel area---------*/
 
 .chat-group-mem > p:not(:first-child)::before {
-  content: "•";
+  content: '•';
   margin: 0 0.2rem;
   overflow: hidden;
 }
@@ -2590,16 +2576,12 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
 
 .chat-content-overrides .chat-content-body .offcanvas {
   position: fixed !important;
-  top: calc(
-    var(--inbox-header-max-height) + var(--chat-content-header-max-height) - 3px
-  );
+  top: calc(var(--inbox-header-max-height) + var(--chat-content-header-max-height) - 3px);
 }
 
 .chat-content-overrides .chat-content-body .offcanvas-backdrop {
   z-index: 1;
-  top: calc(
-    var(--inbox-header-max-height) + var(--chat-content-header-max-height)
-  );
+  top: calc(var(--inbox-header-max-height) + var(--chat-content-header-max-height));
 }
 
 .chat-content-overrides .chat-editor-area .chat-file-upload,
@@ -2661,52 +2643,4 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
   .chat-sidebar-overrides {
     max-width: 17.5rem !important;
   }
-}
-
-/*contact list */
-
-.contact-list {
-  max-width: 600px; /* Adjust as needed, wider for two columns */
-  margin: 20px auto;
-  background-color: #fff;
-  border-radius: 8px;
-  overflow-y: auto; /* Still make the contact list scrollable */
-  max-height: 500px; /* Optional: set a max height */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  display: grid; /* Enable Grid Layout */
-  grid-template-columns: 50px 1fr; /* First column for letter, second for names - adjust width of letter column as needed */
-}
-
-.letter-group {
-  border-bottom: 1px solid #eee; /* Separator between letter groups */
-  display: contents; /* Important: Make letter-group not a grid item itself, but its children are */
-}
-
-.letter-header {
-  background-color: #f0f0f0;
-  padding: 10px 15px;
-  font-weight: bold;
-  position: sticky;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  border-bottom: 1px solid #ddd;
-  grid-column: 1; /* Place letter header in the first grid column */
-  /* Make sure it spans only one row in grid layout */
-}
-
-.names-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  grid-column: 2; /* Place names list in the second grid column */
-}
-
-.names-list li {
-  padding: 10px 15px;
-  border-bottom: 1px solid #eee;
-}
-
-.names-list li:last-child {
-  border-bottom: none;
 }
