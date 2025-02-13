@@ -2,7 +2,7 @@
 |   Theme Styles
 -----------------------------------------------*/
 :root {
-  --falcon-body-color: #333;
+  /*--falcon-body-color: #333;*/
   --falcon-body-color: 51, 51, 51;
   --falcon-bg-opacity: 1;
   /* --falcon-table-color: #333 !important;
@@ -16,6 +16,7 @@
   --drop-shadow-md: 0 3px 3px rgb(0 0 0 / 0.12);
   --inbox-header-max-height: 56px;
   --chat-content-header-max-height: 68px;
+  --fullscreen-inbox-nav-width: 55px;
 }
 
 /* Specific Styles for Item Description and Custom Fields */
@@ -2327,9 +2328,6 @@ which content to show on each sub panel
   grid-area: 1/1;
   opacity: 0;
   visibility: hidden;
-  transition:
-    opacity 0.2s ease-in-out,
-    visibility 0.2s ease-in-out;
 }
 
 .inbox-active-title {
@@ -2402,7 +2400,8 @@ which content to show on each sub panel
 
 /* show/hiding search field ends here */
 
-/* for fullscreen toggle*/
+/* for fullscreen  toggle*/
+
 .toggle-fullscreen {
   display: grid;
 }
@@ -2569,6 +2568,12 @@ which content to show on each sub panel
 
 .names-list li:last-child {
   border-bottom: none;
+}
+
+/*------------- full screen container and nav ------------*/
+
+.fullscreen-inbox-nav {
+  display: none;
 }
 
 /*-------------nav area / inbox list ------------*/
@@ -2751,5 +2756,26 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
 
   .chat-sidebar-overrides {
     max-width: 17.5rem !important;
+  }
+
+  .fullscreen-inbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    width: 100%;
+    max-width: var(--fullscreen-inbox-nav-width);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-area: 1/1;
+    height: auto !important; /* so it doesnt interfer with the active panel */
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .active-inbox-panel {
+    margin-left: var(--fullscreen-inbox-nav-width);
   }
 }

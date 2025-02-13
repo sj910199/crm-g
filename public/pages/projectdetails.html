@@ -6241,7 +6241,7 @@
                                   class="d-flex align-items-center accordion-header"
                                 >
                                   <button
-                                    class="contact-accordion-btn-overrides accordion-button"
+                                    class="contact-accordion-btn-overrides accordion-button collapsed"
                                     type="button"
                                     data-bs-toggle="collapse"
                                     data-bs-target="#contact-info-1"
@@ -6263,7 +6263,7 @@
                                   </button>
                                 </div>
                                 <div
-                                  class="accordion-collapse collapse show"
+                                  class="accordion-collapse collapse"
                                   id="contact-info-1"
                                   aria-labelledby="contact-name-1"
                                   data-bs-parent="names-list"
@@ -6538,7 +6538,77 @@
             </div>
           </header>
 
-          <div class="p-0 inbox-container d-grid">
+          <div class="p-0 inbox-container position-relative d-grid">
+            <!--inbox nav that will only show when in fullscreen-->
+            <nav class="fullscreen-inbox-nav" id="fullscreen-inbox-nav">
+              <ul class="list-unstyled">
+                <li>
+                  <a
+                    href="inbox/all"
+                    class="inbox-item-container inbox-active p-3 d-flex justify-content-between align-items-center text-decoration-none"
+                    aria-label="all conversation"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="right"
+                    title="All Inbox"
+                  >
+                    <span class="far fa-list-alt fs-8"></span>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="inbox/snoozed"
+                    class="inbox-item-container p-3 d-flex justify-content-between align-items-center text-decoration-none"
+                    aria-label="left nav toggle"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="right"
+                    title="Snoozed"
+                  >
+                    <span class="fas fa-clock fs-8"></span>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="inbox/email"
+                    class="inbox-item-container p-3 d-flex justify-content-between align-items-center text-decoration-none"
+                    aria-label="left nav toggle"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="right"
+                    title="Emails"
+                  >
+                    <span class="far fa-envelope fs-8"></span>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="inbox/chat"
+                    class="inbox-item-container p-3 d-flex justify-content-between align-items-center text-decoration-none"
+                    aria-label="left nav toggle"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="right"
+                    title="Chats"
+                  >
+                    <span class="far fa-comment fs-8"></span>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="inbox/sns"
+                    class="inbox-item-container p-3 d-flex justify-content-between align-items-center text-decoration-none"
+                    aria-label="left nav toggle"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="right"
+                    title="SMS"
+                  >
+                    <span class="far fa-comments fs-8"></span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+
             <!-- the inbox overview - all conversation panel  -->
             <section
               id="all-inbox"
@@ -8842,8 +8912,8 @@
                             <div class="min-w-0">
                               <div class="chat-contact-content pe-3">
                                 Bucky:
-                                <a href="#!" class="text-primary">@Emma</a> What
-                                do you think about the plan?
+                                <a href="#!" class="text-primary">@Emma</a>
+                                What do you think about the plan?
                               </div>
                               <div
                                 class="position-absolute bottom-0 end-0 hover-hide"
@@ -9694,8 +9764,8 @@
                             <div class="min-w-0">
                               <div class="chat-contact-content pe-3">
                                 Bucky:
-                                <a href="#!" class="text-primary">@Emma</a> What
-                                do you think about the plan?
+                                <a href="#!" class="text-primary">@Emma</a>
+                                What do you think about the plan?
                               </div>
                               <div
                                 class="position-absolute bottom-0 end-0 hover-hide"
@@ -19452,6 +19522,7 @@
         MENU_NAV: "inbox-menu-nav",
         MENU_CLOSE_BTN_ID: "menu-close-btn",
         LEFT_NAV_BAR_ID: "left-nav-bar",
+        FULLSCREEN_MENU_NAV: "fullscreen-inbox-nav",
       };
 
       const INBOX_TITLE_IDS = {
@@ -19519,16 +19590,29 @@
             navLink: document.getElementById(CHAT_PANEL_IDS.CHAT_NAV_LINK),
           };
 
-          document
-            .querySelectorAll(`#${INBOX_PANEL_SELECTORS.MENU_NAV} a`)
-            .forEach((anchor) => {
-              // get the raw href
-              const href = anchor.getAttribute("href");
-              // split the href with '/' and filter out empty strings then get the last item
-              const menuName = href.split("/").filter(Boolean).pop();
+          const navIds = [
+            INBOX_PANEL_SELECTORS.MENU_NAV,
+            INBOX_PANEL_SELECTORS.FULLSCREEN_MENU_NAV,
+          ]; // Array of nav IDs
 
-              this.menuAnchorElements[menuName] = anchor;
-            });
+          navIds.forEach((navId) => {
+            // Loop through each nav ID
+            document
+              .querySelectorAll(`#${navId} a`) // Select all 'a' elements within the current nav
+              .forEach((anchor) => {
+                const href = anchor.getAttribute("href");
+                const parts = href.split("/").filter(Boolean); // Split and filter empty strings
+                if (parts.length === 2 && parts[0] === "inbox") {
+                  // Check for 'inbox/<channel>' pattern
+                  const menuName = parts[1];
+
+                  if (!this.menuAnchorElements[menuName]) {
+                    this.menuAnchorElements[menuName] = []; // Initialize as array if not exists
+                  }
+                  this.menuAnchorElements[menuName].push(anchor); // Add anchor to the array
+                }
+              });
+          });
         }
 
         /** hide the left nav bar on mobile
@@ -19553,18 +19637,24 @@
          * @returns {void}
          */
         switchToActiveMenu(menuName) {
-          const menuAnchor = this.menuAnchorElements[menuName];
+          const menuAnchors = this.menuAnchorElements[menuName]; // Get the array of anchors for the menuName
 
-          if (menuAnchor) {
-            // remove the 'inbox-active' class from all menu anchors from caches elements
-            Object.values(this.menuAnchorElements).forEach((anchor) => {
-              if (anchor) {
-                anchor.classList.remove("inbox-active");
-              }
+          if (menuAnchors && menuAnchors.length > 0) {
+            // Check if there are anchors for this menuName
+            // Remove 'inbox-active' from ALL cached menu anchors first
+            for (const anchorsArray of Object.values(this.menuAnchorElements)) {
+              // Iterate through all arrays of anchors
+              anchorsArray.forEach((anchor) => {
+                if (anchor) {
+                  anchor.classList.remove("inbox-active");
+                }
+              });
+            }
+
+            // Then add 'inbox-active' to the anchors for the specified menuName
+            menuAnchors.forEach((anchor) => {
+              anchor.classList.add("inbox-active");
             });
-
-            // then add the active
-            menuAnchor.classList.add("inbox-active");
           }
         }
 
