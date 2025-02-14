@@ -1126,6 +1126,58 @@ section {
   margin: 0 4px; /* Adds spacing between buttons */
 }
 
+td[data-title="Address"].address {
+  --td-address-max-width: 200px;
+
+  position: relative; /* Needed for absolute positioning of expanded label */
+  overflow: visible; /* Ensure expanded content is visible */
+  min-width: var(--td-address-max-width);
+  max-width: var(--td-address-max-width);
+}
+
+td.address .address-label {
+  display: block; /* Make label fill the td width */
+  overflow: hidden; /* Hide overflowing text for ellipsis */
+  text-overflow: ellipsis; /* Enable ellipsis */
+  white-space: nowrap; /* Keep text on a single line initially */
+  line-clamp: 1; /* Limit to one line */
+  -webkit-line-clamp: 1; /* For older WebKit */
+  -webkit-box-orient: vertical; /* For older WebKit */
+  display: -webkit-box; /* For older WebKit, needed for line-clamp */
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font-weight: 400;
+  font-family: inherit;
+}
+
+/* Style for the label when the checkbox is checked (expanded state) */
+td.address .address-checkbox:checked + .address-label {
+  white-space: normal; /* Allow text to wrap to multiple lines */
+  line-clamp: none; /* Remove line clamp to expand */
+  -webkit-line-clamp: none; /* Remove for WebKit */
+  display: block;
+  position: absolute; /* Make label float above other content */
+  top: 0;
+  left: 0;
+  z-index: 10; /* Ensure label is on top */
+  border: 1px solid var(--falcon-gray-300); /* Optional border for visual separation */
+  border-radius: 8px;
+  padding: 0.5rem; /* Add padding to the expanded label */
+  width: var(
+    --td-address-max-width
+  ); /* Match the td width to maintain alignment */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+  backdrop-filter: blur(4px); /* 4px */
+}
+
+/* Hide the checkbox visually and make it non-interactive */
+td.address .address-checkbox {
+  position: absolute; /* Take checkbox out of normal flow */
+  opacity: 0; /* Make checkbox invisible */
+  pointer-events: none; /* Prevent checkbox from interfering with clicks */
+}
+
 td[data-title="Feed"].feed {
   display: flex;
   gap: 0.5rem;
@@ -1146,7 +1198,6 @@ td[data-title="Feed"].feed .status-check:checked ~ .status-label {
   max-width: 1.5rem;
   max-height: 1.5rem;
 }
-
 td[data-title="Feed"].feed .invoice-check:checked ~ .invoice-label > svg,
 td[data-title="Feed"].feed .status-check:checked ~ .status-label > svg {
   margin-left: 0.25rem;
@@ -1201,6 +1252,7 @@ td[data-title="Feed"].feed .status-check:checked ~ .status-label > svg {
   .mobile-stack th,
   .mobile-stack td,
   .mobile-stack tr {
+    --mobile-stack-padding-right: 1.25rem;
     display: block;
     /* color: var(--falcon-table-color-state, var(--falcon-table-color-type, var(--falcon-table-color))); */
     /* color: var(--falcon-table-color-state, var(--falcon-table-color-type, var(--falcon-gray-900))); */
@@ -1223,7 +1275,8 @@ td[data-title="Feed"].feed .status-check:checked ~ .status-label > svg {
     /* border-bottom: 1px solid #eee;  */
     position: relative;
     /* padding-left: 10%; */
-    padding-left: 1.25rem;
+    /*padding-left: 1.25rem;*/
+    padding-left: var(--mobile-stack-padding-right);
     white-space: normal;
     text-align: left !important;
   }
@@ -1246,6 +1299,20 @@ td[data-title="Feed"].feed .status-check:checked ~ .status-label > svg {
   .table td {
     text-align: center;
     width: 100% !important;
+  }
+
+  td[data-title="Address"].address {
+    --td-address-max-width: unset;
+  }
+  td.address .address-label {
+    pointer-events: none;
+    white-space: normal; /* Allow text to wrap to multiple lines */
+    line-clamp: none; /* Remove line clamp to expand */
+    -webkit-line-clamp: none; /* Remove for WebKit */
+  }
+
+  td[data-title="Feed"].feed {
+    justify-content: start;
   }
 
   .select2-container--bootstrap-5 {
