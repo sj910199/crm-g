@@ -1691,6 +1691,7 @@
                         </div>
                       </div>
                     </div>
+
                     <div class="table-responsive scrollbar mobile-stack">
                       <table
                         class="table table-bordered table-striped fs-10 mb-0 entities-table"
@@ -1709,6 +1710,10 @@
                             <th class="text-900 sort" data-sort="itemsSold">
                               Phone
                             </th>
+                            <th class="text-900 sort" data-sort="address">
+                              Address
+                            </th>
+                            <th class="text-900 sort" data-sort="feed">Feed</th>
                             <th class="text-900 sort" data-sort="quantity">
                               Updates
                             </th>
@@ -1757,6 +1762,102 @@
                             >
                               (123) 456-7890
                             </td>
+
+                            <td class="address" data-title="Address">
+                              <input
+                                type="checkbox"
+                                class="address-checkbox"
+                                id="address-row-checkbox-1"
+                                hidden
+                              />
+                              <label
+                                class="address-label"
+                                for="address-row-checkbox-1"
+                              >
+                                30525 SE Issaquah-Fall City Rd, Fall City, WA,
+                                Issaquah, WA 98024
+                              </label>
+                            </td>
+
+                            <td class="feed" data-title="Feed">
+                              <!--input cotrols the state of the icon
+                               when to show/hide it-->
+                              <input
+                                id="status-row-1"
+                                class="status-check"
+                                type="checkbox"
+                                hidden
+                              />
+
+                              <!--connect labels to toggle hide/show -->
+                              <label
+                                for="status-row-1"
+                                class="mb-0 status-label fs-9"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Status"
+                                aria-label="status"
+                              >
+                                <i class="far fa-chart-bar"></i>
+                              </label>
+
+                              <input
+                                class="invoice-check"
+                                id="invoice-row-1"
+                                type="checkbox"
+                                hidden
+                              />
+                              <label
+                                for="invoice-row-1"
+                                class="mb-0 invoice-label fs-9"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Invoice"
+                                aria-label="invoice"
+                              >
+                                <i class="fas fa-file-invoice"></i>
+                              </label>
+                              <div class="dropdown">
+                                <button
+                                  class="p-0 hide-dropdown-caret btn btn-link dropdown-toggle"
+                                  type="button"
+                                  id="email-status-dropdown-1"
+                                  data-bs-toggle="dropdown"
+                                  aria-expanded="false"
+
+                                >
+
+                                  <i class="fas fa-th-large"></i>
+                                </button>
+                                <ul
+                                  class="email-row-menu dropdown-menu"
+                                  aria-labelledby="email-status-dropdown"
+                                >
+                                  <li class="dropdown-item">
+                                    <label
+                                      for="status-row-1"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Status"
+                                    >
+                                      <i class="far fa-chart-bar"></i>
+                                    </label>
+                                  </li>
+
+                                  <li class="dropdown-item">
+                                    <label
+                                      for="invoice-row-1"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Invoice"
+                                    >
+                                      <i class="fas fa-file-invoice"></i>
+                                    </label>
+                                  </li>
+                                </ul>
+                              </div>
+                            </td>
+
                             <td class="quantity" data-title="Updates">
                               <div class="form-group">
                                 <select
@@ -1838,6 +1939,100 @@
                             >
                               (123) 456-7890
                             </td>
+
+                            <td class="address" data-title="Address">
+                              <input
+                                type="checkbox"
+                                class="address-checkbox"
+                                id="address-row-checkbox-2"
+                                hidden
+                              />
+                              <label
+                                class="address-label"
+                                for="address-row-checkbox-2"
+                              >
+                                30525 SE Issaquah-Fall City Rd, Fall City, WA,
+                                Issaquah, WA 98024
+                              </label>
+                            </td>
+
+                            <td class="feed" data-title="Feed">
+                              <!--input cotrols the state of the icon
+                               when to show/hide it-->
+                              <input
+                                id="status-row-2"
+                                class="status-check"
+                                type="checkbox"
+                                hidden
+                              />
+
+                              <!--connect labels to toggle hide/show -->
+                              <label
+                                for="status-row-2"
+                                class="mb-0 status-label fs-9"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Status"
+                                aria-label="status"
+                              >
+                                <i class="far fa-chart-bar"></i>
+                              </label>
+
+                              <input
+                                class="invoice-check"
+                                id="invoice-row-2"
+                                type="checkbox"
+                                hidden
+                              />
+                              <label
+                                for="invoice-row-2"
+                                class="mb-0 invoice-label fs-9"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Invoice"
+                                aria-label="invoice"
+                              >
+                                <i class="fas fa-file-invoice"></i>
+                              </label>
+                              <div class="dropdown">
+                                <button
+                                  class="p-0 hide-dropdown-caret btn btn-link dropdown-toggle"
+                                  type="button"
+                                  id="email-status-dropdown-2"
+                                  data-bs-toggle="dropdown"
+                                  aria-expanded="false"
+                                >
+                                  <i class="fas fa-th-large"></i>
+                                </button>
+                                <ul
+                                  class="email-row-menu dropdown-menu"
+                                  aria-labelledby="email-status-dropdown"
+                                >
+                                  <li class="dropdown-item">
+                                    <label
+                                      for="status-row-2"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Status"
+                                    >
+                                      <i class="far fa-chart-bar"></i>
+                                    </label>
+                                  </li>
+
+                                  <li class="dropdown-item">
+                                    <label
+                                      for="invoice-row-2"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Invoice"
+                                    >
+                                      <i class="fas fa-file-invoice"></i>
+                                    </label>
+                                  </li>
+                                </ul>
+                              </div>
+                            </td>
+
                             <td class="quantity" data-title="Updates">
                               <div class="form-group">
                                 <select
@@ -1917,6 +2112,99 @@
                             >
                               (123) 456-7890
                             </td>
+                            <td class="address" data-title="Address">
+                              <input
+                                type="checkbox"
+                                class="address-checkbox"
+                                id="address-row-checkbox-3"
+                                hidden
+                              />
+                              <label
+                                class="address-label"
+                                for="address-row-checkbox-3"
+                              >
+                                30525 SE Issaquah-Fall City Rd, Fall City, WA,
+                                Issaquah, WA 98024
+                              </label>
+                            </td>
+
+                            <td class="feed" data-title="Feed">
+                              <!--input cotrols the state of the icon
+                               when to show/hide it-->
+                              <input
+                                id="status-row-3"
+                                class="status-check"
+                                type="checkbox"
+                                hidden
+                              />
+
+                              <!--connect labels to toggle hide/show -->
+                              <label
+                                for="status-row-3"
+                                class="mb-0 status-label fs-9"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Status"
+                                aria-label="status"
+                              >
+                                <i class="far fa-chart-bar"></i>
+                              </label>
+
+                              <input
+                                class="invoice-check"
+                                id="invoice-row-3"
+                                type="checkbox"
+                                hidden
+                              />
+                              <label
+                                for="invoice-row-3"
+                                class="mb-0 invoice-label fs-9"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Invoice"
+                                aria-label="invoice"
+                              >
+                                <i class="fas fa-file-invoice"></i>
+                              </label>
+                              <div class="dropdown">
+                                <button
+                                  class="p-0 hide-dropdown-caret btn btn-link dropdown-toggle"
+                                  type="button"
+                                  id="email-status-dropdown-3"
+                                  data-bs-toggle="dropdown"
+                                  aria-expanded="false"
+                                >
+                                  <i class="fas fa-th-large"></i>
+                                </button>
+                                <ul
+                                  class="email-row-menu dropdown-menu"
+                                  aria-labelledby="email-status-dropdown"
+                                >
+                                  <li class="dropdown-item">
+                                    <label
+                                      for="status-row-3"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Status"
+                                    >
+                                      <i class="far fa-chart-bar"></i>
+                                    </label>
+                                  </li>
+
+                                  <li class="dropdown-item">
+                                    <label
+                                      for="invoice-row-3"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Invoice"
+                                    >
+                                      <i class="fas fa-file-invoice"></i>
+                                    </label>
+                                  </li>
+                                </ul>
+                              </div>
+                            </td>
+
                             <td class="quantity" data-title="Updates">
                               <div class="form-group">
                                 <select
@@ -1996,6 +2284,100 @@
                             >
                               (123) 456-7890
                             </td>
+
+                            <td class="address" data-title="Address">
+                              <input
+                                type="checkbox"
+                                class="address-checkbox"
+                                id="address-row-checkbox-4"
+                                hidden
+                              />
+                              <label
+                                class="address-label"
+                                for="address-row-checkbox-4"
+                              >
+                                30525 SE Issaquah-Fall City Rd, Fall City, WA,
+                                Issaquah, WA 98024
+                              </label>
+                            </td>
+
+                            <td class="feed" data-title="Feed">
+                              <!--input cotrols the state of the icon
+                               when to show/hide it-->
+                              <input
+                                id="status-row-4"
+                                class="status-check"
+                                type="checkbox"
+                                hidden
+                              />
+
+                              <!--connect labels to toggle hide/show -->
+                              <label
+                                for="status-row-4"
+                                class="mb-0 status-label fs-9"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Status"
+                                aria-label="status"
+                              >
+                                <i class="far fa-chart-bar"></i>
+                              </label>
+
+                              <input
+                                class="invoice-check"
+                                id="invoice-row-4"
+                                type="checkbox"
+                                hidden
+                              />
+                              <label
+                                for="invoice-row-4"
+                                class="mb-0 invoice-label fs-9"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Invoice"
+                                aria-label="invoice"
+                              >
+                                <i class="fas fa-file-invoice"></i>
+                              </label>
+                              <div class="dropdown">
+                                <button
+                                  class="p-0 hide-dropdown-caret btn btn-link dropdown-toggle"
+                                  type="button"
+                                  id="email-status-dropdown-4"
+                                  data-bs-toggle="dropdown"
+                                  aria-expanded="false"
+                                >
+                                  <i class="fas fa-th-large"></i>
+                                </button>
+                                <ul
+                                  class="email-row-menu dropdown-menu"
+                                  aria-labelledby="email-status-dropdown"
+                                >
+                                  <li class="dropdown-item">
+                                    <label
+                                      for="status-row-4"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Status"
+                                    >
+                                      <i class="far fa-chart-bar"></i>
+                                    </label>
+                                  </li>
+
+                                  <li class="dropdown-item">
+                                    <label
+                                      for="invoice-row-4"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Invoice"
+                                    >
+                                      <i class="fas fa-file-invoice"></i>
+                                    </label>
+                                  </li>
+                                </ul>
+                              </div>
+                            </td>
+
                             <td class="quantity" data-title="Updates">
                               <div class="form-group">
                                 <select
@@ -2074,6 +2456,99 @@
                             >
                               (123) 456-7890
                             </td>
+                            <td class="address" data-title="Address">
+                              <input
+                                type="checkbox"
+                                class="address-checkbox"
+                                id="address-row-checkbox-5"
+                                hidden
+                              />
+                              <label
+                                class="address-label"
+                                for="address-row-checkbox-5"
+                              >
+                                30525 SE Issaquah-Fall City Rd, Fall City, WA,
+                                Issaquah, WA 98024
+                              </label>
+                            </td>
+
+                            <td class="feed" data-title="Feed">
+                              <!--input cotrols the state of the icon
+                               when to show/hide it-->
+                              <input
+                                id="status-row-5"
+                                class="status-check"
+                                type="checkbox"
+                                hidden
+                              />
+
+                              <!--connect labels to toggle hide/show -->
+                              <label
+                                for="status-row-5"
+                                class="mb-0 status-label fs-9"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Status"
+                                aria-label="status"
+                              >
+                                <i class="far fa-chart-bar"></i>
+                              </label>
+
+                              <input
+                                class="invoice-check"
+                                id="invoice-row-5"
+                                type="checkbox"
+                                hidden
+                              />
+                              <label
+                                for="invoice-row-5"
+                                class="mb-0 invoice-label fs-9"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Invoice"
+                                aria-label="invoice"
+                              >
+                                <i class="fas fa-file-invoice"></i>
+                              </label>
+                              <div class="dropdown">
+                                <button
+                                  class="p-0 hide-dropdown-caret btn btn-link dropdown-toggle"
+                                  type="button"
+                                  id="email-status-dropdown-5"
+                                  data-bs-toggle="dropdown"
+                                  aria-expanded="false"
+                                >
+                                  <i class="fas fa-th-large"></i>
+                                </button>
+                                <ul
+                                  class="email-row-menu dropdown-menu"
+                                  aria-labelledby="email-status-dropdown"
+                                >
+                                  <li class="dropdown-item">
+                                    <label
+                                      for="status-row-5"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Status"
+                                    >
+                                      <i class="far fa-chart-bar"></i>
+                                    </label>
+                                  </li>
+
+                                  <li class="dropdown-item">
+                                    <label
+                                      for="invoice-row-5"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Invoice"
+                                    >
+                                      <i class="fas fa-file-invoice"></i>
+                                    </label>
+                                  </li>
+                                </ul>
+                              </div>
+                            </td>
+
                             <td class="quantity" data-title="Updates">
                               <div class="form-group">
                                 <select
@@ -2121,6 +2596,7 @@
                         </tbody>
                       </table>
                     </div>
+
                     <div class="row align-items-center mt-3">
                       <div class="pagination d-none"></div>
                       <div class="col">
