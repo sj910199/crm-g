@@ -1126,7 +1126,7 @@ section {
   margin: 0 4px; /* Adds spacing between buttons */
 }
 
-td[data-title="Emails"].email {
+td[data-title="Feed"].feed {
   display: flex;
   gap: 0.5rem;
   justify-content: center;
@@ -1134,31 +1134,33 @@ td[data-title="Emails"].email {
   width: 100%;
 }
 
-td[data-title="Emails"].email .invoice-check ~ label[for="invoice-row-1"],
-td[data-title="Emails"].email .status-check ~ label[for="status-row-1"] {
+td[data-title="Feed"].feed .invoice-check ~ .invoice-label,
+td[data-title="Feed"].feed .status-check ~ .status-label {
   display: none;
 }
 
-td[data-title="Emails"].email
-  .status-check:checked
-  ~ label[for="status-row-1"] {
+td[data-title="Feed"].feed .invoice-check:checked ~ .invoice-label,
+td[data-title="Feed"].feed .status-check:checked ~ .status-label {
   display: block;
+  cursor: pointer;
+  max-width: 1.5rem;
+  max-height: 1.5rem;
 }
 
-td[data-title="Emails"].email
-  .invoice-check:checked
-  ~ label[for="invoice-row-1"] {
-  display: block;
+td[data-title="Feed"].feed .invoice-check:checked ~ .invoice-label > svg,
+td[data-title="Feed"].feed .status-check:checked ~ .status-label > svg {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  color: var(--falcon-link-hover-color);
 }
 
 .email-row-menu.dropdown-menu.show {
   display: flex;
   transform: translate(-28px, 28px) !important;
-  /*flex-wrap: wrap;*/
+  min-width: 0;
 }
 
 .email-row-menu.dropdown-menu.show .dropdown-item {
-  flex-grow: 1;
   width: fit-content;
   padding: 0;
 }

@@ -1713,9 +1713,7 @@
                             <th class="text-900 sort" data-sort="address">
                               Address
                             </th>
-                            <th class="text-900 sort" data-sort="email">
-                              Emails
-                            </th>
+                            <th class="text-900 sort" data-sort="feed">Feed</th>
                             <th class="text-900 sort" data-sort="quantity">
                               Updates
                             </th>
@@ -1767,43 +1765,50 @@
                             <td
                               class="address"
                               data-important=""
-                              data-title="Phone"
+                              data-title="Address"
                             >
-                              address
+                              30525 SE Issaquah-Fall City Rd, Fall City, WA,
+                              Issaquah, WA 98024
                             </td>
                             <td
-                              class="email"
+                              class="feed"
                               data-important=""
-                              data-title="Emails"
+                              data-title="Feed"
                             >
+                              <!--input cotrols the state of the icon
+                               when to show/hide it-->
                               <input
                                 id="status-row-1"
                                 class="status-check"
                                 type="checkbox"
                                 hidden
                               />
+
+                              <!--connect labels to toggle hide/show -->
+                              <label
+                                for="status-row-1"
+                                class="mb-0 status-label fs-9"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Status"
+                                aria-label="status"
+                              >
+                                <i class="far fa-chart-bar"></i>
+                              </label>
+
                               <input
                                 class="invoice-check"
                                 id="invoice-row-1"
                                 type="checkbox"
                                 hidden
                               />
-
-                              <label
-                                for="status-row-1"
-                                class="mb-0"
-                                data-bs-toggle="tooltip"
-                                data-bs-placement="top"
-                                title="Status"
-                              >
-                                <i class="far fa-chart-bar"></i>
-                              </label>
                               <label
                                 for="invoice-row-1"
-                                class="mb-0"
+                                class="mb-0 invoice-label fs-9"
                                 data-bs-toggle="tooltip"
                                 data-bs-placement="top"
                                 title="Invoice"
+                                aria-label="invoice"
                               >
                                 <i class="fas fa-file-invoice"></i>
                               </label>
@@ -1815,7 +1820,7 @@
                                   data-bs-toggle="dropdown"
                                   aria-expanded="false"
                                 >
-                                  <i class="fas fa-angle-double-down"></i>
+                                  <i class="fas fa-th-large"></i>
                                 </button>
                                 <ul
                                   class="email-row-menu dropdown-menu"
@@ -1927,6 +1932,89 @@
                             >
                               (123) 456-7890
                             </td>
+
+                            <td
+                              class="address"
+                              data-important=""
+                              data-title="Phone"
+                            >
+                              address
+                            </td>
+                            <td
+                              class="email"
+                              data-important=""
+                              data-title="Emails"
+                            >
+                              <input
+                                id="status-row-2"
+                                class="status-check"
+                                type="checkbox"
+                                hidden
+                              />
+                              <input
+                                class="invoice-check"
+                                id="invoice-row-2"
+                                type="checkbox"
+                                hidden
+                              />
+
+                              <label
+                                for="status-row-2"
+                                class="mb-0 status-label"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Status"
+                              >
+                                <i class="far fa-chart-bar"></i>
+                              </label>
+                              <label
+                                for="invoice-row-2"
+                                class="mb-0 invoice-label"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Invoice"
+                              >
+                                <i class="fas fa-file-invoice"></i>
+                              </label>
+                              <div class="dropdown">
+                                <button
+                                  class="p-0 hide-dropdown-caret btn btn-link dropdown-toggle"
+                                  type="button"
+                                  id="email-status-dropdown-2"
+                                  data-bs-toggle="dropdown"
+                                  aria-expanded="false"
+                                >
+                                  <i class="fas fa-th-large"></i>
+                                </button>
+                                <ul
+                                  class="email-row-menu dropdown-menu"
+                                  aria-labelledby="email-status-dropdown-2"
+                                >
+                                  <li class="dropdown-item">
+                                    <label
+                                      for="status-row-2"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Status"
+                                    >
+                                      <i class="far fa-chart-bar"></i>
+                                    </label>
+                                  </li>
+
+                                  <li class="dropdown-item">
+                                    <label
+                                      for="invoice-row-2"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Invoice"
+                                    >
+                                      <i class="fas fa-file-invoice"></i>
+                                    </label>
+                                  </li>
+                                </ul>
+                              </div>
+                            </td>
+
                             <td class="quantity" data-title="Updates">
                               <div class="form-group">
                                 <select
