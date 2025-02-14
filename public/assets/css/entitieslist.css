@@ -2,32 +2,40 @@
 |   Theme Styles
 -----------------------------------------------*/
 :root {
-  --falcon-body-color: #333;
+  /*--falcon-body-color: #333;*/
   --falcon-body-color: 51, 51, 51;
   --falcon-bg-opacity: 1;
   /* --falcon-table-color: #333 !important;
   --falcon-table-striped-color: #333 !important; */
   --left-nav-width: 55px;
   --left-content-width: 350px;
+  --desktop-left-content-width: calc(
+    var(--left-nav-width) + var(--left-content-width)
+  );
+  --inset-shadow-sm: inset 0 2px 4px rgb(0 0 0 / 0.05);
+  --drop-shadow-md: 0 3px 3px rgb(0 0 0 / 0.12);
+  --inbox-header-max-height: 56px;
+  --chat-content-header-max-height: 68px;
+  --fullscreen-inbox-nav-width: 55px;
 }
 
 /* Specific Styles for Item Description and Custom Fields */
-[data-bs-theme='dark'] .item-desc,
-[data-bs-theme='dark'] .custom-fields {
+[data-bs-theme="dark"] .item-desc,
+[data-bs-theme="dark"] .custom-fields {
   border: 1px solid #3c4652;
   background-color: #121e2d;
   color: #f9f9f9;
 }
 
 /* Styles for Placeholders */
-[data-bs-theme='light'] .picture-placeholder,
-[data-bs-theme='light'] .file-container {
+[data-bs-theme="light"] .picture-placeholder,
+[data-bs-theme="light"] .file-container {
   background-color: #f9f9f9;
   color: #333; /* Ensure light mode placeholder text is visible */
 }
 
-[data-bs-theme='dark'] .picture-placeholder,
-[data-bs-theme='dark'] .file-container {
+[data-bs-theme="dark"] .picture-placeholder,
+[data-bs-theme="dark"] .file-container {
   border: 2px dashed #3c4652;
   background-color: #121e2d;
   color: #f9f9f9;
@@ -38,17 +46,59 @@
 /*   border-style: solid; */
 /* } */
 
-[data-bs-theme='dark'] .file-container {
+[data-bs-theme="dark"] .file-container {
   border-style: solid;
 }
 
-[data-bs-theme='dark'] .items-card-text.editable {
+[data-bs-theme="dark"] .items-card-text.editable {
   color: #333;
+}
+
+/*-----------------------------------------------
+|  class extensions / utility classes
+-----------------------------------------------*/
+.d-contents {
+  display: contents !important;
+}
+
+.w-fit {
+  width: fit-content !important;
+}
+.max-w-fit {
+  max-width: fit-content !important;
+}
+.max-w-none {
+  max-width: none !important;
+}
+.h-100dvh {
+  height: 100dvh !important;
+}
+
+.col-1fr-auto {
+  grid-template-columns: 1fr auto !important;
+}
+
+.col-1fr-1fr {
+  grid-template-columns: 1fr 1fr !important;
+}
+
+.row-1fr {
+  grid-template-rows: 1fr !important;
+}
+
+.rounded-20px {
+  border-radius: 20px !important;
 }
 
 /*-----------------------------------------------
 |   Page Wrapper, left vertical Navbar, and triggers
 -----------------------------------------------*/
+
+/* in order to change layout when on full screen */
+.left-sidebar-container {
+  container-type: inline-size !important;
+  container-name: side-panel !important;
+}
 
 /* Media Queries ----------------------------- */
 
@@ -64,7 +114,7 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     display: grid;
     height: 100dvh;
     grid-template-columns: 1fr 0;
-    transition: grid-template-columns 0.2s ease-in-out;
+    /*transition: grid-template-columns 0.2s ease-in-out;*/
   }
 
   .page-wrapper > .main {
@@ -142,7 +192,7 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
 
   /* mobile animation for left content starts here */
 
-  .navbar-toggle.nav-n-content ~ .page-wrapper {
+  .navbar-toggle.panel-content ~ .page-wrapper {
     grid-template-columns: 0 1fr;
   }
 
@@ -153,7 +203,9 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
   .left-sidebar-container {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
-    overflow-y: scroll;
+    /* overflow: hidden; */
+    overflow-y: auto !important;
+    overflow-x: hidden;
     max-width: 100%;
     max-height: 100%;
     width: 100%;
@@ -179,21 +231,29 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
 
   /* mobile animation for left nav bar starts here */
   /* open state */
-  .navbar-toggle.nav-n-content ~ .page-wrapper > .left-nav-bar,
+  .navbar-toggle.panel-content ~ .page-wrapper > .left-nav-bar,
   .navbar-toggle.nav-only ~ .page-wrapper > .left-nav-bar {
     transform: translateX(0);
     transition-delay: 0s;
   }
 
-  .navbar-toggle.nav-n-content ~ .page-wrapper > .left-nav-bar ul,
+  .navbar-toggle.panel-content ~ .page-wrapper > .left-nav-bar ul,
   .navbar-toggle.nav-only ~ .page-wrapper > .left-nav-bar ul {
     gap: 0.5rem;
 
     transition-delay: 0.11s;
   }
 
-  .navbar-toggle.nav-n-content ~ .page-wrapper > .left-nav-bar ul li:not(:last-child),
-  .navbar-toggle.nav-only ~ .page-wrapper > .left-nav-bar ul li:not(:last-child) {
+  .navbar-toggle.panel-content
+    ~ .page-wrapper
+    > .left-nav-bar
+    ul
+    li:not(:last-child),
+  .navbar-toggle.nav-only
+    ~ .page-wrapper
+    > .left-nav-bar
+    ul
+    li:not(:last-child) {
     transform: translateY(0);
     opacity: 1;
     max-height: 100%;
@@ -203,25 +263,46 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     transition-delay: 0.11s;
   }
 
-  .navbar-toggle.nav-n-content ~ .page-wrapper > .left-nav-bar > ul li > label > svg,
-  .navbar-toggle.nav-only ~ .page-wrapper > .left-nav-bar > ul li > label > svg {
+  .navbar-toggle.panel-content
+    ~ .page-wrapper
+    > .left-nav-bar
+    > ul
+    li
+    > label
+    > svg,
+  .navbar-toggle.nav-only
+    ~ .page-wrapper
+    > .left-nav-bar
+    > ul
+    li
+    > label
+    > svg {
     transform: rotate(360deg);
   }
 
   /* close state */
-  .navbar-toggle.nav-n-content ~ .page-wrapper > .left-nav-bar.left-nav-collapse,
+  .navbar-toggle.panel-content
+    ~ .page-wrapper
+    > .left-nav-bar.left-nav-collapse,
   .navbar-toggle ~ .page-wrapper > .left-nav-bar {
     transform: translateX(1.5rem);
     transition-delay: 0.21s;
   }
 
-  .navbar-toggle.nav-n-content ~ .page-wrapper > .left-nav-bar.left-nav-collapse ul,
+  .navbar-toggle.panel-content
+    ~ .page-wrapper
+    > .left-nav-bar.left-nav-collapse
+    ul,
   .navbar-toggle ~ .page-wrapper > .left-nav-bar ul {
     gap: 0;
     transition-delay: 0s;
   }
 
-  .navbar-toggle.nav-n-content ~ .page-wrapper > .left-nav-bar.left-nav-collapse ul li:not(:last-child),
+  .navbar-toggle.panel-content
+    ~ .page-wrapper
+    > .left-nav-bar.left-nav-collapse
+    ul
+    li:not(:last-child),
   .navbar-toggle ~ .page-wrapper > .left-nav-bar ul li:not(:last-child) {
     transform: translateY(20px);
     opacity: 0;
@@ -231,7 +312,13 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     transition-delay: 0s;
   }
 
-  .navbar-toggle.nav-n-content ~ .page-wrapper > .left-nav-bar.left-nav-collapse > ul li > label > svg,
+  .navbar-toggle.panel-content
+    ~ .page-wrapper
+    > .left-nav-bar.left-nav-collapse
+    > ul
+    li
+    > label
+    > svg,
   .navbar-toggle ~ .page-wrapper > .left-nav-bar > ul li > label > svg {
     transform: rotate(180deg);
   }
@@ -249,71 +336,105 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     width: 100%;
   }
 
-  .navbar-toggle.nav-n-content ~ .page-wrapper .theme-control-dropdown {
+  .navbar-toggle.panel-content ~ .page-wrapper .theme-control-dropdown {
     display: none !important;
   }
 
-  .navbar-toggle.nav-n-content ~ .page-wrapper .sub-top-nav-desktop {
+  .navbar-toggle.panel-content ~ .page-wrapper .sub-top-nav-desktop {
     left: calc(50% - (var(--left-nav-width) / 3));
   }
 }
 
-/* desktop  media quuries*/
+@media (max-width: 991px) {
+  .hide-left-nav-bar {
+    transform: translateX(100%) !important;
+  }
+}
+
+/* desktop  media queries*/
 @media (min-width: 992px) {
-  /* @media (min-width: 768px) { */
   /* the hide/show logic */
-  /* nav-only */
   .navbar-toggle.nav-only ~ .page-wrapper {
-    /* .page-wrapper.nav-only { */
     grid-template-columns: 1fr var(--left-nav-width) 0 !important;
+    /*transition: grid-template-columns 0.2s linear;*/
   }
 
-  .navbar-toggle.nav-n-content ~ .page-wrapper {
-    /* .page-wrapper.nav-n-content { */
-    grid-template-columns: 1fr var(--left-nav-width) var(--left-content-width) !important;
+  .navbar-toggle.panel-content ~ .page-wrapper {
+    grid-template-columns: 1fr 0 calc(var(--desktop-left-content-width)) !important;
+    /*transition: grid-template-columns 0s linear 0.2s;*/
+    /* transition-delay: 0.2s; */
   }
+
+  /* hide the left navbar on desktop view when left panel is shown */
+  .navbar-toggle.panel-content ~ .page-wrapper > .left-nav-bar {
+    max-width: 0 !important;
+    overflow: hidden;
+  }
+
+  .navbar-toggle.nav-only ~ .page-wrapper > .left-sidebar-container {
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .navbar-toggle.panel-content ~ .page-wrapper > .left-sidebar-container {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+    max-width: var(--desktop-left-content-width);
+  }
+
+  /* logic for side panel fullscreen starts here*/
+  .navbar-toggle.panel-content ~ .page-wrapper.panel-fullscreen {
+    grid-template-columns: 0 0 1fr !important;
+  }
+
+  /* need to add these when fullscreen is enabled */
+  .navbar-toggle.panel-content
+    ~ .page-wrapper.panel-fullscreen
+    > .left-sidebar-container {
+    max-width: 100% !important;
+  }
+
+  /* logic for side panel fullscreen ends here*/
 
   .page-wrapper {
     display: grid !important;
     grid-template-columns: 1fr 0 0;
     height: 100dvh;
     overflow: hidden;
-
-    transition: grid-template-columns 0.2s ease-in-out;
+    /*transition: grid-template-columns 0.2s linear;*/
   }
 
   .page-wrapper .main {
     overflow-y: auto;
+    /*transition: max-width 0.2s linear;*/
   }
 
   .left-sidebar-container {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     overflow-y: scroll;
-    max-width: 350px;
+    max-width: var(--desktop-left-content-width);
     max-height: 100%;
     width: 100%;
     height: 100%;
   }
 
-  .left-sidebar-container .price-article,
-  .left-sidebar-container .calendar-article,
-  .left-sidebar-container .inbox-article,
-  .left-sidebar-container .settings-article,
-  .left-sidebar-container .customize-article {
+  .left-sidebar-container > * {
+    border: var(--falcon-border-width) var(--falcon-border-style)
+      var(--falcon-border-color) !important;
     grid-area: 1/1;
     z-index: 1;
     width: 100%;
     height: 100%;
-  }
-
-  .left-sidebar-container .price-article {
-    z-index: 2;
+    max-width: 100%;
   }
 
   .left-nav-bar {
     height: 100dvh;
     max-width: var(--left-nav-width);
+    /*transition: max-width 0.2s ease-in-out;*/
     /* z-index: 1016; */
   }
 
@@ -323,7 +444,6 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     align-items: center;
     justify-content: end;
     width: 100%;
-    /* height: 100%; */
     height: 100dvh;
     gap: 0.5rem;
     list-style: none;
@@ -372,7 +492,6 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     margin: 0;
     width: fit-content;
     max-width: var(--left-nav-width);
-    padding: 0;
     border: transparent;
     /* highest z-index in this page */
     z-index: 1031;
@@ -607,7 +726,9 @@ section {
   line-height: 1.4;
   padding: 4px 8px;
   border-radius: 6px;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
   cursor: text;
   background-color: #f9f9f9;
 }
@@ -647,7 +768,9 @@ section {
   color: #374151;
   cursor: pointer;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
 }
 
 .project-alpha-action-button:hover {
@@ -732,7 +855,9 @@ section {
   border: 1px solid #d1d5db;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   cursor: pointer;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
   display: none;
 }
 
@@ -764,7 +889,9 @@ section {
   justify-content: center;
   align-items: center;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
   position: absolute;
   bottom: 20px; /* Position it at the bottom */
   right: 20px; /* Keep it aligned to the right */
@@ -1040,15 +1167,21 @@ section {
   }
 
   .mobile-stack .accordion-container {
-    transition: min-height 0.15s ease-out, max-height 0.15s ease-out;
+    transition:
+      min-height 0.15s ease-out,
+      max-height 0.15s ease-out;
   }
 
   /* container accordion close */
   .mobile-stack .accordion-container.triggered {
     --accordion-column-to-show: 1;
     --accordion-column-height: 44px;
-    min-height: calc(var(--accordion-column-height) * var(--accordion-column-to-show));
-    max-height: calc(var(--accordion-column-height) * var(--accordion-column-to-show));
+    min-height: calc(
+      var(--accordion-column-height) * var(--accordion-column-to-show)
+    );
+    max-height: calc(
+      var(--accordion-column-height) * var(--accordion-column-to-show)
+    );
     overflow: hidden;
   }
 
@@ -1058,11 +1191,15 @@ section {
     visibility: hidden;
     opacity: 0;
     transition-behavior: allow-discrete;
-    transition: opacity 0.15s ease-out, visibility 0.15s ease-out;
+    transition:
+      opacity 0.15s ease-out,
+      visibility 0.15s ease-out;
   }
 
   .mobile-stack .accordion-container > *:not(:nth-child(1)) {
-    transition: transform 0.15s ease-out, opacity 0.15s ease-out;
+    transition:
+      transform 0.15s ease-out,
+      opacity 0.15s ease-out;
   }
 
   .mobile-stack .accordion-container.triggering > *:not(:nth-child(1)) {
@@ -1091,23 +1228,33 @@ section {
     color: inherit;
   }
 
-  .mobile-stack .accordion-container.triggered .accordion-trigger .accordion-meta,
+  .mobile-stack
+    .accordion-container.triggered
+    .accordion-trigger
+    .accordion-meta,
   .mobile-stack .accordion-container.triggered .accordion-trigger {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
   }
 
-  .mobile-stack .accordion-container.triggered .accordion-trigger .accordion-meta {
+  .mobile-stack
+    .accordion-container.triggered
+    .accordion-trigger
+    .accordion-meta {
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 0.1s ease-in, transform 0.1s ease-in;
+    transition:
+      opacity 0.1s ease-in,
+      transform 0.1s ease-in;
   }
 
   .mobile-stack .accordion-container .accordion-trigger .accordion-meta {
     opacity: 0;
     transform: translateY(10px);
-    transition: opacity 0.1s ease-out, transform 0.1s ease-out;
+    transition:
+      opacity 0.1s ease-out,
+      transform 0.1s ease-out;
   }
 
   /* icon */
@@ -1118,7 +1265,8 @@ section {
   }
 
   .mobile-stack .accordion-container td:has(.accordion-trigger) {
-    border-bottom: var(--falcon-border-width) var(--falcon-border-style) var(--falcon-border-color);
+    border-bottom: var(--falcon-border-width) var(--falcon-border-style)
+      var(--falcon-border-color);
   }
 
   .mobile-stack .accordion-container .accordion-trigger .accor-open {
@@ -1154,7 +1302,9 @@ section {
   justify-content: center;
   align-items: center;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
   border: none;
 }
 
@@ -1247,7 +1397,10 @@ section {
 .pictures-section {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ensure a responsive design */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  ); /* ensure a responsive design */
   /* max-height: 350px; */
   /* to ensure there is no overflow */
   gap: 32px;
@@ -1294,11 +1447,14 @@ section {
   cursor: pointer;
   border-radius: 4px;
   overflow: hidden;
-  transition: border-color 0.1s ease, background-color 0.1s ease, max-height 0.1s ease;
+  transition:
+    border-color 0.1s ease,
+    background-color 0.1s ease,
+    max-height 0.1s ease;
 }
 
-.picture-placeholder:has(.uploaded-image[data-modular='90']) .uploaded-image,
-.picture-placeholder:has(.uploaded-image[data-modular='270']) .uploaded-image {
+.picture-placeholder:has(.uploaded-image[data-modular="90"]) .uploaded-image,
+.picture-placeholder:has(.uploaded-image[data-modular="270"]) .uploaded-image {
   max-width: 350px;
 }
 
@@ -1315,7 +1471,9 @@ section {
   background-color: inherit; /* git the background from parents instead for dark/light mode */
   border-radius: 4px;
   transform-origin: center;
-  transition: transform 0.2s ease, max-width 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    max-width 0.2s ease;
 }
 
 /* Add hover effect for better user experience */
@@ -1897,17 +2055,20 @@ div.gslide-media.gslide-inline {
 }
 
 @media (max-width: 768px) {
-  [data-bs-theme='light'] .file-container [data-bs-theme='light'] .picture-placeholder:has(img) {
+  [data-bs-theme="light"]
+    .file-container
+    [data-bs-theme="light"]
+    .picture-placeholder:has(img) {
     border-style: solid;
     border-width: 1px;
     /* border-color: #3c465280; */
   }
 
-  [data-bs-theme='light'] .picture-placeholder {
+  [data-bs-theme="light"] .picture-placeholder {
     border-color: transparent;
   }
 
-  [data-bs-theme='dark'] .picture-placeholder {
+  [data-bs-theme="dark"] .picture-placeholder {
     border-style: solid;
     border-width: 1px;
   }
@@ -1944,8 +2105,9 @@ div.gslide-media.gslide-inline {
     min-height: 350px;
   }
 
-  .picture-placeholder:has(.uploaded-image[data-modular='90']) .uploaded-image,
-  .picture-placeholder:has(.uploaded-image[data-modular='270']) .uploaded-image {
+  .picture-placeholder:has(.uploaded-image[data-modular="90"]) .uploaded-image,
+  .picture-placeholder:has(.uploaded-image[data-modular="270"])
+    .uploaded-image {
     /* height: 90%; */
     max-height: 92%;
   }
@@ -1955,7 +2117,9 @@ div.gslide-media.gslide-inline {
   .post1:hover .gallery-menu {
     visibility: visible;
     opacity: 100;
-    transition: visibility 0s linear 0.15s, opacity 0.25s ease-in-out;
+    transition:
+      visibility 0s linear 0.15s,
+      opacity 0.25s ease-in-out;
   }
 }
 
@@ -1968,8 +2132,8 @@ div.gslide-media.gslide-inline {
 
 /* for statuses of invoice */
 /* If data-status="due" */
-[data-status='due'] svg,
-[data-status='due'] p {
+[data-status="due"] svg,
+[data-status="due"] p {
   --falcon-text-opacity: 1;
   color: rgba(var(--falcon-danger-rgb), var(--falcon-text-opacity)) !important;
   /* Add SVG fill */
@@ -1977,8 +2141,8 @@ div.gslide-media.gslide-inline {
 }
 
 /* If data-status="completed" (better than "not-due") */
-[data-status='settled'] svg,
-[data-status='settled'] p {
+[data-status="settled"] svg,
+[data-status="settled"] p {
   --falcon-text-opacity: 1;
   color: rgba(var(--falcon-success-rgb), var(--falcon-text-opacity)) !important;
   /* Add SVG fill */
@@ -2038,6 +2202,52 @@ div.gslide-media.gslide-inline {
 }
 
 /*-----------------------------------------------
+|   Banners Page
+-----------------------------------------------*/
+.banners-main,
+.banners-navbar-overrides {
+  max-width: 1140px;
+}
+
+.banners-content p {
+  color: var(--falcon-card-title-color);
+}
+
+.banners-content p {
+  color: var(--falcon-secondary-text-emphasis) !important;
+  margin: 0;
+  font-weight: 400;
+}
+
+/*-------------- media queries -------------------*/
+
+@media (max-width: 320px) {
+  .banners-navbar-overrides {
+    padding: 0.5rem !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .banners-card-container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .banners-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    padding: 1rem 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .banners-card-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*-----------------------------------------------
 |   Left panel articles content
 -----------------------------------------------*/
 
@@ -2045,7 +2255,8 @@ div.gslide-media.gslide-inline {
     |   inbox article content
     -----------------------------------------------*/
 /* to have a sticky effect for header
-and so that the second child will maintain in 100dvh*/
+and so that the second child will maintain in 100dvh
+header first row, contents second row*/
 .inbox-article {
   grid-template-rows: auto 1fr;
   max-height: 100dvh !important;
@@ -2057,55 +2268,354 @@ and so that the second child will maintain in 100dvh*/
 }
 
 /*--------------------------------*/
-/* core logic for switching the navigation area
-first column: inbox list
-second column: email/chat content
-*/
+/* this holds the panels together */
 .inbox-container {
   display: grid;
-  grid-template-columns: 0 1fr;
+  grid-template-columns: 1fr;
   overflow: hidden;
+}
+
+/* attach all panels in one column*/
+.inbox-container > * {
+  grid-area: 1/1;
+  padding: 0; /*remove the default padding*/
+  height: 0 !important; /* so it doesnt interfer with the active panel */
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    z-index 0.2s ease-in-out,
+    opacity 0.2s ease-in-out,
+    visibility 0.2s ease-in-out,
+    height 0.2s ease-in-out;
+}
+
+/* core logic for switching the panels*/
+.active-inbox-panel {
+  z-index: 1;
+  height: auto !important;
+  opacity: 1;
+  visibility: visible;
 }
 
 /* this is another core logic for controlling
-which content to show the email or chat content
+which content to show on each sub panel
 */
-.inbox-content {
-  grid-template-columns: 0 1fr;
+.panel-show-nav {
+  /* grid-template-columns: 0 1fr; */
+  /* grid-template-columns: 1fr 1fr; */
+  grid-template-columns: 1fr 0; /*default*/
+
   overflow: hidden;
 }
-/*--------------------------------*/
 
-/*-------------nav area / inbox list ------------*/
-nav[aria-label='messages inbox'] {
-  overflow-y: auto;
+.panel-show-content {
+  grid-template-columns: 0 1fr; /*default*/
 }
 
-nav[aria-label='messages inbox'] ul {
+/*--------------------------------*/
+
+/*------------- inbox menu header   ------------*/
+.inbox-article > header {
+  max-height: var(--inbox-header-max-height);
+  height: 100%;
+}
+
+.inbox-title-container {
   display: grid;
 }
 
-nav[aria-label='messages inbox'] .inbox-item-container {
-  grid-template-columns: auto 1fr;
-  padding: 1rem;
+.inbox-title-container > * {
+  grid-area: 1/1;
+  opacity: 0;
+  visibility: hidden;
 }
 
-nav[aria-label='messages inbox'] .inbox-item-container .avatar {
+.inbox-active-title {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* for showing/hiding the search field and its logic*/
+.inbox-active-title > .title {
+  order: 1;
+  display: grid;
+  place-items: center;
+}
+
+.inbox-active-title > .title > * {
+  grid-area: 1/1;
+}
+
+.inbox-active-title > .toggle-search:checked ~ .title > :not(svg),
+.inbox-active-title > .toggle-search ~ .title > svg {
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+  width: 0;
+}
+
+.inbox-active-title > .toggle-search:checked ~ .title > svg {
+  visibility: visible;
+  opacity: 1;
+  z-index: 1;
+  width: auto;
+}
+
+.inbox-active-title > .toggle-label {
+  cursor: pointer;
+  order: 3;
+}
+
+.toggle-search:checked ~ .toggle-label > * {
+  color: var(--falcon-primary);
+  filter: drop-shadow(var(--drop-shadow-md)); /* 0 3px 3px rgb(0 0 0 / 0.12) */
+}
+
+/* Hide the search box initially */
+.inbox-active-title > .search-field {
+  order: 2;
+  visibility: hidden;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    visibility 0.2s ease;
+}
+
+.toggle-search:checked ~ .search-field {
+  visibility: visible;
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.inbox-active-title > .toggle-search:checked ~ .title > svg,
+.inbox-active-title > .toggle-label,
+.toggle-fullscreen {
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 0.5rem;
+}
+
+/* show/hiding search field ends here */
+
+/* for fullscreen  toggle*/
+
+.toggle-fullscreen {
+  display: grid;
+}
+
+.toggle-fullscreen > * {
+  grid-area: 1/1;
+}
+
+.toggle-fullscreen > .fa-compress,
+.toggle-fullscreen.toggled > .fa-expand {
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+}
+
+.toggle-fullscreen.toggled > .fa-compress {
+  visibility: visible;
+  opacity: 1;
+  z-index: 1;
+}
+/* fullscreen toggle ends here*/
+
+/* menu nav styling*/
+.contacts-body h5:hover,
+.contacts-body h5:focus-visible,
+.inbox-menu-nav ul li a h4:hover,
+.inbox-menu-nav ul li a h4:focus-visible,
+.inbox-menu-trigger:hover,
+.inbox-menu-trigger:focus-visible {
+  opacity: 0.5;
+}
+
+.inbox-menu {
+  width: var(--left-content-width) !important;
+}
+
+.inbox-menu ~ .offcanvas-backdrop {
+  position: absolute !important;
+}
+
+.inbox-menu-nav {
+  display: grid;
+  grid-auto-rows: auto 1fr;
+}
+
+.inbox-tag {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+}
+
+.inbox-type-email {
+  color: var(--falcon-btn-falcon-info-color);
+}
+
+.inbox-type-chat {
+  color: var(--falcon-success);
+}
+.inbox-type-sns {
+  color: var(--falcon-warning);
+}
+
+.fa-long-arrow-alt-up.rotated,
+.fa-long-arrow-alt-down.rotated {
+  transform: rotate(45deg);
+}
+
+.inbox-active {
+  background-color: rgba(var(--falcon-secondary-bg-rgb), 0.5);
+  box-shadow: var(--inset-shadow-sm); /* inset 0 2px 4px rgb(0 0 0 / 0.05) */
+}
+
+.accordion-body.contacts-body {
+  grid-template-rows: auto 1fr;
+}
+
+/*-------------contact list ------------*/
+
+.contact-list {
+  --falcon-text-opacity: 1;
+
+  width: 100%;
+  background-color: rgba(
+    var(--falcon-emphasis-bg-rgb),
+    var(--falcon-bg-opacity)
+  );
+
+  /* background-color: rgba(var(--falcon-secondary-bg-rgb)); */
+  /* background-color: rgba(var(--falcon-gray-200-rgb), var(--falcon-bg-opacity)) !important; */
+  /* background-color: #fff; */
+  border-radius: 8px;
+  overflow-y: auto; /* Still make the contact list scrollable */
+  max-height: 38dvh;
+  /* Optional: set a max height */
+  /* max-height: 500px; */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: grid; /* Enable Grid Layout */
+  grid-template-columns: auto 1fr; /* First column for letter, second for names - adjust width of letter column as needed */
+}
+
+.letter-group {
+  /* Separator between letter groups */
+  /* border-bottom: 1px solid #eee; */
+  display: contents; /* Important: Make letter-group not a grid item itself, but its children are */
+}
+
+.letter-header {
+  /* background-color: rgba(var(--falcon-secondary-bg-rgb)); */
+
+  background-color: rgba(
+    var(--falcon-emphasis-bg-rgb),
+    var(--falcon-bg-opacity)
+  );
+  color: var(--falcon-accordion-btn-color);
+  /*color: var(--falcon-heading-color);*/
+  /* box-shadow: var(--inset-shadow-sm); */
+  /* background-color: #f0f0f0; */
+  padding: 10px 15px;
+  font-weight: bold;
+
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  /* border-bottom: 1px solid #ddd; */
+  /* Place letter header in the first grid column */
+  /* grid-column: 1; */
+  /* Make sure it spans only one row in grid layout */
+}
+
+.contact-accordion-btn-overrides {
+  padding: 0;
+  transition: padding-bottom 150ms linear;
+
+  color: var(--falcon-heading-color);
+}
+
+.contact-accordion-btn-overrides[aria-expanded="true"] {
+  border: none;
+  padding-bottom: 0.5rem;
+}
+
+.contact-accordion-btn-overrides::before,
+.contact-accordion-btn-overrides::after {
+  display: none;
+}
+
+.names-list {
+  /* background-color: #fff; */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  /* Place names list in the second grid column */
+  /* grid-column: 2; */
+  /* color: rgba(var(--falcon-white-rgb), var(--falcon-text-opacity)) !important; */
+}
+
+.names-list li {
+  padding: 10px 15px;
+  border: none;
+  /* border-bottom: 1px solid #eee; */
+}
+
+.names-list li:last-child {
+  border-bottom: none;
+}
+
+/*------------- full screen container and nav ------------*/
+
+.fullscreen-inbox-nav {
+  display: none;
+}
+
+/*-------------nav area / inbox list ------------*/
+nav[aria-label="messages inbox"] {
+  /* overflow-y: auto; */
+  height: 100%;
+}
+
+nav[aria-label="messages inbox"] ul {
+  display: grid;
+  height: 100%;
+}
+
+nav[aria-label="messages inbox"] .inbox-item-container {
+  /* grid-template-columns: auto 1fr; */
+  padding: 1rem;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+nav[aria-label="messages inbox"] .inbox-item-container .avatar {
   place-self: start;
 }
 
-nav[aria-label='messages inbox'] .inbox-item .inbox-info,
-nav[aria-label='messages inbox'] .inbox-item time {
+nav[aria-label="messages inbox"] .inbox-item .inbox-info,
+nav[aria-label="messages inbox"] .inbox-item time {
   color: var(--falcon-heading-color);
   opacity: 0.85;
 }
 
-nav[aria-label='messages inbox'] .inbox-item .item-subject {
+nav[aria-label="messages inbox"] .inbox-item .item-subject {
   color: var(--falcon-heading-color);
   font-weight: 600;
 }
 
-/*-------------Inbox content area  ------------*/
+/*------------- email panel area  ------------*/
+
+.email-nav-body > div {
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
+}
 
 .email-content {
   overflow-y: auto;
@@ -2126,67 +2636,146 @@ nav[aria-label='messages inbox'] .inbox-item .item-subject {
   opacity: 0.85;
 }
 
-.chat-container div[data-flow='sent'],
-.chat-container div[data-flow='received'] {
-  border-top-right-radius: 12px;
-  border-top-left-radius: 12px;
-  width: 75%;
-  padding: 0.5rem;
-  padding-bottom: 0.7rem;
-  position: relative;
+/*------ chat panel area---------*/
+
+.chat-group-mem > p:not(:first-child)::before {
+  content: "•";
+  margin: 0 0.2rem;
+  overflow: hidden;
+}
+/*Overriding the defaults if no group name*/
+.chat-no-group-name > p {
+  font-size: 0.8333rem !important;
+  font-weight: 400;
+  color: var(--falcon-heading-color);
+  font-family: var(--falcon-font-sans-serif);
 }
 
-.chat-container div[data-flow='received'] {
-  border-bottom-right-radius: 12px;
-  background-color: var(--falcon-secondary-bg-subtle);
-  margin-right: auto;
-  margin-left: 0;
-}
-.chat-container div[data-flow='sent'] {
-  border-bottom-left-radius: 12px;
-  background-color: rgba(var(--falcon-primary-rgb), var(--falcon-bg-opacity));
-  margin-right: 0;
-  margin-left: auto;
+.chat-container {
+  height: calc(100dvh - var(--inbox-header-max-height));
 }
 
-.chat-container div[data-flow='date'] {
-  border-radius: 12px;
-  background-color: var(--falcon-primary-bg-subtle);
-  margin-right: auto;
-  margin-left: auto;
-  padding: 0.3rem 0.5rem;
-  font-size: x-small;
+.chat-sidebar-overrides {
+  left: unset !important;
 }
 
-.chat-container div time {
-  position: absolute;
-  font-size: x-small;
-  bottom: 0rem;
-  right: 0.5rem;
-  pointer-events: none;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  opacity: 0.8;
+.chat-sidebar-overrides .simplebar-content-wrapper {
+  background-color: var(--falcon-chat-contact-bg);
 }
 
-.auto-grow-textarea {
-  --line-height: 1.5;
-  --grow-line-limit: 5;
+.chat-content-overrides {
+  display: grid;
+}
 
-  /* Initial min-height (1 line) */
-  min-height: var(--line-height);
+.chat-content-overrides > * {
+  grid-area: 1/1;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
 
-  /* Maximum height (5 lines) */
-  max-height: calc(var(--grow-line-limit) * var(--line-height));
+.chat-content-overrides .chat-content-header {
+  max-height: var(--chat-content-header-max-height);
+}
 
-  /* Scroll & styling */
-  overflow-y: auto;
-  width: 300px;
-  padding: 8px;
-  font-size: 16px;
-  line-height: 1.5;
-  font-family: Arial;
-  border: 1px solid #ccc;
-  resize: none;
+.chat-content-overrides .chat-content-body {
+  background: var(--falcon-emphasis-bg);
+}
+
+.chat-content-overrides .chat-content-body .offcanvas {
+  position: fixed !important;
+  top: calc(
+    var(--inbox-header-max-height) + var(--chat-content-header-max-height) - 3px
+  );
+}
+
+.chat-content-overrides .chat-content-body .offcanvas-backdrop {
+  z-index: 1;
+  top: calc(
+    var(--inbox-header-max-height) + var(--chat-content-header-max-height)
+  );
+}
+
+.chat-content-overrides .chat-editor-area .chat-file-upload,
+.chat-content-overrides .chat-editor-area .btn-send {
+  z-index: 0 !important;
+}
+
+.active-chat {
+  z-index: 1;
+  height: auto;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* MEDia queries */
+
+@media (max-width: 425px) {
+  .chat-content-overrides .chat-content-body .offcanvas {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .chat-sidebar-overrides {
+    max-width: var(--desktop-left-content-width) !important;
+  }
+
+  .chat-content-overrides .chat-content-body .offcanvas {
+    max-width: var(--desktop-left-content-width) !important;
+    z-index: 1041;
+  }
+
+  .chat-content-overrides .chat-content-body .offcanvas-backdrop {
+    width: var(--desktop-left-content-width) !important;
+    right: 0 !important;
+    left: 100% !important;
+  }
+
+  .inbox-menu {
+    width: var(--desktop-left-content-width) !important;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .non-hover-show-button {
+    display: inline-block !important;
+  }
+}
+
+/* side panel media queries */
+@container side-panel (min-width: 992px) {
+  /*override for chat*/
+  .inbox-article .chat-inbox-panel.panel-show-nav,
+  .inbox-article .chat-inbox-panel.panel-show-content {
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem;
+  }
+
+  .chat-sidebar-overrides {
+    max-width: 17.5rem !important;
+  }
+
+  .fullscreen-inbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    width: 100%;
+    max-width: var(--fullscreen-inbox-nav-width);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-area: 1/1;
+    height: auto !important; /* so it doesnt interfer with the active panel */
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .active-inbox-panel {
+    margin-left: var(--fullscreen-inbox-nav-width);
+  }
 }
