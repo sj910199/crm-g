@@ -1691,6 +1691,7 @@
                         </div>
                       </div>
                     </div>
+
                     <div class="table-responsive scrollbar mobile-stack">
                       <table
                         class="table table-bordered table-striped fs-10 mb-0 entities-table"
@@ -1708,6 +1709,12 @@
                             </th>
                             <th class="text-900 sort" data-sort="itemsSold">
                               Phone
+                            </th>
+                            <th class="text-900 sort" data-sort="address">
+                              Address
+                            </th>
+                            <th class="text-900 sort" data-sort="email">
+                              Emails
                             </th>
                             <th class="text-900 sort" data-sort="quantity">
                               Updates
@@ -1756,6 +1763,88 @@
                               data-title="Phone"
                             >
                               (123) 456-7890
+                            </td>
+                            <td
+                              class="address"
+                              data-important=""
+                              data-title="Phone"
+                            >
+                              address
+                            </td>
+                            <td
+                              class="email"
+                              data-important=""
+                              data-title="Emails"
+                            >
+                              <input
+                                id="status-row-1"
+                                class="status-check"
+                                type="checkbox"
+                                hidden
+                              />
+                              <input
+                                class="invoice-check"
+                                id="invoice-row-1"
+                                type="checkbox"
+                                hidden
+                              />
+
+                              <label
+                                for="status-row-1"
+                                class="mb-0"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Status"
+                              >
+                                <i class="far fa-chart-bar"></i>
+                              </label>
+                              <label
+                                for="invoice-row-1"
+                                class="mb-0"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Invoice"
+                              >
+                                <i class="fas fa-file-invoice"></i>
+                              </label>
+                              <div class="dropdown">
+                                <button
+                                  class="p-0 hide-dropdown-caret btn btn-link dropdown-toggle"
+                                  type="button"
+                                  id="email-status-dropdown"
+                                  data-bs-toggle="dropdown"
+                                  aria-expanded="false"
+                                >
+                                  <i class="fas fa-angle-double-down"></i>
+                                </button>
+                                <ul
+                                  class="email-row-menu dropdown-menu"
+                                  style="min-width: 0"
+                                  aria-labelledby="email-status-dropdown"
+                                >
+                                  <li class="dropdown-item">
+                                    <label
+                                      for="status-row-1"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Status"
+                                    >
+                                      <i class="far fa-chart-bar"></i>
+                                    </label>
+                                  </li>
+
+                                  <li class="dropdown-item">
+                                    <label
+                                      for="invoice-row-1"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Invoice"
+                                    >
+                                      <i class="fas fa-file-invoice"></i>
+                                    </label>
+                                  </li>
+                                </ul>
+                              </div>
                             </td>
                             <td class="quantity" data-title="Updates">
                               <div class="form-group">
@@ -2121,6 +2210,7 @@
                         </tbody>
                       </table>
                     </div>
+
                     <div class="row align-items-center mt-3">
                       <div class="pagination d-none"></div>
                       <div class="col">

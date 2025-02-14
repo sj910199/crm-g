@@ -17,6 +17,48 @@
   --inbox-header-max-height: 56px;
   --chat-content-header-max-height: 68px;
   --fullscreen-inbox-nav-width: 55px;
+
+  /* Shadow XS */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-xs-right: 1px 0 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-xs-left: -1px 0 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-xs-top: 0 -1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-xs-bottom: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+  /* Shadow SM */
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-sm-right: 1px 0 3px 0 rgba(0, 0, 0, 0.1),
+    1px 0 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-sm-left: -1px 0 3px 0 rgba(0, 0, 0, 0.1),
+    -1px 0 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-sm-top: 0 -1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 -1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-sm-bottom: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px -1px rgba(0, 0, 0, 0.1);
+
+  /* Shadow MD */
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-md-right: 4px 0 6px -1px rgba(0, 0, 0, 0.1),
+    2px 0 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-md-left: -4px 0 6px -1px rgba(0, 0, 0, 0.1),
+    -2px 0 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-md-top: 0 -4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 -2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-md-bottom: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+
+  /* Shadow LG */
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-lg-right: 10px 0 15px -3px rgba(0, 0, 0, 0.1),
+    4px 0 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-lg-left: -10px 0 15px -3px rgba(0, 0, 0, 0.1),
+    -4px 0 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-lg-top: 0 -10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 -4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-lg-bottom: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
 
 /* Specific Styles for Item Description and Custom Fields */
@@ -1082,6 +1124,49 @@ section {
 /* Styling buttons inside table cells */
 .table .btn {
   margin: 0 4px; /* Adds spacing between buttons */
+}
+
+td[data-title="Emails"].email {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+td[data-title="Emails"].email .invoice-check ~ label[for="invoice-row-1"],
+td[data-title="Emails"].email .status-check ~ label[for="status-row-1"] {
+  display: none;
+}
+
+td[data-title="Emails"].email
+  .status-check:checked
+  ~ label[for="status-row-1"] {
+  display: block;
+}
+
+td[data-title="Emails"].email
+  .invoice-check:checked
+  ~ label[for="invoice-row-1"] {
+  display: block;
+}
+
+.email-row-menu.dropdown-menu.show {
+  display: flex;
+  transform: translate(-28px, 28px) !important;
+  /*flex-wrap: wrap;*/
+}
+
+.email-row-menu.dropdown-menu.show .dropdown-item {
+  flex-grow: 1;
+  width: fit-content;
+  padding: 0;
+}
+
+.email-row-menu.dropdown-menu.show .dropdown-item > label {
+  margin-bottom: 0;
+  padding: 0 1rem;
+  cursor: pointer;
 }
 
 /* Media Queries ----------------------------- */
@@ -2760,8 +2845,7 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
 
   .fullscreen-inbox-nav {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 0;
     left: 0;
     width: 100%;
     max-width: var(--fullscreen-inbox-nav-width);
@@ -2773,6 +2857,7 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
     height: auto !important; /* so it doesnt interfer with the active panel */
     visibility: visible !important;
     opacity: 1 !important;
+    box-shadow: var(--shadow-sm-right);
   }
 
   .active-inbox-panel {
