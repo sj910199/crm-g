@@ -1824,9 +1824,7 @@
                                   id="email-status-dropdown-1"
                                   data-bs-toggle="dropdown"
                                   aria-expanded="false"
-
                                 >
-
                                   <i class="fas fa-th-large"></i>
                                 </button>
                                 <ul
@@ -6365,17 +6363,11 @@
                   <span class="fas fa-search fs-8"></span>
                 </label>
 
-                <div
-                  class="w-100 w-sm-75 mx-sm-auto search-field"
-                  data-list='{"valueNames":["title"]}'
-                >
-                  <form
-                    class="search-form position-relative"
-                    data-bs-toggle="search"
-                    data-bs-display="static"
-                  >
+                <div class="w-100 w-sm-75 mx-sm-auto search-field">
+                  <form class="search-form position-relative">
                     <input
-                      class="rounded-20px px-3 form-control search-input fuzzy-search"
+                      id="all-fuzzy-search"
+                      class="rounded-20px px-3 form-control search-input all-fuzzy-search"
                       type="search"
                       placeholder="Search Inbox..."
                       aria-label="Search"
@@ -6490,17 +6482,11 @@
                   <span class="fas fa-search fs-8"></span>
                 </label>
 
-                <div
-                  class="w-100 w-sm-75 mx-sm-auto search-field"
-                  data-list='{"valueNames":["title"]}'
-                >
-                  <form
-                    class="search-form position-relative"
-                    data-bs-toggle="search"
-                    data-bs-display="static"
-                  >
+                <div class="w-100 w-sm-75 mx-sm-auto search-field">
+                  <form class="search-form position-relative">
                     <input
-                      class="rounded-20px px-3 form-control search-input fuzzy-search"
+                      id="chat-fuzzy-search"
+                      class="rounded-20px px-3 form-control search-input chat-fuzzy-search"
                       type="search"
                       placeholder="Search Chat..."
                       aria-label="Search"
@@ -6683,22 +6669,18 @@
                       aria-labelledby="heading1"
                       data-bs-parent="#accordionExample"
                     >
-                      <div class="accordion-body contacts-body d-grid gap-4">
+                      <div
+                        id="contacts-body"
+                        class="accordion-body contacts-body d-grid gap-4"
+                      >
                         <nav
                           class="d-flex align-items-center justify-content-between"
                           aria-label="Contacts Menu"
                         >
-                          <div
-                            class="w-100 search-field"
-                            data-list='{"valueNames":["title"]}'
-                          >
-                            <form
-                              class="search-form position-relative"
-                              data-bs-toggle="search"
-                              data-bs-display="static"
-                            >
+                          <div class="w-100 search-field">
+                            <form class="search-form position-relative">
                               <input
-                                class="rounded-20px px-3 form-control search-input fuzzy-search"
+                                class="rounded-20px px-3 form-control search-input fz-contact-search"
                                 type="search"
                                 placeholder="Search Contacts..."
                                 aria-label="Search"
@@ -6707,10 +6689,13 @@
                           </div>
                         </nav>
 
-                        <div class="scrollbar contact-list">
+                        <div
+                          class="scrollbar contact-list list"
+                          id="contact-list-container"
+                        >
                           <div class="letter-group" data-letter="A">
                             <div class="letter-header">A</div>
-                            <ul class="names-list accordion" id="names-list">
+                            <ul class="names-list accordion">
                               <li class="accordion-item">
                                 <div
                                   id="contact-name-1"
@@ -6732,7 +6717,7 @@
                                       />
                                     </span>
                                     <span
-                                      class="ms-2 mb-0 chat-contact-title text-truncate"
+                                      class="name ms-2 mb-0 chat-contact-title text-truncate"
                                     >
                                       Antony Hopkins
                                     </span>
@@ -6753,7 +6738,7 @@
                                       aria-label="left nav toggle"
                                       data-bs-toggle="tooltip"
                                       data-bs-placement="top"
-                                      title="open latest email"
+                                      title="Send Email"
                                     >
                                       <span
                                         class="inbox-type-email far fa-envelope fs-8"
@@ -6766,7 +6751,7 @@
                                       aria-label="left nav toggle"
                                       data-bs-toggle="tooltip"
                                       data-bs-placement="top"
-                                      title="open chats"
+                                      title="Chat"
                                     >
                                       <span
                                         class="inbox-type-chat far fa-comment fs-8"
@@ -6778,7 +6763,7 @@
                                       aria-label="left nav toggle"
                                       data-bs-toggle="tooltip"
                                       data-bs-placement="top"
-                                      title="open SMS"
+                                      title="Send SMS"
                                     >
                                       <span
                                         class="inbox-type-sns far fa-comments fs-8"
@@ -6800,209 +6785,752 @@
                                 </div>
                               </li>
 
-                              <li>Adam</li>
-                              <li>Anna</li>
-                              <li>Alex</li>
-                              <li>Aaron</li>
-                              <li>Andrew</li>
-                              <li>Ashley</li>
+                              <li class="accordion-item">
+                                <div
+                                  id="contact-name-2"
+                                  class="d-flex align-items-center accordion-header"
+                                >
+                                  <button
+                                    class="contact-accordion-btn-overrides accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#contact-info-2"
+                                    aria-expanded="true"
+                                    aria-controls="contact-info-2"
+                                  >
+                                    <span class="avatar avatar-xl">
+                                      <img
+                                        class="rounded-circle"
+                                        src="../assets/img/team/13.jpg"
+                                        alt=""
+                                      />
+                                    </span>
+                                    <span
+                                      class="name ms-2 mb-0 chat-contact-title text-truncate"
+                                    >
+                                      Anna Karinina
+                                    </span>
+                                  </button>
+                                </div>
+                                <div
+                                  class="accordion-collapse collapse"
+                                  id="contact-info-2"
+                                  aria-labelledby="contact-name-2"
+                                  data-bs-parent="names-list"
+                                >
+                                  <div
+                                    class="accordion-body d-flex justify-content-around"
+                                  >
+                                    <a
+                                      href="#"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Send Email"
+                                    >
+                                      <span
+                                        class="inbox-type-email far fa-envelope fs-8"
+                                      ></span>
+                                    </a>
+
+                                    <a
+                                      href="inbox/chat/3"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Chat"
+                                    >
+                                      <span
+                                        class="inbox-type-chat far fa-comment fs-8"
+                                      ></span>
+                                    </a>
+                                    <a
+                                      href="#"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Send SMS"
+                                    >
+                                      <span
+                                        class="inbox-type-sns far fa-comments fs-8"
+                                      ></span>
+                                    </a>
+                                    <a
+                                      href="#"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="call"
+                                    >
+                                      <span
+                                        class="text-primary fas fa-phone-alt fs-8"
+                                      ></span>
+                                    </a>
+                                  </div>
+                                </div>
+                              </li>
                             </ul>
                           </div>
 
                           <div class="letter-group" data-letter="B">
                             <div class="letter-header">B</div>
                             <ul class="names-list">
-                              <li>Bob</li>
-                              <li>Brandon</li>
-                              <li>Bella</li>
+                              <li class="accordion-item">
+                                <div
+                                  id="contact-name-3"
+                                  class="d-flex align-items-center accordion-header"
+                                >
+                                  <button
+                                    class="contact-accordion-btn-overrides accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#contact-info-3"
+                                    aria-expanded="true"
+                                    aria-controls="contact-info-3"
+                                  >
+                                    <span class="avatar avatar-xl">
+                                      <span class="avatar-name rounded-circle">
+                                        <span>BR</span>
+                                      </span>
+                                    </span>
+
+                                    <span
+                                      class="name ms-2 mb-0 chat-contact-title text-truncate"
+                                    >
+                                      Bucky Robert
+                                    </span>
+                                  </button>
+                                </div>
+                                <div
+                                  class="accordion-collapse collapse"
+                                  id="contact-info-3"
+                                  aria-labelledby="contact-name-3"
+                                  data-bs-parent="names-list"
+                                >
+                                  <div
+                                    class="accordion-body d-flex justify-content-around"
+                                  >
+                                    <a
+                                      href="#"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Send Email"
+                                    >
+                                      <span
+                                        class="inbox-type-email far fa-envelope fs-8"
+                                      ></span>
+                                    </a>
+
+                                    <a
+                                      href="inbox/chat/5"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Chat"
+                                    >
+                                      <span
+                                        class="inbox-type-chat far fa-comment fs-8"
+                                      ></span>
+                                    </a>
+                                    <a
+                                      href="#"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Send SMS"
+                                    >
+                                      <span
+                                        class="inbox-type-sns far fa-comments fs-8"
+                                      ></span>
+                                    </a>
+                                    <a
+                                      href="#"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="call"
+                                    >
+                                      <span
+                                        class="text-primary fas fa-phone-alt fs-8"
+                                      ></span>
+                                    </a>
+                                  </div>
+                                </div>
+                              </li>
                             </ul>
                           </div>
 
-                          <div class="letter-group" data-letter="C">
-                            <div class="letter-header">C</div>
-                            <ul class="names-list">
-                              <li>Charlie</li>
-                              <li>Catherine</li>
-                              <li>Caleb</li>
-                            </ul>
-                          </div>
-
-                          <!-- Add letter groups for D, E, F, G, ... Z - Same as before -->
                           <div class="letter-group" data-letter="D">
                             <div class="letter-header">D</div>
                             <ul class="names-list">
-                              <li>David</li>
-                              <li>Daniel</li>
-                              <li>Diana</li>
+                              <li class="accordion-item">
+                                <div
+                                  id="contact-name-4"
+                                  class="d-flex align-items-center accordion-header"
+                                >
+                                  <button
+                                    class="contact-accordion-btn-overrides accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#contact-info-4"
+                                    aria-expanded="true"
+                                    aria-controls="contact-info-4"
+                                  >
+                                    <span class="avatar avatar-xl">
+                                      <img
+                                        class="rounded-circle"
+                                        src="../assets/img/team/22.jpg"
+                                        alt=""
+                                      />
+                                    </span>
+
+                                    <span
+                                      class="name ms-2 mb-0 chat-contact-title text-truncate"
+                                    >
+                                      Dianna Rigg
+                                    </span>
+                                  </button>
+                                </div>
+                                <div
+                                  class="accordion-collapse collapse"
+                                  id="contact-info-4"
+                                  aria-labelledby="contact-name-4"
+                                  data-bs-parent="names-list"
+                                >
+                                  <div
+                                    class="accordion-body d-flex justify-content-around"
+                                  >
+                                    <a
+                                      href="#"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Send Email"
+                                    >
+                                      <span
+                                        class="inbox-type-email far fa-envelope fs-8"
+                                      ></span>
+                                    </a>
+
+                                    <a
+                                      href="inbox/chat/9"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Chat"
+                                    >
+                                      <span
+                                        class="inbox-type-chat far fa-comment fs-8"
+                                      ></span>
+                                    </a>
+                                    <a
+                                      href="#"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Send SMS"
+                                    >
+                                      <span
+                                        class="inbox-type-sns far fa-comments fs-8"
+                                      ></span>
+                                    </a>
+                                    <a
+                                      href="#"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="call"
+                                    >
+                                      <span
+                                        class="text-primary fas fa-phone-alt fs-8"
+                                      ></span>
+                                    </a>
+                                  </div>
+                                </div>
+                              </li>
                             </ul>
                           </div>
+
                           <div class="letter-group" data-letter="E">
                             <div class="letter-header">E</div>
                             <ul class="names-list">
-                              <li>Eve</li>
-                              <li>Ethan</li>
-                              <li>Emily</li>
+                              <li class="accordion-item">
+                                <div
+                                  id="contact-name-5"
+                                  class="d-flex align-items-center accordion-header"
+                                >
+                                  <button
+                                    class="contact-accordion-btn-overrides accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#contact-info-5"
+                                    aria-expanded="true"
+                                    aria-controls="contact-info-5"
+                                  >
+                                    <span class="avatar avatar-xl">
+                                      <img
+                                        class="rounded-circle"
+                                        src="../assets/img/team/1.jpg"
+                                        alt=""
+                                      />
+                                    </span>
+
+                                    <span
+                                      class="name ms-2 mb-0 chat-contact-title text-truncate"
+                                    >
+                                      Emma Watson
+                                    </span>
+                                  </button>
+                                </div>
+                                <div
+                                  class="accordion-collapse collapse"
+                                  id="contact-info-5"
+                                  aria-labelledby="contact-name-5"
+                                  data-bs-parent="names-list"
+                                >
+                                  <div
+                                    class="accordion-body d-flex justify-content-around"
+                                  >
+                                    <a
+                                      href="#"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Send Email"
+                                    >
+                                      <span
+                                        class="inbox-type-email far fa-envelope fs-8"
+                                      ></span>
+                                    </a>
+
+                                    <a
+                                      href="inbox/chat/2"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Chat"
+                                    >
+                                      <span
+                                        class="inbox-type-chat far fa-comment fs-8"
+                                      ></span>
+                                    </a>
+                                    <a
+                                      href="#"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Send SMS"
+                                    >
+                                      <span
+                                        class="inbox-type-sns far fa-comments fs-8"
+                                      ></span>
+                                    </a>
+                                    <a
+                                      href="#"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="call"
+                                    >
+                                      <span
+                                        class="text-primary fas fa-phone-alt fs-8"
+                                      ></span>
+                                    </a>
+                                  </div>
+                                </div>
+                              </li>
                             </ul>
                           </div>
-                          <div class="letter-group" data-letter="F">
-                            <div class="letter-header">F</div>
-                            <ul class="names-list">
-                              <li>Frank</li>
-                              <li>Fiona</li>
-                              <li>Finn</li>
-                            </ul>
-                          </div>
+
                           <div class="letter-group" data-letter="G">
                             <div class="letter-header">G</div>
                             <ul class="names-list">
-                              <li>George</li>
-                              <li>Grace</li>
-                              <li>Gabriel</li>
+                              <li class="accordion-item">
+                                <div
+                                  id="contact-name-6"
+                                  class="d-flex align-items-center accordion-header"
+                                >
+                                  <button
+                                    class="contact-accordion-btn-overrides accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#contact-info-6"
+                                    aria-expanded="true"
+                                    aria-controls="contact-info-6"
+                                  >
+                                    <span class="avatar avatar-xl">
+                                      <img
+                                        class="rounded-circle"
+                                        src="../assets/img/team/23.jpg"
+                                        alt=""
+                                      />
+                                    </span>
+
+                                    <span
+                                      class="name ms-2 mb-0 chat-contact-title text-truncate"
+                                    >
+                                      Gemma Whelan
+                                    </span>
+                                  </button>
+                                </div>
+                                <div
+                                  class="accordion-collapse collapse"
+                                  id="contact-info-6"
+                                  aria-labelledby="contact-name-6"
+                                  data-bs-parent="names-list"
+                                >
+                                  <div
+                                    class="accordion-body d-flex justify-content-around"
+                                  >
+                                    <a
+                                      href="#"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Send Email"
+                                    >
+                                      <span
+                                        class="inbox-type-email far fa-envelope fs-8"
+                                      ></span>
+                                    </a>
+
+                                    <a
+                                      href="inbox/chat/10"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Chat"
+                                    >
+                                      <span
+                                        class="inbox-type-chat far fa-comment fs-8"
+                                      ></span>
+                                    </a>
+                                    <a
+                                      href="#"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Send SMS"
+                                    >
+                                      <span
+                                        class="inbox-type-sns far fa-comments fs-8"
+                                      ></span>
+                                    </a>
+                                    <a
+                                      href="#"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="call"
+                                    >
+                                      <span
+                                        class="text-primary fas fa-phone-alt fs-8"
+                                      ></span>
+                                    </a>
+                                  </div>
+                                </div>
+                              </li>
                             </ul>
                           </div>
-                          <div class="letter-group" data-letter="H">
-                            <div class="letter-header">H</div>
-                            <ul class="names-list">
-                              <li>Henry</li>
-                              <li>Hannah</li>
-                              <li>Harry</li>
-                            </ul>
-                          </div>
-                          <div class="letter-group" data-letter="I">
-                            <div class="letter-header">I</div>
-                            <ul class="names-list">
-                              <li>Ivy</li>
-                              <li>Isaac</li>
-                              <li>Isabella</li>
-                            </ul>
-                          </div>
+
                           <div class="letter-group" data-letter="J">
                             <div class="letter-header">J</div>
                             <ul class="names-list">
-                              <li>Jack</li>
-                              <li>Julia</li>
-                              <li>James</li>
+                              <li class="accordion-item">
+                                <div
+                                  id="contact-name-7"
+                                  class="d-flex align-items-center accordion-header"
+                                >
+                                  <button
+                                    class="contact-accordion-btn-overrides accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#contact-info-7"
+                                    aria-expanded="true"
+                                    aria-controls="contact-info-7"
+                                  >
+                                    <span class="avatar avatar-xl">
+                                      <img
+                                        class="rounded-circle"
+                                        src="../assets/img/team/12.jpg"
+                                        alt=""
+                                      />
+                                    </span>
+
+                                    <span
+                                      class="name ms-2 mb-0 chat-contact-title text-truncate"
+                                    >
+                                      Joe Bempsie
+                                    </span>
+                                  </button>
+                                </div>
+                                <div
+                                  class="accordion-collapse collapse"
+                                  id="contact-info-7"
+                                  aria-labelledby="contact-name-7"
+                                  data-bs-parent="names-list"
+                                >
+                                  <div
+                                    class="accordion-body d-flex justify-content-around"
+                                  >
+                                    <a
+                                      href="#"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Send Email"
+                                    >
+                                      <span
+                                        class="inbox-type-email far fa-envelope fs-8"
+                                      ></span>
+                                    </a>
+
+                                    <a
+                                      href="inbox/chat/8"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Chat"
+                                    >
+                                      <span
+                                        class="inbox-type-chat far fa-comment fs-8"
+                                      ></span>
+                                    </a>
+                                    <a
+                                      href="#"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Send SMS"
+                                    >
+                                      <span
+                                        class="inbox-type-sns far fa-comments fs-8"
+                                      ></span>
+                                    </a>
+                                    <a
+                                      href="#"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="call"
+                                    >
+                                      <span
+                                        class="text-primary fas fa-phone-alt fs-8"
+                                      ></span>
+                                    </a>
+                                  </div>
+                                </div>
+                              </li>
+
+                              <li class="accordion-item">
+                                <div
+                                  id="contact-name-8"
+                                  class="d-flex align-items-center accordion-header"
+                                >
+                                  <button
+                                    class="contact-accordion-btn-overrides accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#contact-info-8"
+                                    aria-expanded="true"
+                                    aria-controls="contact-info-8"
+                                  >
+                                    <span class="avatar avatar-xl">
+                                      <img
+                                        class="rounded-circle"
+                                        src="../assets/img/team/4.jpg"
+                                        alt=""
+                                      />
+                                    </span>
+
+                                    <span
+                                      class="name ms-2 mb-0 chat-contact-title text-truncate"
+                                    >
+                                      John Lee
+                                    </span>
+                                  </button>
+                                </div>
+                                <div
+                                  class="accordion-collapse collapse"
+                                  id="contact-info-8"
+                                  aria-labelledby="contact-name-8"
+                                  data-bs-parent="names-list"
+                                >
+                                  <div
+                                    class="accordion-body d-flex justify-content-around"
+                                  >
+                                    <a
+                                      href="#"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Send Email"
+                                    >
+                                      <span
+                                        class="inbox-type-email far fa-envelope fs-8"
+                                      ></span>
+                                    </a>
+
+                                    <a
+                                      href="inbox/chat/4"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Chat"
+                                    >
+                                      <span
+                                        class="inbox-type-chat far fa-comment fs-8"
+                                      ></span>
+                                    </a>
+                                    <a
+                                      href="#"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Send SMS"
+                                    >
+                                      <span
+                                        class="inbox-type-sns far fa-comments fs-8"
+                                      ></span>
+                                    </a>
+                                    <a
+                                      href="#"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="call"
+                                    >
+                                      <span
+                                        class="text-primary fas fa-phone-alt fs-8"
+                                      ></span>
+                                    </a>
+                                  </div>
+                                </div>
+                              </li>
                             </ul>
                           </div>
-                          <div class="letter-group" data-letter="K">
-                            <div class="letter-header">K</div>
-                            <ul class="names-list">
-                              <li>Kevin</li>
-                              <li>Katherine</li>
-                              <li>Kyle</li>
-                            </ul>
-                          </div>
-                          <div class="letter-group" data-letter="L">
-                            <div class="letter-header">L</div>
-                            <ul class="names-list">
-                              <li>Liam</li>
-                              <li>Lily</li>
-                              <li>Lucas</li>
-                            </ul>
-                          </div>
-                          <div class="letter-group" data-letter="M">
-                            <div class="letter-header">M</div>
-                            <ul class="names-list">
-                              <li>Mia</li>
-                              <li>Mason</li>
-                              <li>Michael</li>
-                            </ul>
-                          </div>
-                          <div class="letter-group" data-letter="N">
-                            <div class="letter-header">N</div>
-                            <ul class="names-list">
-                              <li>Noah</li>
-                              <li>Nora</li>
-                              <li>Nathan</li>
-                            </ul>
-                          </div>
-                          <div class="letter-group" data-letter="O">
-                            <div class="letter-header">O</div>
-                            <ul class="names-list">
-                              <li>Olivia</li>
-                              <li>Owen</li>
-                              <li>Oliver</li>
-                            </ul>
-                          </div>
-                          <div class="letter-group" data-letter="P">
-                            <div class="letter-header">P</div>
-                            <ul class="names-list">
-                              <li>Peter</li>
-                              <li>Penelope</li>
-                              <li>Patrick</li>
-                            </ul>
-                          </div>
-                          <div class="letter-group" data-letter="Q">
-                            <div class="letter-header">Q</div>
-                            <ul class="names-list">
-                              <li>Quentin</li>
-                              <li>Queen</li>
-                            </ul>
-                          </div>
+
                           <div class="letter-group" data-letter="R">
                             <div class="letter-header">R</div>
                             <ul class="names-list">
-                              <li>Ryan</li>
-                              <li>Ruby</li>
-                              <li>Robert</li>
-                            </ul>
-                          </div>
-                          <div class="letter-group" data-letter="S">
-                            <div class="letter-header">S</div>
-                            <ul class="names-list">
-                              <li>Sophia</li>
-                              <li>Samuel</li>
-                              <li>Scarlett</li>
-                            </ul>
-                          </div>
-                          <div class="letter-group" data-letter="T">
-                            <div class="letter-header">T</div>
-                            <ul class="names-list">
-                              <li>Thomas</li>
-                              <li>Taylor</li>
-                              <li>Tyler</li>
-                            </ul>
-                          </div>
-                          <div class="letter-group" data-letter="U">
-                            <div class="letter-header">U</div>
-                            <ul class="names-list">
-                              <li>Uma</li>
-                              <li>Ulysses</li>
-                            </ul>
-                          </div>
-                          <div class="letter-group" data-letter="V">
-                            <div class="letter-header">V</div>
-                            <ul class="names-list">
-                              <li>Victor</li>
-                              <li>Violet</li>
-                            </ul>
-                          </div>
-                          <div class="letter-group" data-letter="W">
-                            <div class="letter-header">W</div>
-                            <ul class="names-list">
-                              <li>William</li>
-                              <li>Willow</li>
-                            </ul>
-                          </div>
-                          <div class="letter-group" data-letter="X">
-                            <div class="letter-header">X</div>
-                            <ul class="names-list">
-                              <li>Xavier</li>
-                              <li>Xena</li>
-                            </ul>
-                          </div>
-                          <div class="letter-group" data-letter="Y">
-                            <div class="letter-header">Y</div>
-                            <ul class="names-list">
-                              <li>Yara</li>
-                              <li>Yasmine</li>
-                            </ul>
-                          </div>
-                          <div class="letter-group" data-letter="Z">
-                            <div class="letter-header">Z</div>
-                            <ul class="names-list">
-                              <li>Zachary</li>
-                              <li>Zoe</li>
+                              <li class="accordion-item">
+                                <div
+                                  id="contact-name-9"
+                                  class="d-flex align-items-center accordion-header"
+                                >
+                                  <button
+                                    class="contact-accordion-btn-overrides accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#contact-info-9"
+                                    aria-expanded="true"
+                                    aria-controls="contact-info-9"
+                                  >
+                                    <span class="avatar avatar-xl">
+                                      <img
+                                        class="rounded-circle"
+                                        src="../assets/img/team/11.jpg"
+                                        alt=""
+                                      />
+                                    </span>
+
+                                    <span
+                                      class="name ms-2 mb-0 chat-contact-title text-truncate"
+                                    >
+                                      Rory McCann
+                                    </span>
+                                  </button>
+                                </div>
+                                <div
+                                  class="accordion-collapse collapse"
+                                  id="contact-info-9"
+                                  aria-labelledby="contact-name-9"
+                                  data-bs-parent="names-list"
+                                >
+                                  <div
+                                    class="accordion-body d-flex justify-content-around"
+                                  >
+                                    <a
+                                      href="#"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Send Email"
+                                    >
+                                      <span
+                                        class="inbox-type-email far fa-envelope fs-8"
+                                      ></span>
+                                    </a>
+
+                                    <a
+                                      href="inbox/chat/7"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Chat"
+                                    >
+                                      <span
+                                        class="inbox-type-chat far fa-comment fs-8"
+                                      ></span>
+                                    </a>
+                                    <a
+                                      href="#"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Send SMS"
+                                    >
+                                      <span
+                                        class="inbox-type-sns far fa-comments fs-8"
+                                      ></span>
+                                    </a>
+                                    <a
+                                      href="#"
+                                      class=""
+                                      aria-label="left nav toggle"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="call"
+                                    >
+                                      <span
+                                        class="text-primary fas fa-phone-alt fs-8"
+                                      ></span>
+                                    </a>
+                                  </div>
+                                </div>
+                              </li>
                             </ul>
                           </div>
                         </div>
@@ -7088,7 +7616,7 @@
             <!-- the inbox overview - all conversation panel  -->
             <section
               id="all-inbox"
-              class="active-inbox-panel panel-show-nav py-0 overflow-y-auto"
+              class="scrollbar active-inbox-panel panel-show-nav py-0 overflow-y-auto"
             >
               <nav aria-label="messages inbox">
                 <ul
@@ -9197,7 +9725,7 @@
                 <div class="h-100 contacts-list scrollbar-overlay">
                   <div
                     id="chat-content-container"
-                    class="nav nav-tabs border-0 flex-column"
+                    class="chat-container nav nav-tabs border-0 flex-column"
                     role="tablist"
                     aria-orientation="vertical"
                   >
@@ -19987,6 +20515,57 @@
       });
     </script>
 
+    <!--    Search functionalities for each panels-->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const fuzzySearchOptions = {
+          fuzzy: true,
+          location: 0,
+          distance: 100,
+          threshold: 0.6,
+          multiSearch: true,
+        };
+
+        // contactlist search implementation
+        const contactList = new List("contacts-body", {
+          valueNames: ["name"],
+          listClass: "contact-list",
+          searchDelay: 200,
+          fuzzySearch: {
+            ...fuzzySearchOptions,
+            searchClass: "fz-contact-search",
+          },
+        });
+
+        // inbox/all conversation search input implementation
+        const inboxSearchInput = document.getElementById("all-fuzzy-search");
+        const inboxList = new List("all-inbox", {
+          valueNames: ["chat-contact-title"],
+          listClass: "inbox-list",
+          searchDelay: 200,
+          fuzzySearch: fuzzySearchOptions,
+        });
+
+        inboxSearchInput.addEventListener("input", function () {
+          inboxList.fuzzySearch(inboxSearchInput.value);
+        });
+
+        // inbox/all conversation search input implementation
+        const chatSearchInput = document.getElementById("chat-fuzzy-search");
+        const chatList = new List("chat-nav", {
+          valueNames: ["chat-contact-title"],
+          listClass: "chat-container",
+          searchDelay: 200,
+          fuzzySearch: fuzzySearchOptions,
+        });
+
+        chatSearchInput.addEventListener("input", function () {
+          chatList.fuzzySearch(chatSearchInput.value);
+        });
+      });
+    </script>
+
+    <!--    Inbox Panel JS here-->
     <script>
       const INBOX_PANEL_SELECTORS = {
         ALL_CONVERSATIONS_ID: "all-inbox",

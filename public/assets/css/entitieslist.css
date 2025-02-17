@@ -59,6 +59,12 @@
     0 -4px 6px -4px rgba(0, 0, 0, 0.1);
   --shadow-lg-bottom: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -4px rgba(0, 0, 0, 0.1);
+
+  --shadow-color-invert: white;
+}
+
+[data-bs-theme="dark"] {
+  --shadow-color-invert: black;
 }
 
 /* Specific Styles for Item Description and Custom Fields */
@@ -2644,14 +2650,9 @@ which content to show on each sub panel
     var(--falcon-bg-opacity)
   );
 
-  /* background-color: rgba(var(--falcon-secondary-bg-rgb)); */
-  /* background-color: rgba(var(--falcon-gray-200-rgb), var(--falcon-bg-opacity)) !important; */
-  /* background-color: #fff; */
   border-radius: 8px;
   overflow-y: auto; /* Still make the contact list scrollable */
   max-height: 38dvh;
-  /* Optional: set a max height */
-  /* max-height: 500px; */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: grid; /* Enable Grid Layout */
   grid-template-columns: auto 1fr; /* First column for letter, second for names - adjust width of letter column as needed */
@@ -2738,7 +2739,7 @@ nav[aria-label="messages inbox"] {
 
 nav[aria-label="messages inbox"] ul {
   display: grid;
-  height: 100%;
+  height: auto;
 }
 
 nav[aria-label="messages inbox"] .inbox-item-container {
