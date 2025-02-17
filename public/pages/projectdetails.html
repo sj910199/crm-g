@@ -6680,6 +6680,7 @@
                           <div class="w-100 search-field">
                             <form class="search-form position-relative">
                               <input
+                                id="contacts-fuzzy-search"
                                 class="rounded-20px px-3 form-control search-input fz-contact-search"
                                 type="search"
                                 placeholder="Search Contacts..."
@@ -6690,675 +6691,635 @@
                         </nav>
 
                         <div
-                          class="scrollbar contact-list list"
+                          class="scrollbar contact-list"
                           id="contact-list-container"
                         >
-                          <div class="letter-group" data-letter="A">
-                            <div class="letter-header">A</div>
-                            <ul class="names-list accordion">
-                              <li class="accordion-item">
-                                <div
-                                  id="contact-name-1"
-                                  class="d-flex align-items-center accordion-header"
-                                >
-                                  <button
-                                    class="contact-accordion-btn-overrides accordion-button collapsed"
-                                    type="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#contact-info-1"
-                                    aria-expanded="true"
-                                    aria-controls="contact-info-1"
+                          <div class="list d-contents">
+                            <div class="letter-group" data-letter="A">
+                              <div class="letter-header">A</div>
+                              <ul class="names-list accordion">
+                                <li class="accordion-item">
+                                  <div
+                                    id="contact-name-1"
+                                    class="d-flex gap-2 align-items-center accordion-header"
                                   >
-                                    <span class="avatar avatar-xl">
+                                    <div class="avatar avatar-xl">
                                       <img
                                         class="rounded-circle"
                                         src="../assets/img/team/2.jpg"
                                         alt="circle avatar"
                                       />
-                                    </span>
-                                    <span
-                                      class="name ms-2 mb-0 chat-contact-title text-truncate"
+                                    </div>
+                                    <button
+                                      class="name contact-accordion-btn-overrides accordion-button collapsed"
+                                      type="button"
+                                      data-bs-toggle="collapse"
+                                      data-bs-target="#contact-info-1"
+                                      aria-expanded="true"
+                                      aria-controls="contact-info-1"
                                     >
                                       Antony Hopkins
-                                    </span>
-                                  </button>
-                                </div>
-                                <div
-                                  class="accordion-collapse collapse"
-                                  id="contact-info-1"
-                                  aria-labelledby="contact-name-1"
-                                  data-bs-parent="names-list"
-                                >
-                                  <div
-                                    class="accordion-body d-flex justify-content-around"
-                                  >
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Send Email"
-                                    >
-                                      <span
-                                        class="inbox-type-email far fa-envelope fs-8"
-                                      ></span>
-                                    </a>
-
-                                    <a
-                                      href="inbox/chat/0"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Chat"
-                                    >
-                                      <span
-                                        class="inbox-type-chat far fa-comment fs-8"
-                                      ></span>
-                                    </a>
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Send SMS"
-                                    >
-                                      <span
-                                        class="inbox-type-sns far fa-comments fs-8"
-                                      ></span>
-                                    </a>
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="call"
-                                    >
-                                      <span
-                                        class="text-primary fas fa-phone-alt fs-8"
-                                      ></span>
-                                    </a>
+                                    </button>
                                   </div>
-                                </div>
-                              </li>
-
-                              <li class="accordion-item">
-                                <div
-                                  id="contact-name-2"
-                                  class="d-flex align-items-center accordion-header"
-                                >
-                                  <button
-                                    class="contact-accordion-btn-overrides accordion-button collapsed"
-                                    type="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#contact-info-2"
-                                    aria-expanded="true"
-                                    aria-controls="contact-info-2"
+                                  <div
+                                    class="accordion-collapse collapse"
+                                    id="contact-info-1"
+                                    aria-labelledby="contact-name-1"
+                                    data-bs-parent="names-list"
                                   >
-                                    <span class="avatar avatar-xl">
+                                    <div
+                                      class="accordion-body d-flex justify-content-around"
+                                    >
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Send Email"
+                                      >
+                                        <span
+                                          class="inbox-type-email far fa-envelope fs-8"
+                                        ></span>
+                                      </a>
+
+                                      <a
+                                        href="inbox/chat/0"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Chat"
+                                      >
+                                        <span
+                                          class="inbox-type-chat far fa-comment fs-8"
+                                        ></span>
+                                      </a>
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Send SMS"
+                                      >
+                                        <span
+                                          class="inbox-type-sns far fa-comments fs-8"
+                                        ></span>
+                                      </a>
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="call"
+                                      >
+                                        <span
+                                          class="text-primary fas fa-phone-alt fs-8"
+                                        ></span>
+                                      </a>
+                                    </div>
+                                  </div>
+                                </li>
+
+                                <li class="accordion-item">
+                                  <div
+                                    id="contact-name-2"
+                                    class="d-flex gap-2 align-items-center accordion-header"
+                                  >
+                                    <div class="avatar avatar-xl">
                                       <img
                                         class="rounded-circle"
                                         src="../assets/img/team/13.jpg"
                                         alt=""
                                       />
-                                    </span>
-                                    <span
-                                      class="name ms-2 mb-0 chat-contact-title text-truncate"
+                                    </div>
+                                    <button
+                                      class="name contact-accordion-btn-overrides accordion-button collapsed"
+                                      type="button"
+                                      data-bs-toggle="collapse"
+                                      data-bs-target="#contact-info-2"
+                                      aria-expanded="true"
+                                      aria-controls="contact-info-2"
                                     >
                                       Anna Karinina
-                                    </span>
-                                  </button>
-                                </div>
-                                <div
-                                  class="accordion-collapse collapse"
-                                  id="contact-info-2"
-                                  aria-labelledby="contact-name-2"
-                                  data-bs-parent="names-list"
-                                >
-                                  <div
-                                    class="accordion-body d-flex justify-content-around"
-                                  >
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Send Email"
-                                    >
-                                      <span
-                                        class="inbox-type-email far fa-envelope fs-8"
-                                      ></span>
-                                    </a>
-
-                                    <a
-                                      href="inbox/chat/3"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Chat"
-                                    >
-                                      <span
-                                        class="inbox-type-chat far fa-comment fs-8"
-                                      ></span>
-                                    </a>
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Send SMS"
-                                    >
-                                      <span
-                                        class="inbox-type-sns far fa-comments fs-8"
-                                      ></span>
-                                    </a>
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="call"
-                                    >
-                                      <span
-                                        class="text-primary fas fa-phone-alt fs-8"
-                                      ></span>
-                                    </a>
+                                    </button>
                                   </div>
-                                </div>
-                              </li>
-                            </ul>
-                          </div>
-
-                          <div class="letter-group" data-letter="B">
-                            <div class="letter-header">B</div>
-                            <ul class="names-list">
-                              <li class="accordion-item">
-                                <div
-                                  id="contact-name-3"
-                                  class="d-flex align-items-center accordion-header"
-                                >
-                                  <button
-                                    class="contact-accordion-btn-overrides accordion-button collapsed"
-                                    type="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#contact-info-3"
-                                    aria-expanded="true"
-                                    aria-controls="contact-info-3"
+                                  <div
+                                    class="accordion-collapse collapse"
+                                    id="contact-info-2"
+                                    aria-labelledby="contact-name-2"
+                                    data-bs-parent="names-list"
                                   >
-                                    <span class="avatar avatar-xl">
+                                    <div
+                                      class="accordion-body d-flex justify-content-around"
+                                    >
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Send Email"
+                                      >
+                                        <span
+                                          class="inbox-type-email far fa-envelope fs-8"
+                                        ></span>
+                                      </a>
+
+                                      <a
+                                        href="inbox/chat/3"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Chat"
+                                      >
+                                        <span
+                                          class="inbox-type-chat far fa-comment fs-8"
+                                        ></span>
+                                      </a>
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Send SMS"
+                                      >
+                                        <span
+                                          class="inbox-type-sns far fa-comments fs-8"
+                                        ></span>
+                                      </a>
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="call"
+                                      >
+                                        <span
+                                          class="text-primary fas fa-phone-alt fs-8"
+                                        ></span>
+                                      </a>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+
+                            <div class="letter-group" data-letter="B">
+                              <div class="letter-header">B</div>
+                              <ul class="names-list">
+                                <li class="accordion-item">
+                                  <div
+                                    id="contact-name-3"
+                                    class="d-flex gap-2 align-items-center accordion-header"
+                                  >
+                                    <div class="avatar avatar-xl">
                                       <span class="avatar-name rounded-circle">
                                         <span>BR</span>
                                       </span>
-                                    </span>
-
-                                    <span
-                                      class="name ms-2 mb-0 chat-contact-title text-truncate"
+                                    </div>
+                                    <button
+                                      class="name contact-accordion-btn-overrides accordion-button collapsed"
+                                      type="button"
+                                      data-bs-toggle="collapse"
+                                      data-bs-target="#contact-info-3"
+                                      aria-expanded="true"
+                                      aria-controls="contact-info-3"
                                     >
                                       Bucky Robert
-                                    </span>
-                                  </button>
-                                </div>
-                                <div
-                                  class="accordion-collapse collapse"
-                                  id="contact-info-3"
-                                  aria-labelledby="contact-name-3"
-                                  data-bs-parent="names-list"
-                                >
-                                  <div
-                                    class="accordion-body d-flex justify-content-around"
-                                  >
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Send Email"
-                                    >
-                                      <span
-                                        class="inbox-type-email far fa-envelope fs-8"
-                                      ></span>
-                                    </a>
-
-                                    <a
-                                      href="inbox/chat/5"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Chat"
-                                    >
-                                      <span
-                                        class="inbox-type-chat far fa-comment fs-8"
-                                      ></span>
-                                    </a>
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Send SMS"
-                                    >
-                                      <span
-                                        class="inbox-type-sns far fa-comments fs-8"
-                                      ></span>
-                                    </a>
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="call"
-                                    >
-                                      <span
-                                        class="text-primary fas fa-phone-alt fs-8"
-                                      ></span>
-                                    </a>
+                                    </button>
                                   </div>
-                                </div>
-                              </li>
-                            </ul>
-                          </div>
-
-                          <div class="letter-group" data-letter="D">
-                            <div class="letter-header">D</div>
-                            <ul class="names-list">
-                              <li class="accordion-item">
-                                <div
-                                  id="contact-name-4"
-                                  class="d-flex align-items-center accordion-header"
-                                >
-                                  <button
-                                    class="contact-accordion-btn-overrides accordion-button collapsed"
-                                    type="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#contact-info-4"
-                                    aria-expanded="true"
-                                    aria-controls="contact-info-4"
+                                  <div
+                                    class="accordion-collapse collapse"
+                                    id="contact-info-3"
+                                    aria-labelledby="contact-name-3"
+                                    data-bs-parent="names-list"
                                   >
-                                    <span class="avatar avatar-xl">
+                                    <div
+                                      class="accordion-body d-flex justify-content-around"
+                                    >
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Send Email"
+                                      >
+                                        <span
+                                          class="inbox-type-email far fa-envelope fs-8"
+                                        ></span>
+                                      </a>
+
+                                      <a
+                                        href="inbox/chat/5"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Chat"
+                                      >
+                                        <span
+                                          class="inbox-type-chat far fa-comment fs-8"
+                                        ></span>
+                                      </a>
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Send SMS"
+                                      >
+                                        <span
+                                          class="inbox-type-sns far fa-comments fs-8"
+                                        ></span>
+                                      </a>
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="call"
+                                      >
+                                        <span
+                                          class="text-primary fas fa-phone-alt fs-8"
+                                        ></span>
+                                      </a>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+
+                            <div class="letter-group" data-letter="D">
+                              <div class="letter-header">D</div>
+                              <ul class="names-list">
+                                <li class="accordion-item">
+                                  <div
+                                    id="contact-name-4"
+                                    class="d-flex gap-2 align-items-center accordion-header"
+                                  >
+                                    <div class="avatar avatar-xl">
                                       <img
                                         class="rounded-circle"
                                         src="../assets/img/team/22.jpg"
                                         alt=""
                                       />
-                                    </span>
-
-                                    <span
-                                      class="name ms-2 mb-0 chat-contact-title text-truncate"
+                                    </div>
+                                    <button
+                                      class="name contact-accordion-btn-overrides accordion-button collapsed"
+                                      type="button"
+                                      data-bs-toggle="collapse"
+                                      data-bs-target="#contact-info-4"
+                                      aria-expanded="true"
+                                      aria-controls="contact-info-4"
                                     >
                                       Dianna Rigg
-                                    </span>
-                                  </button>
-                                </div>
-                                <div
-                                  class="accordion-collapse collapse"
-                                  id="contact-info-4"
-                                  aria-labelledby="contact-name-4"
-                                  data-bs-parent="names-list"
-                                >
-                                  <div
-                                    class="accordion-body d-flex justify-content-around"
-                                  >
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Send Email"
-                                    >
-                                      <span
-                                        class="inbox-type-email far fa-envelope fs-8"
-                                      ></span>
-                                    </a>
-
-                                    <a
-                                      href="inbox/chat/9"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Chat"
-                                    >
-                                      <span
-                                        class="inbox-type-chat far fa-comment fs-8"
-                                      ></span>
-                                    </a>
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Send SMS"
-                                    >
-                                      <span
-                                        class="inbox-type-sns far fa-comments fs-8"
-                                      ></span>
-                                    </a>
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="call"
-                                    >
-                                      <span
-                                        class="text-primary fas fa-phone-alt fs-8"
-                                      ></span>
-                                    </a>
+                                    </button>
                                   </div>
-                                </div>
-                              </li>
-                            </ul>
-                          </div>
-
-                          <div class="letter-group" data-letter="E">
-                            <div class="letter-header">E</div>
-                            <ul class="names-list">
-                              <li class="accordion-item">
-                                <div
-                                  id="contact-name-5"
-                                  class="d-flex align-items-center accordion-header"
-                                >
-                                  <button
-                                    class="contact-accordion-btn-overrides accordion-button collapsed"
-                                    type="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#contact-info-5"
-                                    aria-expanded="true"
-                                    aria-controls="contact-info-5"
+                                  <div
+                                    class="accordion-collapse collapse"
+                                    id="contact-info-4"
+                                    aria-labelledby="contact-name-4"
+                                    data-bs-parent="names-list"
                                   >
-                                    <span class="avatar avatar-xl">
+                                    <div
+                                      class="accordion-body d-flex justify-content-around"
+                                    >
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Send Email"
+                                      >
+                                        <span
+                                          class="inbox-type-email far fa-envelope fs-8"
+                                        ></span>
+                                      </a>
+
+                                      <a
+                                        href="inbox/chat/9"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Chat"
+                                      >
+                                        <span
+                                          class="inbox-type-chat far fa-comment fs-8"
+                                        ></span>
+                                      </a>
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Send SMS"
+                                      >
+                                        <span
+                                          class="inbox-type-sns far fa-comments fs-8"
+                                        ></span>
+                                      </a>
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="call"
+                                      >
+                                        <span
+                                          class="text-primary fas fa-phone-alt fs-8"
+                                        ></span>
+                                      </a>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+
+                            <div class="letter-group" data-letter="E">
+                              <div class="letter-header">E</div>
+                              <ul class="names-list">
+                                <li class="accordion-item">
+                                  <div
+                                    id="contact-name-5"
+                                    class="d-flex gap-2 align-items-center accordion-header"
+                                  >
+                                    <div class="avatar avatar-xl">
                                       <img
                                         class="rounded-circle"
                                         src="../assets/img/team/1.jpg"
                                         alt=""
                                       />
-                                    </span>
-
-                                    <span
-                                      class="name ms-2 mb-0 chat-contact-title text-truncate"
+                                    </div>
+                                    <button
+                                      class="name contact-accordion-btn-overrides accordion-button collapsed"
+                                      type="button"
+                                      data-bs-toggle="collapse"
+                                      data-bs-target="#contact-info-5"
+                                      aria-expanded="true"
+                                      aria-controls="contact-info-5"
                                     >
                                       Emma Watson
-                                    </span>
-                                  </button>
-                                </div>
-                                <div
-                                  class="accordion-collapse collapse"
-                                  id="contact-info-5"
-                                  aria-labelledby="contact-name-5"
-                                  data-bs-parent="names-list"
-                                >
-                                  <div
-                                    class="accordion-body d-flex justify-content-around"
-                                  >
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Send Email"
-                                    >
-                                      <span
-                                        class="inbox-type-email far fa-envelope fs-8"
-                                      ></span>
-                                    </a>
-
-                                    <a
-                                      href="inbox/chat/2"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Chat"
-                                    >
-                                      <span
-                                        class="inbox-type-chat far fa-comment fs-8"
-                                      ></span>
-                                    </a>
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Send SMS"
-                                    >
-                                      <span
-                                        class="inbox-type-sns far fa-comments fs-8"
-                                      ></span>
-                                    </a>
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="call"
-                                    >
-                                      <span
-                                        class="text-primary fas fa-phone-alt fs-8"
-                                      ></span>
-                                    </a>
+                                    </button>
                                   </div>
-                                </div>
-                              </li>
-                            </ul>
-                          </div>
-
-                          <div class="letter-group" data-letter="G">
-                            <div class="letter-header">G</div>
-                            <ul class="names-list">
-                              <li class="accordion-item">
-                                <div
-                                  id="contact-name-6"
-                                  class="d-flex align-items-center accordion-header"
-                                >
-                                  <button
-                                    class="contact-accordion-btn-overrides accordion-button collapsed"
-                                    type="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#contact-info-6"
-                                    aria-expanded="true"
-                                    aria-controls="contact-info-6"
+                                  <div
+                                    class="accordion-collapse collapse"
+                                    id="contact-info-5"
+                                    aria-labelledby="contact-name-5"
+                                    data-bs-parent="names-list"
                                   >
-                                    <span class="avatar avatar-xl">
+                                    <div
+                                      class="accordion-body d-flex justify-content-around"
+                                    >
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Send Email"
+                                      >
+                                        <span
+                                          class="inbox-type-email far fa-envelope fs-8"
+                                        ></span>
+                                      </a>
+
+                                      <a
+                                        href="inbox/chat/2"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Chat"
+                                      >
+                                        <span
+                                          class="inbox-type-chat far fa-comment fs-8"
+                                        ></span>
+                                      </a>
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Send SMS"
+                                      >
+                                        <span
+                                          class="inbox-type-sns far fa-comments fs-8"
+                                        ></span>
+                                      </a>
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="call"
+                                      >
+                                        <span
+                                          class="text-primary fas fa-phone-alt fs-8"
+                                        ></span>
+                                      </a>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+
+                            <div class="letter-group" data-letter="G">
+                              <div class="letter-header">G</div>
+                              <ul class="names-list">
+                                <li class="accordion-item">
+                                  <div
+                                    id="contact-name-6"
+                                    class="d-flex gap-2 align-items-center accordion-header"
+                                  >
+                                    <div class="avatar avatar-xl">
                                       <img
                                         class="rounded-circle"
                                         src="../assets/img/team/23.jpg"
                                         alt=""
                                       />
-                                    </span>
-
-                                    <span
-                                      class="name ms-2 mb-0 chat-contact-title text-truncate"
+                                    </div>
+                                    <button
+                                      class="name contact-accordion-btn-overrides accordion-button collapsed"
+                                      type="button"
+                                      data-bs-toggle="collapse"
+                                      data-bs-target="#contact-info-6"
+                                      aria-expanded="true"
+                                      aria-controls="contact-info-6"
                                     >
                                       Gemma Whelan
-                                    </span>
-                                  </button>
-                                </div>
-                                <div
-                                  class="accordion-collapse collapse"
-                                  id="contact-info-6"
-                                  aria-labelledby="contact-name-6"
-                                  data-bs-parent="names-list"
-                                >
-                                  <div
-                                    class="accordion-body d-flex justify-content-around"
-                                  >
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Send Email"
-                                    >
-                                      <span
-                                        class="inbox-type-email far fa-envelope fs-8"
-                                      ></span>
-                                    </a>
-
-                                    <a
-                                      href="inbox/chat/10"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Chat"
-                                    >
-                                      <span
-                                        class="inbox-type-chat far fa-comment fs-8"
-                                      ></span>
-                                    </a>
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Send SMS"
-                                    >
-                                      <span
-                                        class="inbox-type-sns far fa-comments fs-8"
-                                      ></span>
-                                    </a>
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="call"
-                                    >
-                                      <span
-                                        class="text-primary fas fa-phone-alt fs-8"
-                                      ></span>
-                                    </a>
+                                    </button>
                                   </div>
-                                </div>
-                              </li>
-                            </ul>
-                          </div>
-
-                          <div class="letter-group" data-letter="J">
-                            <div class="letter-header">J</div>
-                            <ul class="names-list">
-                              <li class="accordion-item">
-                                <div
-                                  id="contact-name-7"
-                                  class="d-flex align-items-center accordion-header"
-                                >
-                                  <button
-                                    class="contact-accordion-btn-overrides accordion-button collapsed"
-                                    type="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#contact-info-7"
-                                    aria-expanded="true"
-                                    aria-controls="contact-info-7"
+                                  <div
+                                    class="accordion-collapse collapse"
+                                    id="contact-info-6"
+                                    aria-labelledby="contact-name-6"
+                                    data-bs-parent="names-list"
                                   >
-                                    <span class="avatar avatar-xl">
+                                    <div
+                                      class="accordion-body d-flex justify-content-around"
+                                    >
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Send Email"
+                                      >
+                                        <span
+                                          class="inbox-type-email far fa-envelope fs-8"
+                                        ></span>
+                                      </a>
+
+                                      <a
+                                        href="inbox/chat/10"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Chat"
+                                      >
+                                        <span
+                                          class="inbox-type-chat far fa-comment fs-8"
+                                        ></span>
+                                      </a>
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Send SMS"
+                                      >
+                                        <span
+                                          class="inbox-type-sns far fa-comments fs-8"
+                                        ></span>
+                                      </a>
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="call"
+                                      >
+                                        <span
+                                          class="text-primary fas fa-phone-alt fs-8"
+                                        ></span>
+                                      </a>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+
+                            <div class="letter-group" data-letter="J">
+                              <div class="letter-header">J</div>
+                              <ul class="names-list">
+                                <li class="accordion-item">
+                                  <div
+                                    id="contact-name-7"
+                                    class="d-flex gap-2 align-items-center accordion-header"
+                                  >
+                                    <div class="avatar avatar-xl">
                                       <img
                                         class="rounded-circle"
                                         src="../assets/img/team/12.jpg"
                                         alt=""
                                       />
-                                    </span>
-
-                                    <span
-                                      class="name ms-2 mb-0 chat-contact-title text-truncate"
+                                    </div>
+                                    <button
+                                      class="name contact-accordion-btn-overrides accordion-button collapsed"
+                                      type="button"
+                                      data-bs-toggle="collapse"
+                                      data-bs-target="#contact-info-7"
+                                      aria-expanded="true"
+                                      aria-controls="contact-info-7"
                                     >
                                       Joe Bempsie
-                                    </span>
-                                  </button>
-                                </div>
-                                <div
-                                  class="accordion-collapse collapse"
-                                  id="contact-info-7"
-                                  aria-labelledby="contact-name-7"
-                                  data-bs-parent="names-list"
-                                >
-                                  <div
-                                    class="accordion-body d-flex justify-content-around"
-                                  >
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Send Email"
-                                    >
-                                      <span
-                                        class="inbox-type-email far fa-envelope fs-8"
-                                      ></span>
-                                    </a>
-
-                                    <a
-                                      href="inbox/chat/8"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Chat"
-                                    >
-                                      <span
-                                        class="inbox-type-chat far fa-comment fs-8"
-                                      ></span>
-                                    </a>
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Send SMS"
-                                    >
-                                      <span
-                                        class="inbox-type-sns far fa-comments fs-8"
-                                      ></span>
-                                    </a>
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="call"
-                                    >
-                                      <span
-                                        class="text-primary fas fa-phone-alt fs-8"
-                                      ></span>
-                                    </a>
+                                    </button>
                                   </div>
-                                </div>
-                              </li>
+                                  <div
+                                    class="accordion-collapse collapse"
+                                    id="contact-info-7"
+                                    aria-labelledby="contact-name-7"
+                                    data-bs-parent="names-list"
+                                  >
+                                    <div
+                                      class="accordion-body d-flex justify-content-around"
+                                    >
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Send Email"
+                                      >
+                                        <span
+                                          class="inbox-type-email far fa-envelope fs-8"
+                                        ></span>
+                                      </a>
 
-                              <li class="accordion-item">
-                                <div
-                                  id="contact-name-8"
-                                  class="d-flex align-items-center accordion-header"
-                                >
-                                  <button
-                                    class="contact-accordion-btn-overrides accordion-button collapsed"
-                                    type="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#contact-info-8"
-                                    aria-expanded="true"
-                                    aria-controls="contact-info-8"
+                                      <a
+                                        href="inbox/chat/8"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Chat"
+                                      >
+                                        <span
+                                          class="inbox-type-chat far fa-comment fs-8"
+                                        ></span>
+                                      </a>
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Send SMS"
+                                      >
+                                        <span
+                                          class="inbox-type-sns far fa-comments fs-8"
+                                        ></span>
+                                      </a>
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="call"
+                                      >
+                                        <span
+                                          class="text-primary fas fa-phone-alt fs-8"
+                                        ></span>
+                                      </a>
+                                    </div>
+                                  </div>
+                                </li>
+
+                                <li class="accordion-item">
+                                  <div
+                                    id="contact-name-8"
+                                    class="d-flex gap-2 align-items-center accordion-header"
                                   >
                                     <span class="avatar avatar-xl">
                                       <img
@@ -7367,171 +7328,170 @@
                                         alt=""
                                       />
                                     </span>
-
-                                    <span
-                                      class="name ms-2 mb-0 chat-contact-title text-truncate"
+                                    <button
+                                      class="name contact-accordion-btn-overrides accordion-button collapsed"
+                                      type="button"
+                                      data-bs-toggle="collapse"
+                                      data-bs-target="#contact-info-8"
+                                      aria-expanded="true"
+                                      aria-controls="contact-info-8"
                                     >
                                       John Lee
-                                    </span>
-                                  </button>
-                                </div>
-                                <div
-                                  class="accordion-collapse collapse"
-                                  id="contact-info-8"
-                                  aria-labelledby="contact-name-8"
-                                  data-bs-parent="names-list"
-                                >
-                                  <div
-                                    class="accordion-body d-flex justify-content-around"
-                                  >
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Send Email"
-                                    >
-                                      <span
-                                        class="inbox-type-email far fa-envelope fs-8"
-                                      ></span>
-                                    </a>
-
-                                    <a
-                                      href="inbox/chat/4"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Chat"
-                                    >
-                                      <span
-                                        class="inbox-type-chat far fa-comment fs-8"
-                                      ></span>
-                                    </a>
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Send SMS"
-                                    >
-                                      <span
-                                        class="inbox-type-sns far fa-comments fs-8"
-                                      ></span>
-                                    </a>
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="call"
-                                    >
-                                      <span
-                                        class="text-primary fas fa-phone-alt fs-8"
-                                      ></span>
-                                    </a>
+                                    </button>
                                   </div>
-                                </div>
-                              </li>
-                            </ul>
-                          </div>
-
-                          <div class="letter-group" data-letter="R">
-                            <div class="letter-header">R</div>
-                            <ul class="names-list">
-                              <li class="accordion-item">
-                                <div
-                                  id="contact-name-9"
-                                  class="d-flex align-items-center accordion-header"
-                                >
-                                  <button
-                                    class="contact-accordion-btn-overrides accordion-button collapsed"
-                                    type="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#contact-info-9"
-                                    aria-expanded="true"
-                                    aria-controls="contact-info-9"
+                                  <div
+                                    class="accordion-collapse collapse"
+                                    id="contact-info-8"
+                                    aria-labelledby="contact-name-8"
+                                    data-bs-parent="names-list"
                                   >
-                                    <span class="avatar avatar-xl">
+                                    <div
+                                      class="accordion-body d-flex justify-content-around"
+                                    >
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Send Email"
+                                      >
+                                        <span
+                                          class="inbox-type-email far fa-envelope fs-8"
+                                        ></span>
+                                      </a>
+
+                                      <a
+                                        href="inbox/chat/4"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Chat"
+                                      >
+                                        <span
+                                          class="inbox-type-chat far fa-comment fs-8"
+                                        ></span>
+                                      </a>
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Send SMS"
+                                      >
+                                        <span
+                                          class="inbox-type-sns far fa-comments fs-8"
+                                        ></span>
+                                      </a>
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="call"
+                                      >
+                                        <span
+                                          class="text-primary fas fa-phone-alt fs-8"
+                                        ></span>
+                                      </a>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+
+                            <div class="letter-group" data-letter="R">
+                              <div class="letter-header">R</div>
+                              <ul class="names-list">
+                                <li class="accordion-item">
+                                  <div
+                                    id="contact-name-9"
+                                    class="d-flex gap-2 align-items-center accordion-header"
+                                  >
+                                    <div class="avatar avatar-xl">
                                       <img
                                         class="rounded-circle"
                                         src="../assets/img/team/11.jpg"
                                         alt=""
                                       />
-                                    </span>
-
-                                    <span
-                                      class="name ms-2 mb-0 chat-contact-title text-truncate"
+                                    </div>
+                                    <button
+                                      class="contact-accordion-btn-overrides name accordion-button collapsed"
+                                      type="button"
+                                      data-bs-toggle="collapse"
+                                      data-bs-target="#contact-info-9"
+                                      aria-expanded="true"
+                                      aria-controls="contact-info-9"
                                     >
                                       Rory McCann
-                                    </span>
-                                  </button>
-                                </div>
-                                <div
-                                  class="accordion-collapse collapse"
-                                  id="contact-info-9"
-                                  aria-labelledby="contact-name-9"
-                                  data-bs-parent="names-list"
-                                >
-                                  <div
-                                    class="accordion-body d-flex justify-content-around"
-                                  >
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Send Email"
-                                    >
-                                      <span
-                                        class="inbox-type-email far fa-envelope fs-8"
-                                      ></span>
-                                    </a>
-
-                                    <a
-                                      href="inbox/chat/7"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Chat"
-                                    >
-                                      <span
-                                        class="inbox-type-chat far fa-comment fs-8"
-                                      ></span>
-                                    </a>
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="Send SMS"
-                                    >
-                                      <span
-                                        class="inbox-type-sns far fa-comments fs-8"
-                                      ></span>
-                                    </a>
-                                    <a
-                                      href="#"
-                                      class=""
-                                      aria-label="left nav toggle"
-                                      data-bs-toggle="tooltip"
-                                      data-bs-placement="top"
-                                      title="call"
-                                    >
-                                      <span
-                                        class="text-primary fas fa-phone-alt fs-8"
-                                      ></span>
-                                    </a>
+                                    </button>
                                   </div>
-                                </div>
-                              </li>
-                            </ul>
+                                  <div
+                                    class="accordion-collapse collapse"
+                                    id="contact-info-9"
+                                    aria-labelledby="contact-name-9"
+                                    data-bs-parent="names-list"
+                                  >
+                                    <div
+                                      class="accordion-body d-flex justify-content-around"
+                                    >
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Send Email"
+                                      >
+                                        <span
+                                          class="inbox-type-email far fa-envelope fs-8"
+                                        ></span>
+                                      </a>
+
+                                      <a
+                                        href="inbox/chat/7"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Chat"
+                                      >
+                                        <span
+                                          class="inbox-type-chat far fa-comment fs-8"
+                                        ></span>
+                                      </a>
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Send SMS"
+                                      >
+                                        <span
+                                          class="inbox-type-sns far fa-comments fs-8"
+                                        ></span>
+                                      </a>
+                                      <a
+                                        href="#"
+                                        class=""
+                                        aria-label="left nav toggle"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="call"
+                                      >
+                                        <span
+                                          class="text-primary fas fa-phone-alt fs-8"
+                                        ></span>
+                                      </a>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -20522,19 +20482,21 @@
           fuzzy: true,
           location: 0,
           distance: 100,
-          threshold: 0.6,
+          threshold: 0.4,
           multiSearch: true,
         };
 
-        // contactlist search implementation
-        const contactList = new List("contacts-body", {
+        // contact list search implementation
+        const contactsSearchInput = document.getElementById(
+          "contacts-fuzzy-search",
+        );
+        const contactList = new List("contact-list-container", {
           valueNames: ["name"],
-          listClass: "contact-list",
           searchDelay: 200,
-          fuzzySearch: {
-            ...fuzzySearchOptions,
-            searchClass: "fz-contact-search",
-          },
+          fuzzySearch: fuzzySearchOptions,
+        });
+        contactsSearchInput.addEventListener("input", function () {
+          contactList.fuzzySearch(contactsSearchInput.value);
         });
 
         // inbox/all conversation search input implementation

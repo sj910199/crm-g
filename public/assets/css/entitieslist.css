@@ -2687,6 +2687,9 @@ which content to show on each sub panel
   /* grid-column: 1; */
   /* Make sure it spans only one row in grid layout */
 }
+.letter-group:has(ul.names-list:empty) {
+  display: none;
+}
 
 .contact-accordion-btn-overrides {
   padding: 0;
@@ -2697,7 +2700,6 @@ which content to show on each sub panel
 
 .contact-accordion-btn-overrides[aria-expanded="true"] {
   border: none;
-  padding-bottom: 0.5rem;
 }
 
 .contact-accordion-btn-overrides::before,
