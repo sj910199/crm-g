@@ -108,6 +108,41 @@
 .d-contents {
   display: contents !important;
 }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Optional: Make it visible on focus - similar to sr-only-focusable */
+.sr-only-focusable:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
 
 .w-fit {
   width: fit-content !important;
@@ -136,6 +171,14 @@
 
 .rounded-20px {
   border-radius: 20px !important;
+}
+
+/*hiding the tooltip when hover is not available*/
+@media (hover: none) {
+  .tooltip.bs-tooltip-auto.fade.show[role="tooltip"]{
+    display: none !important;
+  }
+
 }
 
 /*-----------------------------------------------
@@ -2769,9 +2812,53 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
 
 /*------------- email panel area  ------------*/
 
+
+.email-nav-body   {
+  overflow-x: clip;
+}
 .email-nav-body > div {
   padding-top: 1.5rem !important;
   padding-bottom: 1.5rem !important;
+}
+
+.email-nav-body > div .btn-group {
+  /* initially 100% + the matching padding of the parent */
+  right: 100%;
+  transform: translateX(calc(100% + (var(--falcon-gutter-x) * -0.5)) );
+  transition: transform 200ms linear;
+}
+
+.email-nav-body > div .btn-group > *:not(:first-child) {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms linear , visibility 200ms linear ;
+  transition-delay: -100ms;
+}
+
+.email-nav-body .btn-group button[data-trigger]  {
+  box-shadow: none;
+}
+
+.email-nav-body .btn-group button[data-trigger] > svg{
+  transition: transform 200ms linear;
+}
+
+.email-nav-body > div .btn-group.show-opts {
+  transform: translateX(0);
+}
+.email-nav-body > div .btn-group.show-opts > *:not(:first-child) {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 100ms;
+}
+
+.email-nav-body .btn-group.show-opts button[data-trigger]  {
+  background-color: var(--falcon-gray-200) !important;
+  box-shadow: var(--falcon-btn-box-shadow);
+}
+.email-nav-body .btn-group.show-opts button[data-trigger] > svg{
+  color: #007bff;
+  transform: rotate(180deg);
 }
 
 .email-content {
@@ -2899,6 +2986,95 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
 @media (hover: none), (pointer: coarse) {
   .non-hover-show-button {
     display: inline-block !important;
+  }
+  .email-nav-body .btn-group button[data-trigger]  {
+    color: var(--falcon-btn-hover-color);
+    background: transparent !important;
+  }
+
+}
+
+/*side panel on desktop view*/
+@media (min-width: 769px) {
+  /*not full screen view*/
+  @container side-panel (max-width: 405px) {
+    .email-nav-body > div {
+      display: grid;
+      grid-template-areas: "checkbox content"
+    "date date";
+      column-gap: 1rem;
+      row-gap: .5rem;
+    }
+
+    .email-nav-body > div > :nth-child(1) {
+      grid-area: checkbox;
+      padding: 0;
+    }
+
+    .email-nav-body > div > :nth-child(1) .form-check{
+      padding: 0;
+    }
+
+    .email-nav-body > div > :nth-child(1) svg {
+      display: none;
+    }
+
+    .email-nav-body > div > :nth-child(1) .form-check .form-check-input{
+      margin:0
+    }
+
+    .email-nav-body > div > :nth-child(2) {
+      grid-area: content;
+      width: 100%;
+    }
+
+    .email-nav-body > div > :nth-child(2) > div > div {
+      /*-webkit-box-flex: 0!important;*/
+      /*-ms-flex: 0 0 auto !important;*/
+      /*flex: 0 0 auto !important;*/
+      width: 33.33333333% !important;
+    }
+
+    .email-nav-body > div > :nth-child(3) {
+      grid-area: date;
+      flex-direction: row !important;
+    }
+
+    .email-nav-body > div > :nth-child(3) > span {
+      order: 2;
+    }
+
+    .email-nav-body > div > :nth-child(3) > svg {
+      display: inline-block !important;
+      margin: 0;
+    }
+
+
+  }
+
+  /* if panel is in full screen */
+  @container side-panel (min-width: 410px) {
+    .email-nav-body > div .btn-group {
+      /* initially 100% + the matching padding of the parent */
+      right: 100% !important;
+      bottom: unset !important;
+    }
+
+    .email-nav-body > div .btn-group.show-opts {
+      transform: translateX(0);
+    }
+  }
+
+}
+
+@container side-panel (min-width: 768px) {
+  .email-nav-body > div .btn-group {
+    right: 1.5rem;
+    bottom: 0;
+  }
+
+  .email-nav-body > div .btn-group.show-opts {
+    transform: translateX(.8rem);
   }
 }
 
