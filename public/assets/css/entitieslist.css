@@ -2994,6 +2994,8 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
 
 }
 
+/* side panel media queries */
+
 /*side panel on desktop view*/
 @media (min-width: 769px) {
   /*not full screen view*/
@@ -3036,12 +3038,19 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
     }
 
     .email-nav-body > div > :nth-child(3) {
+      --_date-margin: .25rem; /* to align with the star icon*/
       grid-area: date;
       flex-direction: row !important;
+      gap: .5rem;
+    }
+
+    .email-nav-body > div > :nth-child(3) > .btn-group {
+      top: var(--_date-margin);
     }
 
     .email-nav-body > div > :nth-child(3) > span {
       order: 2;
+      margin-top: var(--_date-margin);
     }
 
     .email-nav-body > div > :nth-child(3) > svg {
@@ -3078,7 +3087,6 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
   }
 }
 
-/* side panel media queries */
 @container side-panel (min-width: 992px) {
   /*override for chat*/
   .inbox-article .chat-inbox-panel.panel-show-nav,
