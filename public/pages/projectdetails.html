@@ -426,771 +426,10 @@
 
                 <ul
                   class="navbar-nav navbar-nav-icons ms-auto flex-row align-items-center"
+                  aria-label="search"
                 >
-                  <li class="nav-item ps-2 pe-0">
-                    <div class="dropdown theme-control-dropdown">
-                      <a
-                        class="theme-switch-dropdown nav-link d-flex align-items-center dropdown-toggle fa-icon-wait fs-9 pe-1 py-0"
-                        href="#"
-                        role="button"
-                        id="themeSwitchDropdown"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                        ><span
-                          class="fas fa-sun fs-7"
-                          data-fa-transform="shrink-2"
-                          data-theme-dropdown-toggle-icon="light"
-                        ></span
-                        ><span
-                          class="fas fa-moon fs-7"
-                          data-fa-transform="shrink-3"
-                          data-theme-dropdown-toggle-icon="dark"
-                        ></span
-                        ><span
-                          class="fas fa-adjust fs-7"
-                          data-fa-transform="shrink-2"
-                          data-theme-dropdown-toggle-icon="auto"
-                        ></span
-                      ></a>
-                      <div
-                        class="dropdown-menu dropdown-menu-end dropdown-caret border py-0 mt-3"
-                        aria-labelledby="themeSwitchDropdown"
-                      >
-                        <div class="bg-white dark__bg-1000 rounded-2 py-2">
-                          <button
-                            class="dropdown-item d-flex align-items-center gap-2"
-                            type="button"
-                            value="light"
-                            data-theme-control="theme"
-                          >
-                            <span class="fas fa-sun"></span>Light<span
-                              class="fas fa-check dropdown-check-icon ms-auto text-600"
-                            ></span>
-                          </button>
-                          <button
-                            class="dropdown-item d-flex align-items-center gap-2"
-                            type="button"
-                            value="dark"
-                            data-theme-control="theme"
-                          >
-                            <span
-                              class="fas fa-moon"
-                              data-fa-transform=""
-                            ></span
-                            >Dark<span
-                              class="fas fa-check dropdown-check-icon ms-auto text-600"
-                            ></span>
-                          </button>
-                          <button
-                            class="dropdown-item d-flex align-items-center gap-2"
-                            type="button"
-                            value="auto"
-                            data-theme-control="theme"
-                          >
-                            <span
-                              class="fas fa-adjust"
-                              data-fa-transform=""
-                            ></span
-                            >Auto<span
-                              class="fas fa-check dropdown-check-icon ms-auto text-600"
-                            ></span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="nav-item d-none d-sm-block">
-                    <a
-                      class="nav-link px-0 notification-indicator notification-indicator-warning notification-indicator-fill fa-icon-wait"
-                      href="../app/e-commerce/shopping-cart.html"
-                      ><span
-                        class="fas fa-shopping-cart"
-                        data-fa-transform="shrink-7"
-                        style="font-size: 33px"
-                      ></span
-                      ><span class="notification-indicator-number">1</span></a
-                    >
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a
-                      class="nav-link notification-indicator notification-indicator-primary px-0 fa-icon-wait"
-                      id="navbarDropdownNotification"
-                      role="button"
-                      data-bs-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                      data-hide-on-body-scroll="data-hide-on-body-scroll"
-                      ><span
-                        class="fas fa-bell"
-                        data-fa-transform="shrink-6"
-                        style="font-size: 33px"
-                      ></span
-                    ></a>
-                    <div
-                      class="dropdown-menu dropdown-caret dropdown-caret dropdown-menu-end dropdown-menu-card dropdown-menu-notification dropdown-caret-bg"
-                      aria-labelledby="navbarDropdownNotification"
-                    >
-                      <div class="card card-notification shadow-none">
-                        <div class="card-header">
-                          <div
-                            class="row justify-content-between align-items-center"
-                          >
-                            <div class="col-auto">
-                              <h6 class="card-header-title mb-0">
-                                Notifications
-                              </h6>
-                            </div>
-                            <div class="col-auto ps-0 ps-sm-3">
-                              <a class="card-link fw-normal" href="#"
-                                >Mark all as read</a
-                              >
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          class="scrollbar-overlay"
-                          style="max-height: 19rem"
-                        >
-                          <div
-                            class="list-group list-group-flush fw-normal fs-10"
-                          >
-                            <div class="list-group-title border-bottom">
-                              NEW
-                            </div>
-                            <div class="list-group-item">
-                              <a
-                                class="notification notification-flush notification-unread"
-                                href="#!"
-                              >
-                                <div class="notification-avatar">
-                                  <div class="avatar avatar-2xl me-3">
-                                    <img
-                                      class="rounded-circle"
-                                      src="../assets/img/team/1-thumb.png"
-                                      alt=""
-                                    />
-                                  </div>
-                                </div>
-                                <div class="notification-body">
-                                  <p class="mb-1">
-                                    <strong>Emma Watson</strong>
-                                    replied to your comment : "Hello world 😍"
-                                  </p>
-                                  <span class="notification-time"
-                                    ><span
-                                      class="me-2"
-                                      role="img"
-                                      aria-label="Emoji"
-                                      >💬</span
-                                    >Just now</span
-                                  >
-                                </div>
-                              </a>
-                            </div>
-                            <div class="list-group-item">
-                              <a
-                                class="notification notification-flush notification-unread"
-                                href="#!"
-                              >
-                                <div class="notification-avatar">
-                                  <div class="avatar avatar-2xl me-3">
-                                    <div class="avatar-name rounded-circle">
-                                      <span>AB</span>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="notification-body">
-                                  <p class="mb-1">
-                                    <strong>Albert Brooks</strong>
-                                    reacted to
-                                    <strong>Mia Khalifa's</strong>
-                                    status
-                                  </p>
-                                  <span class="notification-time"
-                                    ><span
-                                      class="me-2 fab fa-gratipay text-danger"
-                                    ></span
-                                    >9hr</span
-                                  >
-                                </div>
-                              </a>
-                            </div>
-                            <div class="list-group-title border-bottom">
-                              EARLIER
-                            </div>
-                            <div class="list-group-item">
-                              <a
-                                class="notification notification-flush"
-                                href="#!"
-                              >
-                                <div class="notification-avatar">
-                                  <div class="avatar avatar-2xl me-3">
-                                    <img
-                                      class="rounded-circle"
-                                      src="../assets/img/icons/weather-sm.jpg"
-                                      alt=""
-                                    />
-                                  </div>
-                                </div>
-                                <div class="notification-body">
-                                  <p class="mb-1">
-                                    The forecast today shows a low of 20&#8451;
-                                    in California. See today's weather.
-                                  </p>
-                                  <span class="notification-time"
-                                    ><span
-                                      class="me-2"
-                                      role="img"
-                                      aria-label="Emoji"
-                                      >🌤️</span
-                                    >1d</span
-                                  >
-                                </div>
-                              </a>
-                            </div>
-                            <div class="list-group-item">
-                              <a
-                                class="border-bottom-0 notification-unread notification notification-flush"
-                                href="#!"
-                              >
-                                <div class="notification-avatar">
-                                  <div class="avatar avatar-xl me-3">
-                                    <img
-                                      class="rounded-circle"
-                                      src="../assets/img/logos/oxford.png"
-                                      alt=""
-                                    />
-                                  </div>
-                                </div>
-                                <div class="notification-body">
-                                  <p class="mb-1">
-                                    <strong>University of Oxford</strong>
-                                    created an event : "Causal Inference Hilary
-                                    2019"
-                                  </p>
-                                  <span class="notification-time"
-                                    ><span
-                                      class="me-2"
-                                      role="img"
-                                      aria-label="Emoji"
-                                      >✌️</span
-                                    >1w</span
-                                  >
-                                </div>
-                              </a>
-                            </div>
-                            <div class="list-group-item">
-                              <a
-                                class="border-bottom-0 notification notification-flush"
-                                href="#!"
-                              >
-                                <div class="notification-avatar">
-                                  <div class="avatar avatar-xl me-3">
-                                    <img
-                                      class="rounded-circle"
-                                      src="../assets/img/team/10.jpg"
-                                      alt=""
-                                    />
-                                  </div>
-                                </div>
-                                <div class="notification-body">
-                                  <p class="mb-1">
-                                    <strong>James Cameron</strong>
-                                    invited to join the group: United Nations
-                                    International Children's Fund
-                                  </p>
-                                  <span class="notification-time"
-                                    ><span
-                                      class="me-2"
-                                      role="img"
-                                      aria-label="Emoji"
-                                      >🙋‍</span
-                                    >2d</span
-                                  >
-                                </div>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="card-footer text-center border-top">
-                          <a
-                            class="card-link d-block"
-                            href="../app/social/notifications.html"
-                            >View all
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="nav-item dropdown px-1">
-                    <a
-                      class="nav-link fa-icon-wait nine-dots p-1"
-                      id="navbarDropdownMenu"
-                      role="button"
-                      data-hide-on-body-scroll="data-hide-on-body-scroll"
-                      data-bs-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="43"
-                        viewBox="0 0 16 16"
-                        fill="none"
-                      >
-                        <circle cx="2" cy="2" r="2" fill="#6C6E71"></circle>
-                        <circle cx="2" cy="8" r="2" fill="#6C6E71"></circle>
-                        <circle cx="2" cy="14" r="2" fill="#6C6E71"></circle>
-                        <circle cx="8" cy="8" r="2" fill="#6C6E71"></circle>
-                        <circle cx="8" cy="14" r="2" fill="#6C6E71"></circle>
-                        <circle cx="14" cy="8" r="2" fill="#6C6E71"></circle>
-                        <circle cx="14" cy="14" r="2" fill="#6C6E71"></circle>
-                        <circle cx="8" cy="2" r="2" fill="#6C6E71"></circle>
-                        <circle
-                          cx="14"
-                          cy="2"
-                          r="2"
-                          fill="#6C6E71"
-                        ></circle></svg
-                    ></a>
-                    <div
-                      class="dropdown-menu dropdown-caret dropdown-caret dropdown-menu-end dropdown-menu-card dropdown-caret-bg"
-                      aria-labelledby="navbarDropdownMenu"
-                    >
-                      <div class="card shadow-none">
-                        <div class="scrollbar-overlay nine-dots-dropdown">
-                          <div class="card-body px-3">
-                            <div class="row text-center gx-0 gy-0">
-                              <div class="col-4">
-                                <a
-                                  class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none"
-                                  href="../pages/user/profile.html"
-                                  target="_blank"
-                                >
-                                  <div class="avatar avatar-2xl">
-                                    <img
-                                      class="rounded-circle"
-                                      src="../assets/img/team/3.jpg"
-                                      alt=""
-                                    />
-                                  </div>
-                                  <p
-                                    class="mb-0 fw-medium text-800 text-truncate fs-11"
-                                  >
-                                    Account
-                                  </p>
-                                </a>
-                              </div>
-                              <div class="col-4">
-                                <a
-                                  class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none"
-                                  href="https://themewagon.com/"
-                                  target="_blank"
-                                  ><img
-                                    class="rounded"
-                                    src="../assets/img/nav-icons/themewagon.png"
-                                    alt=""
-                                    width="40"
-                                    height="40"
-                                  />
-                                  <p
-                                    class="mb-0 fw-medium text-800 text-truncate fs-11 pt-1"
-                                  >
-                                    Themewagon
-                                  </p>
-                                </a>
-                              </div>
-                              <div class="col-4">
-                                <a
-                                  class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none"
-                                  href="https://mailbluster.com/"
-                                  target="_blank"
-                                  ><img
-                                    class="rounded"
-                                    src="../assets/img/nav-icons/mailbluster.png"
-                                    alt=""
-                                    width="40"
-                                    height="40"
-                                  />
-                                  <p
-                                    class="mb-0 fw-medium text-800 text-truncate fs-11 pt-1"
-                                  >
-                                    Mailbluster
-                                  </p>
-                                </a>
-                              </div>
-                              <div class="col-4">
-                                <a
-                                  class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none"
-                                  href="#!"
-                                  target="_blank"
-                                  ><img
-                                    class="rounded"
-                                    src="../assets/img/nav-icons/google.png"
-                                    alt=""
-                                    width="40"
-                                    height="40"
-                                  />
-                                  <p
-                                    class="mb-0 fw-medium text-800 text-truncate fs-11 pt-1"
-                                  >
-                                    Google
-                                  </p>
-                                </a>
-                              </div>
-                              <div class="col-4">
-                                <a
-                                  class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none"
-                                  href="#!"
-                                  target="_blank"
-                                  ><img
-                                    class="rounded"
-                                    src="../assets/img/nav-icons/spotify.png"
-                                    alt=""
-                                    width="40"
-                                    height="40"
-                                  />
-                                  <p
-                                    class="mb-0 fw-medium text-800 text-truncate fs-11 pt-1"
-                                  >
-                                    Spotify
-                                  </p>
-                                </a>
-                              </div>
-                              <div class="col-4">
-                                <a
-                                  class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none"
-                                  href="#!"
-                                  target="_blank"
-                                  ><img
-                                    class="rounded"
-                                    src="../assets/img/nav-icons/steam.png"
-                                    alt=""
-                                    width="40"
-                                    height="40"
-                                  />
-                                  <p
-                                    class="mb-0 fw-medium text-800 text-truncate fs-11 pt-1"
-                                  >
-                                    Steam
-                                  </p>
-                                </a>
-                              </div>
-                              <div class="col-4">
-                                <a
-                                  class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none"
-                                  href="#!"
-                                  target="_blank"
-                                  ><img
-                                    class="rounded"
-                                    src="../assets/img/nav-icons/github-light.png"
-                                    alt=""
-                                    width="40"
-                                    height="40"
-                                  />
-                                  <p
-                                    class="mb-0 fw-medium text-800 text-truncate fs-11 pt-1"
-                                  >
-                                    Github
-                                  </p>
-                                </a>
-                              </div>
-                              <div class="col-4">
-                                <a
-                                  class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none"
-                                  href="#!"
-                                  target="_blank"
-                                  ><img
-                                    class="rounded"
-                                    src="../assets/img/nav-icons/discord.png"
-                                    alt=""
-                                    width="40"
-                                    height="40"
-                                  />
-                                  <p
-                                    class="mb-0 fw-medium text-800 text-truncate fs-11 pt-1"
-                                  >
-                                    Discord
-                                  </p>
-                                </a>
-                              </div>
-                              <div class="col-4">
-                                <a
-                                  class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none"
-                                  href="#!"
-                                  target="_blank"
-                                  ><img
-                                    class="rounded"
-                                    src="../assets/img/nav-icons/xbox.png"
-                                    alt=""
-                                    width="40"
-                                    height="40"
-                                  />
-                                  <p
-                                    class="mb-0 fw-medium text-800 text-truncate fs-11 pt-1"
-                                  >
-                                    xbox
-                                  </p>
-                                </a>
-                              </div>
-                              <div class="col-4">
-                                <a
-                                  class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none"
-                                  href="#!"
-                                  target="_blank"
-                                  ><img
-                                    class="rounded"
-                                    src="../assets/img/nav-icons/trello.png"
-                                    alt=""
-                                    width="40"
-                                    height="40"
-                                  />
-                                  <p
-                                    class="mb-0 fw-medium text-800 text-truncate fs-11 pt-1"
-                                  >
-                                    Kanban
-                                  </p>
-                                </a>
-                              </div>
-                              <div class="col-4">
-                                <a
-                                  class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none"
-                                  href="#!"
-                                  target="_blank"
-                                  ><img
-                                    class="rounded"
-                                    src="../assets/img/nav-icons/hp.png"
-                                    alt=""
-                                    width="40"
-                                    height="40"
-                                  />
-                                  <p
-                                    class="mb-0 fw-medium text-800 text-truncate fs-11 pt-1"
-                                  >
-                                    Hp
-                                  </p>
-                                </a>
-                              </div>
-                              <div class="col-12">
-                                <hr class="my-3 mx-n3 bg-200" />
-                              </div>
-                              <div class="col-4">
-                                <a
-                                  class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none"
-                                  href="#!"
-                                  target="_blank"
-                                  ><img
-                                    class="rounded"
-                                    src="../assets/img/nav-icons/linkedin.png"
-                                    alt=""
-                                    width="40"
-                                    height="40"
-                                  />
-                                  <p
-                                    class="mb-0 fw-medium text-800 text-truncate fs-11 pt-1"
-                                  >
-                                    Linkedin
-                                  </p>
-                                </a>
-                              </div>
-                              <div class="col-4">
-                                <a
-                                  class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none"
-                                  href="#!"
-                                  target="_blank"
-                                  ><img
-                                    class="rounded"
-                                    src="../assets/img/nav-icons/twitter.png"
-                                    alt=""
-                                    width="40"
-                                    height="40"
-                                  />
-                                  <p
-                                    class="mb-0 fw-medium text-800 text-truncate fs-11 pt-1"
-                                  >
-                                    Twitter
-                                  </p>
-                                </a>
-                              </div>
-                              <div class="col-4">
-                                <a
-                                  class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none"
-                                  href="#!"
-                                  target="_blank"
-                                  ><img
-                                    class="rounded"
-                                    src="../assets/img/nav-icons/facebook.png"
-                                    alt=""
-                                    width="40"
-                                    height="40"
-                                  />
-                                  <p
-                                    class="mb-0 fw-medium text-800 text-truncate fs-11 pt-1"
-                                  >
-                                    Facebook
-                                  </p>
-                                </a>
-                              </div>
-                              <div class="col-4">
-                                <a
-                                  class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none"
-                                  href="#!"
-                                  target="_blank"
-                                  ><img
-                                    class="rounded"
-                                    src="../assets/img/nav-icons/instagram.png"
-                                    alt=""
-                                    width="40"
-                                    height="40"
-                                  />
-                                  <p
-                                    class="mb-0 fw-medium text-800 text-truncate fs-11 pt-1"
-                                  >
-                                    Instagram
-                                  </p>
-                                </a>
-                              </div>
-                              <div class="col-4">
-                                <a
-                                  class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none"
-                                  href="#!"
-                                  target="_blank"
-                                  ><img
-                                    class="rounded"
-                                    src="../assets/img/nav-icons/pinterest.png"
-                                    alt=""
-                                    width="40"
-                                    height="40"
-                                  />
-                                  <p
-                                    class="mb-0 fw-medium text-800 text-truncate fs-11 pt-1"
-                                  >
-                                    Pinterest
-                                  </p>
-                                </a>
-                              </div>
-                              <div class="col-4">
-                                <a
-                                  class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none"
-                                  href="#!"
-                                  target="_blank"
-                                  ><img
-                                    class="rounded"
-                                    src="../assets/img/nav-icons/slack.png"
-                                    alt=""
-                                    width="40"
-                                    height="40"
-                                  />
-                                  <p
-                                    class="mb-0 fw-medium text-800 text-truncate fs-11 pt-1"
-                                  >
-                                    Slack
-                                  </p>
-                                </a>
-                              </div>
-                              <div class="col-4">
-                                <a
-                                  class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none"
-                                  href="#!"
-                                  target="_blank"
-                                  ><img
-                                    class="rounded"
-                                    src="../assets/img/nav-icons/deviantart.png"
-                                    alt=""
-                                    width="40"
-                                    height="40"
-                                  />
-                                  <p
-                                    class="mb-0 fw-medium text-800 text-truncate fs-11 pt-1"
-                                  >
-                                    Deviantart
-                                  </p>
-                                </a>
-                              </div>
-                              <div class="col-4">
-                                <a
-                                  class="d-block hover-bg-200 px-2 py-3 rounded-3 text-center text-decoration-none"
-                                  href="../app/events/event-detail.html"
-                                  target="_blank"
-                                >
-                                  <div class="avatar avatar-2xl">
-                                    <div
-                                      class="avatar-name rounded-circle bg-primary-subtle text-primary"
-                                    >
-                                      <span class="fs-7">E</span>
-                                    </div>
-                                  </div>
-                                  <p
-                                    class="mb-0 fw-medium text-800 text-truncate fs-11"
-                                  >
-                                    Events
-                                  </p>
-                                </a>
-                              </div>
-                              <div class="col-12">
-                                <a
-                                  class="btn btn-outline-primary btn-sm mt-4"
-                                  href="#!"
-                                  >Show more</a
-                                >
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a
-                      class="nav-link pe-0 ps-2"
-                      id="navbarDropdownUser"
-                      role="button"
-                      data-bs-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      <div class="avatar avatar-xl">
-                        <img
-                          class="rounded-circle"
-                          src="../assets/img/team/3-thumb.png"
-                          alt=""
-                        />
-                      </div>
-                    </a>
-                    <div
-                      class="dropdown-menu dropdown-caret dropdown-caret dropdown-menu-end py-0"
-                      aria-labelledby="navbarDropdownUser"
-                    >
-                      <div class="bg-white dark__bg-1000 rounded-2 py-2">
-                        <a class="dropdown-item fw-bold text-warning" href="#!"
-                          ><span class="fas fa-crown me-1"></span
-                          ><span>Go Pro</span></a
-                        >
-
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#!">Set status</a>
-                        <a
-                          class="dropdown-item"
-                          href="../pages/user/profile.html"
-                          >Profile &amp; account</a
-                        >
-                        <a class="dropdown-item" href="#!">Feedback</a>
-
-                        <div class="dropdown-divider"></div>
-                        <a
-                          class="dropdown-item"
-                          href="../pages/user/settings.html"
-                          >Settings</a
-                        >
-                        <a
-                          class="dropdown-item"
-                          href="../pages/authentication/card/logout.html"
-                          >Logout</a
-                        >
-                      </div>
-                    </div>
+                  <li>
+                    <i class="fs-8 fas fa-search"></i>
                   </li>
                 </ul>
 
@@ -5867,6 +5106,155 @@
         aria-label="left side navigation"
       >
         <ul>
+          <li class="dropstart">
+            <a
+              class="nav-link pe-0"
+              id="sidebardropdownuser"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <div class="avatar avatar-xl">
+                <img
+                  class="rounded-circle"
+                  src="../assets/img/team/3-thumb.png"
+                  alt=""
+                />
+              </div>
+            </a>
+            <div
+              class="dropdown-menu dropdown-caret dropdown-caret dropdown-menu-end py-0"
+              aria-labelledby="sidebardropdownuser"
+            >
+              <div class="bg-white dark__bg-1000 rounded-2 py-2">
+                <a class="dropdown-item fw-bold text-warning" href="#!"
+                  ><span class="fas fa-crown me-1"></span><span>go pro</span></a
+                >
+
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#!">set status</a>
+                <a class="dropdown-item" href="../pages/user/profile.html"
+                  >profile &amp; account</a
+                >
+                <a class="dropdown-item" href="#!">feedback</a>
+
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="../pages/user/settings.html"
+                  >settings</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="../pages/authentication/card/logout.html"
+                  >logout</a
+                >
+              </div>
+            </div>
+          </li>
+          <li class="bg-primary-subtle text-primary">
+            <div class="dropstart theme-control-dropdown">
+              <a
+                class="theme-switch-dropdown nav-link hide-dropdown-caret d-flex align-items-center dropdown-toggle fa-icon-wait fs-9 pe-1 py-0"
+                href="#"
+                role="button"
+                id="themeSwitchDropdown-side"
+                data-bs-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                ><span
+                  class="fas fa-sun fs-7"
+                  data-fa-transform="shrink-2"
+                  data-theme-dropdown-toggle-icon="light"
+                ></span
+                ><span
+                  class="fas fa-moon fs-7"
+                  data-fa-transform="shrink-3"
+                  data-theme-dropdown-toggle-icon="dark"
+                ></span
+                ><span
+                  class="fas fa-adjust fs-7"
+                  data-fa-transform="shrink-2"
+                  data-theme-dropdown-toggle-icon="auto"
+                ></span
+              ></a>
+              <div
+                class="dropdown-menu dropdown-menu-end dropdown-caret border py-0 mt-3"
+                aria-labelledby="themeSwitchDropdown-side"
+              >
+                <div class="bg-white dark__bg-1000 rounded-2 py-2">
+                  <button
+                    class="dropdown-item d-flex align-items-center gap-2"
+                    type="button"
+                    value="light"
+                    data-theme-control="theme"
+                  >
+                    <span class="fas fa-sun"></span>Light<span
+                      class="fas fa-check dropdown-check-icon ms-auto text-600"
+                    ></span>
+                  </button>
+                  <button
+                    class="dropdown-item d-flex align-items-center gap-2"
+                    type="button"
+                    value="dark"
+                    data-theme-control="theme"
+                  >
+                    <span class="fas fa-moon" data-fa-transform=""></span
+                    >Dark<span
+                      class="fas fa-check dropdown-check-icon ms-auto text-600"
+                    ></span>
+                  </button>
+                  <button
+                    class="dropdown-item d-flex align-items-center gap-2"
+                    type="button"
+                    value="auto"
+                    data-theme-control="theme"
+                  >
+                    <span class="fas fa-adjust" data-fa-transform=""></span
+                    >Auto<span
+                      class="fas fa-check dropdown-check-icon ms-auto text-600"
+                    ></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="bg-primary-subtle text-primary">
+            <button
+              class="notification-indicator notification-indicator-primary fa-icon-wait"
+              type="button"
+              aria-label="notification"
+            >
+              <span
+                class="fas fa-bell"
+                data-fa-transform="shrink-6"
+                style="font-size: 33px"
+              ></span>
+            </button>
+          </li>
+          <li
+            class="position-relative bg-primary-subtle text-primary d-none d-sm-block"
+          >
+            <a
+              class="nav-link px-0 notification-indicator notification-indicator-warning notification-indicator-fill fa-icon-wait"
+              href="../app/e-commerce/shopping-cart.html"
+              style="
+                position: absolute;
+                inset: 0;
+                display: grid;
+                place-content: center;
+                position: absolute;
+                inset: 0;
+                display: grid;
+                place-content: center;
+              "
+              ><span
+                class="fas fa-shopping-cart"
+                data-fa-transform="shrink-7"
+                style="font-size: 33px"
+              ></span
+              ><span class="notification-indicator-number">1</span></a
+            >
+          </li>
           <!-- data-bs-toggle="offcanvas" -->
           <li class="bg-primary-subtle text-primary">
             <!-- <a class="" href="#settings-offcanvas" aria-label="Customize"> -->
@@ -5934,6 +5322,324 @@
         style="overflow: clip !important"
         class="scrollbar d-grid left-sidebar-container"
       >
+        <!-- Notifications content -->
+        <article
+          class="notification-article bg-body-emphasis position-relative"
+        >
+          <header class="card-header bg-body-tertiary">
+            <div class="row flex-between-center">
+              <div class="col-sm-auto">
+                <h5 class="mb-1 mb-md-0">Your Notifications</h5>
+              </div>
+              <div class="col-sm-auto fs-10">
+                <a class="font-sans-serif" href="#!">Mark all as read</a
+                ><a
+                  class="font-sans-serif ms-2 ms-sm-3"
+                  href="#notification-settings-modal"
+                  data-bs-toggle="modal"
+                  >Notification settings</a
+                >
+              </div>
+            </div>
+
+            <div class="position-absolute top-0 end-0">
+              <button
+                class="btn-close mt-0"
+                type="button"
+                aria-label="close article"
+              ></button>
+            </div>
+          </header>
+          <div class="card-body fs-10 p-0">
+            <a
+              class="border-bottom-0 notification rounded-0 border-x-0 border-300"
+              href="#!"
+            >
+              <div class="notification-avatar">
+                <div class="avatar avatar-xl me-3">
+                  <img
+                    class="rounded-circle"
+                    src="../assets/img/team/1.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="notification-body">
+                <p class="mb-1">
+                  Announcing the winners of the
+                  <strong>The only book awards</strong> decided by you, the
+                  readers. Check out the champions and runners-up in all 21
+                  categories now!
+                </p>
+                <span class="notification-time"
+                  ><span class="me-2" role="img" aria-label="Emoji">📢</span
+                  >Just Now</span
+                >
+              </div>
+            </a>
+
+            <a
+              class="border-bottom-0 notification-unread notification rounded-0 border-x-0 border-300"
+              href="#!"
+            >
+              <div class="notification-avatar">
+                <div class="avatar avatar-xl me-3">
+                  <img
+                    class="rounded-circle"
+                    src="../assets/img/team/2.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="notification-body">
+                <p class="mb-1">
+                  Last chance to vote in
+                  <strong>The 2018 Falcon Choice Awards</strong>! See what made
+                  it to the Final Round and help your favorites take home the
+                  win. Voting closes on November 26
+                </p>
+                <span class="notification-time"
+                  ><span class="me-2" role="img" aria-label="Emoji">🏆</span
+                  >15m</span
+                >
+              </div>
+            </a>
+
+            <a
+              class="border-bottom-0 notification rounded-0 border-x-0 border-300"
+              href="#!"
+            >
+              <div class="notification-avatar">
+                <div class="avatar avatar-xl me-3">
+                  <img
+                    class="rounded-circle"
+                    src="../assets/img/team/3.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="notification-body">
+                <p class="mb-1">
+                  <strong>Jennifer Kent</strong> declared you as a
+                  <strong>President</strong> of Computer Science and Engineering
+                  Society
+                </p>
+                <span class="notification-time"
+                  ><span class="me-2" role="img" aria-label="Emoji">📢</span
+                  >1h</span
+                >
+              </div>
+            </a>
+
+            <a
+              class="border-bottom-0 notification-unread notification rounded-0 border-x-0 border-300"
+              href="#!"
+            >
+              <div class="notification-avatar">
+                <div class="avatar avatar-xl me-3">
+                  <img
+                    class="rounded-circle"
+                    src="../assets/img/team/4.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="notification-body">
+                <p class="mb-1">
+                  Congratulate <strong>Woody Allen</strong> for starting a new
+                  position as Business Development Manager &amp; Implementation
+                  Engineer at <strong>Hewlett Packard Enterprise(HP)</strong>
+                </p>
+                <span class="notification-time"
+                  ><span class="me-2" role="img" aria-label="Emoji">🎁</span
+                  >6h</span
+                >
+              </div>
+            </a>
+
+            <a
+              class="border-bottom-0 notification-unread notification rounded-0 border-x-0 border-300"
+              href="#!"
+            >
+              <div class="notification-avatar">
+                <div class="avatar avatar-xl me-3">
+                  <img
+                    class="rounded-circle"
+                    src="../assets/img/team/5.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="notification-body">
+                <p class="mb-1">
+                  <strong>Christopher Nolan</strong> Mentioned you in a comment
+                  : "Congratulations! Wishing you a great future. Proud fo you
+                  ❤️"
+                </p>
+                <span class="notification-time"
+                  ><span class="me-2" role="img" aria-label="Emoji">💬</span
+                  >8h</span
+                >
+              </div>
+            </a>
+
+            <a
+              class="border-bottom-0 notification rounded-0 border-x-0 border-300"
+              href="#!"
+            >
+              <div class="notification-avatar">
+                <div class="avatar avatar-xl me-3">
+                  <img
+                    class="rounded-circle"
+                    src="../assets/img/logos/harvard.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="notification-body">
+                <p class="mb-1">
+                  Join <strong>GIS Institute Winter 2019</strong> Event arranged
+                  by <strong>Harvard University</strong>. Only three days to go.
+                </p>
+                <span class="notification-time"
+                  ><span class="me-2" role="img" aria-label="Emoji">🚶</span
+                  >9h</span
+                >
+              </div>
+            </a>
+
+            <a
+              class="border-bottom-0 notification-unread notification rounded-0 border-x-0 border-300"
+              href="#!"
+            >
+              <div class="notification-avatar">
+                <div class="avatar avatar-xl me-3">
+                  <img
+                    class="rounded-circle"
+                    src="../assets/img/team/7.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="notification-body">
+                <p class="mb-1">
+                  <strong>Peter Jackson</strong> set CSE Curnival Programe in
+                  New Museums Site in <strong>University of Cambridge</strong>
+                </p>
+                <span class="notification-time"
+                  ><span class="me-2" role="img" aria-label="Emoji">💻</span
+                  >14h</span
+                >
+              </div>
+            </a>
+
+            <a
+              class="border-bottom-0 notification rounded-0 border-x-0 border-300"
+              href="#!"
+            >
+              <div class="notification-avatar">
+                <div class="avatar avatar-xl me-3">
+                  <img
+                    class="rounded-circle"
+                    src="../assets/img/team/8.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="notification-body">
+                <p class="mb-1">
+                  <strong>David Fincher</strong> declared you as a verified
+                  member of <strong>Stanford University.</strong>
+                </p>
+                <span class="notification-time"
+                  ><span class="me-2" role="img" aria-label="Emoji">✔️</span
+                  >2d</span
+                >
+              </div>
+            </a>
+
+            <a
+              class="border-bottom-0 notification rounded-0 border-x-0 border-300"
+              href="#!"
+            >
+              <div class="notification-avatar">
+                <div class="avatar avatar-xl me-3">
+                  <img
+                    class="rounded-circle"
+                    src="../assets/img/team/9.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="notification-body">
+                <p class="mb-1">
+                  Follow
+                  <strong
+                    >International Conference on Water and Environmental
+                    Engineering (ICWEE)</strong
+                  >
+                  event arranged by United Nations Development Program on 30
+                  December 2018
+                </p>
+                <span class="notification-time"
+                  ><span class="me-2" role="img" aria-label="Emoji">🔍</span
+                  >3d</span
+                >
+              </div>
+            </a>
+
+            <a
+              class="border-bottom-0 notification rounded-0 border-x-0 border-300"
+              href="#!"
+            >
+              <div class="notification-avatar">
+                <div class="avatar avatar-xl me-3">
+                  <img
+                    class="rounded-circle"
+                    src="../assets/img/team/10.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="notification-body">
+                <p class="mb-1">
+                  <strong>James Cameron</strong> invited to join the group:
+                  United Nations International Children's Fund
+                </p>
+                <span class="notification-time"
+                  ><span class="me-2" role="img" aria-label="Emoji">🙋‍</span
+                  >2d</span
+                >
+              </div>
+            </a>
+
+            <a
+              class="border-bottom-0 notification-unread notification rounded-0 border-x-0 border-300"
+              href="#!"
+            >
+              <div class="notification-avatar">
+                <div class="avatar avatar-xl me-3">
+                  <img
+                    class="rounded-circle"
+                    src="../assets/img/logos/oxford.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="notification-body">
+                <p class="mb-1">
+                  <strong>University of Oxford</strong> created an event :
+                  "Causal Inference Hilary 2019"
+                </p>
+                <span class="notification-time"
+                  ><span class="me-2" role="img" aria-label="Emoji">✌️</span
+                  >1w</span
+                >
+              </div>
+            </a>
+          </div>
+        </article>
+
         <!--customize panel-->
         <article
           class="position-relative customize-article p-0 settings-panel border-0"
@@ -20310,6 +20016,7 @@
 
       // Article configuration for better maintainability
       const ARTICLES = {
+        notification: { selector: ".notification-article" },
         customize: { selector: ".customize-article" },
         price: { selector: ".price-article" },
         calendar: { selector: ".calendar-article" },
@@ -20535,6 +20242,20 @@
           });
         }
 
+        /**
+         * Handles click events on the component.
+         *
+         * This method determines which control was clicked by using the `closest` method on the event target.
+         * It checks for the following elements in order:
+         *
+         * - Toggle Input: If an element matching `SELECTORS.TOGGLE_INPUT` is found, it calls `handleToggleClick`.
+         * - Navigation Button: If an element matching `SELECTORS.NAV_BUTTON` is found **and** it has an `aria-label` attribute,
+         *   it calls `handleNavigation`.
+         * - Close Button: If an element matching `SELECTORS.CLOSE_BUTTON` is found, it calls `handleClose`.
+         * - Fullscreen Button: If an element matching `SELECTORS.FULLSCREEN_BTN` is found, it calls `handleFullScreen`.
+         *
+         * @param {Event} event - The click event object.
+         */
         handleClick(event) {
           const { toggleInput, leftNavBar } = this.elements;
           const clickedToggle = event.target.closest(SELECTORS.TOGGLE_INPUT);
@@ -20546,7 +20267,10 @@
 
           if (clickedToggle) {
             this.handleToggleClick(clickedToggle);
-          } else if (clickedNavButton) {
+          } else if (
+            clickedNavButton &&
+            clickedNavButton.hasAttribute("aria-label")
+          ) {
             this.handleNavigation(clickedNavButton);
           } else if (clickedClose) {
             this.handleClose();
