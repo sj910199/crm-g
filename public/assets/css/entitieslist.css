@@ -676,9 +676,6 @@ section {
 
 /*-------main-top-nav-start here------------------*/
 
-.navbar.navbar-overrides .navbar-nav .theme-switch-dropdown::after {
-  border: none;
-}
 .navbar.navbar-overrides > ul,
 .navbar-glass,
 .navbar-standard,
@@ -729,9 +726,6 @@ section {
 /* Media Queries ----------------------------- */
 
 @media (max-width: 320px) {
-  .navbar.navbar-overrides {
-    flex-wrap: nowrap;
-  }
   .navbar.navbar-overrides .navbar-brand {
     width: 0;
   }
@@ -740,20 +734,41 @@ section {
 @media (max-width: 580px) {
   .navbar.navbar-overrides {
     margin: 0;
-    /* padding-left: 0; */
-    /* padding-right: 0; */
+    align-items: center;
+    display: grid;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    /*if navbar brand needs to be beside the menu trigger*/
+    /*grid-template-columns: auto 1fr auto;*/
+    grid-template-areas:
+    "menu brand search"
+    "dropdown dropdown dropdown";
   }
 
-  .navbar.navbar-overrides .navbar-brand {
+  .navbar.navbar-overrides > .navbar-toggler-humburger-icon {
+    grid-area: menu;
+  }
+
+  .navbar.navbar-overrides > .navbar-brand {
     width: fit-content;
+    grid-area: brand
   }
 
   .navbar.navbar-overrides .navbar-brand img {
     width: 120px;
   }
 
-  .navbar.navbar-overrides .navbar-nav .theme-switch-dropdown::after {
-    border: none;
+  .navbar.navbar-overrides > .navbar-nav {
+    grid-area: search;
+  }
+
+  .navbar.navbar-overrides > .navbar-collapse {
+    grid-area: dropdown;
+  }
+
+  .navbar.navbar-overrides  .sub-top-nav-mobile > *{
+    padding-left: 5px;
+    padding-right: 5px;
   }
 }
 
@@ -766,6 +781,12 @@ section {
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
+
+  .navbar.navbar-overrides {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
   .sub-top-nav-desktop {
     width: 90%;
     max-width: 1000px;
