@@ -1180,8 +1180,12 @@ section {
   margin: 0 4px; /* Adds spacing between buttons */
 }
 
+.entities-table > tbody > tr:last-child > td:last-child {
+  padding-bottom: 2rem;
+}
+
 td[data-title="Address"].address {
-  --td-address-max-width: 200px;
+  --td-address-max-width: 235px;
 
   position: relative; /* Needed for absolute positioning of expanded label */
   overflow: visible; /* Ensure expanded content is visible */
@@ -1213,7 +1217,8 @@ td.address .address-checkbox:checked + .address-label {
   display: block;
   position: absolute; /* Make label float above other content */
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 10; /* Ensure label is on top */
   border: 1px solid var(--falcon-gray-300); /* Optional border for visual separation */
   border-radius: 8px;
