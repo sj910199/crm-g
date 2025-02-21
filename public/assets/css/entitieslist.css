@@ -699,9 +699,6 @@ section {
   z-index: 1031; /*to have a higher stacking context than .sub-top-nav-desktop
 }
 
-.list-group-item.active .icon {
-  fill: white; /* Changes the fill color to white when active */
-}
 
 .icon {
   transition: fill 0.3s ease; /* Optional: Smooth color transition */
@@ -739,6 +736,84 @@ section {
   display: none !important;
 }
 
+/* main nav bar search implementation  */
+.navbar.navbar-overrides > .navbar-nav {
+  width: 100%;
+}
+
+.navbar.navbar-overrides > .navbar-nav > li  {
+  display: grid;
+  place-content: end;
+  width: 100%;
+}
+
+.navbar.navbar-overrides > .navbar-nav > li > * {
+  grid-area: 1/1
+}
+
+
+.navbar.navbar-overrides > .navbar-nav > li >  .search-box {
+  width: 100%;
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 200ms ease-in-out,
+  visibility 200ms ease-in-out,
+  opacity 200ms ease-in-out,
+  z-index 200ms ease-in-out;
+  transition-delay: 100ms;
+}
+
+.navbar.navbar-overrides > .main-nav-search:checked ~ .navbar-nav > li > .search-box {
+  visibility: visible;
+  transform: scaleX(1);
+  opacity: 1;
+  z-index: 0;
+}
+
+.navbar.navbar-overrides > .main-nav-search:checked ~ .navbar-nav > li > .search-box .search-label-icon > svg {
+  cursor: pointer;
+  color: var(--falcon-btn-falcon-default-color);
+}
+
+.navbar.navbar-overrides > .main-nav-search:checked ~ .navbar-nav > li > .search-box .search-label-icon > svg {
+  cursor: pointer;
+  color: var(--falcon-navbar-vertical-default-link-active-color);
+}
+
+
+.navbar.navbar-overrides > .navbar-nav > li > label {
+  display: inline-flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 0;
+  margin-bottom:0;
+  cursor: pointer;
+  color: var(--falcon-btn-falcon-default-color);
+
+  visibility: visible;
+  transform: scale(1);
+  opacity: 1;
+  z-index: 0;
+
+  transition: transform 200ms ease-in-out,
+  visibility 200ms ease-in-out,
+  opacity 200ms ease-in-out,
+  color 200ms ease-in-out,
+  z-index 200ms ease-in-out;
+  transition-delay: 100ms;
+}
+.navbar.navbar-overrides > .main-nav-search:checked ~ .navbar-nav > li > label {
+  visibility: hidden;
+  transform: scale(.5);
+  opacity: 0;
+  z-index: -1;
+  color: var(--falcon-gray-400);
+}
+
+
 /* Media Queries ----------------------------- */
 
 @media (max-width: 320px) {
@@ -747,14 +822,28 @@ section {
   }
 }
 
-@media (max-width: 767px) {
+/*progressive and qol for search input in top nav*/
+@media (max-width: 425px) {
+
+  .navbar.navbar-overrides > .navbar-brand {
+    transition: display 200ms ease-in-out;
+    transition-behavior: allow-discrete;
+  }
+
+  .navbar.navbar-overrides > .main-nav-search:checked ~ .navbar-brand {
+    display: none !important;
+  }
+
+}
+
+@media (max-width: 768px) {
   .navbar.navbar-overrides {
     margin: 0;
     align-items: center;
     display: grid;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto auto 1fr;
     grid-template-areas:
       "menu brand search"
       "dropdown dropdown dropdown";
@@ -775,7 +864,9 @@ section {
 
   .navbar.navbar-overrides > .navbar-nav {
     grid-area: search;
+    width: 100%;
   }
+
 
   .navbar.navbar-overrides > .navbar-collapse {
     grid-area: dropdown;
@@ -785,17 +876,16 @@ section {
     padding-left: 5px;
     padding-right: 5px;
   }
-}
 
-/* to override z-index */
-@media (max-width: 762px) {
-  .navbar.navbar-overrides dropdown-menu.dropdown-caret,
+  /* to override z-index */
+  .navbar.navbar-overrides .dropdown-menu.dropdown-caret,
   .navbar.navbar-overrides {
     z-index: 1031;
   }
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+
+@media (min-width: 769px) and (max-width: 1024px) {
   .navbar.navbar-overrides {
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -807,12 +897,6 @@ section {
   }
 }
 
-@media (min-width: 1540px) and (max-width: 1900px) {
-  .sub-top-nav-desktop {
-    width: 100%;
-    max-width: 1400px;
-  }
-}
 
 @media (min-width: 1025px) and (max-width: 1199px) {
   .sub-top-nav-desktop {
@@ -828,6 +912,12 @@ section {
   }
 }
 
+@media (min-width: 1540px) and (max-width: 1900px) {
+  .sub-top-nav-desktop {
+    width: 100%;
+    max-width: 1400px;
+  }
+}
 /*-----------------------------------------------
 |   Project Overview
 -----------------------------------------------*/
