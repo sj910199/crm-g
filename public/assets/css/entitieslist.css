@@ -315,11 +315,6 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     height: 100%;
   }
 
-  /*.left-sidebar-container .price-article,*/
-  /*.left-sidebar-container .calendar-article,*/
-  /*.left-sidebar-container .inbox-article,*/
-  /*.left-sidebar-container .settings-article,*/
-  /*.left-sidebar-container .customize-article {*/
 
   .left-sidebar-container > * {
     grid-area: 1/1;
@@ -371,7 +366,6 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     opacity: 1;
     max-height: 100%;
     min-height: 45px;
-    /*overflow: hidden;*/
     overflow: visible;
     transition-delay: 0.11s;
   }
@@ -469,13 +463,10 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
   /* the hide/show logic */
   .navbar-toggle.nav-only ~ .page-wrapper {
     grid-template-columns: 1fr var(--left-nav-width) 0 !important;
-    /*transition: grid-template-columns 0.2s linear;*/
   }
 
   .navbar-toggle.panel-content ~ .page-wrapper {
     grid-template-columns: 1fr 0 calc(var(--desktop-left-content-width)) !important;
-    /*transition: grid-template-columns 0s linear 0.2s;*/
-    /* transition-delay: 0.2s; */
   }
 
   /* hide the left navbar on desktop view when left panel is shown */
@@ -524,12 +515,10 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     grid-template-columns: 1fr 0 0;
     height: 100dvh;
     overflow: hidden;
-    /*transition: grid-template-columns 0.2s linear;*/
   }
 
   .page-wrapper .main {
     overflow-y: auto;
-    /*transition: max-width 0.2s linear;*/
   }
 
   .left-sidebar-container {
@@ -758,15 +747,14 @@ section {
   }
 }
 
-@media (max-width: 580px) {
+@media (max-width: 767px) {
   .navbar.navbar-overrides {
     margin: 0;
     align-items: center;
     display: grid;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    /*if navbar brand needs to be beside the menu trigger*/
-    /*grid-template-columns: auto 1fr auto;*/
+    grid-template-columns: auto 1fr auto;
     grid-template-areas:
       "menu brand search"
       "dropdown dropdown dropdown";
