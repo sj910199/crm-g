@@ -2595,7 +2595,7 @@ div.gslide-media.gslide-inline {
 
 .notification-article {
   /*55px tablet-desktop , 79 mobile*/
-  --notif-header-height: 5rem;
+  --notif-header-height: 5.3rem;
   /*--notif-card-footer-height: 2.25rem;*/
   height: 100%;
 }
@@ -2639,6 +2639,16 @@ div.gslide-media.gslide-inline {
     .notification-article .card-header > div {
       padding: 0.5rem;
     }
+  }
+}
+
+@media (min-width: 768px) {
+  .notification-article > header {
+    max-height: var(--notif-header-height);
+  }
+
+  .notification-article > .card-body {
+    height: calc(100dvh - var(--notif-header-height));
   }
 }
 
