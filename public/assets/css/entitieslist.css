@@ -3382,6 +3382,11 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
 .email-nav-body {
   overflow-x: clip;
 }
+
+.email-nav-body a.d-contents {
+  color: inherit;
+}
+
 .email-nav-body > div {
   padding-top: 1.5rem !important;
   padding-bottom: 1.5rem !important;
@@ -3435,17 +3440,9 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
   border-top-left-radius: 8px;
 }
 
-.email-content .email-info {
-  grid-template-columns: auto 1fr;
-}
+.email-content header.card > .card-body > div:nth-child(2) > div:nth-child(1)  {
+  padding-top: 0;
 
-.email-content .email-info .sender-name {
-  font-weight: 600;
-}
-
-.email-content .email-info .sender-email,
-.email-content .email-info time {
-  opacity: 0.85;
 }
 
 /*------ chat panel area---------*/

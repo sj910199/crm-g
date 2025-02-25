@@ -6268,7 +6268,9 @@
           class="calculator-article bg-body-emphasis position-relative scrollbar"
         >
           <header class="bg-primary">
-            <h5 class="text-white fs-8 fs-md-7" >Glass Replacement Calculator</h5>
+            <h5 class="text-white fs-8 fs-md-7">
+              Glass Replacement Calculator
+            </h5>
 
             <div class="position-absolute top-0 end-0">
               <button
@@ -8355,7 +8357,6 @@
                   </h5>
                   <div
                     class="row border-bottom border-200 hover-actions-trigger hover-shadow py-2 px-1 mx-0 bg-white dark__bg-dark"
-                    data-href="../../app/email/email-detail.html"
                   >
                     <div class="col-auto d-none d-sm-block">
                       <div class="d-flex bg-white dark__bg-dark">
@@ -8374,44 +8375,45 @@
                       </div>
                     </div>
                     <div class="col col-md-9 col-xxl-10">
-                      <div class="row gap-2">
-                        <div
-                          class="col-md-4 col-xl-3 col-xxl-2 ps-md-0 mb-1 mb-md-0"
-                        >
-                          <div class="d-flex position-relative">
-                            <div class="avatar avatar-s">
-                              <img
-                                class="rounded-soft"
-                                src="../assets/img/team/17.jpg"
-                                alt=""
-                              />
+                      <a class="d-contents" href="inbox/email/1">
+                        <div class="row gap-2">
+                          <div
+                            class="col-md-4 col-xl-3 col-xxl-2 ps-md-0 mb-1 mb-md-0"
+                          >
+                            <div class="d-flex position-relative">
+                              <div class="avatar avatar-s">
+                                <img
+                                  class="rounded-soft"
+                                  src="../assets/img/team/17.jpg"
+                                  alt=""
+                                />
+                              </div>
+                              <div class="flex-1 ms-2">
+                                <span class="fw-bold stretched-link inbox-link">
+                                  Diana
+                                </span>
+                                <span
+                                  class="badge badge-subtle-success badge-pill ms-2"
+                                  >NEW</span
+                                >
+                              </div>
                             </div>
-                            <div class="flex-1 ms-2">
-                              <a
-                                class="fw-bold stretched-link inbox-link"
-                                href="../../app/email/email-detail.html"
-                                >Diana</a
+                          </div>
+                          <div class="col">
+                            <div class="d-block inbox-link">
+                              <span class="fw-bold"
+                                >Your Daily Work Summary</span
+                              ><span class="mx-1">&ndash;</span
                               ><span
-                                class="badge badge-subtle-success badge-pill ms-2"
-                                >NEW</span
+                                >And they'd probably do a lot of damage to
+                                an...</span
                               >
                             </div>
                           </div>
                         </div>
-                        <div class="col">
-                          <a
-                            class="d-block inbox-link"
-                            href="../../app/email/email-detail.html"
-                            ><span class="fw-bold">Your Daily Work Summary</span
-                            ><span class="mx-1">&ndash;</span
-                            ><span
-                              >And they'd probably do a lot of damage to
-                              an...</span
-                            ></a
-                          >
-                        </div>
-                      </div>
+                      </a>
                     </div>
+
                     <div
                       class="col-auto ms-auto d-flex position-relative flex-column justify-content-between"
                     >
@@ -8510,16 +8512,15 @@
                               />
                             </div>
                             <div class="flex-1 ms-2">
-                              <a
+                              <span
                                 class="fw-bold stretched-link inbox-link"
-                                href="../../app/email/email-detail.html"
-                                >Unsplash Team</a
+                                >Unsplash Team</span
                               >
                             </div>
                           </div>
                         </div>
                         <div class="col">
-                          <a
+                          <div
                             class="d-block inbox-link"
                             href="../../app/email/email-detail.html"
                             ><span class="fw-bold"
@@ -8529,7 +8530,7 @@
                             ><span
                               >The link below is now clickable for Chrome
                               users...</span
-                            ></a
+                            ></div
                           ><a
                             class="d-inline-flex align-items-center border rounded-pill px-3 py-1 me-2 mt-2 inbox-link"
                             href="../assets/img/generic/1.jpg"
@@ -9878,6 +9879,7 @@
                     </div>
                   </div>
                 </div>
+
                 <div
                   class="email-nav-footer card-footer d-flex justify-content-between align-items-center"
                 >
@@ -9906,52 +9908,258 @@
               </div>
 
               <!-- email content area -->
+              <!--              id="email-message"-->
               <article
-                id="email-message"
+                id="email-contents"
                 class="card d-flex flex-column gap-4 email-content"
               >
-                <header class="d-flex flex-column gap-4 px-3 pt-3">
-                  <h3>This is an Email Content</h3>
-                  <div class="d-grid email-info">
-                    <div class="avatar avatar-2xl me-3">
-                      <img
-                        class="rounded-circle"
-                        src="../assets/img/team/1-thumb.png"
-                        alt="message avatar"
-                      />
+                <div id="email-1">
+                <header class="card mb-3">
+                  <div class="card-body d-flex justify-content-between">
+                    <div>
+                      <a
+                        class="btn btn-falcon-default btn-sm"
+                        href="../../app/email/inbox.html"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Back to inbox"
+                        ><span class="fas fa-arrow-left"></span></a
+                      ><span class="mx-1 mx-sm-2 text-300">|</span>
+                      <button
+                        class="btn btn-falcon-default btn-sm"
+                        type="button"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Archive"
+                      >
+                        <span class="fas fa-archive"></span>
+                      </button>
+                      <button
+                        class="btn btn-falcon-default btn-sm ms-1 ms-sm-2"
+                        type="button"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Delete"
+                      >
+                        <span class="fas fa-trash-alt"></span>
+                      </button>
+                      <button
+                        class="btn btn-falcon-default btn-sm ms-1 ms-sm-2"
+                        type="button"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Mark as unread"
+                      >
+                        <span class="fas fa-envelope"></span>
+                      </button>
+                      <button
+                        class="btn btn-falcon-default btn-sm ms-1 ms-sm-2"
+                        type="button"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Snooze"
+                      >
+                        <span class="fas fa-clock"></span>
+                      </button>
+                      <button
+                        class="btn btn-falcon-default btn-sm ms-1 ms-sm-2 d-none d-sm-inline-block"
+                        type="button"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Print"
+                      >
+                        <span class="fas fa-print"></span>
+                      </button>
                     </div>
-
-                    <div class="email-sender">
-                      <div class="d-flex gap-2 align-items-center">
-                        <p class="sender-name">Jane Smith</p>
-                        <time class="fs-11">Today</time>
+                    <div class="d-flex">
+                      <div class="d-none d-md-block">
+                        <small>2 of 354</small>
+                        <button
+                          class="btn btn-falcon-default btn-sm ms-2"
+                          type="button"
+                        >
+                          <span class="fas fa-chevron-left"></span>
+                        </button>
+                        <button
+                          class="btn btn-falcon-default btn-sm ms-2"
+                          type="button"
+                        >
+                          <span class="fas fa-chevron-right"></span>
+                        </button>
                       </div>
-                      <p class="fs-11 sender-email">janesmith@gmail.com</p>
+                      <div class="dropdown font-sans-serif">
+                        <button
+                          class="btn btn-falcon-default text-600 btn-sm dropdown-toggle dropdown-caret-none ms-2"
+                          type="button"
+                          id="email-settings"
+                          data-bs-toggle="dropdown"
+                          data-boundary="viewport"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        >
+                          <span class="fas fa-cog"></span>
+                        </button>
+                        <div
+                          class="dropdown-menu dropdown-menu-end border py-2"
+                          aria-labelledby="email-settings"
+                        >
+                          <a class="dropdown-item" href="#!">Configure inbox</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#!">Settings</a
+                          ><a class="dropdown-item" href="#!">Themes</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#!">Send feedback</a
+                          ><a class="dropdown-item" href="#!">Help</a>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </header>
-                <section class="p-3 bg-primary-subtle flex-1">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo
-                  iste minima ut reprehenderit cum, incidunt hic rerum odio ex
-                  iure? Alias saepe laboriosam optio maiores eligendi, culpa
-                  iste magni dolores? Facilis vitae explicabo ullam asperiores
-                  recusandae sint culpa animi, aliquid earum laboriosam
-                  consequuntur officia hic, at eaque dolorem, veniam error nihil
-                  expedita! Quisquam eligendi labore repellendus? Corporis
-                  suscipit iste culpa? Facere exercitationem eos ut vitae quas
-                  illo modi mollitia natus, voluptas saepe nulla ad unde,
-                  accusantium provident deleniti asperiores autem sapiente
-                  accusamus. Neque ratione temporibus ab illo blanditiis
-                  quibusdam quaerat. Doloremque officia atque ad. Vero id
-                  commodi deserunt quos adipisci, consequatur distinctio nihil
-                  officiis odio similique ratione beatae esse quas veniam,
-                  tenetur blanditiis natus repellat est nesciunt mollitia
-                  obcaecati ipsa. Quibusdam beatae, itaque recusandae iste sint,
-                  suscipit ullam sequi numquam magnam temporibus quis qui
-                  officiis. Minus, vero sunt. Earum incidunt, temporibus
-                  exercitationem sint quaerat impedit animi consequuntur cum
-                  expedita nisi!
-                </section>
+                <div class="card">
+                  <div class="card-header">
+                    <div class="row">
+                      <div class="col-md d-flex">
+                        <div class="avatar avatar-2xl">
+                          <img
+                            class="rounded-circle"
+                            src="../assets/img/team/1.jpg"
+                            alt=""
+                          />
+                        </div>
+                        <div class="flex-1 ms-2">
+                          <h5 class="mb-0">
+                            Women work wonders… on your
+                            <span class="white-space-nowrap"
+                              >marketing skills</span
+                            >
+                          </h5>
+                          <a class="text-800 fs-10" href="#!"
+                            ><span class="fw-semi-bold">Emma Watson</span
+                            ><span class="ms-1 text-500"
+                              >&lt;emma@watson.com&gt;</span
+                            ></a
+                          >
+                        </div>
+                      </div>
+                      <div
+                        class="col-md-auto ms-auto d-flex align-items-center ps-6 ps-md-3"
+                      >
+                        <small>8:40 AM (9 hours ago)</small
+                        ><span
+                          class="fas fa-star text-warning fs-10 ms-2"
+                        ></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body bg-body-tertiary">
+                    <div class="row justify-content-center">
+                      <div class="col-lg-8 col-xxl-6">
+                        <div class="card shadow-none mb-3">
+                          <img
+                            class="card-img-top"
+                            src="../assets/img/icons/spot-illustrations/international-women-s-day-2.png"
+                            alt=""
+                          />
+                          <div class="card-body">
+                            <h3 class="fw-semi-bold">
+                              Happy International Women’s Day!
+                            </h3>
+                            <p>
+                              On International Women’s Day, we at ThemeWagon
+                              want you to discover the skills you can learn from
+                              our amazing women digital marketing instructors.
+                            </p>
+                            <p>
+                              That's not all, when you enroll in one of their
+                              courses, use promo code:
+                              <code>GirlPower20</code> and get
+                              <a class="fw-semi-bold" href="#!">20% off</a> as
+                              our Women's Day gift to you. This offer
+                              <a class="fw-semi-bold" href="#!"
+                                >expires in 7 days</a
+                              >
+                              —so pick your course—and enroll today!
+                            </p>
+                            <div class="text-center">
+                              <button
+                                class="btn btn-success btn-lg my-3"
+                                type="button"
+                              >
+                                Browse Courses</button
+                              ><small class="d-block"
+                                >For any technical issues faced, please contact
+                                <a href="#!">Customer Support</a>.</small
+                              >
+                            </div>
+                          </div>
+                        </div>
+                        <div class="text-center">
+                          <div class="icon-group justify-content-center">
+                            <a class="icon-item text-facebook" href="#!"
+                              ><span class="fab fa-facebook-f"></span></a
+                            ><a class="icon-item text-twitter" href="#!"
+                              ><span class="fab fa-twitter"></span></a
+                            ><a class="icon-item text-google-plus" href="#!"
+                              ><span class="fab fa-google-plus-g"></span></a
+                            ><a class="icon-item text-linkedin" href="#!"
+                              ><span class="fab fa-linkedin-in"></span></a
+                            ><a class="icon-item text-700" href="#!"
+                              ><span class="fab fa-medium-m"></span
+                            ></a>
+                          </div>
+                          <small
+                            >If you wish to unsubscribe from all future emails,
+                            please click <a href="#!">here</a>.</small
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="row justify-content-between">
+                      <div class="col">
+                        <a
+                          class="btn btn-falcon-default btn-sm"
+                          href="../../app/email/compose.html"
+                          ><span
+                            class="fas fa-reply"
+                            data-fa-transform="down-2"
+                          ></span
+                          ><span class="d-none d-sm-inline-block ms-1"
+                            >Reply</span
+                          ></a
+                        ><a
+                          class="btn btn-falcon-default btn-sm ms-2"
+                          href="../../app/email/compose.html"
+                          ><span
+                            class="fas fa-location-arrow"
+                            data-fa-transform="down-2"
+                          ></span
+                          ><span class="d-none d-sm-inline-block ms-1"
+                            >Forward</span
+                          ></a
+                        >
+                      </div>
+                      <div class="col-auto d-flex align-items-center">
+                        <small>2 of 354</small>
+                        <button
+                          class="btn btn-falcon-default btn-sm ms-2"
+                          type="button"
+                        >
+                          <span class="fas fa-chevron-left"></span>
+                        </button>
+                        <button
+                          class="btn btn-falcon-default btn-sm ms-2"
+                          type="button"
+                        >
+                          <span class="fas fa-chevron-right"></span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                </div>
               </article>
             </section>
 
@@ -20978,7 +21186,7 @@
           }
         }
 
-        /** add a visual active styling to the chat link
+        /** add a visual styling to the active chat link
          *
          * @param {string | number }id - the id of the activated chat content
          */
@@ -21002,6 +21210,7 @@
          */
         switchToActiveChat(id) {
           const chatContent = document?.getElementById(`chat-${id}`);
+          if (!chatContent) return;
 
           const chatsContainer = document.getElementById("chats-container");
           const children = chatsContainer.children;
@@ -21014,7 +21223,26 @@
           this.activateChatLink(id);
         }
 
-        /** Handles the click event on the inbox panel.
+        /** switch to the active email that corresponds the email id from anchor tag
+         * @param {string | number} id - the id of the email that we want to switch to
+         * @returns {void}
+         */
+        switchToActiveEmail(id) {
+          const emailContent = document.getElementById(`email-${id}`);
+          if (!emailContent) return;
+
+          const emailContainer = document.getElementById("email-contents");
+          const children = emailContainer.children;
+
+          for (let i = 0; i < children.length; i++) {
+            children[i].classList.remove("active-email");
+          }
+
+          emailContent.classList.add("active-email");
+          this.activateChatLink(id);
+        }
+
+        /** Handles the click event on the inbox panels.
          * @example
          * // Valid path patterns:
          * handleSwitchPanel('/inbox/chat')
@@ -21045,7 +21273,7 @@
               this.elements[panelName].classList.add("panel-show-nav");
             }
           }
-          // If there are three parts, this is a subpanel navigation.
+          // If there are three parts, this is a subpanel switching to content.
           else if (parts.length === 3) {
             // parts[1] is the main panel type (e.g., "chat"),
             // parts[2] is the subpanel identifier (e.g., "1")
@@ -21060,7 +21288,18 @@
               this.switchToActiveTitle(panelName);
             }
             this.hideLeftNavBar();
-            this.switchToActiveChat(subpanelId);
+            // down below are the logic for switching to the correct content e.g. chat/email/sms
+            switch (panelName) {
+              case "chat":
+                this.switchToActiveChat(subpanelId);
+                break;
+              case "email":
+                this.switchToActiveEmail(subpanelId);
+                break;
+
+              default:
+                return;
+            }
 
             // remove first if ever we are at the subpanels nav
             this.elements[panelName].classList.remove("panel-show-nav");
