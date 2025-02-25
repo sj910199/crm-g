@@ -437,7 +437,7 @@
                   <li>
                     <div
                       class="search-box"
-                      data-list='{"valueNames":["title"]}'
+                      data-list='{"valueNames":["title","name"]}'
                     >
                       <form
                         class="position-relative"
@@ -476,44 +476,180 @@
                           <h6
                             class="dropdown-header fw-medium text-uppercase px-x1 fs-11 pt-0 pb-2"
                           >
-                            Recently Browsed
+                            Transaction Records
                           </h6>
+
                           <a
                             class="dropdown-item fs-10 px-x1 py-1 hover-primary"
-                            href="../app/events/event-detail.html"
+                            href="#sales-order"
                           >
                             <div class="d-flex align-items-center">
                               <span
                                 class="fas fa-circle me-2 text-300 fs-11"
                               ></span>
-                              <div class="fw-normal title">
-                                Pages
+                              <div class="fw-normal">
+                                <span class="title">Income</span>
                                 <span
                                   class="fas fa-chevron-right mx-1 text-500 fs-11"
                                   data-fa-transform="shrink-2"
                                 ></span>
-                                Events
+                                <span class="name"> Sales Order </span>
                               </div>
                             </div>
                           </a>
+
                           <a
                             class="dropdown-item fs-10 px-x1 py-1 hover-primary"
-                            href="../app/e-commerce/customers.html"
+                            href="#payment-schedule"
                           >
                             <div class="d-flex align-items-center">
                               <span
                                 class="fas fa-circle me-2 text-300 fs-11"
                               ></span>
-                              <div class="fw-normal title">
-                                E-commerce
+                              <div class="fw-normal">
+                                <span class="title">Income</span>
                                 <span
                                   class="fas fa-chevron-right mx-1 text-500 fs-11"
                                   data-fa-transform="shrink-2"
                                 ></span>
-                                Customers
+                                <span class="name">Payment Schedule</span>
                               </div>
                             </div>
                           </a>
+
+                          <a
+                            class="dropdown-item fs-10 px-x1 py-1 hover-primary"
+                            href="#invoices-table"
+                          >
+                            <div class="d-flex align-items-center">
+                              <span
+                                class="fas fa-circle me-2 text-300 fs-11"
+                              ></span>
+                              <div class="fw-normal">
+                                <span class="title">Income</span>
+                                <span
+                                  class="fas fa-chevron-right mx-1 text-500 fs-11"
+                                  data-fa-transform="shrink-2"
+                                ></span>
+                                <span class="name">Invoices</span>
+                              </div>
+                            </div>
+                          </a>
+
+                          <a
+                            class="dropdown-item fs-10 px-x1 py-1 hover-primary"
+                            href="#payment-received"
+                          >
+                            <div class="d-flex align-items-center">
+                              <span
+                                class="fas fa-circle me-2 text-300 fs-11"
+                              ></span>
+                              <div class="fw-normal">
+                                <span class="title">Income</span>
+                                <span
+                                  class="fas fa-chevron-right mx-1 text-500 fs-11"
+                                  data-fa-transform="shrink-2"
+                                ></span>
+                                <span class="name">Payment Received</span>
+                              </div>
+                            </div>
+                          </a>
+
+                          <a
+                            class="dropdown-item fs-10 px-x1 py-1 hover-primary"
+                            href="#purchase-orders"
+                          >
+                            <div class="d-flex align-items-center">
+                              <span
+                                class="fas fa-circle me-2 text-300 fs-11"
+                              ></span>
+                              <div class="fw-normal">
+                                <span class="title">Expenses</span>
+                                <span
+                                  class="fas fa-chevron-right mx-1 text-500 fs-11"
+                                  data-fa-transform="shrink-2"
+                                ></span>
+                                <span class="name">Purchase Orders</span>
+                              </div>
+                            </div>
+                          </a>
+
+                          <a
+                            class="dropdown-item fs-10 px-x1 py-1 hover-primary"
+                            href="#bills-table"
+                          >
+                            <div class="d-flex align-items-center">
+                              <span
+                                class="fas fa-circle me-2 text-300 fs-11"
+                              ></span>
+                              <div class="fw-normal">
+                                <span class="title">Expenses</span>
+                                <span
+                                  class="fas fa-chevron-right mx-1 text-500 fs-11"
+                                  data-fa-transform="shrink-2"
+                                ></span>
+                                <span class="name">Bills</span>
+                              </div>
+                            </div>
+                          </a>
+
+                          <a
+                            class="dropdown-item fs-10 px-x1 py-1 hover-primary"
+                            href="#payment-made"
+                          >
+                            <div class="d-flex align-items-center">
+                              <span
+                                class="fas fa-circle me-2 text-300 fs-11"
+                              ></span>
+                              <div class="fw-normal">
+                                <span class="title">Expenses</span>
+                                <span
+                                  class="fas fa-chevron-right mx-1 text-500 fs-11"
+                                  data-fa-transform="shrink-2"
+                                ></span>
+                                <span class="name">Payment Made</span>
+                              </div>
+                            </div>
+                          </a>
+
+                          <a
+                            class="dropdown-item fs-10 px-x1 py-1 hover-primary"
+                            href="#labor-cost"
+                          >
+                            <div class="d-flex align-items-center">
+                              <span
+                                class="fas fa-circle me-2 text-300 fs-11"
+                              ></span>
+                              <div class="fw-normal">
+                                <span class="title">Expenses</span>
+                                <span
+                                  class="fas fa-chevron-right mx-1 text-500 fs-11"
+                                  data-fa-transform="shrink-2"
+                                ></span>
+                                <span class="name">Labor Cost Tracking</span>
+                              </div>
+                            </div>
+                          </a>
+
+                          <a
+                            class="dropdown-item fs-10 px-x1 py-1 hover-primary"
+                            href="#mileage-cost"
+                          >
+                            <div class="d-flex align-items-center">
+                              <span
+                                class="fas fa-circle me-2 text-300 fs-11"
+                              ></span>
+                              <div class="fw-normal">
+                                <span class="title">Expenses</span>
+                                <span
+                                  class="fas fa-chevron-right mx-1 text-500 fs-11"
+                                  data-fa-transform="shrink-2"
+                                ></span>
+                                <span class="name">Mileage Cost Tracking</span>
+                              </div>
+                            </div>
+                          </a>
+
                           <hr class="text-200 dark__text-900" />
                           <h6
                             class="dropdown-header fw-medium text-uppercase px-x1 fs-11 pt-0 pb-2"
@@ -522,154 +658,114 @@
                           </h6>
                           <a
                             class="dropdown-item px-x1 py-1 fs-9"
-                            href="../app/e-commerce/customers.html"
+                            href="#list-item-5"
                           >
-                            <div class="d-flex align-items-center">
-                              <span
-                                class="badge fw-medium text-decoration-none me-2 badge-subtle-warning"
-                                >customers:</span
-                              >
+                            <div class="d-flex align-items-center gap-2">
+                              <span class="far fa-images"></span>
+                              <div class="flex-1 fs-10 title">Gallery</div>
+                            </div>
+                          </a>
+                          <a
+                            class="dropdown-item px-x1 py-1 fs-9"
+                            href="#attachments-container"
+                          >
+                            <div class="d-flex align-items-center gap-2">
+                              <span class="fas fa-paperclip"></span>
                               <div class="flex-1 fs-10 title">
-                                All customers list
+                                Add Attachments
                               </div>
                             </div>
                           </a>
                           <a
                             class="dropdown-item px-x1 py-1 fs-9"
-                            href="../app/events/event-detail.html"
+                            href="#charts-container"
                           >
-                            <div class="d-flex align-items-center">
-                              <span
-                                class="badge fw-medium text-decoration-none me-2 badge-subtle-success"
-                                >events:</span
-                              >
+                            <div class="d-flex align-items-center gap-2">
+                              <span class="fas fa-chart-pie"></span>
                               <div class="flex-1 fs-10 title">
-                                Latest events in current month
+                                Sales Chart Distribution
                               </div>
                             </div>
                           </a>
+
                           <a
                             class="dropdown-item px-x1 py-1 fs-9"
-                            href="../app/e-commerce/product/product-grid.html"
+                            href="#charts-container"
                           >
-                            <div class="d-flex align-items-center">
-                              <span
-                                class="badge fw-medium text-decoration-none me-2 badge-subtle-info"
-                                >products:</span
-                              >
+                            <div class="d-flex align-items-center gap-2">
+                              <span class="fas fa-chart-pie"></span>
+                              <div class="flex-1 fs-10 name">
+                                Expense Chart Categories
+                              </div>
+                            </div>
+                          </a>
+
+                          <hr class="text-200 dark__text-900" />
+                          <h6
+                            class="dropdown-header fw-medium text-uppercase px-x1 fs-11 pt-0 pb-2"
+                          >
+                            Side Panels
+                          </h6>
+                          <button
+                            class="dropdown-item px-x1 py-2"
+                            aria-label="inbox"
+                          >
+                            <div class="d-grid col-20px-1fr gap-2">
+                              <span class="fas fa-bell fs-9"></span>
                               <div class="flex-1 fs-10 title">
-                                Most popular products
+                                Notifications
                               </div>
                             </div>
-                          </a>
-                          <hr class="text-200 dark__text-900" />
-                          <h6
-                            class="dropdown-header fw-medium text-uppercase px-x1 fs-11 pt-0 pb-2"
-                          >
-                            Files
-                          </h6>
-                          <a class="dropdown-item px-x1 py-2" href="#!">
-                            <div class="d-flex align-items-center">
-                              <div class="file-thumbnail me-2">
-                                <img
-                                  class="border h-100 w-100 object-fit-cover rounded-3"
-                                  src="../assets/img/products/3-thumb.png"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="flex-1">
-                                <h6 class="mb-0 title">iPhone</h6>
-                                <p class="fs-11 mb-0 d-flex">
-                                  <span class="fw-semi-bold">Antony</span
-                                  ><span class="fw-medium text-600 ms-2"
-                                    >27 Sep at 10:30 AM</span
-                                  >
-                                </p>
-                              </div>
-                            </div>
-                          </a>
-                          <a class="dropdown-item px-x1 py-2" href="#!">
-                            <div class="d-flex align-items-center">
-                              <div class="file-thumbnail me-2">
-                                <img
-                                  class="img-fluid"
-                                  src="../assets/img/icons/zip.png"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="flex-1">
-                                <h6 class="mb-0 title">Falcon v1.8.2</h6>
-                                <p class="fs-11 mb-0 d-flex">
-                                  <span class="fw-semi-bold">John</span
-                                  ><span class="fw-medium text-600 ms-2"
-                                    >30 Sep at 12:30 PM</span
-                                  >
-                                </p>
-                              </div>
-                            </div>
-                          </a>
-                          <hr class="text-200 dark__text-900" />
-                          <h6
-                            class="dropdown-header fw-medium text-uppercase px-x1 fs-11 pt-0 pb-2"
-                          >
-                            Members
-                          </h6>
-                          <a
+                          </button>
+
+                          <button
                             class="dropdown-item px-x1 py-2"
-                            href="../pages/user/profile.html"
+                            aria-label="inbox"
                           >
-                            <div class="d-flex align-items-center">
-                              <div class="avatar avatar-l status-online me-2">
-                                <img
-                                  class="rounded-circle"
-                                  src="../assets/img/team/1.jpg"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="flex-1">
-                                <h6 class="mb-0 title">Anna Karinina</h6>
-                                <p class="fs-11 mb-0 d-flex">
-                                  Technext Limited
-                                </p>
-                              </div>
+                            <div class="d-grid col-20px-1fr gap-2">
+                              <span class="fas fa-cog fs-9"></span>
+                              <div class="flex-1 fs-10 title">Customize</div>
                             </div>
-                          </a>
-                          <a
+                          </button>
+                          <button
                             class="dropdown-item px-x1 py-2"
-                            href="../pages/user/profile.html"
+                            aria-label="inbox"
                           >
-                            <div class="d-flex align-items-center">
-                              <div class="avatar avatar-l me-2">
-                                <img
-                                  class="rounded-circle"
-                                  src="../assets/img/team/2.jpg"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="flex-1">
-                                <h6 class="mb-0 title">Antony Hopkins</h6>
-                                <p class="fs-11 mb-0 d-flex">Brain Trust</p>
-                              </div>
+                            <div class="d-grid col-20px-1fr gap-2">
+                              <span class="fas fa-dollar-sign fs-9 mx-1"></span>
+                              <div class="flex-1 fs-10 title">Price</div>
                             </div>
-                          </a>
-                          <a
+                          </button>
+
+                          <button
                             class="dropdown-item px-x1 py-2"
-                            href="../pages/user/profile.html"
+                            aria-label="inbox"
                           >
-                            <div class="d-flex align-items-center">
-                              <div class="avatar avatar-l me-2">
-                                <img
-                                  class="rounded-circle"
-                                  src="../assets/img/team/3.jpg"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="flex-1">
-                                <h6 class="mb-0 title">Emma Watson</h6>
-                                <p class="fs-11 mb-0 d-flex">Google</p>
-                              </div>
+                            <div class="d-grid col-20px-1fr gap-2">
+                              <span class="far fa-calendar-alt fs-9"></span>
+                              <div class="flex-1 fs-10 title">Calendar</div>
                             </div>
-                          </a>
+                          </button>
+
+                          <button
+                            class="dropdown-item px-x1 py-2"
+                            aria-label="inbox"
+                          >
+                            <div class="d-grid col-20px-1fr gap-2">
+                              <span class="fas fa-envelope fs-9"></span>
+                              <div class="flex-1 fs-10 title">Inbox</div>
+                            </div>
+                          </button>
+
+                          <button
+                            class="dropdown-item px-x1 py-2"
+                            aria-label="inbox"
+                          >
+                            <div class="d-grid col-20px-1fr gap-2">
+                              <span class="fas fa-sliders-h fs-9"></span>
+                              <div class="flex-1 fs-10 title">Settings</div>
+                            </div>
+                          </button>
                         </div>
                         <div class="text-center mt-n3">
                           <p class="fallback fw-bold fs-8 d-none">
@@ -855,7 +951,6 @@
                   >
                 </div>
               </nav>
-
               <!-- ===============================================-->
               <!--    Project Details-->
               <!-- ===============================================-->
@@ -2568,7 +2663,10 @@
                         </div>
                       </div>
 
-                      <div class="picture-container gap-3 row mt-3">
+                      <div
+                        id="attachments-container"
+                        class="picture-container gap-3 row mt-3"
+                      >
                         <div class="header ls px-0 mb-3 text-uppercase">
                           Attachments
                         </div>
@@ -3615,7 +3713,7 @@
                     <br />
                     <h5>Overview</h5>
 
-                    <div class="chart-row">
+                    <div id="charts-container" class="chart-row">
                       <!-- Pie Chart 1 -->
                       <div class="chart-container">
                         <h4>Sales Distribution</h4>
@@ -3641,7 +3739,7 @@
                       <div class="col"></div>
                       <h5>Sales Order</h5>
                       <div
-                        id="tableExample"
+                        id="sales-order"
                         data-list='{"valueNames":["orderNumber","orderDate","projectId","itemsSold","quantity","unitPrice","taxable","nonTaxable","taxRate","taxAmount","totalAmount"],"page":5,"pagination":true}'
                       >
                         <div class="table-responsive scrollbar mobile-stack">
@@ -3825,7 +3923,7 @@
 
                       <h5>Payment Schedule</h5>
                       <div
-                        id="tableExample"
+                        id="payment-schedule"
                         data-list='{"valueNames":["milestone","amount","term","method","status","invoice","action"],"page":5,"pagination":true}'
                       >
                         <div class="table-responsive scrollbar mobile-stack">
@@ -3989,7 +4087,7 @@
 
                       <h5>Invoices</h5>
                       <div
-                        id="tableExample"
+                        id="invoices-table"
                         data-list='{"valueNames":["invoiceNumber","soNumber","invoiceDate","dueDate","totalAmount","amountPaid","balanceDue","status"],"page":5,"pagination":true}'
                       >
                         <div class="table-responsive scrollbar mobile-stack">
@@ -4159,7 +4257,7 @@
 
                       <h5>Payment Received</h5>
                       <div
-                        id="tableExample"
+                        id="payment-received"
                         data-list='{"valueNames":["paymentId","invoiceNumber","paymentDate","paymentMethod","amount","bankDepositReference"],"page":5,"pagination":true}'
                       >
                         <div class="table-responsive scrollbar mobile-stack">
@@ -4315,7 +4413,7 @@
 
                       <h5>Purchase Orders</h5>
                       <div
-                        id="tableExample"
+                        id="purchase-orders"
                         data-list='{"valueNames":["poNumber","orderDate","supplierName","itemsBought","quantity","unitPrice","taxable","nonTaxable","appliedTaxRate","taxAmount","totalAmount"],"page":5,"pagination":true}'
                       >
                         <div class="table-responsive scrollbar mobile-stack">
@@ -4506,7 +4604,7 @@
 
                       <h5>Bills</h5>
                       <div
-                        id="tableExample-bills"
+                        id="bills-table"
                         data-list='{"valueNames":["billNumber","poNumber","billDate","dueDate","supplierName","totalAmount","amountPaid","balanceDue","status"],"page":5,"pagination":true}'
                       >
                         <div class="table-responsive scrollbar mobile-stack">
@@ -4683,7 +4781,7 @@
 
                       <h5>Payment Made</h5>
                       <div
-                        id="tableExample"
+                        id="payment-made"
                         data-list='{"valueNames":["payment_id","bill_number","payment_date","payment_method","amount","bank_deposit_reference"],"page":5,"pagination":true}'
                       >
                         <div class="table-responsive scrollbar mobile-stack">
@@ -4829,7 +4927,7 @@
 
                       <h5>Labor Cost Tracking</h5>
                       <div
-                        id="tableExample"
+                        id="labor-cost"
                         data-list='{"valueNames":["user","role","hours_spent","hourly_rate","total_cost"],"page":5,"pagination":true}'
                       >
                         <div class="table-responsive scrollbar mobile-stack">
@@ -4970,7 +5068,7 @@
 
                       <h5>Mileage Cost Tracking</h5>
                       <div
-                        id="tableExample"
+                        id="mileage-cost"
                         data-list='{"valueNames":["user","start_location","end_location","miles_driven","rate_per_mile","total_cost"],"page":5,"pagination":true}'
                       >
                         <div class="table-responsive scrollbar mobile-stack">

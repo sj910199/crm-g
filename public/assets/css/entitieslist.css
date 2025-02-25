@@ -160,6 +160,14 @@
   max-height: 100% !important;
 }
 
+.col-20px-1fr {
+  grid-template-columns: 20px 1fr !important;
+}
+
+.col-auto-1fr {
+  grid-template-columns: auto 1fr !important;
+}
+
 .col-1fr-auto {
   grid-template-columns: 1fr auto !important;
 }
@@ -174,6 +182,13 @@
 
 .rounded-20px {
   border-radius: 20px !important;
+}
+
+/*to ensure that when anchor tag with ID href is click to scroll to that target
+it will not be covered by top nav*/
+[id] {
+  /* Targets all elements with an ID */
+  scroll-margin-top: calc(5dvh + 160px);
 }
 
 /*hiding the tooltip when hover is not available*/
