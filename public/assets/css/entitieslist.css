@@ -212,6 +212,8 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
 
   .page-wrapper > .main {
     overflow-y: auto;
+    overflow-x: clip;
+    max-height: 100dvh;
   }
 
   /* mobile left navbar layout starts here */
@@ -314,7 +316,6 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     width: 100%;
     height: 100%;
   }
-
 
   .left-sidebar-container > * {
     grid-area: 1/1;
@@ -519,6 +520,8 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
 
   .page-wrapper .main {
     overflow-y: auto;
+    overflow-x: clip;
+    max-height: 100dvh;
   }
 
   .left-sidebar-container {
@@ -741,55 +744,70 @@ section {
   width: 100%;
 }
 
-.navbar.navbar-overrides > .navbar-nav > li  {
+.navbar.navbar-overrides > .navbar-nav > li {
   display: grid;
   place-content: end;
   width: 100%;
 }
 
 .navbar.navbar-overrides > .navbar-nav > li > * {
-  grid-area: 1/1
+  grid-area: 1/1;
 }
 
-
-.navbar.navbar-overrides > .navbar-nav > li >  .search-box {
+.navbar.navbar-overrides > .navbar-nav > li > .search-box {
   width: 100%;
   visibility: hidden;
   opacity: 0;
   z-index: -1;
   transform: scaleX(0);
   transform-origin: right;
-  transition: transform 200ms ease-in-out,
-  visibility 200ms ease-in-out,
-  opacity 200ms ease-in-out,
-  z-index 200ms ease-in-out;
+  transition:
+    transform 200ms ease-in-out,
+    visibility 200ms ease-in-out,
+    opacity 200ms ease-in-out,
+    z-index 200ms ease-in-out;
   transition-delay: 100ms;
 }
 
-.navbar.navbar-overrides > .main-nav-search:checked ~ .navbar-nav > li > .search-box {
+.navbar.navbar-overrides
+  > .main-nav-search:checked
+  ~ .navbar-nav
+  > li
+  > .search-box {
   visibility: visible;
   transform: scaleX(1);
   opacity: 1;
   z-index: 0;
 }
 
-.navbar.navbar-overrides > .main-nav-search:checked ~ .navbar-nav > li > .search-box .search-label-icon > svg {
+.navbar.navbar-overrides
+  > .main-nav-search:checked
+  ~ .navbar-nav
+  > li
+  > .search-box
+  .search-label-icon
+  > svg {
   cursor: pointer;
   color: var(--falcon-btn-falcon-default-color);
 }
 
-.navbar.navbar-overrides > .main-nav-search:checked ~ .navbar-nav > li > .search-box .search-label-icon > svg {
+.navbar.navbar-overrides
+  > .main-nav-search:checked
+  ~ .navbar-nav
+  > li
+  > .search-box
+  .search-label-icon
+  > svg {
   cursor: pointer;
   color: var(--falcon-navbar-vertical-default-link-active-color);
 }
-
 
 .navbar.navbar-overrides > .navbar-nav > li > label {
   display: inline-flex;
   align-items: center;
   margin-left: auto;
   margin-right: 0;
-  margin-bottom:0;
+  margin-bottom: 0;
   cursor: pointer;
   color: var(--falcon-btn-falcon-default-color);
 
@@ -798,21 +816,21 @@ section {
   opacity: 1;
   z-index: 0;
 
-  transition: transform 200ms ease-in-out,
-  visibility 200ms ease-in-out,
-  opacity 200ms ease-in-out,
-  color 200ms ease-in-out,
-  z-index 200ms ease-in-out;
+  transition:
+    transform 200ms ease-in-out,
+    visibility 200ms ease-in-out,
+    opacity 200ms ease-in-out,
+    color 200ms ease-in-out,
+    z-index 200ms ease-in-out;
   transition-delay: 100ms;
 }
 .navbar.navbar-overrides > .main-nav-search:checked ~ .navbar-nav > li > label {
   visibility: hidden;
-  transform: scale(.5);
+  transform: scale(0.5);
   opacity: 0;
   z-index: -1;
   color: var(--falcon-gray-400);
 }
-
 
 /* Media Queries ----------------------------- */
 
@@ -824,7 +842,6 @@ section {
 
 /*progressive and qol for search input in top nav*/
 @media (max-width: 425px) {
-
   .navbar.navbar-overrides > .navbar-brand {
     transition: display 200ms ease-in-out;
     transition-behavior: allow-discrete;
@@ -833,7 +850,6 @@ section {
   .navbar.navbar-overrides > .main-nav-search:checked ~ .navbar-brand {
     display: none !important;
   }
-
 }
 
 @media (max-width: 768px) {
@@ -867,7 +883,6 @@ section {
     width: 100%;
   }
 
-
   .navbar.navbar-overrides > .navbar-collapse {
     grid-area: dropdown;
   }
@@ -884,7 +899,6 @@ section {
   }
 }
 
-
 @media (min-width: 769px) and (max-width: 1024px) {
   .navbar.navbar-overrides {
     padding-top: 1rem;
@@ -896,7 +910,6 @@ section {
     max-width: 1000px;
   }
 }
-
 
 @media (min-width: 1025px) and (max-width: 1199px) {
   .sub-top-nav-desktop {
@@ -2650,6 +2663,22 @@ div.gslide-media.gslide-inline {
   .notification-article > .card-body {
     height: calc(100dvh - var(--notif-header-height));
   }
+}
+
+/*-----------------------------------------------
+    |   Notification article Content
+    -----------------------------------------------*/
+.customize-article {
+  --customize-header-height: 4.65rem;
+  overflow: clip;
+}
+
+.customize-article > .offcanvas-header {
+  max-height: var(--customize-header-height);
+}
+
+.customize-article > .offcanvas-body {
+  max-height: calc(100dvh - var(--customize-header-height));
 }
 
 /*-----------------------------------------------
