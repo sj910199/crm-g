@@ -436,6 +436,7 @@
                 >
                   <li>
                     <div
+                      id="top-nav-search"
                       class="search-box"
                       data-list='{"valueNames":["title","name"]}'
                     >
@@ -5563,6 +5564,12 @@
               Price
             </button>
           </li>
+          <li class="bg-primary-subtle">
+            <button type="button" aria-label="calculator">
+              <span class="fas fa-calculator fs-8"></span>
+              Cost Calc
+            </button>
+          </li>
           <li class="bg-primary-subtle text-primary">
             <button type="button" aria-label="calendar">
               <span class="far fa-calendar-alt fs-8"></span>
@@ -6254,6 +6261,132 @@
               >
             </div>
           </section>
+        </article>
+
+        <!--calculator article-->
+        <article
+          class="calculator-article bg-body-emphasis position-relative scrollbar"
+        >
+          <header class="bg-primary">
+            <h5 class="text-white fs-8 fs-md-7" >Glass Replacement Calculator</h5>
+
+            <div class="position-absolute top-0 end-0">
+              <button
+                class="btn-close mt-0"
+                type="button"
+                aria-label="close article"
+              ></button>
+            </div>
+          </header>
+          <div class="calculator-container">
+            <form id="glassForm">
+              <div class="input-section">
+                <h6>Glass Details</h6>
+                <div class="table-wrapper scrollbar">
+                  <table id="glassTable">
+                    <thead>
+                      <tr>
+                        <th>Piece #</th>
+                        <th>Width (in)</th>
+                        <th>Height (in)</th>
+                        <th>Glass Type</th>
+                        <th>Price/Sq Ft ($)</th>
+                        <th>Installers</th>
+                        <th>Install Time (hrs)</th>
+                      </tr>
+                    </thead>
+                    <tbody id="glassTableBody">
+                      <tr class="glass-row">
+                        <td>1</td>
+                        <td>
+                          <input
+                            type="number"
+                            class="width"
+                            placeholder="e.g., 36"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            class="height"
+                            placeholder="e.g., 48"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            class="glassType"
+                            list="glassOptions"
+                            placeholder="Search glass type..."
+                          />
+                          <datalist id="glassOptions"></datalist>
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            class="pricePerSqft"
+                            readonly
+                            placeholder="Auto-filled"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            class="installers"
+                            placeholder="e.g., 1"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            class="installTime"
+                            placeholder="e.g., 0.5"
+                          />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="non-table-input-wrapper">
+                <fieldset class="input-section">
+                  <label for="distance">Travel Distance (miles):</label>
+                  <input type="number" id="distance" placeholder="e.g., 50" />
+                </fieldset>
+                <fieldset class="input-section">
+                  <label for="mileageRate">Mileage Rate ($/mile):</label>
+                  <input
+                    type="number"
+                    id="mileageRate"
+                    placeholder="e.g., 1.5"
+                    value="1.5"
+                  />
+                </fieldset>
+                <fieldset class="input-section">
+                  <label for="measurementTechs">Techs for Measurement:</label>
+                  <input
+                    type="number"
+                    id="measurementTechs"
+                    placeholder="e.g., 1"
+                    value="1"
+                  />
+                </fieldset>
+                <fieldset class="input-section">
+                  <label for="laborRate">Hourly Labor Rate ($/tech):</label>
+                  <input
+                    type="number"
+                    id="laborRate"
+                    placeholder="e.g., 100"
+                    value="100"
+                  />
+                </fieldset>
+              </div>
+
+              <button type="submit">Calculate</button>
+            </form>
+
+            <div id="results" class="results"></div>
+          </div>
         </article>
 
         <!-- Price content -->
@@ -20127,6 +20260,7 @@
           }, 300);
         }
       }
+
       function rotatePhoto(button) {
         const fileItem = button.closest(".photo-item");
         const imgElement = fileItem.querySelector(".file-icon");
@@ -20993,6 +21127,348 @@
             triggerBtnParent.classList.toggle("show-opts");
           });
         }
+      });
+    </script>
+
+    <!--    Cost Calculater Panel JS here-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script>
+      // Using async/await to load the Excel file makes async code more readable and easier to debug.
+      document.addEventListener("DOMContentLoaded", async () => {
+        // Global variable for glass database
+        let glassDatabase = {};
+
+        // Cache common DOM elements to improve performance by avoiding repeated lookups.
+        const glassTableBody = document.getElementById("glassTableBody");
+        const glassOptionsDatalist = document.getElementById("glassOptions");
+        const resultsDiv = document.getElementById("results");
+        const glassForm = document.getElementById("glassForm");
+
+        // Helper Function: Populate the datalist with glass types.
+        function populateGlassDatalist(database) {
+          glassOptionsDatalist.innerHTML = "";
+          Object.keys(database).forEach((type) => {
+            const option = document.createElement("option");
+            option.value = type;
+            glassOptionsDatalist.appendChild(option);
+          });
+        }
+
+        // Helper Function: Add a new row to the glass table (DRY approach).
+        function addNewRow(pieceNumber) {
+          const newRow = document.createElement("tr");
+          newRow.className = "glass-row";
+          newRow.innerHTML = `
+            <td>${pieceNumber}</td>
+            <td><input type="text" class="width" placeholder="e.g., 36"></td>
+            <td><input type="text" class="height" placeholder="e.g., 48"></td>
+            <td>
+              <input type="text" class="glassType" list="glassOptions" placeholder="Search glass type...">
+            </td>
+            <td><input type="text" class="pricePerSqft" readonly placeholder="Auto-filled"></td>
+            <td><input type="text" class="installers" placeholder="e.g., 1"></td>
+            <td><input type="text" class="installTime" placeholder="e.g., 0.5"></td>
+          `;
+          glassTableBody.appendChild(newRow);
+        }
+
+        // Helper Function: Creates a DOM element to display glass details.
+        function createGlassDetailElement(glass) {
+          const div = document.createElement("div");
+          div.classList.add("glass-item");
+          div.innerHTML = `
+              <p><strong>Piece #${glass.piece}</strong></p>
+              <p>Dimensions: ${glass.width.toFixed(1)}in x ${glass.height.toFixed(1)}in</p>
+              <p>Type: ${glass.type}</p>
+              <p>Area: ${glass.area.toFixed(2)} sq ft</p>
+              <p>Cost: $${glass.cost.toFixed(2)}</p>
+              <p>Installers Needed: ${glass.installers}</p>
+              <p>Installation Time: ${glass.installTime.toFixed(1)} hrs</p>
+          `;
+          return div;
+        }
+
+        // Helper Function: Calculate all the cost components and return as an object.
+        // Modularizing the calculations makes it easier to maintain and test.
+        function calculateProjectCost(
+          glassDetails,
+          distance,
+          mileageRate,
+          measurementTechs,
+          laborRate,
+        ) {
+          // Determine number of trips: measurement + installation if measurementTechs > 0 && distance > 0.
+          let numTrips = 1;
+          if (measurementTechs > 0 && distance > 0) {
+            numTrips = 2;
+          }
+
+          // Measurement labor: 10 minutes per piece converted to hours.
+          const totalMeasurementTime = (glassDetails.length * 10) / 60;
+          const measurementLaborCost =
+            measurementTechs === 0
+              ? 0
+              : totalMeasurementTime * measurementTechs * laborRate;
+
+          // Travel time per trip is 2 minutes per mile, converted to hours.
+          const travelTimePerTrip = (distance * 2) / 60;
+
+          const maxInstallers =
+            glassDetails.length > 0
+              ? Math.max(...glassDetails.map((g) => g.installers))
+              : 1;
+
+          const measurementTravelLaborCost =
+            measurementTechs === 0 || distance === 0
+              ? 0
+              : travelTimePerTrip * measurementTechs * laborRate;
+
+          // For installation travel labor, only apply if no measurement trip was needed (numTrips === 1).
+          const installationTravelLaborCost =
+            distance > 0 && numTrips === 1
+              ? travelTimePerTrip * maxInstallers * laborRate
+              : 0;
+
+          // Installation labor cost is calculated directly using the provided installation hours.
+          const totalInstallTime = glassDetails.reduce(
+            (sum, glass) => sum + glass.installTime,
+            0,
+          );
+          const installationLaborCost =
+            totalInstallTime * maxInstallers * laborRate;
+
+          // Mileage cost based on number of trips.
+          const travelMileageCost =
+            distance === 0 ? 0 : distance * mileageRate * numTrips;
+          const totalGlassCost = glassDetails.reduce(
+            (sum, glass) => sum + glass.cost,
+            0,
+          );
+          const totalLaborCost =
+            measurementLaborCost +
+            measurementTravelLaborCost +
+            installationTravelLaborCost +
+            installationLaborCost;
+          const totalProjectCost =
+            totalGlassCost + travelMileageCost + totalLaborCost;
+
+          return {
+            totalGlassCost,
+            travelMileageCost,
+            measurementLaborCost,
+            measurementTravelLaborCost,
+            installationTravelLaborCost,
+            installationLaborCost,
+            totalLaborCost,
+            totalProjectCost,
+            numTrips,
+            travelTimePerTrip,
+            totalMeasurementTime,
+            totalInstallTime,
+            maxInstallers,
+          };
+        }
+
+        // Load the glass prices using an async function
+        try {
+          // const response = await fetch("glass_prices.xlsx");
+          const response = await fetch("../assets/docs/glass_prices.xlsx");
+          const blob = await response.blob();
+          const arrayBuffer = await blob.arrayBuffer();
+          const data = new Uint8Array(arrayBuffer);
+          const workbook = XLSX.read(data, { type: "array" });
+          const sheet = workbook.Sheets[workbook.SheetNames[0]];
+          const jsonData = XLSX.utils.sheet_to_json(sheet, {
+            header: ["Glass Type", "Price/Sq Ft"],
+          });
+
+          glassDatabase = jsonData.reduce((acc, row) => {
+            acc[row["Glass Type"]] = parseFloat(row["Price/Sq Ft"]) || 0;
+            return acc;
+          }, {});
+          populateGlassDatalist(glassDatabase);
+          console.log(
+            "Glass prices loaded from glass_prices.xlsx successfully!",
+          );
+        } catch (error) {
+          console.error("Error loading glass_prices.xlsx:", error);
+          // Fallback default data if file isn’t found.
+          glassDatabase = {
+            "1/8 clear ann": 10.0,
+            "1/4 tempered": 15.0,
+            "double pane": 12.0,
+            "low-e glass": 18.0,
+            "tinted glass": 14.0,
+            "CLEAR / CLEAR": 16.24,
+          };
+          populateGlassDatalist(glassDatabase);
+          console.log(
+            "Using default glass prices due to missing glass_prices.xlsx. Please place the file in the same folder and refresh.",
+          );
+        }
+
+        // Debounce wrapper to avoid excessive processing on rapid input events.
+        let debounceTimeout;
+        glassTableBody.addEventListener("input", (e) => {
+          clearTimeout(debounceTimeout);
+          debounceTimeout = setTimeout(() => {
+            const target = e.target;
+            const currentRow = target.closest("tr");
+            if (currentRow) {
+              // Update price if user is modifying glass type.
+              if (target.classList.contains("glassType")) {
+                const glassType = target.value.trim();
+                const priceInput = currentRow.querySelector(".pricePerSqft");
+                const price = glassDatabase[glassType] || 0;
+                priceInput.value = price.toFixed(2);
+              }
+
+              // Check if current row is the last row and if all inputs are filled.
+              const rows = document.getElementsByClassName("glass-row");
+              const lastRow = rows[rows.length - 1];
+              const inputs = Array.from(currentRow.querySelectorAll("input"));
+              if (
+                currentRow === lastRow &&
+                inputs.every((inp) => inp.value.trim() !== "")
+              ) {
+                addNewRow(rows.length + 1);
+              }
+            }
+          }, 100); // Adjust debounce delay as needed.
+        });
+
+        // Handle form submission and perform all calculations.
+        glassForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          // Collect glass details, skipping completely empty rows.
+          const rows = document.getElementsByClassName("glass-row");
+          let glassDetails = [];
+
+          for (let i = 0; i < rows.length; i++) {
+            const row = rows[i];
+            const inputs = Array.from(row.querySelectorAll("input"));
+            const isEmpty = inputs.every((input) => input.value.trim() === "");
+
+            if (!isEmpty) {
+              // Trim the input values and parse; default to 0 or a default value if missing.
+              const width =
+                parseFloat(row.querySelector(".width").value.trim()) || 0;
+              const height =
+                parseFloat(row.querySelector(".height").value.trim()) || 0;
+              const glassType =
+                row.querySelector(".glassType").value.trim() || "N/A";
+              const pricePerSqft =
+                parseFloat(row.querySelector(".pricePerSqft").value.trim()) ||
+                0;
+              const installers =
+                parseInt(row.querySelector(".installers").value.trim()) || 1;
+              const installTime =
+                parseFloat(row.querySelector(".installTime").value.trim()) || 0;
+
+              // Calculate area in square feet (conversion from inches).
+              const area = (width / 12) * (height / 12);
+              const cost = area * pricePerSqft;
+
+              glassDetails.push({
+                piece: glassDetails.length + 1,
+                width,
+                height,
+                type: glassType,
+                area,
+                cost,
+                installers,
+                installTime,
+              });
+            }
+          }
+
+          // Collect travel and labor inputs.
+          const distance =
+            parseFloat(document.getElementById("distance").value.trim()) || 0;
+          const mileageRate =
+            parseFloat(document.getElementById("mileageRate").value.trim()) ||
+            1.5;
+          const measurementTechs =
+            parseInt(
+              document.getElementById("measurementTechs").value.trim(),
+            ) || 0;
+          const laborRate =
+            parseFloat(document.getElementById("laborRate").value.trim()) ||
+            100;
+
+          // Use the modularized cost calculation function.
+          const costs = calculateProjectCost(
+            glassDetails,
+            distance,
+            mileageRate,
+            measurementTechs,
+            laborRate,
+          );
+
+          // Build the results using DOM manipulation to reduce reflows.
+          resultsDiv.style.display = "block";
+          resultsDiv.innerHTML = ""; // Clear previous results.
+
+          const h2 = document.createElement("h2");
+          h2.textContent = "Project Breakdown";
+          resultsDiv.appendChild(h2);
+
+          if (glassDetails.length === 0) {
+            const p = document.createElement("p");
+            p.textContent =
+              "No glass pieces entered. Costs reflect travel and labor defaults only.";
+            resultsDiv.appendChild(p);
+          } else {
+            const h3 = document.createElement("h3");
+            h3.textContent = "Glass Details:";
+            resultsDiv.appendChild(h3);
+
+            glassDetails.forEach((glass) => {
+              const detailDiv = createGlassDetailElement(glass);
+              resultsDiv.appendChild(detailDiv);
+            });
+          }
+
+          // Build cost details using template literal for brevity.
+          const costDetailsHTML = `
+      <p><strong>Total Glass Cost:</strong> $${costs.totalGlassCost.toFixed(
+        2,
+      )}</p>
+      <p><strong>Travel Mileage Cost (${
+        distance
+      } miles x ${costs.numTrips} trip${costs.numTrips > 1 ? "s" : ""}):</strong>
+      $${costs.travelMileageCost.toFixed(2)}</p>
+      <p><strong>Labor Costs:</strong></p>
+      <p>- Measurement Labor (${costs.totalMeasurementTime.toFixed(
+        2,
+      )} hrs x ${measurementTechs || 1} techs): $${costs.measurementLaborCost.toFixed(
+        2,
+      )}</p>
+      <p>- Measurement Travel (${
+        measurementTechs === 0 || distance === 0
+          ? "0"
+          : costs.travelTimePerTrip.toFixed(2)
+      } hrs x ${measurementTechs || 1} techs): $${costs.measurementTravelLaborCost.toFixed(
+        2,
+      )}</p>
+      <p>- Installation Travel (${costs.travelTimePerTrip.toFixed(
+        2,
+      )} hrs x ${costs.maxInstallers} techs): $${costs.installationTravelLaborCost.toFixed(
+        2,
+      )}</p>
+      <p>- Installation Labor (${costs.totalInstallTime.toFixed(
+        2,
+      )} hrs x ${costs.maxInstallers} techs): $${costs.installationLaborCost.toFixed(
+        2,
+      )}</p>
+      <p><strong>Total Labor Cost:</strong> $${costs.totalLaborCost.toFixed(2)}</p>
+      <p><strong>TOTAL PROJECT COST:</strong> $${costs.totalProjectCost.toFixed(
+        2,
+      )}</p>
+    `;
+          resultsDiv.insertAdjacentHTML("beforeend", costDetailsHTML);
+        });
       });
     </script>
 
