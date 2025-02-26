@@ -6268,9 +6268,18 @@
           class="calculator-article bg-body-emphasis position-relative scrollbar"
         >
           <header class="bg-primary">
-            <h5 class="text-white fs-8 fs-md-7">
-              Glass Replacement Calculator
-            </h5>
+            <div class="d-flex align-items-center justify-content-between">
+              <h5 class="text-white fs-8">Glass Replacement Calculator</h5>
+
+              <button
+                data-usage="fullscreen-btn"
+                type="button"
+                class="d-none d-lg-grid btn toggle-fullscreen"
+              >
+                <span class="fas fa-expand fs-8"></span>
+                <span class="fas fa-compress fs-8"></span>
+              </button>
+            </div>
 
             <div class="position-absolute top-0 end-0">
               <button
@@ -6284,22 +6293,25 @@
             <form id="glassForm">
               <div class="input-section">
                 <h6>Glass Details</h6>
-                <div class="table-wrapper scrollbar">
+                <div class="table-wrapper scrollbar snap-inline">
                   <table id="glassTable">
                     <thead>
                       <tr>
-                        <th>Piece #</th>
+                        <th class="hide-mobile">Piece #</th>
                         <th>Width (in)</th>
                         <th>Height (in)</th>
-                        <th>Glass Type</th>
-                        <th>Price/Sq Ft ($)</th>
-                        <th>Installers</th>
-                        <th>Install Time (hrs)</th>
+                        <th class="hide-mobile">SF</th>
+                        <th class="hide-mobile">LIB</th>
+                        <th class="glass-type-h">Glass Type</th>
+                        <!-- <th class="hide-mobile">Price/Sq Ft ($)</th>-->
+                        <th class="hide-mobile pricePerSqft-h">Price</th>
+                        <th class="installers-h">Installers</th>
+                        <th class="install-time-h">Install Time (hrs)</th>
                       </tr>
                     </thead>
                     <tbody id="glassTableBody">
                       <tr class="glass-row">
-                        <td>1</td>
+                        <td class="hide-mobile">1</td>
                         <td>
                           <input
                             type="number"
@@ -6314,6 +6326,12 @@
                             placeholder="e.g., 48"
                           />
                         </td>
+                        <td class="sf hide-mobile">
+                          <span class="td-placeholder">0 (1/8)</span>
+                        </td>
+                        <td class="lib hide-mobile">
+                          <span class="td-placeholder">0 (1)</span>
+                        </td>
                         <td>
                           <input
                             type="text"
@@ -6323,7 +6341,7 @@
                           />
                           <datalist id="glassOptions"></datalist>
                         </td>
-                        <td>
+                        <td class="hide-mobile pricePerSqft-t">
                           <input
                             type="text"
                             class="pricePerSqft"
@@ -6659,7 +6677,7 @@
 
             <!-- toggle for side panel fullscreen-->
             <button
-              id="fullscreen-btn"
+              data-usage="fullscreen-btn"
               type="button"
               class="d-none d-lg-grid btn toggle-fullscreen"
             >
@@ -8190,41 +8208,6 @@
                       </div>
                     </a>
                   </li>
-                  <!-- <li>
-                    <a class="inbox-item-container d-grid text-decoration-none" href="#message-3">
-                      <div class="avatar avatar-2xl me-3">
-                        <img class="rounded-circle" src="../assets/img/team/3-thumb.png" alt="message avatar" />
-                      </div>
-                      <div class="text-truncate inbox-item">
-                        <div class="d-flex justify-content-between align-items-center">
-                          <h3 class="m-0 fs-8 text-opacity-100">Alice Williams</h3>
-                          <time class="fs-10">Today</time>
-                        </div>
-                        <p class="m-0 item-subject text-opacity-100">This is subject</p>
-                        <p class="m-0 text-truncate fs-10 inbox-info">
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, voluptate.
-                        </p>
-                      </div>
-                    </a>
-                  </li>
-
-                  <li>
-                    <a class="inbox-item-container d-grid text-decoration-none" href="#email-message">
-                      <div class="avatar avatar-2xl me-3">
-                        <img class="rounded-circle" src="../assets/img/team/1-thumb.png" alt="message avatar" />
-                      </div>
-                      <div class="text-truncate inbox-item">
-                        <div class="d-flex justify-content-between align-items-center">
-                          <h3 class="m-0 fs-8 text-opacity-100">Jane Smith</h3>
-                          <time class="fs-10">Today</time>
-                        </div>
-                        <p class="m-0 item-subject text-opacity-100">This is subject</p>
-                        <p class="m-0 text-truncate fs-10 inbox-info">
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, voluptate.
-                        </p>
-                      </div>
-                    </a>
-                  </li> -->
                 </ul>
               </nav>
             </section>
@@ -8512,8 +8495,7 @@
                               />
                             </div>
                             <div class="flex-1 ms-2">
-                              <span
-                                class="fw-bold stretched-link inbox-link"
+                              <span class="fw-bold stretched-link inbox-link"
                                 >Unsplash Team</span
                               >
                             </div>
@@ -8523,15 +8505,17 @@
                           <div
                             class="d-block inbox-link"
                             href="../../app/email/email-detail.html"
-                            ><span class="fw-bold"
+                          >
+                            <span class="fw-bold"
                               >Get involved for International Women's Day - with
                               link 👩</span
                             ><span class="mx-1">&ndash;</span
                             ><span
                               >The link below is now clickable for Chrome
                               users...</span
-                            ></div
-                          ><a
+                            >
+                          </div>
+                          <a
                             class="d-inline-flex align-items-center border rounded-pill px-3 py-1 me-2 mt-2 inbox-link"
                             href="../assets/img/generic/1.jpg"
                             data-gallery="gallery-7"
@@ -9914,251 +9898,254 @@
                 class="card d-flex flex-column gap-4 email-content"
               >
                 <div id="email-1">
-                <header class="card mb-3">
-                  <div class="card-body d-flex justify-content-between">
-                    <div>
-                      <a
-                        class="btn btn-falcon-default btn-sm"
-                        href="../../app/email/inbox.html"
-                        data-bs-toggle="tooltip"
-                        data-bs-placement="top"
-                        title="Back to inbox"
-                        ><span class="fas fa-arrow-left"></span></a
-                      ><span class="mx-1 mx-sm-2 text-300">|</span>
-                      <button
-                        class="btn btn-falcon-default btn-sm"
-                        type="button"
-                        data-bs-toggle="tooltip"
-                        data-bs-placement="top"
-                        title="Archive"
-                      >
-                        <span class="fas fa-archive"></span>
-                      </button>
-                      <button
-                        class="btn btn-falcon-default btn-sm ms-1 ms-sm-2"
-                        type="button"
-                        data-bs-toggle="tooltip"
-                        data-bs-placement="top"
-                        title="Delete"
-                      >
-                        <span class="fas fa-trash-alt"></span>
-                      </button>
-                      <button
-                        class="btn btn-falcon-default btn-sm ms-1 ms-sm-2"
-                        type="button"
-                        data-bs-toggle="tooltip"
-                        data-bs-placement="top"
-                        title="Mark as unread"
-                      >
-                        <span class="fas fa-envelope"></span>
-                      </button>
-                      <button
-                        class="btn btn-falcon-default btn-sm ms-1 ms-sm-2"
-                        type="button"
-                        data-bs-toggle="tooltip"
-                        data-bs-placement="top"
-                        title="Snooze"
-                      >
-                        <span class="fas fa-clock"></span>
-                      </button>
-                      <button
-                        class="btn btn-falcon-default btn-sm ms-1 ms-sm-2 d-none d-sm-inline-block"
-                        type="button"
-                        data-bs-toggle="tooltip"
-                        data-bs-placement="top"
-                        title="Print"
-                      >
-                        <span class="fas fa-print"></span>
-                      </button>
-                    </div>
-                    <div class="d-flex">
-                      <div class="d-none d-md-block">
-                        <small>2 of 354</small>
+                  <header class="card mb-3">
+                    <div class="card-body d-flex justify-content-between">
+                      <div>
+                        <a
+                          class="btn btn-falcon-default btn-sm"
+                          href="../../app/email/inbox.html"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title="Back to inbox"
+                          ><span class="fas fa-arrow-left"></span></a
+                        ><span class="mx-1 mx-sm-2 text-300">|</span>
                         <button
-                          class="btn btn-falcon-default btn-sm ms-2"
+                          class="btn btn-falcon-default btn-sm"
                           type="button"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title="Archive"
                         >
-                          <span class="fas fa-chevron-left"></span>
+                          <span class="fas fa-archive"></span>
                         </button>
                         <button
-                          class="btn btn-falcon-default btn-sm ms-2"
+                          class="btn btn-falcon-default btn-sm ms-1 ms-sm-2"
                           type="button"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title="Delete"
                         >
-                          <span class="fas fa-chevron-right"></span>
+                          <span class="fas fa-trash-alt"></span>
+                        </button>
+                        <button
+                          class="btn btn-falcon-default btn-sm ms-1 ms-sm-2"
+                          type="button"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title="Mark as unread"
+                        >
+                          <span class="fas fa-envelope"></span>
+                        </button>
+                        <button
+                          class="btn btn-falcon-default btn-sm ms-1 ms-sm-2"
+                          type="button"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title="Snooze"
+                        >
+                          <span class="fas fa-clock"></span>
+                        </button>
+                        <button
+                          class="btn btn-falcon-default btn-sm ms-1 ms-sm-2 d-none d-sm-inline-block"
+                          type="button"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title="Print"
+                        >
+                          <span class="fas fa-print"></span>
                         </button>
                       </div>
-                      <div class="dropdown font-sans-serif">
-                        <button
-                          class="btn btn-falcon-default text-600 btn-sm dropdown-toggle dropdown-caret-none ms-2"
-                          type="button"
-                          id="email-settings"
-                          data-bs-toggle="dropdown"
-                          data-boundary="viewport"
-                          aria-haspopup="true"
-                          aria-expanded="false"
-                        >
-                          <span class="fas fa-cog"></span>
-                        </button>
-                        <div
-                          class="dropdown-menu dropdown-menu-end border py-2"
-                          aria-labelledby="email-settings"
-                        >
-                          <a class="dropdown-item" href="#!">Configure inbox</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="#!">Settings</a
-                          ><a class="dropdown-item" href="#!">Themes</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="#!">Send feedback</a
-                          ><a class="dropdown-item" href="#!">Help</a>
+                      <div class="d-flex">
+                        <div class="d-none d-md-block">
+                          <small>2 of 354</small>
+                          <button
+                            class="btn btn-falcon-default btn-sm ms-2"
+                            type="button"
+                          >
+                            <span class="fas fa-chevron-left"></span>
+                          </button>
+                          <button
+                            class="btn btn-falcon-default btn-sm ms-2"
+                            type="button"
+                          >
+                            <span class="fas fa-chevron-right"></span>
+                          </button>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                </header>
-                <div class="card">
-                  <div class="card-header">
-                    <div class="row">
-                      <div class="col-md d-flex">
-                        <div class="avatar avatar-2xl">
-                          <img
-                            class="rounded-circle"
-                            src="../assets/img/team/1.jpg"
-                            alt=""
-                          />
-                        </div>
-                        <div class="flex-1 ms-2">
-                          <h5 class="mb-0">
-                            Women work wonders… on your
-                            <span class="white-space-nowrap"
-                              >marketing skills</span
+                        <div class="dropdown font-sans-serif">
+                          <button
+                            class="btn btn-falcon-default text-600 btn-sm dropdown-toggle dropdown-caret-none ms-2"
+                            type="button"
+                            id="email-settings"
+                            data-bs-toggle="dropdown"
+                            data-boundary="viewport"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            <span class="fas fa-cog"></span>
+                          </button>
+                          <div
+                            class="dropdown-menu dropdown-menu-end border py-2"
+                            aria-labelledby="email-settings"
+                          >
+                            <a class="dropdown-item" href="#!"
+                              >Configure inbox</a
                             >
-                          </h5>
-                          <a class="text-800 fs-10" href="#!"
-                            ><span class="fw-semi-bold">Emma Watson</span
-                            ><span class="ms-1 text-500"
-                              >&lt;emma@watson.com&gt;</span
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Settings</a
+                            ><a class="dropdown-item" href="#!">Themes</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#!">Send feedback</a
+                            ><a class="dropdown-item" href="#!">Help</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </header>
+                  <div class="card">
+                    <div class="card-header">
+                      <div class="row">
+                        <div class="col-md d-flex">
+                          <div class="avatar avatar-2xl">
+                            <img
+                              class="rounded-circle"
+                              src="../assets/img/team/1.jpg"
+                              alt=""
+                            />
+                          </div>
+                          <div class="flex-1 ms-2">
+                            <h5 class="mb-0">
+                              Women work wonders… on your
+                              <span class="white-space-nowrap"
+                                >marketing skills</span
+                              >
+                            </h5>
+                            <a class="text-800 fs-10" href="#!"
+                              ><span class="fw-semi-bold">Emma Watson</span
+                              ><span class="ms-1 text-500"
+                                >&lt;emma@watson.com&gt;</span
+                              ></a
+                            >
+                          </div>
+                        </div>
+                        <div
+                          class="col-md-auto ms-auto d-flex align-items-center ps-6 ps-md-3"
+                        >
+                          <small>8:40 AM (9 hours ago)</small
+                          ><span
+                            class="fas fa-star text-warning fs-10 ms-2"
+                          ></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-body bg-body-tertiary">
+                      <div class="row justify-content-center">
+                        <div class="col-lg-8 col-xxl-6">
+                          <div class="card shadow-none mb-3">
+                            <img
+                              class="card-img-top"
+                              src="../assets/img/icons/spot-illustrations/international-women-s-day-2.png"
+                              alt=""
+                            />
+                            <div class="card-body">
+                              <h3 class="fw-semi-bold">
+                                Happy International Women’s Day!
+                              </h3>
+                              <p>
+                                On International Women’s Day, we at ThemeWagon
+                                want you to discover the skills you can learn
+                                from our amazing women digital marketing
+                                instructors.
+                              </p>
+                              <p>
+                                That's not all, when you enroll in one of their
+                                courses, use promo code:
+                                <code>GirlPower20</code> and get
+                                <a class="fw-semi-bold" href="#!">20% off</a> as
+                                our Women's Day gift to you. This offer
+                                <a class="fw-semi-bold" href="#!"
+                                  >expires in 7 days</a
+                                >
+                                —so pick your course—and enroll today!
+                              </p>
+                              <div class="text-center">
+                                <button
+                                  class="btn btn-success btn-lg my-3"
+                                  type="button"
+                                >
+                                  Browse Courses</button
+                                ><small class="d-block"
+                                  >For any technical issues faced, please
+                                  contact
+                                  <a href="#!">Customer Support</a>.</small
+                                >
+                              </div>
+                            </div>
+                          </div>
+                          <div class="text-center">
+                            <div class="icon-group justify-content-center">
+                              <a class="icon-item text-facebook" href="#!"
+                                ><span class="fab fa-facebook-f"></span></a
+                              ><a class="icon-item text-twitter" href="#!"
+                                ><span class="fab fa-twitter"></span></a
+                              ><a class="icon-item text-google-plus" href="#!"
+                                ><span class="fab fa-google-plus-g"></span></a
+                              ><a class="icon-item text-linkedin" href="#!"
+                                ><span class="fab fa-linkedin-in"></span></a
+                              ><a class="icon-item text-700" href="#!"
+                                ><span class="fab fa-medium-m"></span
+                              ></a>
+                            </div>
+                            <small
+                              >If you wish to unsubscribe from all future
+                              emails, please click <a href="#!">here</a>.</small
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <div class="row justify-content-between">
+                        <div class="col">
+                          <a
+                            class="btn btn-falcon-default btn-sm"
+                            href="../../app/email/compose.html"
+                            ><span
+                              class="fas fa-reply"
+                              data-fa-transform="down-2"
+                            ></span
+                            ><span class="d-none d-sm-inline-block ms-1"
+                              >Reply</span
+                            ></a
+                          ><a
+                            class="btn btn-falcon-default btn-sm ms-2"
+                            href="../../app/email/compose.html"
+                            ><span
+                              class="fas fa-location-arrow"
+                              data-fa-transform="down-2"
+                            ></span
+                            ><span class="d-none d-sm-inline-block ms-1"
+                              >Forward</span
                             ></a
                           >
                         </div>
-                      </div>
-                      <div
-                        class="col-md-auto ms-auto d-flex align-items-center ps-6 ps-md-3"
-                      >
-                        <small>8:40 AM (9 hours ago)</small
-                        ><span
-                          class="fas fa-star text-warning fs-10 ms-2"
-                        ></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-body bg-body-tertiary">
-                    <div class="row justify-content-center">
-                      <div class="col-lg-8 col-xxl-6">
-                        <div class="card shadow-none mb-3">
-                          <img
-                            class="card-img-top"
-                            src="../assets/img/icons/spot-illustrations/international-women-s-day-2.png"
-                            alt=""
-                          />
-                          <div class="card-body">
-                            <h3 class="fw-semi-bold">
-                              Happy International Women’s Day!
-                            </h3>
-                            <p>
-                              On International Women’s Day, we at ThemeWagon
-                              want you to discover the skills you can learn from
-                              our amazing women digital marketing instructors.
-                            </p>
-                            <p>
-                              That's not all, when you enroll in one of their
-                              courses, use promo code:
-                              <code>GirlPower20</code> and get
-                              <a class="fw-semi-bold" href="#!">20% off</a> as
-                              our Women's Day gift to you. This offer
-                              <a class="fw-semi-bold" href="#!"
-                                >expires in 7 days</a
-                              >
-                              —so pick your course—and enroll today!
-                            </p>
-                            <div class="text-center">
-                              <button
-                                class="btn btn-success btn-lg my-3"
-                                type="button"
-                              >
-                                Browse Courses</button
-                              ><small class="d-block"
-                                >For any technical issues faced, please contact
-                                <a href="#!">Customer Support</a>.</small
-                              >
-                            </div>
-                          </div>
-                        </div>
-                        <div class="text-center">
-                          <div class="icon-group justify-content-center">
-                            <a class="icon-item text-facebook" href="#!"
-                              ><span class="fab fa-facebook-f"></span></a
-                            ><a class="icon-item text-twitter" href="#!"
-                              ><span class="fab fa-twitter"></span></a
-                            ><a class="icon-item text-google-plus" href="#!"
-                              ><span class="fab fa-google-plus-g"></span></a
-                            ><a class="icon-item text-linkedin" href="#!"
-                              ><span class="fab fa-linkedin-in"></span></a
-                            ><a class="icon-item text-700" href="#!"
-                              ><span class="fab fa-medium-m"></span
-                            ></a>
-                          </div>
-                          <small
-                            >If you wish to unsubscribe from all future emails,
-                            please click <a href="#!">here</a>.</small
+                        <div class="col-auto d-flex align-items-center">
+                          <small>2 of 354</small>
+                          <button
+                            class="btn btn-falcon-default btn-sm ms-2"
+                            type="button"
                           >
+                            <span class="fas fa-chevron-left"></span>
+                          </button>
+                          <button
+                            class="btn btn-falcon-default btn-sm ms-2"
+                            type="button"
+                          >
+                            <span class="fas fa-chevron-right"></span>
+                          </button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="card-footer">
-                    <div class="row justify-content-between">
-                      <div class="col">
-                        <a
-                          class="btn btn-falcon-default btn-sm"
-                          href="../../app/email/compose.html"
-                          ><span
-                            class="fas fa-reply"
-                            data-fa-transform="down-2"
-                          ></span
-                          ><span class="d-none d-sm-inline-block ms-1"
-                            >Reply</span
-                          ></a
-                        ><a
-                          class="btn btn-falcon-default btn-sm ms-2"
-                          href="../../app/email/compose.html"
-                          ><span
-                            class="fas fa-location-arrow"
-                            data-fa-transform="down-2"
-                          ></span
-                          ><span class="d-none d-sm-inline-block ms-1"
-                            >Forward</span
-                          ></a
-                        >
-                      </div>
-                      <div class="col-auto d-flex align-items-center">
-                        <small>2 of 354</small>
-                        <button
-                          class="btn btn-falcon-default btn-sm ms-2"
-                          type="button"
-                        >
-                          <span class="fas fa-chevron-left"></span>
-                        </button>
-                        <button
-                          class="btn btn-falcon-default btn-sm ms-2"
-                          type="button"
-                        >
-                          <span class="fas fa-chevron-right"></span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
                 </div>
               </article>
             </section>
@@ -20620,7 +20607,7 @@
         TOGGLE_INPUT: "#toggle-navbar",
         NAV_BUTTON: "#left-nav-bar button",
         CLOSE_BUTTON: 'button[aria-label="close article"]',
-        FULLSCREEN_BTN: "#fullscreen-btn",
+        FULLSCREEN_BTN: 'button[data-usage="fullscreen-btn"]',
       };
 
       const CLASSES = {
@@ -21370,345 +21357,588 @@
     </script>
 
     <!--    Cost Calculater Panel JS here-->
+
+    <!-- template for the result breakdown for better performance -->
+    <template id="costDetailsTemplate">
+      <div class="cost-details">
+        <h3>Cost Breakdown</h3>
+        <p>
+          <strong>Total Glass Cost:</strong>
+          $<span class="totalGlassCost"></span>
+        </p>
+        <p>
+          <strong
+            >Travel Mileage Cost (<span class="distance"></span> miles x
+            <span class="numTrips"></span> trip<span class="plural"></span
+            >):</strong
+          >
+          $<span class="travelMileageCost"></span>
+        </p>
+        <p><strong>Labor Costs:</strong></p>
+        <p>
+          - Measurement Labor (<span class="totalMeasurementTime"></span> hrs x
+          <span class="measurementTechs"></span> techs): $<span
+            class="measurementLaborCost"
+          ></span>
+        </p>
+        <p>
+          - Measurement Travel (<span class="travelTimePerTrip"></span> hrs x
+          <span class="measurementTechs"></span> techs): $<span
+            class="measurementTravelLaborCost"
+          ></span>
+        </p>
+        <p>
+          - Installation Travel (<span class="travelTimePerTrip"></span> hrs x
+          <span class="maxInstallers"></span> techs across
+          <span class="numInstallationTrucks"></span> truck<span
+            class="truckPlural"
+          ></span
+          >): $<span class="installationTravelLaborCost"></span>
+        </p>
+        <p>
+          - Installation Labor (<span class="totalInstallTime"></span> hrs x
+          <span class="maxInstallers"></span> techs): $<span
+            class="installationLaborCost"
+          ></span>
+        </p>
+        <p>
+          <strong>Total Labor Cost:</strong>
+          $<span class="totalLaborCost"></span>
+        </p>
+        <p>
+          <strong>TOTAL PROJECT COST:</strong>
+          $<span class="totalProjectCost"></span>
+        </p>
+      </div>
+    </template>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script>
-      // Using async/await to load the Excel file makes async code more readable and easier to debug.
-      document.addEventListener("DOMContentLoaded", async () => {
-        // Global variable for glass database
-        let glassDatabase = {};
+      /**
+       * @fileoverview Glass Replacement Calculator with LIB and cost breakdown template.
+       */
 
-        // Cache common DOM elements to improve performance by avoiding repeated lookups.
-        const glassTableBody = document.getElementById("glassTableBody");
-        const glassOptionsDatalist = document.getElementById("glassOptions");
-        const resultsDiv = document.getElementById("results");
-        const glassForm = document.getElementById("glassForm");
+      // Global variable for glass database (now including Pounds per Sq Ft for LIB)
+      let glassDatabase = {};
 
-        // Helper Function: Populate the datalist with glass types.
-        function populateGlassDatalist(database) {
-          glassOptionsDatalist.innerHTML = "";
-          Object.keys(database).forEach((type) => {
-            const option = document.createElement("option");
-            option.value = type;
-            glassOptionsDatalist.appendChild(option);
-          });
+      // Cache common DOM elements for performance.
+      const glassTableBody = document.getElementById("glassTableBody");
+      const glassOptionsDatalist = document.getElementById("glassOptions");
+      const resultsDiv = document.getElementById("results");
+      const glassForm = document.getElementById("glassForm");
+
+      /**
+       * Populates the datalist with glass type options.
+       * @param {Object} database - The glass database.
+       */
+      function populateGlassDatalist(database) {
+        glassOptionsDatalist.innerHTML = "";
+        Object.keys(database).forEach((type) => {
+          const option = document.createElement("option");
+          option.value = type;
+          glassOptionsDatalist.appendChild(option);
+        });
+      }
+
+      /**
+       * Creates a DOM element that displays the glass details.
+       * @param {Object} glass - Glass detail object.
+       * @returns {HTMLElement} The created glass detail element.
+       */
+      function createGlassDetailElement(glass) {
+        const div = document.createElement("div");
+        div.classList.add("glass-item");
+        div.innerHTML = `
+          <p><strong>Piece #${glass.piece}</strong></p>
+          <p>Dimensions: ${glass.width.toFixed(1)}in x ${glass.height.toFixed(1)}in</p>
+          <p>Type: ${glass.type}</p>
+          <p>Area: ${glass.area.toFixed(2)} sq ft</p>
+          <p>LIB: ${glass.lib} lbs (${getMinTechs(glass.lib)} techs)</p>
+          <p>Cost: $${glass.cost.toFixed(2)}</p>
+          <p>Installers Needed: ${glass.installers}</p>
+          <p>Installation Time: ${glass.installTime.toFixed(1)} hrs</p>
+        `;
+        return div;
+      }
+
+      /**
+       * Calculates the overall project costs.
+       *
+       * @param {Array<Object>} glassDetails - Array of glass detail objects.
+       * @param {number} distance - Travel distance in miles.
+       * @param {number} mileageRate - Mileage rate in $/mile.
+       * @param {number} measurementTechs - Number of technicians for measurement.
+       * @param {number} laborRate - Hourly labor rate per tech.
+       * @param {number} totalInstallers - Maximum number of installers across pieces.
+       * @returns {Object} An object containing various cost breakdowns.
+       */
+      function calculateProjectCost(
+        glassDetails,
+        distance,
+        mileageRate,
+        measurementTechs,
+        laborRate,
+        totalInstallers,
+      ) {
+        // Determine trips: if measurementTechs > 0 and distance > 0, then one measurement trip.
+        let numMeasurementTrips = 0;
+        if (measurementTechs > 0 && distance > 0) {
+          numMeasurementTrips = 1;
         }
+        // Determine number of installation trucks (2 techs per truck)
+        const numInstallationTrucks = Math.ceil(totalInstallers / 2);
+        // For installation, assume one trip per truck.
+        const numTrips = numMeasurementTrips + numInstallationTrucks;
 
-        // Helper Function: Add a new row to the glass table (DRY approach).
-        function addNewRow(pieceNumber) {
-          const newRow = document.createElement("tr");
-          newRow.className = "glass-row";
-          newRow.innerHTML = `
-            <td>${pieceNumber}</td>
-            <td><input type="text" class="width" placeholder="e.g., 36"></td>
-            <td><input type="text" class="height" placeholder="e.g., 48"></td>
-            <td>
-              <input type="text" class="glassType" list="glassOptions" placeholder="Search glass type...">
-            </td>
-            <td><input type="text" class="pricePerSqft" readonly placeholder="Auto-filled"></td>
-            <td><input type="text" class="installers" placeholder="e.g., 1"></td>
-            <td><input type="text" class="installTime" placeholder="e.g., 0.5"></td>
-          `;
-          glassTableBody.appendChild(newRow);
-        }
+        // Measurement labor: 10 minutes per glass piece in hours.
+        const totalMeasurementTime =
+          measurementTechs === 0 || glassDetails.length === 0
+            ? 0
+            : (glassDetails.length * 10) / 60;
+        const measurementLaborCost =
+          measurementTechs === 0
+            ? 0
+            : totalMeasurementTime * measurementTechs * laborRate;
 
-        // Helper Function: Creates a DOM element to display glass details.
-        function createGlassDetailElement(glass) {
-          const div = document.createElement("div");
-          div.classList.add("glass-item");
-          div.innerHTML = `
-              <p><strong>Piece #${glass.piece}</strong></p>
-              <p>Dimensions: ${glass.width.toFixed(1)}in x ${glass.height.toFixed(1)}in</p>
-              <p>Type: ${glass.type}</p>
-              <p>Area: ${glass.area.toFixed(2)} sq ft</p>
-              <p>Cost: $${glass.cost.toFixed(2)}</p>
-              <p>Installers Needed: ${glass.installers}</p>
-              <p>Installation Time: ${glass.installTime.toFixed(1)} hrs</p>
-          `;
-          return div;
-        }
+        // Travel time per trip: 2 minutes per mile, converted to hours.
+        const travelTimePerTrip = (distance * 2) / 60;
 
-        // Helper Function: Calculate all the cost components and return as an object.
-        // Modularizing the calculations makes it easier to maintain and test.
-        function calculateProjectCost(
-          glassDetails,
-          distance,
-          mileageRate,
-          measurementTechs,
-          laborRate,
-        ) {
-          // Determine number of trips: measurement + installation if measurementTechs > 0 && distance > 0.
-          let numTrips = 1;
-          if (measurementTechs > 0 && distance > 0) {
-            numTrips = 2;
+        const measurementTravelLaborCost =
+          measurementTechs === 0 || distance === 0
+            ? 0
+            : travelTimePerTrip * measurementTechs * laborRate;
+
+        // Installation travel labor cost: For each truck, 2 techs (or remaining) are used.
+        let installationTravelLaborCost = 0;
+        for (let i = 0; i < numInstallationTrucks; i++) {
+          const techsInTruck = Math.min(2, totalInstallers - i * 2);
+          if (techsInTruck > 0) {
+            installationTravelLaborCost +=
+              travelTimePerTrip * techsInTruck * laborRate;
           }
+        }
 
-          // Measurement labor: 10 minutes per piece converted to hours.
-          const totalMeasurementTime = (glassDetails.length * 10) / 60;
-          const measurementLaborCost =
-            measurementTechs === 0
-              ? 0
-              : totalMeasurementTime * measurementTechs * laborRate;
+        // Travel mileage cost: distance * mileage rate * total trips
+        const travelMileageCost =
+          distance === 0 ? 0 : distance * mileageRate * numTrips;
 
-          // Travel time per trip is 2 minutes per mile, converted to hours.
-          const travelTimePerTrip = (distance * 2) / 60;
+        // Installation labor: total installers * install time and labor rate
+        const totalInstallTime = glassDetails.reduce(
+          (sum, glass) => sum + glass.installers * glass.installTime,
+          0,
+        );
+        const installationLaborCost = glassDetails.reduce(
+          (sum, glass) =>
+            sum + glass.installers * glass.installTime * laborRate,
+          0,
+        );
 
-          const maxInstallers =
-            glassDetails.length > 0
-              ? Math.max(...glassDetails.map((g) => g.installers))
-              : 1;
-
-          const measurementTravelLaborCost =
-            measurementTechs === 0 || distance === 0
-              ? 0
-              : travelTimePerTrip * measurementTechs * laborRate;
-
-          // For installation travel labor, only apply if no measurement trip was needed (numTrips === 1).
-          const installationTravelLaborCost =
-            distance > 0 && numTrips === 1
-              ? travelTimePerTrip * maxInstallers * laborRate
-              : 0;
-
-          // Installation labor cost is calculated directly using the provided installation hours.
-          const totalInstallTime = glassDetails.reduce(
-            (sum, glass) => sum + glass.installTime,
-            0,
-          );
-          const installationLaborCost =
-            totalInstallTime * maxInstallers * laborRate;
-
-          // Mileage cost based on number of trips.
-          const travelMileageCost =
-            distance === 0 ? 0 : distance * mileageRate * numTrips;
-          const totalGlassCost = glassDetails.reduce(
-            (sum, glass) => sum + glass.cost,
-            0,
-          );
-          const totalLaborCost =
+        const totalGlassCost = glassDetails.reduce(
+          (sum, glass) => sum + glass.cost,
+          0,
+        );
+        const totalLaborCost = parseFloat(
+          (
             measurementLaborCost +
             measurementTravelLaborCost +
             installationTravelLaborCost +
-            installationLaborCost;
-          const totalProjectCost =
-            totalGlassCost + travelMileageCost + totalLaborCost;
+            installationLaborCost
+          ).toFixed(2),
+        );
+        const totalProjectCost = parseFloat(
+          (totalGlassCost + travelMileageCost + totalLaborCost).toFixed(2),
+        );
 
-          return {
-            totalGlassCost,
-            travelMileageCost,
-            measurementLaborCost,
-            measurementTravelLaborCost,
-            installationTravelLaborCost,
-            installationLaborCost,
-            totalLaborCost,
-            totalProjectCost,
-            numTrips,
-            travelTimePerTrip,
-            totalMeasurementTime,
-            totalInstallTime,
-            maxInstallers,
-          };
-        }
+        return {
+          totalGlassCost,
+          travelMileageCost,
+          measurementLaborCost,
+          measurementTravelLaborCost,
+          installationTravelLaborCost,
+          installationLaborCost,
+          totalLaborCost,
+          totalProjectCost,
+          numTrips,
+          travelTimePerTrip,
+          totalMeasurementTime,
+          totalInstallTime,
+          maxInstallers: totalInstallers,
+          numInstallationTrucks,
+        };
+      }
 
-        // Load the glass prices using an async function
+      /**
+       * Populates the cost details using a cloned <template>.
+       *
+       * @param {Object} costs - The calculated cost breakdown.
+       * @param {number} distance - The travel distance.
+       * @param {number} measurementTechs - Number of measurement technicians.
+       * @returns {DocumentFragment} The populated template fragment.
+       */
+      function populateCostDetails(costs, distance, measurementTechs) {
+        // UPDATED CODE: Using template logic instead of template literal.
+        const template = document.getElementById("costDetailsTemplate");
+        const clone = template.content.cloneNode(true);
+
+        // Set values for cost details.
+        clone.querySelector(".totalGlassCost").textContent =
+          costs.totalGlassCost.toFixed(2);
+        clone.querySelector(".distance").textContent = distance;
+        clone.querySelector(".numTrips").textContent = costs.numTrips;
+        clone.querySelector(".plural").textContent =
+          costs.numTrips > 1 ? "s" : "";
+        clone.querySelector(".travelMileageCost").textContent =
+          costs.travelMileageCost.toFixed(2);
+        clone.querySelector(".totalMeasurementTime").textContent =
+          costs.totalMeasurementTime.toFixed(2);
+        clone.querySelector(".measurementTechs").textContent =
+          measurementTechs || 1;
+        clone.querySelector(".measurementLaborCost").textContent =
+          costs.measurementLaborCost.toFixed(2);
+
+        // There are two elements for travelTimePerTrip; update both.
+        clone.querySelectorAll(".travelTimePerTrip").forEach((elem) => {
+          elem.textContent = costs.travelTimePerTrip.toFixed(2);
+        });
+
+        clone.querySelector(".measurementTravelLaborCost").textContent =
+          costs.measurementTravelLaborCost.toFixed(2);
+        clone.querySelector(".maxInstallers").textContent = costs.maxInstallers;
+        clone.querySelector(".installationTravelLaborCost").textContent =
+          costs.installationTravelLaborCost.toFixed(2);
+        clone.querySelector(".totalInstallTime").textContent =
+          costs.totalInstallTime.toFixed(2);
+        clone.querySelector(".installationLaborCost").textContent =
+          costs.installationLaborCost.toFixed(2);
+        clone.querySelector(".totalLaborCost").textContent =
+          costs.totalLaborCost.toFixed(2);
+        clone.querySelector(".totalProjectCost").textContent =
+          costs.totalProjectCost.toFixed(2);
+
+        // Set number of installation trucks and pluralize if needed.
+        clone.querySelector(".numInstallationTrucks").textContent =
+          costs.numInstallationTrucks;
+        clone.querySelector(".truckPlural").textContent =
+          costs.numInstallationTrucks > 1 ? "s" : "";
+
+        return clone;
+      }
+
+      // UPDATED CODE: Use async/await for loading Glass Prices and LIB data.
+      document.addEventListener("DOMContentLoaded", async () => {
         try {
-          // const response = await fetch("glass_prices.xlsx");
           const response = await fetch("../assets/docs/glass_prices.xlsx");
           const blob = await response.blob();
           const arrayBuffer = await blob.arrayBuffer();
           const data = new Uint8Array(arrayBuffer);
           const workbook = XLSX.read(data, { type: "array" });
           const sheet = workbook.Sheets[workbook.SheetNames[0]];
+          // Note: Now reading three headers: Glass Type, Price/Sq Ft, and Pounds per Sq Ft.
           const jsonData = XLSX.utils.sheet_to_json(sheet, {
-            header: ["Glass Type", "Price/Sq Ft"],
+            // header: ["Glass Type", "Price/Sq Ft", "Pounds per Sq Ft"],
+            header: ["GLASS", "Price", "Weight"],
           });
-
           glassDatabase = jsonData.reduce((acc, row) => {
-            acc[row["Glass Type"]] = parseFloat(row["Price/Sq Ft"]) || 0;
+            acc[row["GLASS"]] = {
+              price: parseFloat(row["Price"]) || 0,
+              poundsPerSqFt: parseFloat(row["Weight"]) || 0,
+            };
             return acc;
           }, {});
           populateGlassDatalist(glassDatabase);
           console.log(
-            "Glass prices loaded from glass_prices.xlsx successfully!",
+            "Glass prices and LIB loaded from glass_prices.xlsx successfully!",
           );
         } catch (error) {
           console.error("Error loading glass_prices.xlsx:", error);
-          // Fallback default data if file isn’t found.
+          // Fallback default database.
           glassDatabase = {
-            "1/8 clear ann": 10.0,
-            "1/4 tempered": 15.0,
-            "double pane": 12.0,
-            "low-e glass": 18.0,
-            "tinted glass": 14.0,
-            "CLEAR / CLEAR": 16.24,
+            "1/8 clear ann": { price: 10.0, poundsPerSqFt: 1.5 },
+            "1/4 tempered": { price: 15.0, poundsPerSqFt: 2.5 },
+            "double pane": { price: 12.0, poundsPerSqFt: 3.0 },
+            "low-e glass": { price: 18.0, poundsPerSqFt: 2.8 },
+            "tinted glass": { price: 14.0, poundsPerSqFt: 2.0 },
+            "3/16 CARDINAL 272 / CLEAR ANN": {
+              price: 30.0,
+              poundsPerSqFt: 13.0,
+            },
           };
           populateGlassDatalist(glassDatabase);
           console.log(
-            "Using default glass prices due to missing glass_prices.xlsx. Please place the file in the same folder and refresh.",
+            "Using default glass prices and LIB due to missing glass_prices.xlsx. Please place the file in the same folder and refresh.",
           );
         }
 
-        // Debounce wrapper to avoid excessive processing on rapid input events.
-        let debounceTimeout;
-        glassTableBody.addEventListener("input", (e) => {
-          clearTimeout(debounceTimeout);
-          debounceTimeout = setTimeout(() => {
-            const target = e.target;
-            const currentRow = target.closest("tr");
-            if (currentRow) {
-              // Update price if user is modifying glass type.
-              if (target.classList.contains("glassType")) {
-                const glassType = target.value.trim();
-                const priceInput = currentRow.querySelector(".pricePerSqft");
-                const price = glassDatabase[glassType] || 0;
-                priceInput.value = price.toFixed(2);
-              }
+        // Handle dynamic row addition and updates for SF, LIB, and minimum techs.
+        glassTableBody.addEventListener("input", function (e) {
+          const rows = document.getElementsByClassName("glass-row");
+          const lastRow = rows[rows.length - 1];
+          const inputs = lastRow.querySelectorAll("input");
+          const allFilled = Array.from(inputs).every(
+            (input) => input.value.trim() !== "",
+          );
 
-              // Check if current row is the last row and if all inputs are filled.
-              const rows = document.getElementsByClassName("glass-row");
-              const lastRow = rows[rows.length - 1];
-              const inputs = Array.from(currentRow.querySelectorAll("input"));
-              if (
-                currentRow === lastRow &&
-                inputs.every((inp) => inp.value.trim() !== "")
-              ) {
-                addNewRow(rows.length + 1);
-              }
+          // If last row is fully filled, add a new row.
+          if (allFilled) {
+            const rowCount = rows.length + 1;
+            const newRow = document.createElement("tr");
+            newRow.className = "glass-row";
+            newRow.innerHTML = `
+              <td class="hide-mobile">${rowCount}</td>
+              <td><input type="text" class="width" placeholder="e.g., 36"></td>
+              <td><input type="text" class="height" placeholder="e.g., 48"></td>
+              <td class="sf hide-mobile">
+                <span class="td-placeholder">0 (1/8)</span>
+              </td>
+              <td class="lib hide-mobile">
+                <span class="td-placeholder">0 (1)</span>
+              </td>
+              <td>
+                <input type="text" class="glassType" list="glassOptions" placeholder="Search glass type...">
+              </td>
+              <td class="hide-mobile"><input type="text" class="pricePerSqft" readonly placeholder="Auto-filled"/></td>
+              <td><input type="text" class="installers" placeholder="e.g., 1"></td>
+              <td><input type="text" class="installTime" placeholder="e.g., 0.5"></td>
+            `;
+            glassTableBody.appendChild(newRow);
+          }
+
+          // Update SF, LIB, and min techs on each row.
+          const allRows = document.getElementsByClassName("glass-row");
+          for (let row of allRows) {
+            const width =
+              parseFloat(row.querySelector(".width")?.value.trim()) || 0;
+            const height =
+              parseFloat(row.querySelector(".height")?.value.trim()) || 0;
+            const glassType =
+              row.querySelector(".glassType")?.value.trim() || "";
+            const sfCell = row.querySelector(".sf");
+            const libCell = row.querySelector(".lib");
+            const priceInput = row.querySelector(".pricePerSqft");
+
+            // Calculate SF (Square Footage)
+            const area = (width / 12) * (height / 12);
+            const sf = Math.floor(area * 100) / 100; // Round to 2 decimals.
+            const thickness = getRecommendedThickness(sf);
+            sfCell.textContent = `${sf} (${thickness})`;
+
+            // Update price, LIB, and minimum technicians.
+            if (glassType && glassDatabase[glassType]) {
+              priceInput.value = glassDatabase[glassType].price.toFixed(2);
+              const lib = Math.floor(
+                area * glassDatabase[glassType].poundsPerSqFt,
+              ); // LIB as integer.
+              const minTechs = getMinTechs(lib);
+              libCell.textContent = `${lib} (${minTechs})`;
+            } else {
+              priceInput.value = "0.00";
+              libCell.textContent = "0 (1)";
             }
-          }, 100); // Adjust debounce delay as needed.
+          }
+        });
+
+        // Also update when glass type field changes, as a separate listener.
+        glassTableBody.addEventListener("input", function (e) {
+          if (e.target.className === "glassType") {
+            const row = e.target.closest("tr");
+            const glassType = e.target.value.trim();
+            const priceInput = row.querySelector(".pricePerSqft");
+            const sfCell = row.querySelector(".sf");
+            const libCell = row.querySelector(".lib");
+            const width =
+              parseFloat(row.querySelector(".width").value.trim()) || 0;
+            const height =
+              parseFloat(row.querySelector(".height").value.trim()) || 0;
+
+            const area = (width / 12) * (height / 12);
+            const sf = Math.floor(area * 100) / 100;
+            const thickness = getRecommendedThickness(sf);
+            sfCell.textContent = `${sf} (${thickness})`;
+
+            if (glassType && glassDatabase[glassType]) {
+              priceInput.value = glassDatabase[glassType].price.toFixed(2);
+              const lib = Math.floor(
+                area * glassDatabase[glassType].poundsPerSqFt,
+              );
+              const minTechs = getMinTechs(lib);
+              libCell.textContent = `${lib} (${minTechs})`;
+            } else {
+              priceInput.value = "0.00";
+              libCell.textContent = "0 (1)";
+            }
+          }
         });
 
         // Handle form submission and perform all calculations.
-        glassForm.addEventListener("submit", (e) => {
+        glassForm.addEventListener("submit", function (e) {
           e.preventDefault();
 
-          // Collect glass details, skipping completely empty rows.
-          const rows = document.getElementsByClassName("glass-row");
-          let glassDetails = [];
+          try {
+            // Collect glass details, skipping empty rows.
+            const rows = document.getElementsByClassName("glass-row");
+            let glassDetails = [];
 
-          for (let i = 0; i < rows.length; i++) {
-            const row = rows[i];
-            const inputs = Array.from(row.querySelectorAll("input"));
-            const isEmpty = inputs.every((input) => input.value.trim() === "");
+            for (let i = 0; i < rows.length; i++) {
+              const row = rows[i];
+              const inputs = row.querySelectorAll("input");
+              const isEmpty = Array.from(inputs).every(
+                (input) => input.value.trim() === "",
+              );
 
-            if (!isEmpty) {
-              // Trim the input values and parse; default to 0 or a default value if missing.
-              const width =
-                parseFloat(row.querySelector(".width").value.trim()) || 0;
-              const height =
-                parseFloat(row.querySelector(".height").value.trim()) || 0;
-              const glassType =
-                row.querySelector(".glassType").value.trim() || "N/A";
-              const pricePerSqft =
-                parseFloat(row.querySelector(".pricePerSqft").value.trim()) ||
-                0;
-              const installers =
-                parseInt(row.querySelector(".installers").value.trim()) || 1;
-              const installTime =
-                parseFloat(row.querySelector(".installTime").value.trim()) || 0;
+              if (!isEmpty) {
+                const width =
+                  parseFloat(row.querySelector(".width").value.trim()) || 0;
+                const height =
+                  parseFloat(row.querySelector(".height").value.trim()) || 0;
+                const glassType =
+                  row.querySelector(".glassType").value.trim() || "N/A";
+                const pricePerSqft =
+                  parseFloat(row.querySelector(".pricePerSqft").value.trim()) ||
+                  0;
+                const installers =
+                  parseInt(row.querySelector(".installers").value.trim()) || 1;
+                const installTime =
+                  parseFloat(row.querySelector(".installTime").value.trim()) ||
+                  0;
 
-              // Calculate area in square feet (conversion from inches).
-              const area = (width / 12) * (height / 12);
-              const cost = area * pricePerSqft;
+                // Skip rows that are effectively empty.
+                if (
+                  width === 0 &&
+                  height === 0 &&
+                  glassType === "N/A" &&
+                  installers === 1 &&
+                  installTime === 0
+                ) {
+                  continue;
+                }
 
-              glassDetails.push({
-                piece: glassDetails.length + 1,
-                width,
-                height,
-                type: glassType,
-                area,
-                cost,
-                installers,
-                installTime,
-              });
+                const area = (width / 12) * (height / 12);
+                const cost = area * pricePerSqft;
+                const lib = Math.floor(
+                  area *
+                    (glassDatabase[glassType]
+                      ? glassDatabase[glassType].poundsPerSqFt
+                      : 0),
+                );
+
+                glassDetails.push({
+                  piece: glassDetails.length + 1,
+                  width,
+                  height,
+                  type: glassType,
+                  area,
+                  cost,
+                  lib,
+                  installers,
+                  installTime,
+                });
+              }
             }
+
+            console.log("Debug - glassDetails:", glassDetails);
+
+            // Travel and labor inputs.
+            const distance =
+              parseFloat(document.getElementById("distance").value.trim()) || 0;
+            const mileageRate =
+              parseFloat(document.getElementById("mileageRate").value.trim()) ||
+              1.5;
+            const measurementTechs =
+              parseInt(
+                document.getElementById("measurementTechs").value.trim(),
+              ) || 0;
+            const laborRate =
+              parseFloat(document.getElementById("laborRate").value.trim()) ||
+              100;
+
+            console.log(
+              "Debug - Inputs:",
+              distance,
+              mileageRate,
+              measurementTechs,
+              laborRate,
+            );
+
+            // Determine total installers (max among pieces)
+            const totalInstallers =
+              glassDetails.length > 0
+                ? Math.max(...glassDetails.map((g) => g.installers))
+                : 1;
+
+            // Calculate costs.
+            const costs = calculateProjectCost(
+              glassDetails,
+              distance,
+              mileageRate,
+              measurementTechs,
+              laborRate,
+              totalInstallers,
+            );
+
+            // Display results.
+            resultsDiv.style.display = "block";
+            resultsDiv.innerHTML = "";
+
+            const header = document.createElement("h2");
+            header.textContent = "Project Breakdown";
+            resultsDiv.appendChild(header);
+
+            if (glassDetails.length === 0 && distance === 0) {
+              const p = document.createElement("p");
+              p.textContent =
+                "No glass pieces or travel distance entered. Costs reflect defaults only.";
+              resultsDiv.appendChild(p);
+            } else {
+              const detailsHeader = document.createElement("h3");
+              detailsHeader.textContent = "Glass Details:";
+              resultsDiv.appendChild(detailsHeader);
+
+              glassDetails.forEach((glass) => {
+                const detailDiv = createGlassDetailElement(glass);
+                resultsDiv.appendChild(detailDiv);
+              });
+
+              // UPDATED CODE: Use the template-based cost breakdown instead of a string literal.
+              const costDetailsFragment = populateCostDetails(
+                costs,
+                distance,
+                measurementTechs,
+              );
+              resultsDiv.appendChild(costDetailsFragment);
+            }
+          } catch (error) {
+            console.error("Error in form submission:", error);
+            resultsDiv.style.display = "block";
+            resultsDiv.innerHTML = `<h2>Error</h2><p>An error occurred: ${error.message}. Check the console for details.</p>`;
           }
-
-          // Collect travel and labor inputs.
-          const distance =
-            parseFloat(document.getElementById("distance").value.trim()) || 0;
-          const mileageRate =
-            parseFloat(document.getElementById("mileageRate").value.trim()) ||
-            1.5;
-          const measurementTechs =
-            parseInt(
-              document.getElementById("measurementTechs").value.trim(),
-            ) || 0;
-          const laborRate =
-            parseFloat(document.getElementById("laborRate").value.trim()) ||
-            100;
-
-          // Use the modularized cost calculation function.
-          const costs = calculateProjectCost(
-            glassDetails,
-            distance,
-            mileageRate,
-            measurementTechs,
-            laborRate,
-          );
-
-          // Build the results using DOM manipulation to reduce reflows.
-          resultsDiv.style.display = "block";
-          resultsDiv.innerHTML = ""; // Clear previous results.
-
-          const h2 = document.createElement("h2");
-          h2.textContent = "Project Breakdown";
-          resultsDiv.appendChild(h2);
-
-          if (glassDetails.length === 0) {
-            const p = document.createElement("p");
-            p.textContent =
-              "No glass pieces entered. Costs reflect travel and labor defaults only.";
-            resultsDiv.appendChild(p);
-          } else {
-            const h3 = document.createElement("h3");
-            h3.textContent = "Glass Details:";
-            resultsDiv.appendChild(h3);
-
-            glassDetails.forEach((glass) => {
-              const detailDiv = createGlassDetailElement(glass);
-              resultsDiv.appendChild(detailDiv);
-            });
-          }
-
-          // Build cost details using template literal for brevity.
-          const costDetailsHTML = `
-      <p><strong>Total Glass Cost:</strong> $${costs.totalGlassCost.toFixed(
-        2,
-      )}</p>
-      <p><strong>Travel Mileage Cost (${
-        distance
-      } miles x ${costs.numTrips} trip${costs.numTrips > 1 ? "s" : ""}):</strong>
-      $${costs.travelMileageCost.toFixed(2)}</p>
-      <p><strong>Labor Costs:</strong></p>
-      <p>- Measurement Labor (${costs.totalMeasurementTime.toFixed(
-        2,
-      )} hrs x ${measurementTechs || 1} techs): $${costs.measurementLaborCost.toFixed(
-        2,
-      )}</p>
-      <p>- Measurement Travel (${
-        measurementTechs === 0 || distance === 0
-          ? "0"
-          : costs.travelTimePerTrip.toFixed(2)
-      } hrs x ${measurementTechs || 1} techs): $${costs.measurementTravelLaborCost.toFixed(
-        2,
-      )}</p>
-      <p>- Installation Travel (${costs.travelTimePerTrip.toFixed(
-        2,
-      )} hrs x ${costs.maxInstallers} techs): $${costs.installationTravelLaborCost.toFixed(
-        2,
-      )}</p>
-      <p>- Installation Labor (${costs.totalInstallTime.toFixed(
-        2,
-      )} hrs x ${costs.maxInstallers} techs): $${costs.installationLaborCost.toFixed(
-        2,
-      )}</p>
-      <p><strong>Total Labor Cost:</strong> $${costs.totalLaborCost.toFixed(2)}</p>
-      <p><strong>TOTAL PROJECT COST:</strong> $${costs.totalProjectCost.toFixed(
-        2,
-      )}</p>
-    `;
-          resultsDiv.insertAdjacentHTML("beforeend", costDetailsHTML);
         });
       });
+
+      /**
+       * Determines the recommended glass thickness based on square footage.
+       * @param {number} sf - Square footage.
+       * @returns {string} The recommended glass thickness.
+       */
+      function getRecommendedThickness(sf) {
+        if (sf <= 20) return "1/8";
+        if (sf <= 28) return "3/32";
+        if (sf <= 36) return "3/16";
+        return "1/4"; // For 40 sf or more.
+      }
+
+      /**
+       * Determines the recommended minimum technicians based on LIB.
+       * @param {number} lib - LIB (Pounds per square foot).
+       * @returns {number} The recommended minimum number of technicians.
+       */
+      function getMinTechs(lib) {
+        if (lib <= 50) return 1;
+        if (lib <= 100) return 2;
+        if (lib <= 150) return 3;
+        if (lib <= 200) return 4;
+        if (lib <= 250) return 5;
+        if (lib <= 300) return 6;
+        return 6; // Cap at 6 technicians if LIB > 300.
+      }
     </script>
 
     <!-- Load jQuery (if needed) and Flatpickr JS from CDN -->
