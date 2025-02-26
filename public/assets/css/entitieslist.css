@@ -3473,13 +3473,51 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
 }
 
 .email-content {
+  --_email-content-header-max-height: 3.75rem;
   overflow-y: auto;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
 }
 
-.email-content header.card > .card-body > div:nth-child(2) > div:nth-child(1) {
+.email-content .email-content-header {
+  max-height: var(--_email-content-header-max-height);
+  box-shadow: none;
+  height: 100%;
+}
+
+
+.email-content
+  .email-content-header
+  > .card-body
+  > div:nth-child(2)
+  > div:nth-child(1) {
   padding-top: 0;
+}
+
+
+.email-content .email-content-body {
+  overflow-x: clip;
+  overflow-y: auto;
+  max-height: calc(100dvh - var(--_email-content-header-max-height));
+}
+
+
+@media (min-width: 992px) {
+
+  @container side-panel (max-width: 405px) {
+    .email-content
+    .email-content-header
+    > .card-body
+    > div:nth-child(2)
+    > div:nth-child(1) {
+      display: none !important;
+    }
+  }
+
+
+  .email-content .email-content-body .card-body > div > div{
+   width: 100%;
+  }
 }
 
 /*------ chat panel area---------*/
