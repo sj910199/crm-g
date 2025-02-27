@@ -3421,8 +3421,9 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
   overflow-x: clip;
 }
 
-.email-nav-body a.d-contents {
-  color: inherit;
+.email-nav-body .unread .email-date,
+.email-nav-body .unread a {
+  font-weight: 600;
 }
 
 .email-nav-body > div {
@@ -3501,6 +3502,14 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
   max-height: calc(100dvh - var(--_email-content-header-max-height));
 }
 
+
+.email-content
+.email-content-body
+> .card-body{
+  max-width: 50rem;
+  margin-right: auto;
+  margin-left: auto;
+}
 
 @media (min-width: 992px) {
 
@@ -3587,7 +3596,7 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
   z-index: 0 !important;
 }
 
-.active-chat {
+.active-state {
   z-index: 1;
   height: auto;
   opacity: 1;
