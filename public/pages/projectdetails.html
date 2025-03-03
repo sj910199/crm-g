@@ -8443,6 +8443,7 @@
                           data-bs-placement="top"
                           title="Mark as read"
                         >
+                          <span class="fas fa-envelope"></span>
                           <span class="fas fa-envelope-open"></span>
                         </button>
                         <button
@@ -8583,6 +8584,7 @@
                           data-bs-placement="top"
                           title="Mark as read"
                         >
+                          <span class="fas fa-envelope"></span>
                           <span class="fas fa-envelope-open"></span>
                         </button>
                         <button
@@ -8703,6 +8705,7 @@
                           data-bs-placement="top"
                           title="Mark as read"
                         >
+                          <span class="fas fa-envelope"></span>
                           <span class="fas fa-envelope-open"></span>
                         </button>
                         <button
@@ -8827,6 +8830,7 @@
                           data-bs-placement="top"
                           title="Mark as read"
                         >
+                          <span class="fas fa-envelope"></span>
                           <span class="fas fa-envelope-open"></span>
                         </button>
                         <button
@@ -8955,6 +8959,7 @@
                           data-bs-placement="top"
                           title="Mark as read"
                         >
+                          <span class="fas fa-envelope"></span>
                           <span class="fas fa-envelope-open"></span>
                         </button>
                         <button
@@ -9076,6 +9081,7 @@
                           data-bs-placement="top"
                           title="Mark as read"
                         >
+                          <span class="fas fa-envelope"></span>
                           <span class="fas fa-envelope-open"></span>
                         </button>
                         <button
@@ -9194,6 +9200,7 @@
                           data-bs-placement="top"
                           title="Mark as read"
                         >
+                          <span class="fas fa-envelope"></span>
                           <span class="fas fa-envelope-open"></span>
                         </button>
                         <button
@@ -9207,7 +9214,7 @@
                         </button>
                       </div>
 
-                      <span  class="email-date">Jan 16</span
+                      <span class="email-date">Jan 16</span
                       ><span
                         class="far text-300 fa-star ms-auto mb-2 d-sm-none"
                         data-fa-transform="down-7"
@@ -9314,6 +9321,7 @@
                           data-bs-placement="top"
                           title="Mark as read"
                         >
+                          <span class="fas fa-envelope"></span>
                           <span class="fas fa-envelope-open"></span>
                         </button>
                         <button
@@ -9433,6 +9441,7 @@
                           data-bs-placement="top"
                           title="Mark as read"
                         >
+                          <span class="fas fa-envelope"></span>
                           <span class="fas fa-envelope-open"></span>
                         </button>
                         <button
@@ -9568,6 +9577,7 @@
                           data-bs-placement="top"
                           title="Mark as read"
                         >
+                          <span class="fas fa-envelope"></span>
                           <span class="fas fa-envelope-open"></span>
                         </button>
                         <button
@@ -9696,6 +9706,7 @@
                           data-bs-placement="top"
                           title="Mark as read"
                         >
+                          <span class="fas fa-envelope"></span>
                           <span class="fas fa-envelope-open"></span>
                         </button>
                         <button
@@ -9824,6 +9835,7 @@
                           data-bs-placement="top"
                           title="Mark as read"
                         >
+                          <span class="fas fa-envelope"></span>
                           <span class="fas fa-envelope-open"></span>
                         </button>
                         <button
@@ -9874,10 +9886,7 @@
               </div>
 
               <!-- email content area -->
-              <article
-                id="email-contents"
-                class="card email-content"
-              >
+              <article id="email-contents" class="card email-content">
                 <div id="email-1" class="inactive-state">
                   <header class="card email-content-header border-bottom">
                     <div class="card-body d-flex justify-content-between">
@@ -9915,6 +9924,7 @@
                           data-bs-placement="top"
                           title="Mark as unread"
                         >
+                          <span class="fas fa-envelope-open"></span>
                           <span class="fas fa-envelope"></span>
                         </button>
                         <button
@@ -10173,6 +10183,7 @@
                           data-bs-placement="top"
                           title="Mark as unread"
                         >
+                          <span class="fas fa-envelope-open"></span>
                           <span class="fas fa-envelope"></span>
                         </button>
                         <button
@@ -10423,6 +10434,7 @@
                           data-bs-placement="top"
                           title="Mark as unread"
                         >
+                          <span class="fas fa-envelope-open"></span>
                           <span class="fas fa-envelope"></span>
                         </button>
                         <button
@@ -10673,6 +10685,7 @@
                           data-bs-placement="top"
                           title="Mark as unread"
                         >
+                          <span class="fas fa-envelope-open"></span>
                           <span class="fas fa-envelope"></span>
                         </button>
                         <button
@@ -11840,10 +11853,10 @@
                     <div
                       class="hover-actions-trigger chat-contact nav-item"
                       role="tab"
-                      id="chat-link-1"
+                      id="chat-link-11"
                       data-bs-toggle="tab"
-                      data-bs-target="#chat-1"
-                      aria-controls="chat-1"
+                      data-bs-target="#chat-11"
+                      aria-controls="chat-11"
                       aria-selected="false"
                     >
                       <div class="">
@@ -21742,6 +21755,14 @@
         FULLSCREEN_MENU_NAV: "fullscreen-inbox-nav",
       };
 
+      const EMAIL_PANEL_SELECTORS = {
+        MARK_READ_BTN: "button[aria-label='mark as read' i]",
+        MARK_UNREAD_BTN: "button[aria-label='mark as unread' i]",
+        READ_BTN_ARIA: "mark as read",
+        UNREAD_BTN_ARIA: "mark as unread",
+        DATA_TRIGGER_BTN: "button[data-trigger]",
+      };
+
       const INBOX_TITLE_IDS = {
         all: "all-heading",
         snoozed: "snoozed-heading",
@@ -21955,9 +21976,39 @@
           this.activeContentElTracker.chat = chatContent;
         }
 
-        /** mark the clicked email as Read
+        /** toggle the utility buttons like archive,read/unread/delete
+         *
+         * @param {Element} triggerBtn - the trigger button Element
+         */
+        toggleEmailBtns(triggerBtn) {
+          const emailInboxEl = this.elements.email;
+          if (
+            !emailInboxEl &&
+            !emailInboxEl.classList.contains("active-inbox-panel")
+          )
+            return;
+          const triggerBtnParent = triggerBtn.parentElement;
+          triggerBtnParent.classList.toggle("show-opts");
+        }
+
+        /** mark the email as UnRead
          *
          * @param {string | number }id - the id of the activated chat content
+         * @returns {void}
+         */
+        markEmailAsUnRead(id) {
+          const emailLink = document.getElementById(`email-link-${id}`);
+
+          // means its already unread
+          if (emailLink.classList.contains("unread")) return;
+
+          emailLink.classList.add("unread");
+        }
+
+        /** mark the email as Read
+         *
+         * @param {string | number }id - the id of the activated chat content
+         * @returns {void}
          */
         markEmailAsRead(id) {
           const emailLink = document.getElementById(`email-link-${id}`);
@@ -21966,6 +22017,25 @@
           if (!emailLink.classList.contains("unread")) return;
 
           emailLink.classList.remove("unread");
+        }
+
+        /**
+         * Extracts the numerical ID from an ID string.
+         *
+         * Assumes the ID string follows a pattern ending with a dash and a number (e.g., 'email-link-123').
+         *
+         * @example
+         * idExtractor('email-link-123'); // Returns: 123
+         * idExtractor('chat-item-45');   // Returns: 45
+         * idExtractor('no-number-suffix'); // Returns: null (or potentially NaN, depending on implementation)
+         *
+         * @param {string} idName - The ID string to extract the numerical ID from.
+         * @returns {number | null} The extracted numerical ID as a number, or null if no numerical ID is found at the end.
+         */
+        idExtractor(idName) {
+          const idNum = Number(idName.split("-").pop());
+          if (isNaN(idNum)) return null;
+          return idNum;
         }
 
         /** switch to the active email that corresponds the email id from anchor tag
@@ -22061,7 +22131,6 @@
           document
             .getElementById(INBOX_PANEL_SELECTORS.MENU_CLOSE_BTN_ID)
             .click();
-          return;
         }
 
         /**
@@ -22074,20 +22143,56 @@
           const inboxAnchorElement = target.closest(
             INBOX_PANEL_SELECTORS.INBOX_ANCHOR_TAG,
           );
-          if (!inboxAnchorElement) return;
+          const triggerBtn = target.closest(
+            EMAIL_PANEL_SELECTORS.DATA_TRIGGER_BTN,
+          );
+          const markAsReadBtn = target.closest(
+            EMAIL_PANEL_SELECTORS.MARK_READ_BTN,
+          );
+          const markAsUnReadBtn = target.closest(
+            EMAIL_PANEL_SELECTORS.MARK_UNREAD_BTN,
+          );
 
-          // get the href itself not the url or the full path
-          const rawHref = inboxAnchorElement.getAttribute("href");
+          if (triggerBtn) {
+            this.toggleEmailBtns(triggerBtn);
+          } else if (markAsReadBtn) {
+            const emailLinkAncestor = markAsReadBtn.closest('[id^="email-"]');
+            const emailLinkIdNum = this.idExtractor(emailLinkAncestor.id);
+            this.markEmailAsRead(emailLinkIdNum);
+            markAsReadBtn.setAttribute(
+              "aria-label",
+              EMAIL_PANEL_SELECTORS.UNREAD_BTN_ARIA,
+            );
+            markAsReadBtn.setAttribute(
+              "data-bs-original-title",
+              EMAIL_PANEL_SELECTORS.UNREAD_BTN_ARIA,
+            );
+          } else if (markAsUnReadBtn) {
+            const emailLinkAncestor = markAsUnReadBtn.closest('[id^="email-"]');
+            const emailLinkIdNum = this.idExtractor(emailLinkAncestor.id);
+            this.markEmailAsUnRead(emailLinkIdNum);
+            markAsUnReadBtn.setAttribute(
+              "aria-label",
+              EMAIL_PANEL_SELECTORS.READ_BTN_ARIA,
+            );
+            markAsUnReadBtn.setAttribute(
+              "data-bs-original-title",
+              EMAIL_PANEL_SELECTORS.READ_BTN_ARIA,
+            );
+          } else if (inboxAnchorElement) {
+            // get the href itself not the url or the full path
+            const rawHref = inboxAnchorElement.getAttribute("href");
 
-          // avoid going to the actual link and reload the page
-          // only when the rawHref starts with /inbox
-          // so that we don't interrupt the other anchor element
-          if (
-            rawHref &&
-            (rawHref.startsWith("inbox") || rawHref.startsWith("/inbox"))
-          ) {
-            event.preventDefault();
-            this.handleSwitchPanel(rawHref);
+            // avoid going to the actual link and reload the page
+            // only when the rawHref starts with /inbox
+            // so that we don't interrupt the other anchor element
+            if (
+              rawHref &&
+              (rawHref.startsWith("inbox") || rawHref.startsWith("/inbox"))
+            ) {
+              event.preventDefault();
+              this.handleSwitchPanel(rawHref);
+            }
           }
         }
 
@@ -22102,17 +22207,6 @@
         if (document.getElementById("inbox-article")) {
           const inboxManager = new inboxPanelManager();
           inboxManager.init();
-        }
-
-        // logic in email panel nav area for showing/hiding the buttons
-        const emailInboxEl = document.getElementById("email-inbox");
-        if (emailInboxEl) {
-          emailInboxEl.addEventListener("click", (event) => {
-            if (!emailInboxEl.classList.contains("active-inbox-panel")) return;
-            const triggerBtn = event.target.closest("button[data-trigger]");
-            const triggerBtnParent = triggerBtn.parentElement;
-            triggerBtnParent.classList.toggle("show-opts");
-          });
         }
       });
     </script>
