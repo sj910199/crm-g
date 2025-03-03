@@ -22020,7 +22020,7 @@
         }
 
         /**
-         * Extracts the numerical ID from an ID string.
+         * helper method that Extracts the numerical ID from an ID string.
          *
          * Assumes the ID string follows a pattern ending with a dash and a number (e.g., 'email-link-123').
          *
@@ -22036,6 +22036,17 @@
           const idNum = Number(idName.split("-").pop());
           if (isNaN(idNum)) return null;
           return idNum;
+        }
+
+        /**
+         * Helper method to update button attributes
+         * @param {HTMLElement} button - The button to update
+         * @param {string} ariaValue - The aria value to set
+         * @returns {void}
+         */
+        updateButtonAttributes(button, ariaValue) {
+          button.setAttribute("aria-label", ariaValue);
+          button.setAttribute("data-bs-original-title", ariaValue);
         }
 
         /** switch to the active email that corresponds the email id from anchor tag
@@ -22134,28 +22145,32 @@
         }
 
         /**
-         * Handles the Anchor element click event on the inbox panel
-         * @param {Event} event - the click event
+         * Handles the Anchor element click event on the email panel
+         * @param {EventTarget} target - the click target event
          * @returns {void}
          */
-        handleClick(event) {
-          const target = event.target;
-          const inboxAnchorElement = target.closest(
-            INBOX_PANEL_SELECTORS.INBOX_ANCHOR_TAG,
+        handleClickEmail(target) {
+          // Check if click is within the inbox article - avoid all other processing if not
+          const emailPanel = document.getElementById(
+            INBOX_PANEL_SELECTORS.EMAIL_PANEL_ID,
           );
+          if (!emailPanel || !emailPanel.contains(target)) {
+            return;
+          }
+
           const triggerBtn = target.closest(
             EMAIL_PANEL_SELECTORS.DATA_TRIGGER_BTN,
-          );
-          const markAsReadBtn = target.closest(
-            EMAIL_PANEL_SELECTORS.MARK_READ_BTN,
-          );
-          const markAsUnReadBtn = target.closest(
-            EMAIL_PANEL_SELECTORS.MARK_UNREAD_BTN,
           );
 
           if (triggerBtn) {
             this.toggleEmailBtns(triggerBtn);
-          } else if (markAsReadBtn) {
+            return; // for efficiency to avoid further DOM traversal
+          }
+
+          const markAsReadBtn = target.closest(
+            EMAIL_PANEL_SELECTORS.MARK_READ_BTN,
+          );
+          if (markAsReadBtn) {
             const emailLinkAncestor = markAsReadBtn.closest('[id^="email-"]');
             const emailLinkIdNum = this.idExtractor(emailLinkAncestor.id);
             this.markEmailAsRead(emailLinkIdNum);
@@ -22167,7 +22182,13 @@
               "data-bs-original-title",
               EMAIL_PANEL_SELECTORS.UNREAD_BTN_ARIA,
             );
-          } else if (markAsUnReadBtn) {
+            return; // for efficiency to avoid further DOM traversal
+          }
+
+          const markAsUnReadBtn = target.closest(
+            EMAIL_PANEL_SELECTORS.MARK_UNREAD_BTN,
+          );
+          if (markAsUnReadBtn) {
             const emailLinkAncestor = markAsUnReadBtn.closest('[id^="email-"]');
             const emailLinkIdNum = this.idExtractor(emailLinkAncestor.id);
             this.markEmailAsUnRead(emailLinkIdNum);
@@ -22179,7 +22200,28 @@
               "data-bs-original-title",
               EMAIL_PANEL_SELECTORS.READ_BTN_ARIA,
             );
-          } else if (inboxAnchorElement) {
+          }
+        }
+
+        /**
+         * Handles the Anchor element click event on the inbox panel
+         * @param {Event} event - the click event
+         * @returns {void}
+         */
+        handleClick(event) {
+          const target = event.target;
+
+          // Check if click is within the inbox article - avoid all other processing if not
+          const inboxArticle = document.getElementById("inbox-article");
+          if (!inboxArticle || !inboxArticle.contains(target)) {
+            return;
+          }
+
+          const inboxAnchorElement = target.closest(
+            INBOX_PANEL_SELECTORS.INBOX_ANCHOR_TAG,
+          );
+
+          if (inboxAnchorElement) {
             // get the href itself not the url or the full path
             const rawHref = inboxAnchorElement.getAttribute("href");
 
@@ -22193,7 +22235,11 @@
               event.preventDefault();
               this.handleSwitchPanel(rawHref);
             }
+            return; // for efficiency to avoid further DOM traversal
           }
+
+          // handles click logic inside email panel
+          this.handleClickEmail(target);
         }
 
         setupEventListeners() {
