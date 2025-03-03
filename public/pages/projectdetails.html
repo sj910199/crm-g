@@ -22049,6 +22049,26 @@
           button.setAttribute("data-bs-original-title", ariaValue);
         }
 
+        /** update both connected mark/unmark button base on their id number
+         * @param {string | number} id - the id of the email that we want to switch to
+         * @param {string} ariaValue - The aria value to set
+         */
+        toggleEmailVisibilityBtn(id, ariaValue) {
+          const emailContent = document.getElementById(`email-${id}`);
+          const emailLink = document.getElementById(`email-link-${id}`);
+
+          const emailContentBtn = emailContent.querySelector(
+            'button[aria-label="mark as read" i], button[aria-label="mark as unread" i]',
+          );
+
+          const emailLinkBtn = emailLink.querySelector(
+            'button[aria-label="mark as read" i], button[aria-label="mark as unread" i]',
+          );
+
+          this.updateButtonAttributes(emailContentBtn, ariaValue);
+          this.updateButtonAttributes(emailLinkBtn, ariaValue);
+        }
+
         /** switch to the active email that corresponds the email id from anchor tag
          * @param {string | number} id - the id of the email that we want to switch to
          * @returns {void}
@@ -22174,14 +22194,14 @@
             const emailLinkAncestor = markAsReadBtn.closest('[id^="email-"]');
             const emailLinkIdNum = this.idExtractor(emailLinkAncestor.id);
             this.markEmailAsRead(emailLinkIdNum);
-            markAsReadBtn.setAttribute(
-              "aria-label",
+            this.toggleEmailVisibilityBtn(
+              emailLinkIdNum,
               EMAIL_PANEL_SELECTORS.UNREAD_BTN_ARIA,
             );
-            markAsReadBtn.setAttribute(
-              "data-bs-original-title",
-              EMAIL_PANEL_SELECTORS.UNREAD_BTN_ARIA,
-            );
+            // this.updateButtonAttributes(
+            //   markAsReadBtn,
+            //   EMAIL_PANEL_SELECTORS.UNREAD_BTN_ARIA,
+            // );
             return; // for efficiency to avoid further DOM traversal
           }
 
@@ -22192,14 +22212,15 @@
             const emailLinkAncestor = markAsUnReadBtn.closest('[id^="email-"]');
             const emailLinkIdNum = this.idExtractor(emailLinkAncestor.id);
             this.markEmailAsUnRead(emailLinkIdNum);
-            markAsUnReadBtn.setAttribute(
-              "aria-label",
+
+            this.toggleEmailVisibilityBtn(
+              emailLinkIdNum,
               EMAIL_PANEL_SELECTORS.READ_BTN_ARIA,
             );
-            markAsUnReadBtn.setAttribute(
-              "data-bs-original-title",
-              EMAIL_PANEL_SELECTORS.READ_BTN_ARIA,
-            );
+            // this.updateButtonAttributes(
+            //   markAsUnReadBtn,
+            //   EMAIL_PANEL_SELECTORS.READ_BTN_ARIA,
+            // );
           }
         }
 
