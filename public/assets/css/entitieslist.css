@@ -1352,7 +1352,7 @@ section {
 }
 
 .entities-table > tbody > tr:last-child > td:last-child {
-  padding-bottom: 2rem;
+  padding-bottom: 2.5rem;
 }
 
 td[data-title="Address"].address {
@@ -1378,27 +1378,7 @@ td.address .address-label {
   cursor: pointer;
   font-weight: 400;
   font-family: inherit;
-}
-
-/* Style for the label when the checkbox is checked (expanded state) */
-td.address .address-checkbox:checked + .address-label {
-  white-space: normal; /* Allow text to wrap to multiple lines */
-  line-clamp: none; /* Remove line clamp to expand */
-  -webkit-line-clamp: none; /* Remove for WebKit */
-  display: block;
-  position: absolute; /* Make label float above other content */
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10; /* Ensure label is on top */
-  border: 1px solid var(--falcon-gray-300); /* Optional border for visual separation */
-  border-radius: 8px;
-  padding: 0.5rem; /* Add padding to the expanded label */
-  width: var(
-    --td-address-max-width
-  ); /* Match the td width to maintain alignment */
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
-  backdrop-filter: blur(4px); /* 4px */
+  position: relative;
 }
 
 /* Hide the checkbox visually and make it non-interactive */
@@ -1407,6 +1387,53 @@ td.address .address-checkbox {
   opacity: 0; /* Make checkbox invisible */
   pointer-events: none; /* Prevent checkbox from interfering with clicks */
 }
+
+td.address .address-checkbox + .address-label svg,
+td.address .address-checkbox + .address-label svg {
+  color: var(--falcon-table-striped-color);
+}
+
+td.address .address-checkbox + .address-label .address-pin-icon:active svg {
+  color: rgba(var(--falcon-link-color-rgb), var(--falcon-link-opacity, 1));
+}
+
+td.address .address-label .address-copy-icon {
+  display: grid;
+  border: none;
+  background-color: transparent;
+}
+
+/* Default state styles */
+td.address .address-label .address-copy-icon .fa-copy {
+  grid-area: 1/1;
+  opacity: 1;
+  transform: rotate(0deg);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+td.address .address-label .address-copy-icon .fa-check-circle {
+  grid-area: 1/1;
+  opacity: 0;
+  transform: rotate(360deg);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* When copying class is added */
+td.address .address-label .address-copy-icon.copying .fa-copy {
+  opacity: 0;
+  transform: rotate(360deg);
+}
+
+td.address .address-label .address-copy-icon.copying .fa-check-circle {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/*td.address .address-checkbox + .address-label > .address-pin-icon {*/
 
 td[data-title="Feed"].feed {
   display: flex;
@@ -1455,6 +1482,13 @@ td[data-title="Feed"].feed .status-check:checked ~ .status-label > svg {
 /* Media Queries ----------------------------- */
 @media (min-width: 801px) {
   .mobile-stack .accordion-container.triggered .accordion-trigger .accor-open {
+    display: none;
+  }
+
+  .mobile-stack
+    .accordion-container.triggered
+    .accordion-trigger
+    .address-pin-icon {
     display: none;
   }
 
@@ -1522,9 +1556,6 @@ td[data-title="Feed"].feed .status-check:checked ~ .status-label > svg {
     font-weight: bold;
   }
 
-  /* Label the data */
-  /* .mobile-stack td:before { content: attr(data-title); } */
-
   .table th,
   .table td {
     text-align: center;
@@ -1535,10 +1566,16 @@ td[data-title="Feed"].feed .status-check:checked ~ .status-label > svg {
     --td-address-max-width: unset;
   }
   td.address .address-label {
-    pointer-events: none;
+    /*pointer-events: none;*/
     white-space: normal; /* Allow text to wrap to multiple lines */
     line-clamp: none; /* Remove line clamp to expand */
     -webkit-line-clamp: none; /* Remove for WebKit */
+    display: inline-flex;
+    gap: 0.5rem;
+  }
+
+  td.address .address-label > :nth-child(1) {
+    margin-right: 0.5rem;
   }
 
   td[data-title="Feed"].feed {
@@ -1612,6 +1649,18 @@ td[data-title="Feed"].feed .status-check:checked ~ .status-label > svg {
     color: inherit;
   }
 
+  .mobile-stack .accordion-container .accordion-trigger .address-pin-icon {
+    color: var(--falcon-table-striped-color);
+    padding: 0 0.3rem;
+  }
+
+  .mobile-stack
+    .accordion-container
+    .accordion-trigger
+    .address-pin-icon:active {
+    color: rgba(var(--falcon-link-color-rgb), var(--falcon-link-opacity, 1));
+  }
+
   .mobile-stack
     .accordion-container.triggered
     .accordion-trigger
@@ -1625,6 +1674,10 @@ td[data-title="Feed"].feed .status-check:checked ~ .status-label > svg {
   .mobile-stack
     .accordion-container.triggered
     .accordion-trigger
+    .address-pin-icon,
+  .mobile-stack
+    .accordion-container.triggered
+    .accordion-trigger
     .accordion-meta {
     opacity: 1;
     transform: translateY(0);
@@ -1633,6 +1686,7 @@ td[data-title="Feed"].feed .status-check:checked ~ .status-label > svg {
       transform 0.1s ease-in;
   }
 
+  .mobile-stack .accordion-container .accordion-trigger .address-pin-icon,
   .mobile-stack .accordion-container .accordion-trigger .accordion-meta {
     opacity: 0;
     transform: translateY(10px);
@@ -1663,6 +1717,62 @@ td[data-title="Feed"].feed .status-check:checked ~ .status-label > svg {
     color: var(--falcon-gray-500);
   }
   /* accordion button and children end here */
+}
+
+@media (min-width: 801px) {
+  /* Style for the label when the checkbox is checked (expanded state) */
+  td.address .address-checkbox:checked + .address-label {
+    white-space: normal; /* Allow text to wrap to multiple lines */
+    line-clamp: none; /* Remove line clamp to expand */
+    -webkit-line-clamp: none; /* Remove for WebKit */
+    display: block;
+    position: absolute; /* Make label float above other content */
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10; /* Ensure label is on top */
+    border: 1px solid var(--falcon-gray-300); /* Optional border for visual separation */
+    border-radius: 8px;
+    padding: 0.5rem; /* Add padding to the expanded label */
+    width: var(
+      --td-address-max-width
+    ); /* Match the td width to maintain alignment */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+    backdrop-filter: blur(4px); /* 4px */
+  }
+
+  td.address .address-checkbox:checked + .address-label {
+    padding: 1.5rem 0.5rem 0.5rem;
+  }
+
+  td.address .address-checkbox + .address-label > .address-pin-icon svg,
+  td.address .address-checkbox + .address-label > .address-copy-icon svg {
+    display: none;
+  }
+
+  td.address .address-checkbox:checked + .address-label > .address-pin-icon svg,
+  td.address
+    .address-checkbox:checked
+    + .address-label
+    > .address-copy-icon
+    svg {
+    display: block;
+    position: absolute;
+    top: 0.2rem;
+  }
+
+  td.address
+    .address-checkbox:checked
+    + .address-label
+    > .address-copy-icon
+    svg {
+    right: 2.5rem;
+    /*var(--falcon-table-striped-color)*/
+  }
+
+  td.address .address-checkbox + .address-label > .address-pin-icon svg {
+    right: 1rem;
+  }
 }
 /*-----------------------------------------------
 |   Items
@@ -3502,12 +3612,21 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
 }
 
 .email-content .email-content-body {
-  overflow-x: clip;
-  overflow-y: auto;
-  max-height: calc(100dvh - var(--_email-content-header-max-height));
+  overflow: clip;
+  max-height: calc(
+    100dvh - var(--_email-content-header-max-height) -
+      var(--inbox-header-max-height)
+  );
+  height: 100%;
 }
 
 .email-content .email-content-body > .card-body {
+  overflow-x: clip;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.email-content .email-content-body > .card-body > div {
   max-width: 50rem;
   margin-right: auto;
   margin-left: auto;
@@ -3522,6 +3641,10 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
 
 @media (min-width: 992px) {
   @container side-panel (max-width: 405px) {
+    .email-content .email-content-body > .card-body {
+      max-width: var(--desktop-left-content-width);
+    }
+
     .email-content
       .email-content-header
       > .card-body
