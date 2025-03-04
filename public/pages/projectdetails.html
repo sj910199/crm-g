@@ -22547,7 +22547,7 @@
       <div class="cost-details">
         <h3>Cost Breakdown</h3>
         <p>
-          <strong>Total Material Cost:</strong>
+          <strong>Total Glass Cost:</strong>
           $<span class="totalGlassCost"></span>
         </p>
         <p>
@@ -22633,14 +22633,32 @@
         div.classList.add("glass-item");
         div.innerHTML = `
           <p ><strong>Piece #${glass.piece}</strong></p>
-          <p>Dimensions: ${glass.width.toFixed(1)}in x ${glass.height.toFixed(1)}in</p>
-          <p>Type: ${glass.type}</p>
-          <p>Area: ${glass.area.toFixed(2)} sq ft</p>
-          <p>LIB: ${glass.lib} lbs (${getMinTechs(glass.lib)} techs)</p>
-          <p>Cost: $${glass.cost.toFixed(2)}</p>
-          <p>Installers Needed: ${glass.installers}</p>
-          <p>Installation Time: ${glass.installTime.toFixed(1)} hrs</p>
+          <p class="dimensions-row">Dimensions: ${glass.width.toFixed(1)}in x ${glass.height.toFixed(1)}in</p>
+          <p class="type-row">Type: ${glass.type}</p>
+          <p class="area-row">Area: ${glass.area.toFixed(2)} sq ft</p>
+          <p class="lib-row">LIB: ${glass.lib} lbs (${getMinTechs(glass.lib)} techs)</p>
+          <p class="cost-row">Cost: $${glass.cost.toFixed(2)}</p>
+          <p class="installers-row">Installers Needed: ${glass.installers}</p>
+          <p class="installTime-row">Installation Time: ${glass.installTime.toFixed(1)} hrs</p>
         `;
+
+        // Helper function to conditionally hide elements within glass details
+        const hideIfZeroGlassDetail = (className, value) => {
+          const elementRow = div.querySelector(`.${className}`);
+          if (value === 0) {
+            elementRow.style.display = "none"; // Hide the parent <p>
+          }
+        };
+
+        hideIfZeroGlassDetail(
+          "dimensions-row",
+          Number(glass.width) * Number(glass.height),
+        );
+        hideIfZeroGlassDetail("area-row", glass.area);
+        hideIfZeroGlassDetail("lib-row", glass.lib);
+        hideIfZeroGlassDetail("cost-row", glass.cost);
+        hideIfZeroGlassDetail("installTime-row", Number(glass.installTime));
+
         return div;
       }
 
@@ -22763,46 +22781,79 @@
         const template = document.getElementById("costDetailsTemplate");
         const clone = template.content.cloneNode(true);
 
-        // Set values for cost details.
-        clone.querySelector(".totalGlassCost").textContent =
-          costs.totalGlassCost.toFixed(2);
-        clone.querySelector(".distance").textContent = distance;
-        clone.querySelector(".numTrips").textContent = costs.numTrips;
-        clone.querySelector(".plural").textContent =
-          costs.numTrips > 1 ? "s" : "";
-        clone.querySelector(".travelMileageCost").textContent =
-          costs.travelMileageCost.toFixed(2);
-        clone.querySelector(".totalMeasurementTime").textContent =
-          costs.totalMeasurementTime.toFixed(2);
-        clone.querySelector(".measurementTechs").textContent =
-          measurementTechs || 1;
-        clone.querySelector(".measurementLaborCost").textContent =
-          costs.measurementLaborCost.toFixed(2);
+        // Helper function to conditionally hide elements
+        const hideIfZero = (selector, value) => {
+          const element = clone.querySelector(selector);
+          if (value === 0) {
+            element.parentElement.style.display = "none"; // Hide the parent <p>
+          } else {
+            element.textContent = value.toFixed(2); // Still need to set text content if not hidden
+          }
+        };
 
-        // There are two elements for travelTimePerTrip; update both.
-        clone.querySelectorAll(".travelTimePerTrip").forEach((elem) => {
-          elem.textContent = costs.travelTimePerTrip.toFixed(2);
-        });
+        // Set values for cost details and hide if zero.
+        hideIfZero(".totalGlassCost", costs.totalGlassCost);
 
-        clone.querySelector(".measurementTravelLaborCost").textContent =
-          costs.measurementTravelLaborCost.toFixed(2);
-        clone.querySelector(".maxInstallers").textContent = costs.maxInstallers;
-        clone.querySelector(".installationTravelLaborCost").textContent =
-          costs.installationTravelLaborCost.toFixed(2);
-        clone.querySelector(".totalInstallTime").textContent =
-          costs.totalInstallTime.toFixed(2);
-        clone.querySelector(".installationLaborCost").textContent =
-          costs.installationLaborCost.toFixed(2);
-        clone.querySelector(".totalLaborCost").textContent =
-          costs.totalLaborCost.toFixed(2);
-        clone.querySelector(".totalProjectCost").textContent =
-          costs.totalProjectCost.toFixed(2);
+        // Travel Mileage Cost section
+        if (costs.travelMileageCost === 0) {
+          clone.querySelector(
+            ".travelMileageCost",
+          ).parentElement.style.display = "none";
+        } else {
+          clone.querySelector(".travelMileageCost").textContent =
+            costs.travelMileageCost.toFixed(2);
+          clone.querySelector(".distance").textContent = distance;
+          clone.querySelector(".numTrips").textContent = costs.numTrips;
+          clone.querySelector(".plural").textContent =
+            costs.numTrips > 1 ? "s" : "";
+        }
 
-        // Set number of installation trucks and pluralize if needed.
-        clone.querySelector(".numInstallationTrucks").textContent =
-          costs.numInstallationTrucks;
-        clone.querySelector(".truckPlural").textContent =
-          costs.numInstallationTrucks > 1 ? "s" : "";
+        // Labor Costs Breakdown section title
+        if (costs.totalLaborCost === 0) {
+          clone.querySelector(
+            "p:has(strong:text-content('Labor Costs Breakdown:'))",
+          ).style.display = "none";
+        }
+
+        hideIfZero(".measurementLaborCost", costs.measurementLaborCost);
+
+        // Measurement Travel section
+        if (costs.measurementTravelLaborCost === 0) {
+          clone.querySelector(
+            ".measurementTravelLaborCost",
+          ).parentElement.style.display = "none";
+        } else {
+          clone.querySelector(".measurementTravelLaborCost").textContent =
+            costs.measurementTravelLaborCost.toFixed(2);
+          clone.querySelector(".travelTimePerTrip").textContent =
+            costs.travelTimePerTrip.toFixed(2); // First instance
+          clone.querySelectorAll(".travelTimePerTrip")[1].textContent =
+            costs.travelTimePerTrip.toFixed(2); // Second instance for install travel
+          clone.querySelector(".measurementTechs").textContent =
+            measurementTechs || 1;
+        }
+
+        // Installation Travel Section
+        if (costs.installationTravelLaborCost === 0) {
+          clone.querySelector(
+            ".installationTravelLaborCost",
+          ).parentElement.style.display = "none";
+        } else {
+          clone.querySelector(".installationTravelLaborCost").textContent =
+            costs.installationTravelLaborCost.toFixed(2);
+          clone.querySelectorAll(".travelTimePerTrip")[1].textContent =
+            costs.travelTimePerTrip.toFixed(2); // Second instance
+          clone.querySelector(".maxInstallers").textContent =
+            costs.maxInstallers;
+          clone.querySelector(".numInstallationTrucks").textContent =
+            costs.numInstallationTrucks;
+          clone.querySelector(".truckPlural").textContent =
+            costs.numInstallationTrucks > 1 ? "s" : "";
+        }
+
+        hideIfZero(".installationLaborCost", costs.installationLaborCost);
+        hideIfZero(".totalLaborCost", costs.totalLaborCost);
+        hideIfZero(".totalProjectCost", costs.totalProjectCost);
 
         return clone;
       }
