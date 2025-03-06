@@ -2308,95 +2308,161 @@
                                     </h4>
                                   </div>
                                   <div class="p-4 pb-0">
-                                    <form>
+                                    <form id="dynamicForm">
                                       <div class="mb-3">
-                                        <!--list of item name check image-->
-                                        <input
-                                          class="form-control"
-                                          type="text"
-                                          placeholder="Item Name"
-                                        />
+                                        <label for="itemName" class="form-label"
+                                          >Item Name</label
+                                        >
+                                        <select
+                                          class="form-select"
+                                          id="itemName"
+                                          name="itemName"
+                                        >
+                                          <option value="">Select Item</option>
+                                        </select>
                                       </div>
 
                                       <div class="mb-3">
+                                        <label
+                                          for="itemNumber"
+                                          class="form-label"
+                                          >Item Number</label
+                                        >
                                         <input
                                           class="form-control"
                                           type="text"
+                                          id="itemNumber"
+                                          name="itemNumber"
                                           placeholder="Item Number"
+                                          readonly
                                         />
                                       </div>
                                       <div class="mb-3">
+                                        <label for="quantity" class="form-label"
+                                          >Quantity</label
+                                        >
                                         <input
                                           class="form-control"
-                                          type="text"
+                                          type="number"
+                                          id="quantity"
+                                          name="quantity"
                                           placeholder="Quantity"
+                                          value="1"
                                         />
                                       </div>
                                       <div class="mb-3">
+                                        <label for="price" class="form-label"
+                                          >Price</label
+                                        >
                                         <input
                                           class="form-control"
-                                          type="text"
+                                          type="number"
+                                          id="price"
+                                          name="price"
                                           placeholder="Price"
+                                          readonly
                                         />
                                       </div>
 
                                       <div class="mb-3">
-                                        <!--this is a select check image-->
-                                        <input
-                                          class="form-control"
-                                          type="text"
-                                          placeholder="vandor"
-                                        />
+                                        <label for="vandor" class="form-label"
+                                          >Vandor</label
+                                        >
+                                        <select
+                                          class="form-select"
+                                          id="vandor"
+                                          name="vandor"
+                                        >
+                                          <option value="">
+                                            Select Vandor
+                                          </option>
+                                        </select>
                                       </div>
                                       <div class="mb-3">
-                                        <!--this is a yes/no-->
-                                        <input
-                                          class="form-control"
-                                          type="text"
-                                          placeholder="taxable"
-                                        />
-                                      </div>
-
-                                      <div class="mb-3">
-                                        <!--list (check image)-->
-                                        <input
-                                          class="form-control"
-                                          type="text"
-                                          placeholder="status"
-                                        />
-                                      </div>
-
-                                      <div class="mb-3">
-                                        <!--list (check image)-->
-                                        <input
-                                          class="form-control"
-                                          type="text"
-                                          placeholder="shipping"
-                                        />
+                                        <label for="taxable" class="form-label"
+                                          >Taxable</label
+                                        >
+                                        <select
+                                          class="form-select"
+                                          id="taxable"
+                                          name="taxable"
+                                        >
+                                          <option value="">
+                                            Select Taxable
+                                          </option>
+                                          <option value="yes">Yes</option>
+                                          <option value="no">No</option>
+                                        </select>
                                       </div>
 
                                       <div class="mb-3">
-                                        <!--list (check image) or not -->
-                                        <input
-                                          class="form-control"
-                                          type="text"
-                                          placeholder="time to install"
-                                        />
+                                        <label for="status" class="form-label"
+                                          >Status</label
+                                        >
+                                        <select
+                                          class="form-select"
+                                          id="status"
+                                          name="status"
+                                        >
+                                          <option value="">
+                                            Select Status
+                                          </option>
+                                        </select>
                                       </div>
 
                                       <div class="mb-3">
-                                        <!--list (check image)-->
+                                        <label for="shipping" class="form-label"
+                                          >Shipping</label
+                                        >
+                                        <select
+                                          class="form-select"
+                                          id="shipping"
+                                          name="shipping"
+                                        >
+                                          <option value="">
+                                            Select Shipping
+                                          </option>
+                                        </select>
+                                      </div>
+
+                                      <div class="mb-3">
+                                        <label
+                                          for="timeToInstall"
+                                          class="form-label"
+                                          >Time to Install</label
+                                        >
+                                        <select
+                                          class="form-select"
+                                          id="timeToInstall"
+                                          name="timeToInstall"
+                                        >
+                                          <option value="">Select Time</option>
+                                        </select>
+                                      </div>
+
+                                      <div class="mb-3">
+                                        <label for="labor" class="form-label"
+                                          >Labor</label
+                                        >
                                         <input
                                           class="form-control"
                                           type="text"
-                                          placeholder="laber"
+                                          id="labor"
+                                          name="labor"
+                                          placeholder="Labor"
                                         />
                                       </div>
                                       <div class="mb-3">
+                                        <label for="total" class="form-label"
+                                          >Total</label
+                                        >
                                         <input
                                           class="form-control"
-                                          type="text"
+                                          type="number"
+                                          id="total"
+                                          name="total"
                                           placeholder="Total"
+                                          readonly
                                         />
                                       </div>
 
@@ -21345,6 +21411,177 @@
           }, 1000); // Revert back to original text after 1.5 seconds
         }
       });
+    </script>
+
+    <!-- Items form implementation-->
+    <script>
+      const StatusOptions = [
+        "Pending",
+        "Good to go",
+        "Orderd",
+        "Back ordered",
+        "Delivered in house",
+        "Load",
+        "Item Delivered",
+      ];
+
+      const items = [
+        { id: 1, name: "Windows/Door Replacement Glass", price: 150 },
+        { id: 2, name: "Glass Shower Enclosure", price: 800 },
+        { id: 3, name: "Cut to Size Glass & Mirror", price: 50 },
+        { id: 4, name: "Emergency board up service", price: 200 },
+        {
+          id: 5,
+          name: "Endure shield factory applied - Shower enclosure class treatment ( optional )",
+          price: 100,
+        },
+        { id: 6, name: "Discount", price: 0 },
+        { id: 7, name: "Custom Item", price: 100 },
+        { id: 8, name: "Shower enclosure hardware", price: 250 },
+        { id: 9, name: "Mirror", price: 75 },
+        { id: 10, name: "Glass Replacement/Repair", price: 120 },
+        {
+          id: 11,
+          name: "Emergency window board up and restoration.",
+          price: 250,
+        },
+        { id: 12, name: "Travel", price: 30 },
+        {
+          id: 13,
+          name: "Price Match Guaranteed Even After Purchase",
+          price: 0,
+        },
+        { id: 14, name: "Elevation", price: 60 },
+        { id: 15, name: "Storefront Doors & Frames", price: 500 },
+        { id: 16, name: "Labor", price: 80 },
+        { id: 17, name: "Service Report", price: 25 },
+      ];
+
+      const Vandor = [
+        "Amir",
+        "Arcadia",
+        "arcadia inc",
+        "Fabricated glass",
+        "FHC",
+        "Garibaldi Glass Canada",
+        "General glass",
+        "National Glass",
+        "NORTHWEST GLASS",
+        "OBE",
+        "Perkins Glass seattle",
+        "Smart Glass INC",
+        "van shower",
+        "vandor tp",
+      ];
+
+      const ShippingOptions = [
+        "Glassma Lynwood",
+        "Glassma Tukwila",
+        "Will-Call",
+      ];
+
+      const TimeToInstallOptions = [
+        "0H",
+        "1H",
+        "2H",
+        "3H",
+        "4H",
+        "5H",
+        "6H",
+        "7H",
+        "8H",
+        "9H",
+        "10H",
+        "11H",
+        "12H",
+        "13H",
+        "14H",
+        "15H",
+        "16H",
+      ];
+
+      // Get references to form elements
+      const itemNameSelect = document.getElementById("itemName");
+      const itemNumberInput = document.getElementById("itemNumber");
+      const quantityInput = document.getElementById("quantity");
+      const priceInput = document.getElementById("price");
+      const vandorSelect = document.getElementById("vandor");
+      const statusSelect = document.getElementById("status");
+      const shippingSelect = document.getElementById("shipping");
+      const timeToInstallSelect = document.getElementById("timeToInstall");
+      const totalInput = document.getElementById("total");
+
+      // Populate Item Name dropdown
+      items.forEach((item) => {
+        const option = document.createElement("option");
+        option.value = item.name;
+        option.textContent = item.name;
+        itemNameSelect.appendChild(option);
+      });
+
+      // Populate Vandor dropdown
+      Vandor.forEach((vandor) => {
+        const option = document.createElement("option");
+        option.value = vandor;
+        option.textContent = vandor;
+        vandorSelect.appendChild(option);
+      });
+
+      // Populate Status dropdown
+      StatusOptions.forEach((status) => {
+        const option = document.createElement("option");
+        option.value = status;
+        option.textContent = status;
+        statusSelect.appendChild(option);
+      });
+
+      // Populate Shipping dropdown
+      ShippingOptions.forEach((shipping) => {
+        const option = document.createElement("option");
+        option.value = shipping;
+        option.textContent = shipping;
+        shippingSelect.appendChild(option);
+      });
+
+      // Populate Time to Install dropdown
+      TimeToInstallOptions.forEach((time) => {
+        const option = document.createElement("option");
+        option.value = time;
+        option.textContent = time;
+        timeToInstallSelect.appendChild(option);
+      });
+
+      // Event listener for Item Name select to auto-populate Item Number and Price
+      itemNameSelect.addEventListener("change", function () {
+        const selectedItemName = this.value;
+        const selectedItem = items.find(
+          (item) => item.name === selectedItemName,
+        );
+
+        if (selectedItem) {
+          itemNumberInput.value = selectedItem.id;
+          priceInput.value = selectedItem.price;
+        } else {
+          itemNumberInput.value = "";
+          priceInput.value = "";
+        }
+        calculateTotal(); // Recalculate total when item changes
+      });
+
+      // Event listeners for Quantity and Price to recalculate total
+      quantityInput.addEventListener("input", calculateTotal);
+      priceInput.addEventListener("input", calculateTotal);
+
+      function calculateTotal() {
+        const quantity = parseFloat(quantityInput.value);
+        const price = parseFloat(priceInput.value);
+
+        if (!isNaN(quantity) && !isNaN(price)) {
+          totalInput.value = (quantity * price).toFixed(2); // Basic total calculation
+        } else {
+          totalInput.value = ""; // Clear total if quantity or price is invalid
+        }
+      }
     </script>
 
     <!-- // items section:details
