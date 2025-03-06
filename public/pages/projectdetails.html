@@ -2248,14 +2248,28 @@
                       <h4 class="mb-0">Items</h4>
                       <div class="d-flex">
                         <div class="btn-group">
+                          <!--                          <button-->
+                          <!--                            class="btn btn-falcon-default btn-sm m-3 me-0"-->
+                          <!--                            type="button"-->
+                          <!--                            style="z-index: 10"-->
+                          <!--                            data-bs-toggle="modal"-->
+                          <!--                            data-bs-target="#item-form"-->
+                          <!--                            data-display="static"-->
+                          <!--                            aria-haspopup="true"-->
+                          <!--                            aria-expanded="false"-->
+                          <!--                          >-->
+                          <!--                            <span-->
+                          <!--                              class="fas fa-plus me-1"-->
+                          <!--                              data-fa-transform="shrink-3"-->
+                          <!--                            ></span-->
+                          <!--                            >Add Item-->
+                          <!--                          </button>-->
                           <button
-                            class="btn btn-falcon-default btn-sm m-3 me-0 dropdown-toggle"
+                            class="btn btn-falcon-default btn-sm m-3 me-0"
                             type="button"
-                            style="z-index: 10"
-                            data-bs-toggle="dropdown"
-                            data-display="static"
-                            aria-haspopup="true"
-                            aria-expanded="false"
+                            data-bs-toggle="modal"
+                            data-bs-target="#item-modal"
+                            style="z-index-10"
                           >
                             <span
                               class="fas fa-plus me-1"
@@ -2263,62 +2277,172 @@
                             ></span
                             >Add Item
                           </button>
-                          <div class="dropdown-menu py-0">
+                          <div
+                            class="modal fade"
+                            id="item-modal"
+                            tabindex="-1"
+                            role="dialog"
+                            aria-hidden="true"
+                          >
                             <div
-                              class="card shadow-none border-0"
-                              style="width: 22rem"
+                              class="modal-dialog modal-dialog-centered"
+                              role="document"
+                              style="max-width: 500px"
                             >
-                              <div class="card-body">
-                                <form>
-                                  <div class="mb-3">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      placeholder="Item Number"
-                                    />
+                              <div class="modal-content position-relative">
+                                <div
+                                  class="position-absolute top-0 end-0 mt-2 me-2 z-1"
+                                >
+                                  <button
+                                    class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close"
+                                  ></button>
+                                </div>
+                                <div class="modal-body p-0">
+                                  <div
+                                    class="rounded-top-3 py-3 ps-4 pe-6 bg-body-tertiary"
+                                  >
+                                    <h4 class="mb-1" id="modalExampleDemoLabel">
+                                      Add a new Item
+                                    </h4>
                                   </div>
-                                  <div class="mb-3">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      placeholder="Item Name"
-                                    />
-                                  </div>
-                                  <div class="mb-3">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      placeholder="Quantity"
-                                    />
-                                  </div>
-                                  <div class="mb-3">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      placeholder="Price"
-                                    />
-                                  </div>
-                                  <div class="mb-3">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      placeholder="Total"
-                                    />
-                                  </div>
+                                  <div class="p-4 pb-0">
+                                    <form>
+                                      <div class="mb-3">
+                                        <!--list of item name check image-->
+                                        <input
+                                          class="form-control"
+                                          type="text"
+                                          placeholder="Item Name"
+                                        />
+                                      </div>
 
-                                  <div class="mb-3">
-                                    <button
-                                      class="btn btn-primary d-block w-100 mt-3"
-                                      type="submit"
-                                      name="submit"
-                                    >
-                                      Add
-                                    </button>
+                                      <div class="mb-3">
+                                        <input
+                                          class="form-control"
+                                          type="text"
+                                          placeholder="Item Number"
+                                        />
+                                      </div>
+                                      <div class="mb-3">
+                                        <input
+                                          class="form-control"
+                                          type="text"
+                                          placeholder="Quantity"
+                                        />
+                                      </div>
+                                      <div class="mb-3">
+                                        <input
+                                          class="form-control"
+                                          type="text"
+                                          placeholder="Price"
+                                        />
+                                      </div>
+
+                                      <div class="mb-3">
+                                        <!--this is a select check image-->
+                                        <input
+                                          class="form-control"
+                                          type="text"
+                                          placeholder="vandor"
+                                        />
+                                      </div>
+                                      <div class="mb-3">
+                                        <!--this is a yes/no-->
+                                        <input
+                                          class="form-control"
+                                          type="text"
+                                          placeholder="taxable"
+                                        />
+                                      </div>
+
+                                      <div class="mb-3">
+                                        <!--list (check image)-->
+                                        <input
+                                          class="form-control"
+                                          type="text"
+                                          placeholder="status"
+                                        />
+                                      </div>
+
+                                      <div class="mb-3">
+                                        <!--list (check image)-->
+                                        <input
+                                          class="form-control"
+                                          type="text"
+                                          placeholder="shipping"
+                                        />
+                                      </div>
+
+                                      <div class="mb-3">
+                                        <!--list (check image) or not -->
+                                        <input
+                                          class="form-control"
+                                          type="text"
+                                          placeholder="time to install"
+                                        />
+                                      </div>
+
+                                      <div class="mb-3">
+                                        <!--list (check image)-->
+                                        <input
+                                          class="form-control"
+                                          type="text"
+                                          placeholder="laber"
+                                        />
+                                      </div>
+                                      <div class="mb-3">
+                                        <input
+                                          class="form-control"
+                                          type="text"
+                                          placeholder="Total"
+                                        />
+                                      </div>
+
+                                      <div class="mb-3">
+                                        <button
+                                          class="btn btn-primary d-block w-100 mt-3"
+                                          type="submit"
+                                          name="submit"
+                                        >
+                                          Add
+                                        </button>
+                                      </div>
+                                    </form>
                                   </div>
-                                </form>
+                                </div>
+                                <!--                                <div class="modal-footer">-->
+                                <!--                                  <button-->
+                                <!--                                    class="btn btn-secondary"-->
+                                <!--                                    type="button"-->
+                                <!--                                    data-bs-dismiss="modal"-->
+                                <!--                                  >-->
+                                <!--                                    Close-->
+                                <!--                                  </button>-->
+                                <!--                                  <button class="btn btn-primary" type="button">-->
+                                <!--                                    Understood-->
+                                <!--                                  </button>-->
+                                <!--                                </div>-->
                               </div>
                             </div>
                           </div>
+
+                          <!--                                                    <div-->
+                          <!--                                                      class="modal fade py-0"-->
+                          <!--                                                      tabindex="-1"-->
+                          <!--                                                      role="dialog"-->
+                          <!--                                                      aria-hidden="true"-->
+                          <!--                                                      id="item-form"-->
+                          <!--                                                    >-->
+                          <!--                                                      <div-->
+                          <!--                                                        class="modal-content card shadow-none border-0"-->
+                          <!--                                                        style="width: 22rem"-->
+                          <!--                                                      >-->
+                          <!--                                                        <div class="modal-body card-body">-->
+                          <!--                                                        </div>-->
+                          <!--                                                      </div>-->
+                          <!--                                                    </div>-->
                         </div>
                       </div>
                     </div>
@@ -8568,14 +8692,33 @@
                           <span class="fas fa-envelope-open"></span>
                         </button>
                         <button
-                          class="btn btn-tertiary hover-bg-200"
+                          class="btn btn-tertiary dropdown-toggle dropdown-caret-none hover-bg-200"
                           type="button"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
+                          data-bs-toggle="dropdown"
+                          data-boundary="viewport"
+                          aria-haspopup="true"
+                          aria-expanded="false"
                           title="Snooze"
                         >
                           <span class="fas fa-clock"></span>
                         </button>
+
+                        <div
+                          class="dropdown-menu dropdown-menu-end border py-2"
+                        >
+                          <div
+                            class="dropdown-item cursor-default hover-bg-transparent fw-semi-bold"
+                          >
+                            Select duration:
+                          </div>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#!">An Hour</a
+                          ><a class="dropdown-item" href="#!"
+                            >Later Today(6pm)</a
+                          >
+                          <a class="dropdown-item" href="#!">Tomorrow(24hrs)</a
+                          ><a class="dropdown-item" href="#!">Next Week</a>
+                        </div>
                       </div>
 
                       <span class="email-date">8:40 am</span
@@ -8709,14 +8852,33 @@
                           <span class="fas fa-envelope-open"></span>
                         </button>
                         <button
-                          class="btn btn-tertiary hover-bg-200"
+                          class="btn btn-tertiary dropdown-toggle dropdown-caret-none hover-bg-200"
                           type="button"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
+                          data-bs-toggle="dropdown"
+                          data-boundary="viewport"
+                          aria-haspopup="true"
+                          aria-expanded="false"
                           title="Snooze"
                         >
                           <span class="fas fa-clock"></span>
                         </button>
+
+                        <div
+                          class="dropdown-menu dropdown-menu-end border py-2"
+                        >
+                          <div
+                            class="dropdown-item cursor-default hover-bg-transparent fw-semi-bold"
+                          >
+                            Select duration:
+                          </div>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#!">An Hour</a
+                          ><a class="dropdown-item" href="#!"
+                            >Later Today(6pm)</a
+                          >
+                          <a class="dropdown-item" href="#!">Tomorrow(24hrs)</a
+                          ><a class="dropdown-item" href="#!">Next Week</a>
+                        </div>
                       </div>
 
                       <span class="email-date">Sat</span
@@ -8830,14 +8992,33 @@
                           <span class="fas fa-envelope-open"></span>
                         </button>
                         <button
-                          class="btn btn-tertiary hover-bg-200"
+                          class="btn btn-tertiary dropdown-toggle dropdown-caret-none hover-bg-200"
                           type="button"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
+                          data-bs-toggle="dropdown"
+                          data-boundary="viewport"
+                          aria-haspopup="true"
+                          aria-expanded="false"
                           title="Snooze"
                         >
                           <span class="fas fa-clock"></span>
                         </button>
+
+                        <div
+                          class="dropdown-menu dropdown-menu-end border py-2"
+                        >
+                          <div
+                            class="dropdown-item cursor-default hover-bg-transparent fw-semi-bold"
+                          >
+                            Select duration:
+                          </div>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#!">An Hour</a
+                          ><a class="dropdown-item" href="#!"
+                            >Later Today(6pm)</a
+                          >
+                          <a class="dropdown-item" href="#!">Tomorrow(24hrs)</a
+                          ><a class="dropdown-item" href="#!">Next Week</a>
+                        </div>
                       </div>
 
                       <span class="email-date">March 5</span
@@ -8955,14 +9136,33 @@
                           <span class="fas fa-envelope-open"></span>
                         </button>
                         <button
-                          class="btn btn-tertiary hover-bg-200"
+                          class="btn btn-tertiary dropdown-toggle dropdown-caret-none hover-bg-200"
                           type="button"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
+                          data-bs-toggle="dropdown"
+                          data-boundary="viewport"
+                          aria-haspopup="true"
+                          aria-expanded="false"
                           title="Snooze"
                         >
                           <span class="fas fa-clock"></span>
                         </button>
+
+                        <div
+                          class="dropdown-menu dropdown-menu-end border py-2"
+                        >
+                          <div
+                            class="dropdown-item cursor-default hover-bg-transparent fw-semi-bold"
+                          >
+                            Select duration:
+                          </div>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#!">An Hour</a
+                          ><a class="dropdown-item" href="#!"
+                            >Later Today(6pm)</a
+                          >
+                          <a class="dropdown-item" href="#!">Tomorrow(24hrs)</a
+                          ><a class="dropdown-item" href="#!">Next Week</a>
+                        </div>
                       </div>
 
                       <span class="email-date">11:50AM</span
@@ -9084,14 +9284,33 @@
                           <span class="fas fa-envelope-open"></span>
                         </button>
                         <button
-                          class="btn btn-tertiary hover-bg-200"
+                          class="btn btn-tertiary dropdown-toggle dropdown-caret-none hover-bg-200"
                           type="button"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
+                          data-bs-toggle="dropdown"
+                          data-boundary="viewport"
+                          aria-haspopup="true"
+                          aria-expanded="false"
                           title="Snooze"
                         >
                           <span class="fas fa-clock"></span>
                         </button>
+
+                        <div
+                          class="dropdown-menu dropdown-menu-end border py-2"
+                        >
+                          <div
+                            class="dropdown-item cursor-default hover-bg-transparent fw-semi-bold"
+                          >
+                            Select duration:
+                          </div>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#!">An Hour</a
+                          ><a class="dropdown-item" href="#!"
+                            >Later Today(6pm)</a
+                          >
+                          <a class="dropdown-item" href="#!">Tomorrow(24hrs)</a
+                          ><a class="dropdown-item" href="#!">Next Week</a>
+                        </div>
                       </div>
 
                       <span class="email-date">Mar 3</span
@@ -9206,14 +9425,33 @@
                           <span class="fas fa-envelope-open"></span>
                         </button>
                         <button
-                          class="btn btn-tertiary hover-bg-200"
+                          class="btn btn-tertiary dropdown-toggle dropdown-caret-none hover-bg-200"
                           type="button"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
+                          data-bs-toggle="dropdown"
+                          data-boundary="viewport"
+                          aria-haspopup="true"
+                          aria-expanded="false"
                           title="Snooze"
                         >
                           <span class="fas fa-clock"></span>
                         </button>
+
+                        <div
+                          class="dropdown-menu dropdown-menu-end border py-2"
+                        >
+                          <div
+                            class="dropdown-item cursor-default hover-bg-transparent fw-semi-bold"
+                          >
+                            Select duration:
+                          </div>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#!">An Hour</a
+                          ><a class="dropdown-item" href="#!"
+                            >Later Today(6pm)</a
+                          >
+                          <a class="dropdown-item" href="#!">Tomorrow(24hrs)</a
+                          ><a class="dropdown-item" href="#!">Next Week</a>
+                        </div>
                       </div>
 
                       <span class="email-date">Feb 21</span
@@ -9325,14 +9563,33 @@
                           <span class="fas fa-envelope-open"></span>
                         </button>
                         <button
-                          class="btn btn-tertiary hover-bg-200"
+                          class="btn btn-tertiary dropdown-toggle dropdown-caret-none hover-bg-200"
                           type="button"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
+                          data-bs-toggle="dropdown"
+                          data-boundary="viewport"
+                          aria-haspopup="true"
+                          aria-expanded="false"
                           title="Snooze"
                         >
                           <span class="fas fa-clock"></span>
                         </button>
+
+                        <div
+                          class="dropdown-menu dropdown-menu-end border py-2"
+                        >
+                          <div
+                            class="dropdown-item cursor-default hover-bg-transparent fw-semi-bold"
+                          >
+                            Select duration:
+                          </div>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#!">An Hour</a
+                          ><a class="dropdown-item" href="#!"
+                            >Later Today(6pm)</a
+                          >
+                          <a class="dropdown-item" href="#!">Tomorrow(24hrs)</a
+                          ><a class="dropdown-item" href="#!">Next Week</a>
+                        </div>
                       </div>
 
                       <span class="email-date">Jan 16</span
@@ -9446,14 +9703,33 @@
                           <span class="fas fa-envelope-open"></span>
                         </button>
                         <button
-                          class="btn btn-tertiary hover-bg-200"
+                          class="btn btn-tertiary dropdown-toggle dropdown-caret-none hover-bg-200"
                           type="button"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
+                          data-bs-toggle="dropdown"
+                          data-boundary="viewport"
+                          aria-haspopup="true"
+                          aria-expanded="false"
                           title="Snooze"
                         >
                           <span class="fas fa-clock"></span>
                         </button>
+
+                        <div
+                          class="dropdown-menu dropdown-menu-end border py-2"
+                        >
+                          <div
+                            class="dropdown-item cursor-default hover-bg-transparent fw-semi-bold"
+                          >
+                            Select duration:
+                          </div>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#!">An Hour</a
+                          ><a class="dropdown-item" href="#!"
+                            >Later Today(6pm)</a
+                          >
+                          <a class="dropdown-item" href="#!">Tomorrow(24hrs)</a
+                          ><a class="dropdown-item" href="#!">Next Week</a>
+                        </div>
                       </div>
 
                       <span class="email-date">Jan 11</span
@@ -9566,14 +9842,33 @@
                           <span class="fas fa-envelope-open"></span>
                         </button>
                         <button
-                          class="btn btn-tertiary hover-bg-200"
+                          class="btn btn-tertiary dropdown-toggle dropdown-caret-none hover-bg-200"
                           type="button"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
+                          data-bs-toggle="dropdown"
+                          data-boundary="viewport"
+                          aria-haspopup="true"
+                          aria-expanded="false"
                           title="Snooze"
                         >
                           <span class="fas fa-clock"></span>
                         </button>
+
+                        <div
+                          class="dropdown-menu dropdown-menu-end border py-2"
+                        >
+                          <div
+                            class="dropdown-item cursor-default hover-bg-transparent fw-semi-bold"
+                          >
+                            Select duration:
+                          </div>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#!">An Hour</a
+                          ><a class="dropdown-item" href="#!"
+                            >Later Today(6pm)</a
+                          >
+                          <a class="dropdown-item" href="#!">Tomorrow(24hrs)</a
+                          ><a class="dropdown-item" href="#!">Next Week</a>
+                        </div>
                       </div>
 
                       <span class="email-date">Dec 11</span
@@ -9702,14 +9997,33 @@
                           <span class="fas fa-envelope-open"></span>
                         </button>
                         <button
-                          class="btn btn-tertiary hover-bg-200"
+                          class="btn btn-tertiary dropdown-toggle dropdown-caret-none hover-bg-200"
                           type="button"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
+                          data-bs-toggle="dropdown"
+                          data-boundary="viewport"
+                          aria-haspopup="true"
+                          aria-expanded="false"
                           title="Snooze"
                         >
                           <span class="fas fa-clock"></span>
                         </button>
+
+                        <div
+                          class="dropdown-menu dropdown-menu-end border py-2"
+                        >
+                          <div
+                            class="dropdown-item cursor-default hover-bg-transparent fw-semi-bold"
+                          >
+                            Select duration:
+                          </div>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#!">An Hour</a
+                          ><a class="dropdown-item" href="#!"
+                            >Later Today(6pm)</a
+                          >
+                          <a class="dropdown-item" href="#!">Tomorrow(24hrs)</a
+                          ><a class="dropdown-item" href="#!">Next Week</a>
+                        </div>
                       </div>
 
                       <span class="email-date">Mar 9</span
@@ -9831,14 +10145,33 @@
                           <span class="fas fa-envelope-open"></span>
                         </button>
                         <button
-                          class="btn btn-tertiary hover-bg-200"
+                          class="btn btn-tertiary dropdown-toggle dropdown-caret-none hover-bg-200"
                           type="button"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
+                          data-bs-toggle="dropdown"
+                          data-boundary="viewport"
+                          aria-haspopup="true"
+                          aria-expanded="false"
                           title="Snooze"
                         >
                           <span class="fas fa-clock"></span>
                         </button>
+
+                        <div
+                          class="dropdown-menu dropdown-menu-end border py-2"
+                        >
+                          <div
+                            class="dropdown-item cursor-default hover-bg-transparent fw-semi-bold"
+                          >
+                            Select duration:
+                          </div>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#!">An Hour</a
+                          ><a class="dropdown-item" href="#!"
+                            >Later Today(6pm)</a
+                          >
+                          <a class="dropdown-item" href="#!">Tomorrow(24hrs)</a
+                          ><a class="dropdown-item" href="#!">Next Week</a>
+                        </div>
                       </div>
 
                       <span class="email-date">Nov 19</span
@@ -9960,14 +10293,33 @@
                           <span class="fas fa-envelope-open"></span>
                         </button>
                         <button
-                          class="btn btn-tertiary hover-bg-200"
+                          class="btn btn-tertiary dropdown-toggle dropdown-caret-none hover-bg-200"
                           type="button"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
+                          data-bs-toggle="dropdown"
+                          data-boundary="viewport"
+                          aria-haspopup="true"
+                          aria-expanded="false"
                           title="Snooze"
                         >
                           <span class="fas fa-clock"></span>
                         </button>
+
+                        <div
+                          class="dropdown-menu dropdown-menu-end border py-2"
+                        >
+                          <div
+                            class="dropdown-item cursor-default hover-bg-transparent fw-semi-bold"
+                          >
+                            Select duration:
+                          </div>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#!">An Hour</a
+                          ><a class="dropdown-item" href="#!"
+                            >Later Today(6pm)</a
+                          >
+                          <a class="dropdown-item" href="#!">Tomorrow(24hrs)</a
+                          ><a class="dropdown-item" href="#!">Next Week</a>
+                        </div>
                       </div>
 
                       <span class="email-date">Oct 26</span
@@ -10049,14 +10401,33 @@
                           <span class="fas fa-envelope"></span>
                         </button>
                         <button
-                          class="btn btn-falcon-default btn-sm ms-1 ms-sm-2"
+                          class="dropdown-toggle dropdown-caret-none btn btn-falcon-default btn-sm ms-1 ms-sm-2"
                           type="button"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
+                          data-bs-toggle="dropdown"
+                          data-boundary="viewport"
+                          aria-haspopup="true"
+                          aria-expanded="false"
                           title="Snooze"
                         >
                           <span class="fas fa-clock"></span>
                         </button>
+
+                        <div
+                          class="dropdown-menu dropdown-menu-end border py-2"
+                        >
+                          <div
+                            class="dropdown-item cursor-default hover-bg-transparent fw-semi-bold"
+                          >
+                            Select duration:
+                          </div>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#!">An Hour</a
+                          ><a class="dropdown-item" href="#!"
+                            >Later Today(6pm)</a
+                          >
+                          <a class="dropdown-item" href="#!">Tomorrow(24hrs)</a
+                          ><a class="dropdown-item" href="#!">Next Week</a>
+                        </div>
                         <button
                           class="btn btn-falcon-default btn-sm ms-1 ms-sm-2 d-none d-sm-inline-block"
                           type="button"
@@ -10308,14 +10679,33 @@
                           <span class="fas fa-envelope"></span>
                         </button>
                         <button
-                          class="btn btn-falcon-default btn-sm ms-1 ms-sm-2"
+                          class="dropdown-toggle dropdown-caret-none btn btn-falcon-default btn-sm ms-1 ms-sm-2"
                           type="button"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
+                          data-bs-toggle="dropdown"
+                          data-boundary="viewport"
+                          aria-haspopup="true"
+                          aria-expanded="false"
                           title="Snooze"
                         >
                           <span class="fas fa-clock"></span>
                         </button>
+
+                        <div
+                          class="dropdown-menu dropdown-menu-end border py-2"
+                        >
+                          <div
+                            class="dropdown-item cursor-default hover-bg-transparent fw-semi-bold"
+                          >
+                            Select duration:
+                          </div>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#!">An Hour</a
+                          ><a class="dropdown-item" href="#!"
+                            >Later Today(6pm)</a
+                          >
+                          <a class="dropdown-item" href="#!">Tomorrow(24hrs)</a
+                          ><a class="dropdown-item" href="#!">Next Week</a>
+                        </div>
                         <button
                           class="btn btn-falcon-default btn-sm ms-1 ms-sm-2 d-none d-sm-inline-block"
                           type="button"
@@ -10560,14 +10950,33 @@
                           <span class="fas fa-envelope"></span>
                         </button>
                         <button
-                          class="btn btn-falcon-default btn-sm ms-1 ms-sm-2"
+                          class="dropdown-toggle dropdown-caret-none btn btn-falcon-default btn-sm ms-1 ms-sm-2"
                           type="button"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
+                          data-bs-toggle="dropdown"
+                          data-boundary="viewport"
+                          aria-haspopup="true"
+                          aria-expanded="false"
                           title="Snooze"
                         >
                           <span class="fas fa-clock"></span>
                         </button>
+
+                        <div
+                          class="dropdown-menu dropdown-menu-end border py-2"
+                        >
+                          <div
+                            class="dropdown-item cursor-default hover-bg-transparent fw-semi-bold"
+                          >
+                            Select duration:
+                          </div>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#!">An Hour</a
+                          ><a class="dropdown-item" href="#!"
+                            >Later Today(6pm)</a
+                          >
+                          <a class="dropdown-item" href="#!">Tomorrow(24hrs)</a
+                          ><a class="dropdown-item" href="#!">Next Week</a>
+                        </div>
                         <button
                           class="btn btn-falcon-default btn-sm ms-1 ms-sm-2 d-none d-sm-inline-block"
                           type="button"
@@ -10823,14 +11232,33 @@
                           <span class="fas fa-envelope"></span>
                         </button>
                         <button
-                          class="btn btn-falcon-default btn-sm ms-1 ms-sm-2"
+                          class="dropdown-toggle dropdown-caret-none btn btn-falcon-default btn-sm ms-1 ms-sm-2"
                           type="button"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
+                          data-bs-toggle="dropdown"
+                          data-boundary="viewport"
+                          aria-haspopup="true"
+                          aria-expanded="false"
                           title="Snooze"
                         >
                           <span class="fas fa-clock"></span>
                         </button>
+
+                        <div
+                          class="dropdown-menu dropdown-menu-end border py-2"
+                        >
+                          <div
+                            class="dropdown-item cursor-default hover-bg-transparent fw-semi-bold"
+                          >
+                            Select duration:
+                          </div>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#!">An Hour</a
+                          ><a class="dropdown-item" href="#!"
+                            >Later Today(6pm)</a
+                          >
+                          <a class="dropdown-item" href="#!">Tomorrow(24hrs)</a
+                          ><a class="dropdown-item" href="#!">Next Week</a>
+                        </div>
                         <button
                           class="btn btn-falcon-default btn-sm ms-1 ms-sm-2 d-none d-sm-inline-block"
                           type="button"
@@ -11085,14 +11513,33 @@
                           <span class="fas fa-envelope"></span>
                         </button>
                         <button
-                          class="btn btn-falcon-default btn-sm ms-1 ms-sm-2"
+                          class="dropdown-toggle dropdown-caret-none btn btn-falcon-default btn-sm ms-1 ms-sm-2"
                           type="button"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
+                          data-bs-toggle="dropdown"
+                          data-boundary="viewport"
+                          aria-haspopup="true"
+                          aria-expanded="false"
                           title="Snooze"
                         >
                           <span class="fas fa-clock"></span>
                         </button>
+
+                        <div
+                          class="dropdown-menu dropdown-menu-end border py-2"
+                        >
+                          <div
+                            class="dropdown-item cursor-default hover-bg-transparent fw-semi-bold"
+                          >
+                            Select duration:
+                          </div>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#!">An Hour</a
+                          ><a class="dropdown-item" href="#!"
+                            >Later Today(6pm)</a
+                          >
+                          <a class="dropdown-item" href="#!">Tomorrow(24hrs)</a
+                          ><a class="dropdown-item" href="#!">Next Week</a>
+                        </div>
                         <button
                           class="btn btn-falcon-default btn-sm ms-1 ms-sm-2 d-none d-sm-inline-block"
                           type="button"
@@ -11337,14 +11784,33 @@
                           <span class="fas fa-envelope"></span>
                         </button>
                         <button
-                          class="btn btn-falcon-default btn-sm ms-1 ms-sm-2"
+                          class="dropdown-toggle dropdown-caret-none btn btn-falcon-default btn-sm ms-1 ms-sm-2"
                           type="button"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
+                          data-bs-toggle="dropdown"
+                          data-boundary="viewport"
+                          aria-haspopup="true"
+                          aria-expanded="false"
                           title="Snooze"
                         >
                           <span class="fas fa-clock"></span>
                         </button>
+
+                        <div
+                          class="dropdown-menu dropdown-menu-end border py-2"
+                        >
+                          <div
+                            class="dropdown-item cursor-default hover-bg-transparent fw-semi-bold"
+                          >
+                            Select duration:
+                          </div>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#!">An Hour</a
+                          ><a class="dropdown-item" href="#!"
+                            >Later Today(6pm)</a
+                          >
+                          <a class="dropdown-item" href="#!">Tomorrow(24hrs)</a
+                          ><a class="dropdown-item" href="#!">Next Week</a>
+                        </div>
                         <button
                           class="btn btn-falcon-default btn-sm ms-1 ms-sm-2 d-none d-sm-inline-block"
                           type="button"
@@ -11589,14 +12055,33 @@
                           <span class="fas fa-envelope"></span>
                         </button>
                         <button
-                          class="btn btn-falcon-default btn-sm ms-1 ms-sm-2"
+                          class="dropdown-toggle dropdown-caret-none btn btn-falcon-default btn-sm ms-1 ms-sm-2"
                           type="button"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
+                          data-bs-toggle="dropdown"
+                          data-boundary="viewport"
+                          aria-haspopup="true"
+                          aria-expanded="false"
                           title="Snooze"
                         >
                           <span class="fas fa-clock"></span>
                         </button>
+
+                        <div
+                          class="dropdown-menu dropdown-menu-end border py-2"
+                        >
+                          <div
+                            class="dropdown-item cursor-default hover-bg-transparent fw-semi-bold"
+                          >
+                            Select duration:
+                          </div>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#!">An Hour</a
+                          ><a class="dropdown-item" href="#!"
+                            >Later Today(6pm)</a
+                          >
+                          <a class="dropdown-item" href="#!">Tomorrow(24hrs)</a
+                          ><a class="dropdown-item" href="#!">Next Week</a>
+                        </div>
                         <button
                           class="btn btn-falcon-default btn-sm ms-1 ms-sm-2 d-none d-sm-inline-block"
                           type="button"

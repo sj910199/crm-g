@@ -3639,6 +3639,12 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
   display: none;
 }
 
+.email-inbox-panel
+  button.show.dropdown-toggle[title="Snooze"]
+  + div.dropdown-menu {
+  z-index: 1040 !important;
+}
+
 @media (min-width: 992px) {
   @container side-panel (max-width: 405px) {
     .email-content .email-content-body > .card-body {
@@ -3860,6 +3866,7 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
 
   .email-nav-body > div .btn-group.show-opts {
     transform: translateX(0.8rem);
+    z-index: 3 !important;
   }
 }
 
