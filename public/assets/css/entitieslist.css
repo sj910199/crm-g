@@ -192,6 +192,11 @@
   scroll-snap-align: start;
 }
 
+.required-label::after {
+  content: "*";
+  color: red;
+}
+
 /*to ensure that when anchor tag with ID href is click to scroll to that target
 it will not be covered by top nav*/
 [id] {
@@ -1777,6 +1782,79 @@ td[data-title="Feed"].feed .status-check:checked ~ .status-label > svg {
 /*-----------------------------------------------
 |   Items
 -----------------------------------------------*/
+
+.item-form-modal {
+  display: grid;
+}
+
+.item-form-modal > * {
+  grid-area: 1/1;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.item-form-modal > .active-form {
+  opacity: 1;
+  visibility: visible;
+}
+
+.new-item-form .price-quantity {
+  display: flex;
+  gap: 1rem;
+}
+
+.new-item-form .price-quantity input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+.new-item-form button[type="submit"] {
+  display: grid !important;
+  place-content: center;
+  position: relative;
+}
+
+.new-item-form button[type="submit"] > .btn-text {
+  opacity: 1;
+  grid-area: 1/1;
+}
+
+.new-item-form button[type="submit"] > svg {
+  display: none;
+  grid-area: 1/1;
+  place-self: center;
+}
+
+.new-item-form.is-submitting button[type="submit"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.new-item-form.is-submitting button[type="submit"] > .btn-text {
+  opacity: 0;
+}
+
+.new-item-form.is-submitting button[type="submit"] > svg {
+  display: block;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.new-item-form .price-quantity input[type="number"]::-webkit-outer-spin-button,
+.new-item-form .price-quantity input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 .items {
   flex-wrap: wrap;

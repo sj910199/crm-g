@@ -2248,22 +2248,6 @@
                       <h4 class="mb-0">Items</h4>
                       <div class="d-flex">
                         <div class="btn-group">
-                          <!--                          <button-->
-                          <!--                            class="btn btn-falcon-default btn-sm m-3 me-0"-->
-                          <!--                            type="button"-->
-                          <!--                            style="z-index: 10"-->
-                          <!--                            data-bs-toggle="modal"-->
-                          <!--                            data-bs-target="#item-form"-->
-                          <!--                            data-display="static"-->
-                          <!--                            aria-haspopup="true"-->
-                          <!--                            aria-expanded="false"-->
-                          <!--                          >-->
-                          <!--                            <span-->
-                          <!--                              class="fas fa-plus me-1"-->
-                          <!--                              data-fa-transform="shrink-3"-->
-                          <!--                            ></span-->
-                          <!--                            >Add Item-->
-                          <!--                          </button>-->
                           <button
                             class="btn btn-falcon-default btn-sm m-3 me-0"
                             type="button"
@@ -2299,30 +2283,45 @@
                                     aria-label="Close"
                                   ></button>
                                 </div>
-                                <div class="modal-body p-0">
-                                  <div
-                                    class="rounded-top-3 py-3 ps-4 pe-6 bg-body-tertiary"
-                                  >
-                                    <h4 class="mb-1" id="modalExampleDemoLabel">
-                                      Add a new Item
-                                    </h4>
-                                  </div>
-                                  <div class="p-4 pb-0">
-                                    <form id="dynamicForm">
-                                      <div class="mb-3">
-                                        <label for="itemName" class="form-label"
-                                          >Item Name</label
-                                        >
-                                        <select
-                                          class="form-select"
-                                          id="itemName"
-                                          name="itemName"
-                                        >
-                                          <option value="">Select Item</option>
-                                        </select>
-                                      </div>
 
-                                      <div class="mb-3">
+                                <div
+                                  id="itemFormModal"
+                                  class="modal-body item-form-modal p-0"
+                                >
+                                  <div class="active-form first-form">
+                                    <header
+                                      class="rounded-top-3 py-3 ps-4 pe-6 bg-body-tertiary"
+                                    >
+                                      <h4
+                                        class="mb-1"
+                                        id="modalExampleDemoLabel"
+                                      >
+                                        Add a new Item
+                                      </h4>
+                                    </header>
+                                    <div class="p-4 pb-0">
+                                      <form
+                                        id="newItemForm1"
+                                        class="new-item-form"
+                                      >
+                                        <div class="mb-3">
+                                          <label
+                                            for="itemName"
+                                            class="form-label required-label"
+                                            >Item Name</label
+                                          >
+                                          <select
+                                            class="form-select"
+                                            id="itemName"
+                                            name="itemName"
+                                          >
+                                            <option value="">
+                                              Select Item
+                                            </option>
+                                          </select>
+                                        </div>
+
+                                        <!-- <div class="mb-3">
                                         <label
                                           for="itemNumber"
                                           class="form-label"
@@ -2336,179 +2335,389 @@
                                           placeholder="Item Number"
                                           readonly
                                         />
-                                      </div>
-                                      <div class="mb-3">
-                                        <label for="quantity" class="form-label"
-                                          >Quantity</label
-                                        >
-                                        <input
-                                          class="form-control"
-                                          type="number"
-                                          id="quantity"
-                                          name="quantity"
-                                          placeholder="Quantity"
-                                          value="1"
-                                        />
-                                      </div>
-                                      <div class="mb-3">
-                                        <label for="price" class="form-label"
-                                          >Price</label
-                                        >
-                                        <input
-                                          class="form-control"
-                                          type="number"
-                                          id="price"
-                                          name="price"
-                                          placeholder="Price"
-                                          readonly
-                                        />
-                                      </div>
+                                      </div> -->
 
-                                      <div class="mb-3">
-                                        <label for="vandor" class="form-label"
-                                          >Vandor</label
-                                        >
-                                        <select
-                                          class="form-select"
-                                          id="vandor"
-                                          name="vandor"
-                                        >
-                                          <option value="">
-                                            Select Vandor
-                                          </option>
-                                        </select>
-                                      </div>
-                                      <div class="mb-3">
-                                        <label for="taxable" class="form-label"
-                                          >Taxable</label
-                                        >
-                                        <select
-                                          class="form-select"
-                                          id="taxable"
-                                          name="taxable"
-                                        >
-                                          <option value="">
-                                            Select Taxable
-                                          </option>
-                                          <option value="yes">Yes</option>
-                                          <option value="no">No</option>
-                                        </select>
-                                      </div>
+                                        <div class="price-quantity">
+                                          <div class="mb-3">
+                                            <label
+                                              for="quantity"
+                                              class="form-label required-label"
+                                              >Quantity</label
+                                            >
+                                            <input
+                                              class="form-control"
+                                              type="number"
+                                              id="quantity"
+                                              name="quantity"
+                                              placeholder="Quantity"
+                                              value="1"
+                                            />
+                                          </div>
+                                          <div class="mb-3">
+                                            <label
+                                              for="price required-label"
+                                              class="form-label"
+                                              >Price</label
+                                            >
+                                            <input
+                                              class="form-control"
+                                              type="number"
+                                              id="price"
+                                              name="price"
+                                              placeholder="Price"
+                                              readonly
+                                            />
+                                          </div>
+                                        </div>
 
-                                      <div class="mb-3">
-                                        <label for="status" class="form-label"
-                                          >Status</label
-                                        >
-                                        <select
-                                          class="form-select"
-                                          id="status"
-                                          name="status"
-                                        >
-                                          <option value="">
-                                            Select Status
-                                          </option>
-                                        </select>
-                                      </div>
+                                        <div class="mb-3">
+                                          <label
+                                            for="vandor"
+                                            class="form-label required-label"
+                                            >Vandor</label
+                                          >
+                                          <select
+                                            class="form-select"
+                                            id="vandor"
+                                            name="vandor"
+                                          >
+                                            <option value="">
+                                              Select Vandor
+                                            </option>
+                                          </select>
+                                        </div>
+                                        <div class="mb-3">
+                                          <label
+                                            for="taxable"
+                                            class="form-label"
+                                            >Taxable</label
+                                          >
+                                          <select
+                                            class="form-select"
+                                            id="taxable"
+                                            name="taxable"
+                                          >
+                                            <option value="">
+                                              Select Taxable
+                                            </option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                          </select>
+                                        </div>
 
-                                      <div class="mb-3">
-                                        <label for="shipping" class="form-label"
-                                          >Shipping</label
-                                        >
-                                        <select
-                                          class="form-select"
-                                          id="shipping"
-                                          name="shipping"
-                                        >
-                                          <option value="">
-                                            Select Shipping
-                                          </option>
-                                        </select>
-                                      </div>
+                                        <div class="mb-3">
+                                          <label for="status" class="form-label"
+                                            >Status</label
+                                          >
+                                          <select
+                                            class="form-select"
+                                            id="status"
+                                            name="status"
+                                          >
+                                            <option value="">
+                                              Select Status
+                                            </option>
+                                          </select>
+                                        </div>
 
-                                      <div class="mb-3">
-                                        <label
-                                          for="timeToInstall"
-                                          class="form-label"
-                                          >Time to Install</label
-                                        >
-                                        <select
-                                          class="form-select"
-                                          id="timeToInstall"
-                                          name="timeToInstall"
-                                        >
-                                          <option value="">Select Time</option>
-                                        </select>
-                                      </div>
+                                        <div class="mb-3">
+                                          <label
+                                            for="shipping"
+                                            class="form-label required-label"
+                                            >Shipping</label
+                                          >
+                                          <select
+                                            class="form-select"
+                                            id="shipping"
+                                            name="shipping"
+                                          >
+                                            <option value="">
+                                              Select Shipping
+                                            </option>
+                                          </select>
+                                        </div>
 
-                                      <div class="mb-3">
-                                        <label for="labor" class="form-label"
-                                          >Labor</label
-                                        >
-                                        <input
-                                          class="form-control"
-                                          type="text"
-                                          id="labor"
-                                          name="labor"
-                                          placeholder="Labor"
-                                        />
-                                      </div>
-                                      <div class="mb-3">
-                                        <label for="total" class="form-label"
-                                          >Total</label
-                                        >
-                                        <input
-                                          class="form-control"
-                                          type="number"
-                                          id="total"
-                                          name="total"
-                                          placeholder="Total"
-                                          readonly
-                                        />
-                                      </div>
+                                        <div class="mb-3">
+                                          <label
+                                            for="timeToInstall"
+                                            class="form-label"
+                                            >Time to Install</label
+                                          >
+                                          <select
+                                            class="form-select"
+                                            id="timeToInstall"
+                                            name="timeToInstall"
+                                          >
+                                            <option value="">
+                                              Select Time
+                                            </option>
+                                          </select>
+                                        </div>
 
-                                      <div class="mb-3">
-                                        <button
-                                          class="btn btn-primary d-block w-100 mt-3"
-                                          type="submit"
-                                          name="submit"
+                                        <div
+                                          class="mb-3 d-flex align-items-center gap-3"
                                         >
-                                          Add
-                                        </button>
-                                      </div>
-                                    </form>
+                                          <label
+                                            for="labor"
+                                            class="form-label mb-0"
+                                            >Labor:
+                                          </label>
+                                          <input
+                                            class="form-control"
+                                            type="text"
+                                            id="labor"
+                                            name="labor"
+                                            placeholder="Labor"
+                                          />
+                                        </div>
+                                        <div
+                                          class="mb-3 d-flex align-items-center gap-3"
+                                        >
+                                          <label
+                                            for="total"
+                                            class="form-label mb-0"
+                                            >Total:
+                                          </label>
+                                          <input
+                                            class="form-control"
+                                            type="number"
+                                            id="total"
+                                            name="total"
+                                            placeholder="Total"
+                                            readonly
+                                          />
+                                        </div>
+
+                                        <div class="mb-3">
+                                          <button
+                                            class="btn btn-primary d-block w-100 mt-3"
+                                            type="submit"
+                                            name="submit"
+                                          >
+                                            <span class="btn-text">Add</span>
+                                            <span class="fas fa-spinner"></span>
+                                          </button>
+                                        </div>
+                                      </form>
+                                    </div>
+                                  </div>
+
+                                  <div class="second-form">
+                                    <header
+                                      class="rounded-top-3 py-3 ps-4 pe-6 bg-body-tertiary"
+                                    >
+                                      <h4
+                                        class="mb-1"
+                                        id="modalExampleDemoLabel"
+                                      >
+                                        Add a Modifiers
+                                      </h4>
+                                    </header>
+                                    <div class="p-4 pb-0">
+                                      <form
+                                        id="newItemForm2"
+                                        class="new-item-form"
+                                      >
+                                        <div class="mb-3">
+                                          <label
+                                            for="itemName"
+                                            class="form-label required-label"
+                                            >Item Name</label
+                                          >
+                                          <select
+                                            class="form-select"
+                                            id="itemName"
+                                            name="itemName"
+                                          >
+                                            <option value="">
+                                              Select Item
+                                            </option>
+                                          </select>
+                                        </div>
+
+                                        <!-- <div class="mb-3">
+                                          <label
+                                            for="itemNumber"
+                                            class="form-label"
+                                            >Item Number</label
+                                          >
+                                          <input
+                                            class="form-control"
+                                            type="text"
+                                            id="itemNumber"
+                                            name="itemNumber"
+                                            placeholder="Item Number"
+                                            readonly
+                                          />
+                                        </div> -->
+
+                                        <div class="price-quantity">
+                                          <div class="mb-3">
+                                            <label
+                                              for="quantity"
+                                              class="form-label required-label"
+                                              >Quantity</label
+                                            >
+                                            <input
+                                              class="form-control"
+                                              type="number"
+                                              id="quantity"
+                                              name="quantity"
+                                              placeholder="Quantity"
+                                              value="1"
+                                            />
+                                          </div>
+                                          <div class="mb-3">
+                                            <label
+                                              for="price required-label"
+                                              class="form-label"
+                                              >Price</label
+                                            >
+                                            <input
+                                              class="form-control"
+                                              type="number"
+                                              id="price"
+                                              name="price"
+                                              placeholder="Price"
+                                              readonly
+                                            />
+                                          </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                          <label
+                                            for="vandor"
+                                            class="form-label required-label"
+                                            >Vandor</label
+                                          >
+                                          <select
+                                            class="form-select"
+                                            id="vandor"
+                                            name="vandor"
+                                          >
+                                            <option value="">
+                                              Select Vandor
+                                            </option>
+                                          </select>
+                                        </div>
+                                        <div class="mb-3">
+                                          <label
+                                            for="taxable"
+                                            class="form-label"
+                                            >Taxable</label
+                                          >
+                                          <select
+                                            class="form-select"
+                                            id="taxable"
+                                            name="taxable"
+                                          >
+                                            <option value="">
+                                              Select Taxable
+                                            </option>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                          </select>
+                                        </div>
+
+                                        <div class="mb-3">
+                                          <label for="status" class="form-label"
+                                            >Status</label
+                                          >
+                                          <select
+                                            class="form-select"
+                                            id="status"
+                                            name="status"
+                                          >
+                                            <option value="">
+                                              Select Status
+                                            </option>
+                                          </select>
+                                        </div>
+
+                                        <div class="mb-3">
+                                          <label
+                                            for="shipping"
+                                            class="form-label required-label"
+                                            >Shipping</label
+                                          >
+                                          <select
+                                            class="form-select"
+                                            id="shipping"
+                                            name="shipping"
+                                          >
+                                            <option value="">
+                                              Select Shipping
+                                            </option>
+                                          </select>
+                                        </div>
+
+                                        <div class="mb-3">
+                                          <label
+                                            for="timeToInstall"
+                                            class="form-label"
+                                            >Time to Install</label
+                                          >
+                                          <select
+                                            class="form-select"
+                                            id="timeToInstall"
+                                            name="timeToInstall"
+                                          >
+                                            <option value="">
+                                              Select Time
+                                            </option>
+                                          </select>
+                                        </div>
+
+                                        <div
+                                          class="mb-3 d-flex align-items-center gap-3"
+                                        >
+                                          <label
+                                            for="labor"
+                                            class="form-label mb-0"
+                                            >Labor:
+                                          </label>
+                                          <input
+                                            class="form-control"
+                                            type="text"
+                                            id="labor"
+                                            name="labor"
+                                            placeholder="Labor"
+                                          />
+                                        </div>
+                                        <div
+                                          class="mb-3 d-flex align-items-center gap-3"
+                                        >
+                                          <label
+                                            for="total"
+                                            class="form-label mb-0"
+                                            >Total:
+                                          </label>
+                                          <input
+                                            class="form-control"
+                                            type="number"
+                                            id="total"
+                                            name="total"
+                                            placeholder="Total"
+                                            readonly
+                                          />
+                                        </div>
+
+                                        <div class="mb-3">
+                                          <button
+                                            class="btn btn-primary d-block w-100 mt-3"
+                                            type="submit"
+                                            name="submit"
+                                          >
+                                            Add
+                                          </button>
+                                        </div>
+                                      </form>
+                                    </div>
                                   </div>
                                 </div>
-                                <!--                                <div class="modal-footer">-->
-                                <!--                                  <button-->
-                                <!--                                    class="btn btn-secondary"-->
-                                <!--                                    type="button"-->
-                                <!--                                    data-bs-dismiss="modal"-->
-                                <!--                                  >-->
-                                <!--                                    Close-->
-                                <!--                                  </button>-->
-                                <!--                                  <button class="btn btn-primary" type="button">-->
-                                <!--                                    Understood-->
-                                <!--                                  </button>-->
-                                <!--                                </div>-->
                               </div>
                             </div>
                           </div>
-
-                          <!--                                                    <div-->
-                          <!--                                                      class="modal fade py-0"-->
-                          <!--                                                      tabindex="-1"-->
-                          <!--                                                      role="dialog"-->
-                          <!--                                                      aria-hidden="true"-->
-                          <!--                                                      id="item-form"-->
-                          <!--                                                    >-->
-                          <!--                                                      <div-->
-                          <!--                                                        class="modal-content card shadow-none border-0"-->
-                          <!--                                                        style="width: 22rem"-->
-                          <!--                                                      >-->
-                          <!--                                                        <div class="modal-body card-body">-->
-                          <!--                                                        </div>-->
-                          <!--                                                      </div>-->
-                          <!--                                                    </div>-->
                         </div>
                       </div>
                     </div>
@@ -21500,88 +21709,133 @@
         "16H",
       ];
 
-      // Get references to form elements
-      const itemNameSelect = document.getElementById("itemName");
-      const itemNumberInput = document.getElementById("itemNumber");
-      const quantityInput = document.getElementById("quantity");
-      const priceInput = document.getElementById("price");
-      const vandorSelect = document.getElementById("vandor");
-      const statusSelect = document.getElementById("status");
-      const shippingSelect = document.getElementById("shipping");
-      const timeToInstallSelect = document.getElementById("timeToInstall");
-      const totalInput = document.getElementById("total");
-
-      // Populate Item Name dropdown
-      items.forEach((item) => {
-        const option = document.createElement("option");
-        option.value = item.name;
-        option.textContent = item.name;
-        itemNameSelect.appendChild(option);
-      });
-
-      // Populate Vandor dropdown
-      Vandor.forEach((vandor) => {
-        const option = document.createElement("option");
-        option.value = vandor;
-        option.textContent = vandor;
-        vandorSelect.appendChild(option);
-      });
-
-      // Populate Status dropdown
-      StatusOptions.forEach((status) => {
-        const option = document.createElement("option");
-        option.value = status;
-        option.textContent = status;
-        statusSelect.appendChild(option);
-      });
-
-      // Populate Shipping dropdown
-      ShippingOptions.forEach((shipping) => {
-        const option = document.createElement("option");
-        option.value = shipping;
-        option.textContent = shipping;
-        shippingSelect.appendChild(option);
-      });
-
-      // Populate Time to Install dropdown
-      TimeToInstallOptions.forEach((time) => {
-        const option = document.createElement("option");
-        option.value = time;
-        option.textContent = time;
-        timeToInstallSelect.appendChild(option);
-      });
-
-      // Event listener for Item Name select to auto-populate Item Number and Price
-      itemNameSelect.addEventListener("change", function () {
-        const selectedItemName = this.value;
-        const selectedItem = items.find(
-          (item) => item.name === selectedItemName,
-        );
-
-        if (selectedItem) {
-          itemNumberInput.value = selectedItem.id;
-          priceInput.value = selectedItem.price;
-        } else {
-          itemNumberInput.value = "";
-          priceInput.value = "";
-        }
-        calculateTotal(); // Recalculate total when item changes
-      });
-
-      // Event listeners for Quantity and Price to recalculate total
-      quantityInput.addEventListener("input", calculateTotal);
-      priceInput.addEventListener("input", calculateTotal);
-
-      function calculateTotal() {
-        const quantity = parseFloat(quantityInput.value);
-        const price = parseFloat(priceInput.value);
-
-        if (!isNaN(quantity) && !isNaN(price)) {
-          totalInput.value = (quantity * price).toFixed(2); // Basic total calculation
-        } else {
-          totalInput.value = ""; // Clear total if quantity or price is invalid
-        }
+      function delay(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
       }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const parentFormModal = document.getElementById("itemFormModal");
+        const firstForm = parentFormModal.querySelector(".first-form");
+        const secondForm = parentFormModal.querySelector(".second-form");
+
+        const newItemForm1 = document.getElementById("newItemForm1");
+        // Get references to form elements
+        const itemNameSelect = document.getElementById("itemName");
+        // const itemNumberInput = document.getElementById("itemNumber");
+        const quantityInput = document.getElementById("quantity");
+        const priceInput = document.getElementById("price");
+        const vandorSelect = document.getElementById("vandor");
+        const statusSelect = document.getElementById("status");
+        const shippingSelect = document.getElementById("shipping");
+        const timeToInstallSelect = document.getElementById("timeToInstall");
+        const totalInput = document.getElementById("total");
+
+        // Populate Item Name dropdown
+        items.forEach((item) => {
+          const option = document.createElement("option");
+          option.value = item.name;
+          option.textContent = item.name;
+          itemNameSelect.appendChild(option);
+        });
+
+        // Populate Vandor dropdown
+        Vandor.forEach((vandor) => {
+          const option = document.createElement("option");
+          option.value = vandor;
+          option.textContent = vandor;
+          vandorSelect.appendChild(option);
+        });
+
+        // Populate Status dropdown
+        StatusOptions.forEach((status) => {
+          const option = document.createElement("option");
+          option.value = status;
+          option.textContent = status;
+          statusSelect.appendChild(option);
+        });
+
+        // Populate Shipping dropdown
+        ShippingOptions.forEach((shipping) => {
+          const option = document.createElement("option");
+          option.value = shipping;
+          option.textContent = shipping;
+          shippingSelect.appendChild(option);
+        });
+
+        // Populate Time to Install dropdown
+        TimeToInstallOptions.forEach((time) => {
+          const option = document.createElement("option");
+          option.value = time;
+          option.textContent = time;
+          timeToInstallSelect.appendChild(option);
+        });
+
+        // Event listener for Item Name select to auto-populate Item Number and Price
+        itemNameSelect.addEventListener("change", function () {
+          const selectedItemName = this.value;
+          const selectedItem = items.find(
+            (item) => item.name === selectedItemName,
+          );
+
+          if (selectedItem) {
+            // itemNumberInput.value = selectedItem.id;
+            priceInput.value = selectedItem.price;
+          } else {
+            // itemNumberInput.value = "";
+            priceInput.value = "";
+          }
+          calculateTotal(); // Recalculate total when item changes
+        });
+
+        // Event listeners for Quantity and Price to recalculate total
+        quantityInput.addEventListener("input", calculateTotal);
+        priceInput.addEventListener("input", calculateTotal);
+
+        function calculateTotal() {
+          const quantity = parseFloat(quantityInput.value);
+          const price = parseFloat(priceInput.value);
+
+          if (!isNaN(quantity) && !isNaN(price)) {
+            totalInput.value = (quantity * price).toFixed(2); // Basic total calculation
+          } else {
+            totalInput.value = ""; // Clear total if quantity or price is invalid
+          }
+        }
+
+        newItemForm1.addEventListener("submit", async function (event) {
+          event.preventDefault();
+          // attach a isSubmitting class to the form to prevent multiple submissions
+          const submitBtn = newItemForm1.querySelector('button[type="submit"]');
+          newItemForm1.classList.add("is-submitting");
+          submitBtn.setAttribute("disabled", "disabled");
+
+          // add delay before proceeding to simulate network request using promise
+          await delay(2000);
+
+          const itemName = itemNameSelect.value;
+          const quantity = quantityInput.value;
+          const price = priceInput.value;
+          const total = totalInput.value;
+
+          // Add item to the list
+          // will append the values in the table later
+          // const item = document.createElement("li");
+          // item.textContent = `${itemName} (${itemNumber}) - ${quantity} x ${price} = ${total}`;
+          // itemList.appendChild(item);
+
+          // Reset form fields
+          itemNameSelect.value = "";
+          quantityInput.value = "";
+          priceInput.value = "";
+          totalInput.value = "";
+
+          // after processing the form remove the is-submitting class
+          newItemForm1.classList.remove("is-submitting");
+          submitBtn.removeAttribute("disabled");
+          firstForm.classList.remove("active-form");
+          secondForm.classList.add("active-form");
+        });
+      });
     </script>
 
     <!-- // items section:details
