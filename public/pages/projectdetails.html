@@ -2288,18 +2288,13 @@
                                   id="itemFormModal"
                                   class="modal-body item-form-modal p-0"
                                 >
-                                  <div class="active-form first-form">
+                                  <div class="first-form" inert>
                                     <header
                                       class="rounded-top-3 py-3 ps-4 pe-6 bg-body-tertiary"
                                     >
-                                      <h4
-                                        class="mb-1"
-                                        id="modalExampleDemoLabel"
-                                      >
-                                        Add a new Item
-                                      </h4>
+                                      <h4 class="mb-1">Add a new Item</h4>
                                     </header>
-                                    <div class="p-4 pb-0">
+                                    <div class="px-4 pt-2 pb-0">
                                       <form
                                         id="newItemForm1"
                                         class="new-item-form"
@@ -2320,22 +2315,6 @@
                                             </option>
                                           </select>
                                         </div>
-
-                                        <!-- <div class="mb-3">
-                                        <label
-                                          for="itemNumber"
-                                          class="form-label"
-                                          >Item Number</label
-                                        >
-                                        <input
-                                          class="form-control"
-                                          type="text"
-                                          id="itemNumber"
-                                          name="itemNumber"
-                                          placeholder="Item Number"
-                                          readonly
-                                        />
-                                      </div> -->
 
                                         <div class="price-quantity">
                                           <div class="mb-3">
@@ -2502,213 +2481,318 @@
                                     </div>
                                   </div>
 
-                                  <div class="second-form">
+                                  <div class="second-form" inert>
                                     <header
                                       class="rounded-top-3 py-3 ps-4 pe-6 bg-body-tertiary"
                                     >
-                                      <h4
-                                        class="mb-1"
-                                        id="modalExampleDemoLabel"
-                                      >
-                                        Add a Modifiers
-                                      </h4>
+                                      <h4 class="mb-1">Add a Modifiers</h4>
                                     </header>
-                                    <div class="p-4 pb-0">
+                                    <div class="px-4 pt-2 pb-0">
                                       <form
                                         id="newItemForm2"
                                         class="new-item-form"
                                       >
-                                        <div class="mb-3">
-                                          <label
-                                            for="itemName"
-                                            class="form-label required-label"
-                                            >Item Name</label
+                                        <fieldset>
+                                          <legend class="text-center">
+                                            Glass Specification
+                                          </legend>
+                                          <div
+                                            class="d-flex align-items-center justify-content-between gap-3"
                                           >
-                                          <select
-                                            class="form-select"
-                                            id="itemName"
-                                            name="itemName"
-                                          >
-                                            <option value="">
-                                              Select Item
-                                            </option>
-                                          </select>
-                                        </div>
-
-                                        <!-- <div class="mb-3">
-                                          <label
-                                            for="itemNumber"
-                                            class="form-label"
-                                            >Item Number</label
-                                          >
-                                          <input
-                                            class="form-control"
-                                            type="text"
-                                            id="itemNumber"
-                                            name="itemNumber"
-                                            placeholder="Item Number"
-                                            readonly
-                                          />
-                                        </div> -->
-
-                                        <div class="price-quantity">
-                                          <div class="mb-3">
-                                            <label
-                                              for="quantity"
-                                              class="form-label required-label"
-                                              >Quantity</label
+                                            <div
+                                              class="mb-3 d-flex align-items-center gap-2"
                                             >
+                                              <label
+                                                for="glass-width"
+                                                class="form-label mb-0"
+                                                >Width:
+                                              </label>
+                                              <input
+                                                class="form-control"
+                                                type="number"
+                                                id="glass-width"
+                                                name="width"
+                                                placeholder="50"
+                                              />
+                                            </div>
+
+                                            <div
+                                              class="mb-3 d-flex align-items-center gap-2"
+                                            >
+                                              <label
+                                                for="glass-height"
+                                                class="form-label mb-0"
+                                                >Height:
+                                              </label>
+                                              <input
+                                                class="form-control"
+                                                type="number"
+                                                id="glass-height"
+                                                name="height"
+                                                placeholder="50"
+                                              />
+                                            </div>
+                                          </div>
+
+                                          <div class="mb-3 glass-type-wrapper">
+                                            <label
+                                              for="glass-type"
+                                              class="form-label mb-0"
+                                              >Glass:
+                                            </label>
                                             <input
                                               class="form-control"
-                                              type="number"
-                                              id="quantity"
-                                              name="quantity"
-                                              placeholder="Quantity"
-                                              value="1"
+                                              type="text"
+                                              id="glass-type"
+                                              name="type"
+                                              placeholder="Ex1"
                                             />
+                                            <div class="description">
+                                              <p>Ex1 = 1/4 Clear Tmp.</p>
+                                              <p>
+                                                Ex2 = 1/4 solarban 60 Tmp, 1/4
+                                                Clear lam.
+                                              </p>
+                                              <p>
+                                                Ex3 = 1/8 P62 Smoothside in TMP,
+                                                1/8 solarban 60 Tmp
+                                              </p>
+                                            </div>
                                           </div>
+
+                                          <div class="mb-3 glass-grid-wrapper">
+                                            <label
+                                              for="glass-grid"
+                                              class="form-label mb-0 required-label"
+                                              >Grid:
+                                            </label>
+                                            <input
+                                              class="form-control"
+                                              type="text"
+                                              id="glass-grid"
+                                              name="grid"
+                                              placeholder="none"
+                                              required
+                                            />
+                                            <div class="description">
+                                              <p>
+                                                Grids are bars in between pans
+                                                of glass,specify color, size and
+                                                pattern of grids. For special
+                                                shape send drawing.
+                                              </p>
+                                              <p>
+                                                Example. 5/8 white, 2 space in
+                                                H, 5 space in W.
+                                              </p>
+                                            </div>
+                                            <div class="grid-img">
+                                              <input
+                                                id="grid-checkbox"
+                                                type="checkbox"
+                                                hidden
+                                                class="sr-only"
+                                              />
+                                              <label
+                                                for="grid-checkbox"
+                                                class="bg-primary-subtle py-1 px-2 rounded"
+                                                >See Image</label
+                                              >
+                                              <img
+                                                src="../assets/img/grid.webp"
+                                                width="400"
+                                                height="400"
+                                                decoding="async"
+                                                loading="lazy"
+                                                alt="grid image"
+                                              />
+                                            </div>
+                                          </div>
+
                                           <div class="mb-3">
                                             <label
-                                              for="price required-label"
+                                              for="spacer"
                                               class="form-label"
-                                              >Price</label
+                                              >Spacer</label
                                             >
-                                            <input
-                                              class="form-control"
-                                              type="number"
-                                              id="price"
-                                              name="price"
-                                              placeholder="Price"
-                                              readonly
-                                            />
+                                            <select
+                                              class="form-select"
+                                              id="spacer"
+                                              name="spacer"
+                                            >
+                                              <option value="">
+                                                Select Spacer
+                                              </option>
+                                            </select>
                                           </div>
-                                        </div>
+                                          <div class="mb-3">
+                                            <label
+                                              for="shape"
+                                              class="form-label"
+                                              >Shape</label
+                                            >
+                                            <select
+                                              class="form-select"
+                                              id="shape"
+                                              name="shape"
+                                            >
+                                              <option
+                                                value="square/rectangular"
+                                              >
+                                                Square/Rectangular
+                                              </option>
+                                            </select>
+                                          </div>
 
-                                        <div class="mb-3">
-                                          <label
-                                            for="vandor"
-                                            class="form-label required-label"
-                                            >Vandor</label
+                                          <div
+                                            class="d-flex align-items-center gap-3 justify-content-between"
                                           >
-                                          <select
-                                            class="form-select"
-                                            id="vandor"
-                                            name="vandor"
-                                          >
-                                            <option value="">
-                                              Select Vandor
-                                            </option>
-                                          </select>
-                                        </div>
-                                        <div class="mb-3">
-                                          <label
-                                            for="taxable"
-                                            class="form-label"
-                                            >Taxable</label
-                                          >
-                                          <select
-                                            class="form-select"
-                                            id="taxable"
-                                            name="taxable"
-                                          >
-                                            <option value="">
-                                              Select Taxable
-                                            </option>
-                                            <option value="yes">Yes</option>
-                                            <option value="no">No</option>
-                                          </select>
-                                        </div>
+                                            <div class="mb-3">
+                                              <label
+                                                for="overallThickness"
+                                                class="form-label"
+                                                >Overall Thickness</label
+                                              >
+                                              <select
+                                                class="form-select"
+                                                id="overallThickness"
+                                                name="overallThickness"
+                                              >
+                                                <option value="">
+                                                  Select Thickness
+                                                </option>
+                                              </select>
+                                            </div>
 
-                                        <div class="mb-3">
-                                          <label for="status" class="form-label"
-                                            >Status</label
-                                          >
-                                          <select
-                                            class="form-select"
-                                            id="status"
-                                            name="status"
-                                          >
-                                            <option value="">
-                                              Select Status
-                                            </option>
-                                          </select>
-                                        </div>
-
-                                        <div class="mb-3">
-                                          <label
-                                            for="shipping"
-                                            class="form-label required-label"
-                                            >Shipping</label
-                                          >
-                                          <select
-                                            class="form-select"
-                                            id="shipping"
-                                            name="shipping"
-                                          >
-                                            <option value="">
-                                              Select Shipping
-                                            </option>
-                                          </select>
-                                        </div>
-
-                                        <div class="mb-3">
-                                          <label
-                                            for="timeToInstall"
-                                            class="form-label"
-                                            >Time to Install</label
-                                          >
-                                          <select
-                                            class="form-select"
-                                            id="timeToInstall"
-                                            name="timeToInstall"
-                                          >
-                                            <option value="">
-                                              Select Time
-                                            </option>
-                                          </select>
-                                        </div>
+                                            <div class="mb-3">
+                                              <label
+                                                for="leadTime"
+                                                class="form-label"
+                                                >Lead Time</label
+                                              >
+                                              <select
+                                                class="form-select"
+                                                id="leadTime"
+                                                name="leadTime"
+                                              >
+                                                <option value="standard">
+                                                  Standard
+                                                </option>
+                                              </select>
+                                            </div>
+                                          </div>
+                                        </fieldset>
 
                                         <div
-                                          class="mb-3 d-flex align-items-center gap-3"
+                                          class="mb-3 d-flex justify-content-between align-items-center gap-3"
                                         >
-                                          <label
-                                            for="labor"
-                                            class="form-label mb-0"
-                                            >Labor:
-                                          </label>
-                                          <input
-                                            class="form-control"
-                                            type="text"
-                                            id="labor"
-                                            name="labor"
-                                            placeholder="Labor"
-                                          />
-                                        </div>
-                                        <div
-                                          class="mb-3 d-flex align-items-center gap-3"
-                                        >
-                                          <label
-                                            for="total"
-                                            class="form-label mb-0"
-                                            >Total:
-                                          </label>
-                                          <input
-                                            class="form-control"
-                                            type="number"
-                                            id="total"
-                                            name="total"
-                                            placeholder="Total"
-                                            readonly
-                                          />
-                                        </div>
+                                          <button
+                                            class="btn btn-secondary d-block w-100 mt-3"
+                                            type="button"
+                                            data-target="first-form"
+                                            aria-label="previous form"
+                                          >
+                                            Back
+                                          </button>
 
-                                        <div class="mb-3">
                                           <button
                                             class="btn btn-primary d-block w-100 mt-3"
                                             type="submit"
                                             name="submit"
                                           >
-                                            Add
+                                            <span class="btn-text">Next</span>
+
+                                            <span class="fas fa-spinner"></span>
+                                          </button>
+                                        </div>
+                                      </form>
+                                    </div>
+                                  </div>
+
+                                  <div class="third-form" inert>
+                                    <header
+                                      class="rounded-top-3 py-3 ps-4 pe-6 bg-body-tertiary"
+                                    >
+                                      <h4 class="mb-1">Add a Modifiers</h4>
+                                    </header>
+                                    <div class="px-4 pt-2 pb-0">
+                                      <form
+                                        id="newItemForm3"
+                                        class="new-item-form"
+                                      >
+                                        <fieldset>
+                                          <legend class="text-center">
+                                            Frame Details
+                                          </legend>
+
+                                          <div class="mb-3">
+                                            <label
+                                              for="frameType"
+                                              class="form-label"
+                                              >Frame Type
+                                            </label>
+                                            <select
+                                              class="form-select"
+                                              id="frameType"
+                                              name="frame-type"
+                                            >
+                                              <option value="">
+                                                Select Type
+                                              </option>
+                                            </select>
+                                          </div>
+
+                                          <div class="mb-3">
+                                            <label
+                                              for="frameMaterial"
+                                              class="form-label"
+                                              >Frame Material</label
+                                            >
+                                            <select
+                                              class="form-select"
+                                              id="frameMaterial"
+                                              name="material"
+                                            >
+                                              <option value="">
+                                                Select Material
+                                              </option>
+                                            </select>
+                                          </div>
+
+                                          <div class="mb-3">
+                                            <label
+                                              for="glass-notes"
+                                              class="form-label"
+                                              >Glass:
+                                            </label>
+                                            <textarea
+                                              id="glass-notes"
+                                              class="form-control"
+                                              aria-label="With textarea"
+                                            ></textarea>
+                                          </div>
+                                        </fieldset>
+
+                                        <div
+                                          class="mb-3 d-flex justify-content-between align-items-center gap-3"
+                                        >
+                                          <button
+                                            class="btn btn-secondary d-block w-100 mt-3"
+                                            type="button"
+                                            data-target="second-form"
+                                            aria-label="go second form"
+                                          >
+                                            Back
+                                          </button>
+
+                                          <button
+                                            class="btn btn-primary d-block w-100 mt-3"
+                                            type="submit"
+                                            name="submit"
+                                          >
+                                            <span class="btn-text">Save</span>
+
+                                            <span class="fas fa-spinner"></span>
                                           </button>
                                         </div>
                                       </form>
@@ -21709,14 +21793,70 @@
         "16H",
       ];
 
+      // constants for SEcond form SELECT MODIFIERS
+      const spacerOptions = [
+        "Manufacturer Standard",
+        "Aluminum anodize",
+        "Black bronze",
+        "Light grey/white",
+      ];
+
+      const overallThicknessOptions = [
+        "1/2",
+        "7/16",
+        "5/8",
+        "11/16",
+        "9/16",
+        "3/4",
+        "13/16",
+        "7/8",
+        "15/16",
+        "1",
+        "1-1/8",
+      ];
+
+      // removing the first value since its already hard coded as a defualt value
+      const shapeOptions = [
+        // "Square/Rectangular",
+        "Circular diameter",
+        "As provided drawing see attachment file",
+        "Pattern required",
+      ];
+
+      // removing the first value since its already hard coded as a defualt value
+      const leadTimeOptions = [
+        // "Standard",
+        "Rush Order",
+      ];
+
+      const frameTypeOptions = ["Door", "Window"];
+      const frameMaterialOptions = [
+        "Aluminum",
+        "Vinyl (PVC)",
+        "Wood",
+        "Fiberglass",
+        "Steel",
+        "Wood Clad Aluminum",
+        "Wood Clad Vinyl",
+        "Composite",
+      ];
+
+      //utility function to simulate network delay
       function delay(ms) {
         return new Promise((resolve) => setTimeout(resolve, ms));
       }
 
       document.addEventListener("DOMContentLoaded", () => {
+        const sectionParent = document.getElementById("list-item-3");
+        const modalTriggerButton = sectionParent.querySelector(
+          'button[data-bs-target="#item-modal"]',
+        );
+        const itemModal = document.getElementById("item-modal"); // the modal parent
+
         const parentFormModal = document.getElementById("itemFormModal");
         const firstForm = parentFormModal.querySelector(".first-form");
         const secondForm = parentFormModal.querySelector(".second-form");
+        const thirdForm = parentFormModal.querySelector(".third-form");
 
         const newItemForm1 = document.getElementById("newItemForm1");
         // Get references to form elements
@@ -21729,6 +21869,15 @@
         const shippingSelect = document.getElementById("shipping");
         const timeToInstallSelect = document.getElementById("timeToInstall");
         const totalInput = document.getElementById("total");
+
+        modalTriggerButton.addEventListener(
+          "click",
+          function (event) {
+            firstForm.classList.add("active-form");
+            firstForm.removeAttribute("inert");
+          },
+          true,
+        ); // true enables capturing phase
 
         // Populate Item Name dropdown
         items.forEach((item) => {
@@ -21833,7 +21982,162 @@
           newItemForm1.classList.remove("is-submitting");
           submitBtn.removeAttribute("disabled");
           firstForm.classList.remove("active-form");
+          firstForm.setAttribute("inert", "true");
           secondForm.classList.add("active-form");
+          secondForm.removeAttribute("inert");
+        });
+
+        // -----------------------------------------
+        // code from here is for the Second Form
+        // -----------------------------------------
+
+        const newItemForm2 = document.getElementById("newItemForm2");
+        const spacerSelect = document.getElementById("spacer");
+        const overallThicknessSelect =
+          document.getElementById("overallThickness");
+        const shapeSelect = document.getElementById("shape");
+        const leadTimeSelect = document.getElementById("leadTime");
+
+        // Populate Spacer dropdown
+        spacerOptions.forEach((spacer) => {
+          const option = document.createElement("option");
+          option.value = spacer;
+          option.textContent = spacer;
+          spacerSelect.appendChild(option);
+        });
+
+        // Populate Overall Thickness dropdown
+        overallThicknessOptions.forEach((thickness) => {
+          const option = document.createElement("option");
+          option.value = thickness;
+          option.textContent = thickness;
+          overallThicknessSelect.appendChild(option);
+        });
+
+        // Populate Shape dropdown
+        shapeOptions.forEach((shape) => {
+          const option = document.createElement("option");
+          option.value = shape;
+          option.textContent = shape;
+          shapeSelect.appendChild(option);
+        });
+
+        // Populate Lead Time dropdown
+        leadTimeOptions.forEach((leadTime) => {
+          const option = document.createElement("option");
+          option.value = leadTime;
+          option.textContent = leadTime;
+          leadTimeSelect.appendChild(option);
+        });
+
+        //back to first form
+        const backFirstFormBtn = newItemForm2.querySelector(
+          'button[data-target="first-form"]',
+        );
+
+        if (backFirstFormBtn) {
+          backFirstFormBtn.addEventListener("click", () => {
+            secondForm.classList.remove("active-form");
+            secondForm.setAttribute("inert", "true");
+            firstForm.classList.add("active-form");
+            firstForm.removeAttribute("inert");
+          });
+        }
+
+        newItemForm2.addEventListener("submit", async function (event) {
+          event.preventDefault();
+          // attach a isSubmitting class to the form to prevent multiple submissions
+          const submitBtn = newItemForm2.querySelector('button[type="submit"]');
+          newItemForm2.classList.add("is-submitting");
+          submitBtn.setAttribute("disabled", "disabled");
+
+          // add delay before proceeding to simulate network request using promise
+          await delay(2000);
+
+          // Add item to the list
+          // will append the values in the table later
+          // const item = document.createElement("li");
+          // item.textContent = `${itemName} (${itemNumber}) - ${quantity} x ${price} = ${total}`;
+          // itemList.appendChild(item);
+
+          // Reset form fields here of the inputs
+
+          // after processing the form remove the is-submitting class
+          newItemForm2.classList.remove("is-submitting");
+          submitBtn.removeAttribute("disabled");
+          secondForm.classList.remove("active-form");
+          secondForm.setAttribute("inert", "true");
+          thirdForm.classList.add("active-form");
+          thirdForm.removeAttribute("inert");
+        });
+
+        //---------------------------
+        // Code here is for third form
+        //---------------------------
+
+        const newItemForm3 = document.getElementById("newItemForm3");
+        const frameTypeSelect = document.getElementById("frameType");
+        const frameMaterialSelect = document.getElementById("frameMaterial");
+
+        // Populate frame type dropdown
+        frameTypeOptions.forEach((frameType) => {
+          const option = document.createElement("option");
+          option.value = frameType;
+          option.textContent = frameType;
+          frameTypeSelect.appendChild(option);
+        });
+
+        // Populate frame material dropdown
+        frameMaterialOptions.forEach((frameMaterial) => {
+          const option = document.createElement("option");
+          option.value = frameMaterial;
+          option.textContent = frameMaterial;
+          frameMaterialSelect.appendChild(option);
+        });
+
+        //back to second form
+        const backSecondFormBtn = newItemForm3.querySelector(
+          'button[data-target="second-form"]',
+        );
+
+        if (backSecondFormBtn) {
+          backSecondFormBtn.addEventListener("click", () => {
+            thirdForm.classList.remove("active-form");
+            thirdForm.setAttribute("inert", "true");
+            secondForm.classList.add("active-form");
+            secondForm.removeAttribute("inert");
+          });
+        }
+
+        newItemForm3.addEventListener("submit", async function (event) {
+          event.preventDefault();
+          // attach a isSubmitting class to the form to prevent multiple submissions
+          const submitBtn = newItemForm3.querySelector('button[type="submit"]');
+          newItemForm3.classList.add("is-submitting");
+          submitBtn.setAttribute("disabled", "disabled");
+
+          // add delay before proceeding to simulate network request using promise
+          await delay(2000);
+
+          // Add item to the list
+          // will append the values in the table later
+          // const item = document.createElement("li");
+          // item.textContent = `${itemName} (${itemNumber}) - ${quantity} x ${price} = ${total}`;
+          // itemList.appendChild(item);
+
+          // Reset form fields here of the inputs
+
+          // after processing the form remove the is-submitting class
+          newItemForm3.classList.remove("is-submitting");
+          submitBtn.removeAttribute("disabled");
+
+          thirdForm.classList.remove("active-form");
+          thirdForm.setAttribute("inert", "true");
+
+          //close the modal
+          itemModal
+            .querySelector('button.btn-close[data-bs-dismiss="modal"]')
+            .click();
         });
       });
     </script>
