@@ -59,6 +59,12 @@
     0 -4px 6px -4px rgba(0, 0, 0, 0.1);
   --shadow-lg-bottom: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -4px rgba(0, 0, 0, 0.1);
+
+  --shadow-color-invert: white;
+}
+
+[data-bs-theme="dark"] {
+  --shadow-color-invert: black;
 }
 
 /* Specific Styles for Item Description and Custom Fields */
@@ -102,6 +108,41 @@
 .d-contents {
   display: contents !important;
 }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Optional: Make it visible on focus - similar to sr-only-focusable */
+.sr-only-focusable:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
 
 .w-fit {
   width: fit-content !important;
@@ -114,6 +155,17 @@
 }
 .h-100dvh {
   height: 100dvh !important;
+}
+.max-h-100 {
+  max-height: 100% !important;
+}
+
+.col-20px-1fr {
+  grid-template-columns: 20px 1fr !important;
+}
+
+.col-auto-1fr {
+  grid-template-columns: auto 1fr !important;
 }
 
 .col-1fr-auto {
@@ -130,6 +182,33 @@
 
 .rounded-20px {
   border-radius: 20px !important;
+}
+
+.snap-inline {
+  scroll-snap-type: inline mandatory;
+}
+
+.snap-inline > * {
+  scroll-snap-align: start;
+}
+
+.required-label::after {
+  content: "*";
+  color: red;
+}
+
+/*to ensure that when anchor tag with ID href is click to scroll to that target
+it will not be covered by top nav*/
+[id] {
+  /* Targets all elements with an ID */
+  scroll-margin-top: calc(5dvh + 160px);
+}
+
+/*hiding the tooltip when hover is not available*/
+@media (hover: none) {
+  .tooltip.bs-tooltip-auto.fade.show[role="tooltip"] {
+    display: none !important;
+  }
 }
 
 /*-----------------------------------------------
@@ -161,6 +240,8 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
 
   .page-wrapper > .main {
     overflow-y: auto;
+    overflow-x: clip;
+    max-height: 100dvh;
   }
 
   /* mobile left navbar layout starts here */
@@ -185,7 +266,9 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     list-style: none;
     padding: 0.5rem 0.3rem 0;
     margin-bottom: 0.5rem;
-    overflow: hidden;
+    /*overflow: hidden;*/
+    overflow-y: clip;
+    overflow-x: visible;
     transition: gap 0.2s ease-in-out;
   }
 
@@ -202,6 +285,14 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     transition-property: min-height, max-height, transform, opacity;
     transition-timing-function: ease-in-out;
     transition-duration: 0.2s;
+  }
+
+  .left-nav-bar ul li.dropstart:nth-child(1) {
+    z-index: 10;
+  }
+
+  .left-nav-bar ul li.dropstart:nth-child(2) {
+    z-index: 9;
   }
 
   .left-nav-bar ul li button,
@@ -254,11 +345,7 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     height: 100%;
   }
 
-  .left-sidebar-container .price-article,
-  .left-sidebar-container .calendar-article,
-  .left-sidebar-container .inbox-article,
-  .left-sidebar-container .settings-article,
-  .left-sidebar-container .customize-article {
+  .left-sidebar-container > * {
     grid-area: 1/1;
     z-index: 1;
     max-width: 100%;
@@ -286,6 +373,24 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     transition-delay: 0.11s;
   }
 
+  .navbar-toggle ~ .page-wrapper > .left-nav-bar {
+    overflow: hidden;
+  }
+
+  .navbar-toggle.nav-only ~ .page-wrapper > .left-nav-bar {
+    overflow: visible;
+  }
+
+  .navbar-toggle.panel-content ~ .page-wrapper > .left-nav-bar {
+    overflow: visible;
+  }
+
+  .navbar-toggle.panel-content
+    ~ .page-wrapper
+    > .left-nav-bar.left-nav-collapse {
+    overflow: hidden;
+  }
+
   .navbar-toggle.panel-content
     ~ .page-wrapper
     > .left-nav-bar
@@ -300,8 +405,7 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     opacity: 1;
     max-height: 100%;
     min-height: 45px;
-    overflow: hidden;
-
+    overflow: visible;
     transition-delay: 0.11s;
   }
 
@@ -398,19 +502,24 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
   /* the hide/show logic */
   .navbar-toggle.nav-only ~ .page-wrapper {
     grid-template-columns: 1fr var(--left-nav-width) 0 !important;
-    /*transition: grid-template-columns 0.2s linear;*/
   }
 
   .navbar-toggle.panel-content ~ .page-wrapper {
     grid-template-columns: 1fr 0 calc(var(--desktop-left-content-width)) !important;
-    /*transition: grid-template-columns 0s linear 0.2s;*/
-    /* transition-delay: 0.2s; */
   }
 
   /* hide the left navbar on desktop view when left panel is shown */
   .navbar-toggle.panel-content ~ .page-wrapper > .left-nav-bar {
     max-width: 0 !important;
     overflow: hidden;
+  }
+
+  .navbar-toggle ~ .page-wrapper > .left-nav-bar {
+    overflow: hidden;
+  }
+
+  .navbar-toggle.nav-only ~ .page-wrapper > .left-nav-bar {
+    overflow: visible;
   }
 
   .navbar-toggle.nav-only ~ .page-wrapper > .left-sidebar-container {
@@ -445,12 +554,12 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     grid-template-columns: 1fr 0 0;
     height: 100dvh;
     overflow: hidden;
-    /*transition: grid-template-columns 0.2s linear;*/
   }
 
   .page-wrapper .main {
     overflow-y: auto;
-    /*transition: max-width 0.2s linear;*/
+    overflow-x: clip;
+    max-height: 100dvh;
   }
 
   .left-sidebar-container {
@@ -491,7 +600,9 @@ layout(float) and is being dependent on top level input(#toggle-navbar) state */
     list-style: none;
     padding: 0.5rem 0.3rem 0;
     margin-bottom: 0.5rem;
-    overflow: hidden;
+    /*overflow: hidden;*/
+    overflow-y: clip;
+    overflow-x: visible;
   }
 
   .left-nav-bar ul li {
@@ -622,9 +733,6 @@ section {
 
 /*-------main-top-nav-start here------------------*/
 
-.navbar.navbar-overrides .navbar-nav .theme-switch-dropdown::after {
-  border: none;
-}
 .navbar.navbar-overrides > ul,
 .navbar-glass,
 .navbar-standard,
@@ -632,9 +740,6 @@ section {
   z-index: 1031; /*to have a higher stacking context than .sub-top-nav-desktop
 }
 
-.list-group-item.active .icon {
-  fill: white; /* Changes the fill color to white when active */
-}
 
 .icon {
   transition: fill 0.3s ease; /* Optional: Smooth color transition */
@@ -672,56 +777,175 @@ section {
   display: none !important;
 }
 
+/* main nav bar search implementation  */
+.navbar.navbar-overrides > .navbar-nav {
+  width: 100%;
+}
+
+.navbar.navbar-overrides > .navbar-nav > li {
+  display: grid;
+  place-content: end;
+  width: 100%;
+}
+
+.navbar.navbar-overrides > .navbar-nav > li > * {
+  grid-area: 1/1;
+}
+
+.navbar.navbar-overrides > .navbar-nav > li > .search-box {
+  width: 100%;
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition:
+    transform 200ms ease-in-out,
+    visibility 200ms ease-in-out,
+    opacity 200ms ease-in-out,
+    z-index 200ms ease-in-out;
+  transition-delay: 100ms;
+}
+
+.navbar.navbar-overrides
+  > .main-nav-search:checked
+  ~ .navbar-nav
+  > li
+  > .search-box {
+  visibility: visible;
+  transform: scaleX(1);
+  opacity: 1;
+  z-index: 0;
+}
+
+.navbar.navbar-overrides
+  > .main-nav-search:checked
+  ~ .navbar-nav
+  > li
+  > .search-box
+  .search-label-icon
+  > svg {
+  cursor: pointer;
+  color: var(--falcon-btn-falcon-default-color);
+}
+
+.navbar.navbar-overrides
+  > .main-nav-search:checked
+  ~ .navbar-nav
+  > li
+  > .search-box
+  .search-label-icon
+  > svg {
+  cursor: pointer;
+  color: var(--falcon-navbar-vertical-default-link-active-color);
+}
+
+.navbar.navbar-overrides > .navbar-nav > li > label {
+  display: inline-flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 0;
+  margin-bottom: 0;
+  cursor: pointer;
+  color: var(--falcon-btn-falcon-default-color);
+
+  visibility: visible;
+  transform: scale(1);
+  opacity: 1;
+  z-index: 0;
+
+  transition:
+    transform 200ms ease-in-out,
+    visibility 200ms ease-in-out,
+    opacity 200ms ease-in-out,
+    color 200ms ease-in-out,
+    z-index 200ms ease-in-out;
+  transition-delay: 100ms;
+}
+.navbar.navbar-overrides > .main-nav-search:checked ~ .navbar-nav > li > label {
+  visibility: hidden;
+  transform: scale(0.5);
+  opacity: 0;
+  z-index: -1;
+  color: var(--falcon-gray-400);
+}
+
 /* Media Queries ----------------------------- */
 
 @media (max-width: 320px) {
-  .navbar.navbar-overrides {
-    flex-wrap: nowrap;
-  }
   .navbar.navbar-overrides .navbar-brand {
     width: 0;
   }
 }
 
-@media (max-width: 580px) {
-  .navbar.navbar-overrides {
-    margin: 0;
-    /* padding-left: 0; */
-    /* padding-right: 0; */
+/*progressive and qol for search input in top nav*/
+@media (max-width: 425px) {
+  .navbar.navbar-overrides > .navbar-brand {
+    transition: display 200ms ease-in-out;
+    transition-behavior: allow-discrete;
   }
 
-  .navbar.navbar-overrides .navbar-brand {
+  .navbar.navbar-overrides > .main-nav-search:checked ~ .navbar-brand {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar.navbar-overrides {
+    margin: 0;
+    align-items: center;
+    display: grid;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    grid-template-columns: auto auto 1fr;
+    grid-template-areas:
+      "menu brand search"
+      "dropdown dropdown dropdown";
+  }
+
+  .navbar.navbar-overrides > .navbar-toggler-humburger-icon {
+    grid-area: menu;
+  }
+
+  .navbar.navbar-overrides > .navbar-brand {
     width: fit-content;
+    grid-area: brand;
   }
 
   .navbar.navbar-overrides .navbar-brand img {
     width: 120px;
   }
 
-  .navbar.navbar-overrides .navbar-nav .theme-switch-dropdown::after {
-    border: none;
+  .navbar.navbar-overrides > .navbar-nav {
+    grid-area: search;
+    width: 100%;
   }
-}
 
-/* to override z-index */
-@media (max-width: 762px) {
-  .navbar.navbar-overrides dropdown-menu.dropdown-caret,
+  .navbar.navbar-overrides > .navbar-collapse {
+    grid-area: dropdown;
+  }
+
+  .navbar.navbar-overrides .sub-top-nav-mobile > * {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  /* to override z-index */
+  .navbar.navbar-overrides .dropdown-menu.dropdown-caret,
   .navbar.navbar-overrides {
     z-index: 1031;
   }
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1024px) {
+  .navbar.navbar-overrides {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
   .sub-top-nav-desktop {
     width: 90%;
     max-width: 1000px;
-  }
-}
-
-@media (min-width: 1540px) and (max-width: 1900px) {
-  .sub-top-nav-desktop {
-    width: 100%;
-    max-width: 1400px;
   }
 }
 
@@ -739,6 +963,12 @@ section {
   }
 }
 
+@media (min-width: 1540px) and (max-width: 1900px) {
+  .sub-top-nav-desktop {
+    width: 100%;
+    max-width: 1400px;
+  }
+}
 /*-----------------------------------------------
 |   Project Overview
 -----------------------------------------------*/
@@ -1126,8 +1356,12 @@ section {
   margin: 0 4px; /* Adds spacing between buttons */
 }
 
+.entities-table > tbody > tr:last-child > td:last-child {
+  padding-bottom: 2.5rem;
+}
+
 td[data-title="Address"].address {
-  --td-address-max-width: 200px;
+  --td-address-max-width: 235px;
 
   position: relative; /* Needed for absolute positioning of expanded label */
   overflow: visible; /* Ensure expanded content is visible */
@@ -1149,26 +1383,7 @@ td.address .address-label {
   cursor: pointer;
   font-weight: 400;
   font-family: inherit;
-}
-
-/* Style for the label when the checkbox is checked (expanded state) */
-td.address .address-checkbox:checked + .address-label {
-  white-space: normal; /* Allow text to wrap to multiple lines */
-  line-clamp: none; /* Remove line clamp to expand */
-  -webkit-line-clamp: none; /* Remove for WebKit */
-  display: block;
-  position: absolute; /* Make label float above other content */
-  top: 0;
-  left: 0;
-  z-index: 10; /* Ensure label is on top */
-  border: 1px solid var(--falcon-gray-300); /* Optional border for visual separation */
-  border-radius: 8px;
-  padding: 0.5rem; /* Add padding to the expanded label */
-  width: var(
-    --td-address-max-width
-  ); /* Match the td width to maintain alignment */
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
-  backdrop-filter: blur(4px); /* 4px */
+  position: relative;
 }
 
 /* Hide the checkbox visually and make it non-interactive */
@@ -1177,6 +1392,53 @@ td.address .address-checkbox {
   opacity: 0; /* Make checkbox invisible */
   pointer-events: none; /* Prevent checkbox from interfering with clicks */
 }
+
+td.address .address-checkbox + .address-label svg,
+td.address .address-checkbox + .address-label svg {
+  color: var(--falcon-table-striped-color);
+}
+
+td.address .address-checkbox + .address-label .address-pin-icon:active svg {
+  color: rgba(var(--falcon-link-color-rgb), var(--falcon-link-opacity, 1));
+}
+
+td.address .address-label .address-copy-icon {
+  display: grid;
+  border: none;
+  background-color: transparent;
+}
+
+/* Default state styles */
+td.address .address-label .address-copy-icon .fa-copy {
+  grid-area: 1/1;
+  opacity: 1;
+  transform: rotate(0deg);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+td.address .address-label .address-copy-icon .fa-check-circle {
+  grid-area: 1/1;
+  opacity: 0;
+  transform: rotate(360deg);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* When copying class is added */
+td.address .address-label .address-copy-icon.copying .fa-copy {
+  opacity: 0;
+  transform: rotate(360deg);
+}
+
+td.address .address-label .address-copy-icon.copying .fa-check-circle {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/*td.address .address-checkbox + .address-label > .address-pin-icon {*/
 
 td[data-title="Feed"].feed {
   display: flex;
@@ -1225,6 +1487,13 @@ td[data-title="Feed"].feed .status-check:checked ~ .status-label > svg {
 /* Media Queries ----------------------------- */
 @media (min-width: 801px) {
   .mobile-stack .accordion-container.triggered .accordion-trigger .accor-open {
+    display: none;
+  }
+
+  .mobile-stack
+    .accordion-container.triggered
+    .accordion-trigger
+    .address-pin-icon {
     display: none;
   }
 
@@ -1292,9 +1561,6 @@ td[data-title="Feed"].feed .status-check:checked ~ .status-label > svg {
     font-weight: bold;
   }
 
-  /* Label the data */
-  /* .mobile-stack td:before { content: attr(data-title); } */
-
   .table th,
   .table td {
     text-align: center;
@@ -1305,10 +1571,16 @@ td[data-title="Feed"].feed .status-check:checked ~ .status-label > svg {
     --td-address-max-width: unset;
   }
   td.address .address-label {
-    pointer-events: none;
+    /*pointer-events: none;*/
     white-space: normal; /* Allow text to wrap to multiple lines */
     line-clamp: none; /* Remove line clamp to expand */
     -webkit-line-clamp: none; /* Remove for WebKit */
+    display: inline-flex;
+    gap: 0.5rem;
+  }
+
+  td.address .address-label > :nth-child(1) {
+    margin-right: 0.5rem;
   }
 
   td[data-title="Feed"].feed {
@@ -1382,6 +1654,18 @@ td[data-title="Feed"].feed .status-check:checked ~ .status-label > svg {
     color: inherit;
   }
 
+  .mobile-stack .accordion-container .accordion-trigger .address-pin-icon {
+    color: var(--falcon-table-striped-color);
+    padding: 0 0.3rem;
+  }
+
+  .mobile-stack
+    .accordion-container
+    .accordion-trigger
+    .address-pin-icon:active {
+    color: rgba(var(--falcon-link-color-rgb), var(--falcon-link-opacity, 1));
+  }
+
   .mobile-stack
     .accordion-container.triggered
     .accordion-trigger
@@ -1395,6 +1679,10 @@ td[data-title="Feed"].feed .status-check:checked ~ .status-label > svg {
   .mobile-stack
     .accordion-container.triggered
     .accordion-trigger
+    .address-pin-icon,
+  .mobile-stack
+    .accordion-container.triggered
+    .accordion-trigger
     .accordion-meta {
     opacity: 1;
     transform: translateY(0);
@@ -1403,6 +1691,7 @@ td[data-title="Feed"].feed .status-check:checked ~ .status-label > svg {
       transform 0.1s ease-in;
   }
 
+  .mobile-stack .accordion-container .accordion-trigger .address-pin-icon,
   .mobile-stack .accordion-container .accordion-trigger .accordion-meta {
     opacity: 0;
     transform: translateY(10px);
@@ -1434,9 +1723,217 @@ td[data-title="Feed"].feed .status-check:checked ~ .status-label > svg {
   }
   /* accordion button and children end here */
 }
+
+@media (min-width: 801px) {
+  /* Style for the label when the checkbox is checked (expanded state) */
+  td.address .address-checkbox:checked + .address-label {
+    white-space: normal; /* Allow text to wrap to multiple lines */
+    line-clamp: none; /* Remove line clamp to expand */
+    -webkit-line-clamp: none; /* Remove for WebKit */
+    display: block;
+    position: absolute; /* Make label float above other content */
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10; /* Ensure label is on top */
+    border: 1px solid var(--falcon-gray-300); /* Optional border for visual separation */
+    border-radius: 8px;
+    padding: 0.5rem; /* Add padding to the expanded label */
+    width: var(
+      --td-address-max-width
+    ); /* Match the td width to maintain alignment */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+    backdrop-filter: blur(4px); /* 4px */
+  }
+
+  td.address .address-checkbox:checked + .address-label {
+    padding: 1.5rem 0.5rem 0.5rem;
+  }
+
+  td.address .address-checkbox + .address-label > .address-pin-icon svg,
+  td.address .address-checkbox + .address-label > .address-copy-icon svg {
+    display: none;
+  }
+
+  td.address .address-checkbox:checked + .address-label > .address-pin-icon svg,
+  td.address
+    .address-checkbox:checked
+    + .address-label
+    > .address-copy-icon
+    svg {
+    display: block;
+    position: absolute;
+    top: 0.2rem;
+  }
+
+  td.address
+    .address-checkbox:checked
+    + .address-label
+    > .address-copy-icon
+    svg {
+    right: 2.5rem;
+    /*var(--falcon-table-striped-color)*/
+  }
+
+  td.address .address-checkbox + .address-label > .address-pin-icon svg {
+    right: 1rem;
+  }
+}
 /*-----------------------------------------------
 |   Items
 -----------------------------------------------*/
+
+.item-form-modal {
+  display: grid;
+}
+
+.item-form-modal > * {
+  grid-area: 1/1;
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.item-form-modal > .active-form {
+  height: auto;
+  opacity: 1;
+  visibility: visible;
+}
+
+.new-item-form .price-quantity {
+  display: flex;
+  gap: 1rem;
+}
+
+.new-item-form input:user-invalid {
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: red;
+}
+
+.new-item-form input:user-valid {
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: gree;
+}
+
+.new-item-form button[type="submit"] {
+  display: grid !important;
+  place-content: center;
+  position: relative;
+}
+
+.new-item-form button[type="submit"] > .btn-text {
+  opacity: 1;
+  grid-area: 1/1;
+}
+
+.new-item-form button[type="submit"] > svg {
+  display: none;
+  grid-area: 1/1;
+  place-self: center;
+}
+
+.new-item-form.is-submitting button[type="submit"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.new-item-form.is-submitting button[type="submit"] > .btn-text {
+  opacity: 0;
+}
+
+.new-item-form.is-submitting button[type="submit"] > svg {
+  display: block;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.new-item-form .glass-type-wrapper {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr auto;
+  grid-template-areas: "label input" ". details";
+  gap: 0.5rem;
+}
+
+.new-item-form .glass-grid-wrapper {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr auto auto;
+  grid-template-areas: "label input" ". details" "img img";
+  gap: 0.5rem;
+}
+
+.new-item-form .glass-grid-wrapper > label,
+.new-item-form .glass-type-wrapper > label {
+  grid-area: label;
+  place-self: center;
+}
+
+.new-item-form .glass-grid-wrapper > input,
+.new-item-form .glass-type-wrapper > input {
+  grid-area: input;
+}
+
+.new-item-form .glass-grid-wrapper > .description,
+.new-item-form .glass-type-wrapper > .description {
+  grid-area: details;
+}
+
+.new-item-form .glass-grid-wrapper > .description > *,
+.new-item-form .glass-type-wrapper > .description > * {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.new-item-form .glass-grid-wrapper > .grid-img {
+  grid-area: img;
+  display: grid;
+  place-content: center;
+}
+
+.new-item-form .glass-grid-wrapper > .grid-img > label {
+  width: fit-content;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.new-item-form .glass-grid-wrapper > .grid-img > input:checked + label {
+  box-shadow: inset 0 2px 4px rgb(0 0 0 / 0.05);
+}
+
+.new-item-form .glass-grid-wrapper > .grid-img > input:checked ~ img {
+  display: block;
+}
+
+.new-item-form .glass-grid-wrapper > .grid-img > img {
+  display: none;
+  width: 100%;
+  height: auto;
+}
+
+.new-item-form input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+.new-item-form input[type="number"]::-webkit-outer-spin-button,
+.new-item-form input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 .items {
   flex-wrap: wrap;
@@ -2406,6 +2903,430 @@ div.gslide-media.gslide-inline {
 -----------------------------------------------*/
 
 /*-----------------------------------------------
+    |   Notification article Content
+    -----------------------------------------------*/
+
+.notification-article {
+  /*55px tablet-desktop , 79 mobile*/
+  --notif-header-height: 5.3rem;
+  /*--notif-card-footer-height: 2.25rem;*/
+  height: 100%;
+}
+
+.notification-article .card-header {
+  padding: 0.5rem 1rem;
+}
+
+.notification-article .card-header > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.notification-article .card-header > div > :nth-child(2) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.notification-article .card-notification {
+  /*max-height: calc(100dvh - var(--notif-header-height));*/
+}
+
+@media (min-width: 550px) {
+  .notification-article .card-header > div {
+    flex-direction: row;
+    padding: 0.8rem 1rem;
+  }
+
+  .notification-article .card-header > div > * {
+    width: fit-content;
+  }
+
+  .notification-article .card-header > div > :nth-child(2) {
+    gap: 0.5rem;
+  }
+
+  @container side-panel (max-width: 405px) {
+    .notification-article .card-header > div {
+      padding: 0.5rem;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .notification-article > header {
+    max-height: var(--notif-header-height);
+  }
+
+  .notification-article > .card-body {
+    height: calc(100dvh - var(--notif-header-height));
+  }
+}
+
+/*-----------------------------------------------
+    |   Notification article Content
+    -----------------------------------------------*/
+.customize-article {
+  --customize-header-height: 4.65rem;
+  overflow: clip;
+}
+
+.customize-article > .offcanvas-header {
+  max-height: var(--customize-header-height);
+}
+
+.customize-article > .offcanvas-body {
+  max-height: calc(100dvh - var(--customize-header-height));
+}
+
+/*-----------------------------------------------
+    |   Glass Calculator article Content
+    -----------------------------------------------*/
+.calculator-article {
+  overflow-x: clip;
+  overflow-y: auto;
+  max-height: 100dvh; /*to activate auto scroll*/
+}
+
+.calculator-article > header {
+  height: 100%;
+  max-height: var(--inbox-header-max-height);
+  box-shadow: var(--shadow-md);
+  align-content: center;
+}
+
+.calculator-article > .calculator-container {
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 0 auto;
+}
+
+.calculator-article > .calculator-container .table-wrapper {
+  overscroll-behavior: contain;
+}
+
+.calculator-article > .calculator-container h6 {
+  color: var(--falcon-heading-color);
+  margin-bottom: 8px; /* Reduced margin for compactness */
+  font-size: 1.2rem;
+}
+
+.calculator-article > .calculator-container .input-section {
+  margin: 0 0 12px;
+  border: none;
+}
+
+.calculator-article > .calculator-container .non-table-input-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.calculator-article > .calculator-container .non-table-input-wrapper > * {
+  flex-grow: 1;
+}
+
+.calculator-article > .calculator-container label {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: rgba(var(--falcon-gray-900-rgb));
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.calculator-article > .calculator-container input {
+  /* width: fit-content; */
+  width: 100%;
+  padding: 0.4rem; /* Reduced padding for compactness */
+  color: rgba(var(--falcon-gray-900-rgb), 1);
+  border: 1px solid var(--falcon-gray-300);
+  border-radius: 4px;
+  box-sizing: border-box;
+  box-shadow: var(--falcon-box-shadow-inset);
+  font-size: 1rem;
+  min-height: 2.5rem; /* Larger tap target for mobile */
+  -webkit-appearance: none; /* Remove default mobile styling for text inputs */
+  -moz-appearance: textfield; /* Hide increment/decrement arrows for text inputs */
+}
+
+.calculator-article > .calculator-container input::placeholder {
+  color: rgba(var(--falcon-gray-900-rgb), 0.5);
+}
+
+.calculator-article > .calculator-container input:read-only {
+  border: none;
+  box-shadow: none;
+  text-align: center;
+}
+
+/* Remove defaults for all browsers */
+.calculator-article > .calculator-container input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+/* Chrome, Safari, Edge, Opera */
+.calculator-article
+  > .calculator-container
+  input[type="number"]::-webkit-outer-spin-button,
+.calculator-article
+  > .calculator-container
+  input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.calculator-article > .calculator-container input.pricePerSqft[readonly] {
+  background-color: rgba(
+    var(--falcon-emphasis-bg-rgb),
+    var(--falcon-bg-opacity)
+  );
+  cursor: not-allowed;
+  outline: none;
+  color: var(--falcon-body-color);
+}
+
+.calculator-article > .calculator-container .table-wrapper {
+  /* Remove horizontal scrolling, allow vertical stacking if needed */
+  overflow-x: auto;
+  overflow-y: clip;
+  width: 100%;
+}
+
+.calculator-article > .calculator-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 0.5rem; /* Reduced margin for compactness */
+  min-width: 0; /* Remove minimum width to allow shrinking */
+}
+
+.calculator-article > .calculator-container thead {
+  background-color: var(--falcon-gray-200-rgb);
+}
+
+.calculator-article > .calculator-container th,
+.calculator-article > .calculator-container td {
+  padding: 0.4rem; /* Reduced padding for compactness */
+  text-align: left;
+  border-bottom: 1px solid var(--falcon-border-color);
+  font-size: 0.9rem; /* Smaller text for compactness */
+  white-space: nowrap; /* Prevent text wrapping in headers and cells */
+  margin-right: 0.125rem; /* Add spacing between cells */
+}
+
+.calculator-article > .calculator-container th {
+  /*--falcon-gray-900-rgb: 52, 64, 80;*/
+  /* background-color: #f2f2f2; */
+  /*color: rgba(var(--falcon-gray-900-rgb));*/
+  color: rgba(var(--falcon-gray-900-rgb), var(--falcon-text-opacity));
+}
+
+/* Shrink column widths for desktop with spacing */
+.calculator-article > .calculator-container th,
+.calculator-article > .calculator-container td {
+  max-width: 0; /* Allow columns to shrink */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Handle overflow with ellipsis if needed */
+
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.calculator-article > .calculator-container td {
+  padding-right: 0.25rem; /* Add right padding for spacing between cells on desktop */
+  color: var(--falcon-table-color);
+}
+
+/* Ensure inputs fit within their columns with spacing */
+.calculator-article > .calculator-container td input {
+  margin: 0 0.125rem 0 0;
+  display: block; /* Default block display for desktop */
+  width: 100%; /* Ensure inputs fill their column width */
+  box-sizing: border-box; /* Include padding and border in width */
+}
+
+.calculator-article > .calculator-container .table-wrapper td .mobile-title {
+  display: none;
+}
+
+.calculator-article > .calculator-container button {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  padding: 0.625rem; /* Reduced padding for compactness */
+  background-color: var(--falcon-primary);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  min-height: 3.125rem; /* Larger tap target for mobile */
+  margin-top: 0.625rem;
+  margin-right: auto;
+  margin-left: auto;
+  transition: background-color 200ms ease-in-out;
+}
+
+.calculator-article > .calculator-container button:hover {
+  background-color: rgba(44, 123, 229, 0.8);
+}
+
+.calculator-article > .calculator-container .results {
+  margin-top: 1rem; /* Reduced margin for compactness */
+  padding: 0.75rem; /* Reduced padding for compactness */
+  background-color: var(--falcon-body-bg);
+  border-radius: 4px;
+  display: none;
+  box-shadow: var(--shadow-md);
+}
+
+.calculator-article > .calculator-container .results p {
+  margin: 0.5rem 0; /* Reduced margin for compactness */
+  /*color: #333;*/
+  color: rgba(var(--falcon-gray-900-rgb));
+  font-size: 1rem;
+}
+
+.calculator-article > .calculator-container .glass-item {
+  margin-bottom: 0.75rem; /* Reduced margin for compactness */
+  padding: 0.5rem; /* Reduced padding for compactness */
+  background-color: var(--falcon-emphasis-bg);
+  border-radius: 4px;
+}
+
+@media (max-width: 991px) {
+  .calculator-article > header {
+    padding: 0.5rem;
+  }
+
+  .calculator-article > .calculator-container {
+    max-width: 768px; /* to enable scrolling on overflow*/
+    padding: 0.5rem; /* Reduced padding for compactness */
+  }
+
+  .calculator-article > .calculator-container h6 {
+    font-size: 1rem;
+  }
+
+  .calculator-article > .calculator-container label,
+  .calculator-article > .calculator-container input,
+  .calculator-article > .calculator-container button {
+    font-size: 0.9rem;
+  }
+
+  .calculator-article > .calculator-container button {
+    min-height: 2.5rem;
+  }
+
+  .calculator-article > .calculator-container .results p {
+    font-size: 0.9rem;
+  }
+
+  /* Adjust table layout for mobile: shrink to fit without scrolling */
+  .calculator-article > .calculator-container table {
+    min-width: 0; /* Remove minimum width to shrink completely */
+    width: 100%; /* Allow table to shrink to content */
+  }
+
+  .calculator-article > .calculator-container th,
+  .calculator-article > .calculator-container td {
+    font-size: 0.8rem;
+    padding: 0.5rem; /* Further reduced padding for compactness */
+    /*max-width: 5.625rem;*/
+    max-width: 50%;
+  }
+
+  /* Hide Piece # and Price/Sq Ft ($),sf,lib on mobile */
+  .calculator-article > .calculator-container .hide-mobile {
+    display: none;
+  }
+
+  /* Ensure columns shrink proportionally on mobile with spacing */
+  .calculator-article > .calculator-container td {
+    padding-right: 0.125rem; /* Consistent spacing between cells on mobile */
+  }
+
+  /* Glass Type (larger for dropdown) */
+  .calculator-article > .calculator-container .glass-type-h,
+  .calculator-article > .calculator-container td.glassType {
+    width: 30%;
+    min-width: 11.25rem;
+    max-width: 17.5rem;
+  }
+
+  /* Glass Type (larger for dropdown) */
+  .calculator-article
+    > .calculator-container
+    .install-time-h
+    .calculator-article
+    > .calculator-container
+    .installTime {
+    width: 30%;
+    min-width: 11.25rem;
+    max-width: 17.5rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .calculator-article > header {
+    padding: 1rem 1.5rem 1rem 1rem;
+  }
+
+  .calculator-article > .calculator-container {
+    max-width: var(--desktop-left-content-width);
+  }
+
+  .calculator-article
+    > .calculator-container
+    .table-wrapper::-webkit-scrollbar {
+    height: 0.8em;
+  }
+  .calculator-article
+    > .calculator-container
+    .table-wrapper::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+  }
+  .calculator-article > .calculator-container .table-wrapper {
+    scrollbar-width: auto;
+  }
+
+  .calculator-article > .calculator-container th,
+  .calculator-article > .calculator-container td {
+    max-width: 100%;
+  }
+  .calculator-article > .calculator-container th.glass-type-h,
+  .calculator-article > .calculator-container td.glassType {
+    width: 100%;
+    /* width: clamp(180px, 5vw, 280px); */
+    min-width: 25ch;
+    max-width: 45ch;
+  } /* Glass Type (larger for dropdown) */
+
+  .calculator-article > .calculator-container th.pricePerSqft-h,
+  .calculator-article > .calculator-container td.pricePerSqft-t {
+    /*width: 30%;*/
+    /* width: clamp(180px, 5vw, 280px); */
+    min-width: 15ch;
+    max-width: 25ch;
+  } /* Glass Type (larger for dropdown) */
+
+  .calculator-article > .calculator-container .results p {
+    margin: 0.5rem 0; /* Reduced margin for compactness */
+    font-size: 0.9rem;
+  }
+
+  /* if the panel is on fullscreen*/
+  @container side-panel (min-width: 410px) {
+    .calculator-article > .calculator-container {
+      max-width: 1000px; /* to enable scrolling on overflow*/
+    }
+  }
+}
+
+/*-----------------------------------------------
     |   inbox article content
     -----------------------------------------------*/
 /* to have a sticky effect for header
@@ -2644,14 +3565,9 @@ which content to show on each sub panel
     var(--falcon-bg-opacity)
   );
 
-  /* background-color: rgba(var(--falcon-secondary-bg-rgb)); */
-  /* background-color: rgba(var(--falcon-gray-200-rgb), var(--falcon-bg-opacity)) !important; */
-  /* background-color: #fff; */
   border-radius: 8px;
   overflow-y: auto; /* Still make the contact list scrollable */
   max-height: 38dvh;
-  /* Optional: set a max height */
-  /* max-height: 500px; */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: grid; /* Enable Grid Layout */
   grid-template-columns: auto 1fr; /* First column for letter, second for names - adjust width of letter column as needed */
@@ -2686,6 +3602,9 @@ which content to show on each sub panel
   /* grid-column: 1; */
   /* Make sure it spans only one row in grid layout */
 }
+.letter-group:has(ul.names-list:empty) {
+  display: none;
+}
 
 .contact-accordion-btn-overrides {
   padding: 0;
@@ -2696,7 +3615,6 @@ which content to show on each sub panel
 
 .contact-accordion-btn-overrides[aria-expanded="true"] {
   border: none;
-  padding-bottom: 0.5rem;
 }
 
 .contact-accordion-btn-overrides::before,
@@ -2738,7 +3656,7 @@ nav[aria-label="messages inbox"] {
 
 nav[aria-label="messages inbox"] ul {
   display: grid;
-  height: 100%;
+  height: auto;
 }
 
 nav[aria-label="messages inbox"] .inbox-item-container {
@@ -2766,28 +3684,142 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
 
 /*------------- email panel area  ------------*/
 
+.email-nav-body {
+  overflow-x: clip;
+}
+
+.email-nav-body .unread .email-date,
+.email-nav-body .unread a {
+  font-weight: 600;
+}
+
 .email-nav-body > div {
   padding-top: 1.5rem !important;
   padding-bottom: 1.5rem !important;
 }
 
+.email-nav-body > div .btn-group {
+  /* initially 100% + the matching padding of the parent */
+  right: 100%;
+  transform: translateX(calc(100% + (var(--falcon-gutter-x) * -0.5)));
+  transition: transform 200ms linear;
+}
+
+.email-nav-body > div .btn-group > *:not(:first-child) {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 200ms linear,
+    visibility 200ms linear;
+  transition-delay: -100ms;
+}
+
+.email-nav-body .btn-group button[data-trigger] {
+  box-shadow: none;
+}
+
+.email-nav-body .btn-group button[data-trigger] > svg {
+  transition: transform 200ms linear;
+}
+
+.email-nav-body > div .btn-group.show-opts {
+  transform: translateX(0);
+}
+.email-nav-body > div .btn-group.show-opts > *:not(:first-child) {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 100ms;
+}
+
+.email-nav-body .btn-group.show-opts button[data-trigger] {
+  background-color: var(--falcon-gray-200) !important;
+  box-shadow: var(--falcon-btn-box-shadow);
+}
+.email-nav-body .btn-group.show-opts button[data-trigger] > svg {
+  color: #007bff;
+  transform: rotate(180deg);
+}
+
 .email-content {
+  --_email-content-header-max-height: 3.75rem;
   overflow-y: auto;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
+  display: grid;
+}
+.email-content > * {
+  grid-area: 1/1;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
 }
 
-.email-content .email-info {
-  grid-template-columns: auto 1fr;
+.email-content .email-content-header {
+  max-height: var(--_email-content-header-max-height);
+  box-shadow: none;
+  height: 100%;
 }
 
-.email-content .email-info .sender-name {
-  font-weight: 600;
+.email-content
+  .email-content-header
+  > .card-body
+  > div:nth-child(2)
+  > div:nth-child(1) {
+  padding-top: 0;
 }
 
-.email-content .email-info .sender-email,
-.email-content .email-info time {
-  opacity: 0.85;
+.email-content .email-content-body {
+  overflow: clip;
+  max-height: calc(
+    100dvh - var(--_email-content-header-max-height) -
+      var(--inbox-header-max-height)
+  );
+  height: 100%;
+}
+
+.email-content .email-content-body > .card-body {
+  overflow-x: clip;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.email-content .email-content-body > .card-body > div {
+  max-width: 50rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.email-inbox-panel button[aria-label="mark as read" i] > .fa-envelope {
+  display: none;
+}
+.email-inbox-panel button[aria-label="mark as unread" i] > .fa-envelope-open {
+  display: none;
+}
+
+.email-inbox-panel
+  button.show.dropdown-toggle[title="Snooze"]
+  + div.dropdown-menu {
+  z-index: 1040 !important;
+}
+
+@media (min-width: 992px) {
+  @container side-panel (max-width: 405px) {
+    .email-content .email-content-body > .card-body {
+      max-width: var(--desktop-left-content-width);
+    }
+
+    .email-content
+      .email-content-header
+      > .card-body
+      > div:nth-child(2)
+      > div:nth-child(1) {
+      display: none !important;
+    }
+  }
+
+  .email-content .email-content-body .card-body > div > div {
+    width: 100%;
+  }
 }
 
 /*------ chat panel area---------*/
@@ -2857,7 +3889,7 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
   z-index: 0 !important;
 }
 
-.active-chat {
+.active-state {
   z-index: 1;
   height: auto;
   opacity: 1;
@@ -2897,9 +3929,104 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
   .non-hover-show-button {
     display: inline-block !important;
   }
+  .email-nav-body .btn-group button[data-trigger] {
+    color: var(--falcon-btn-hover-color);
+    background: transparent !important;
+  }
 }
 
 /* side panel media queries */
+
+/*side panel on desktop view*/
+@media (min-width: 769px) {
+  /*not full screen view*/
+  @container side-panel (max-width: 405px) {
+    .email-nav-body > div {
+      display: grid;
+      grid-template-areas:
+        "checkbox content"
+        "date date";
+      column-gap: 1rem;
+      row-gap: 0.5rem;
+    }
+
+    .email-nav-body > div > :nth-child(1) {
+      grid-area: checkbox;
+      padding: 0;
+    }
+
+    .email-nav-body > div > :nth-child(1) .form-check {
+      padding: 0;
+    }
+
+    .email-nav-body > div > :nth-child(1) svg {
+      display: none;
+    }
+
+    .email-nav-body > div > :nth-child(1) .form-check .form-check-input {
+      margin: 0;
+    }
+
+    .email-nav-body > div > :nth-child(2) {
+      grid-area: content;
+      width: 100%;
+    }
+
+    .email-nav-body > div > :nth-child(2) > div > div {
+      /*-webkit-box-flex: 0!important;*/
+      /*-ms-flex: 0 0 auto !important;*/
+      /*flex: 0 0 auto !important;*/
+      width: 33.33333333% !important;
+    }
+
+    .email-nav-body > div > :nth-child(3) {
+      --_date-margin: 0.25rem; /* to align with the star icon*/
+      grid-area: date;
+      flex-direction: row !important;
+      gap: 0.5rem;
+    }
+
+    .email-nav-body > div > :nth-child(3) > .btn-group {
+      top: var(--_date-margin);
+    }
+
+    .email-nav-body > div > :nth-child(3) > span {
+      order: 2;
+      margin-top: var(--_date-margin);
+    }
+
+    .email-nav-body > div > :nth-child(3) > svg {
+      display: inline-block !important;
+      margin: 0;
+    }
+  }
+
+  /* if panel is in full screen */
+  @container side-panel (min-width: 410px) {
+    .email-nav-body > div .btn-group {
+      /* initially 100% + the matching padding of the parent */
+      right: 100% !important;
+      bottom: unset !important;
+    }
+
+    .email-nav-body > div .btn-group.show-opts {
+      transform: translateX(0);
+    }
+  }
+}
+
+@container side-panel (min-width: 768px) {
+  .email-nav-body > div .btn-group {
+    right: 1.5rem;
+    bottom: 0;
+  }
+
+  .email-nav-body > div .btn-group.show-opts {
+    transform: translateX(0.8rem);
+    z-index: 3 !important;
+  }
+}
+
 @container side-panel (min-width: 992px) {
   /*override for chat*/
   .inbox-article .chat-inbox-panel.panel-show-nav,
