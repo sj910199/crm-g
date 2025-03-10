@@ -1191,9 +1191,16 @@ section {
 /* Add button container: Aligns the add button to the right on mobile */
 .addbutton-container {
   display: flex; /* Use flexbox to position the button */
-  justify-content: flex-end; /* Align the button to the right side */
+  justify-content: space-between; /* Align the button to the right side */
   margin-top: 15px;
   margin-bottom: 15px;
+}
+
+.addbutton-container > button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
 }
 
 /* searchdropdown */
@@ -4059,4 +4066,14 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
   .active-inbox-panel {
     margin-left: var(--fullscreen-inbox-nav-width);
   }
+}
+
+/*-----------------------------------------------
+|   Project List page
+-----------------------------------------------*/
+
+/* ensure that a content with scroll container will have this styling */
+.main .navbar-top + .project-container {
+  max-height: calc(100vh - var(--falcon-top-nav-height) - 1rem);
+  min-height: calc(100vh - var(--falcon-top-nav-height) - 1rem);
 }
