@@ -1355,159 +1355,27 @@
                         aria-label="Close"
                       ></button>
                     </div>
+
                     <div class="modal-body p-0">
                       <div
                         class="rounded-top-3 py-3 ps-4 pe-6 bg-body-tertiary"
                       >
                         <h4 class="filter-title mb-1">Date & Filter</h4>
                       </div>
-                      <div class="card overflow-hidden">
-                        <div class="card-header">
-                          <div
-                            class="row gx-0 align-items-center justify-content-start"
-                          >
-                            <div
-                              class="col-auto d-flex justify-content-end order-md-1"
-                            >
-                              <button
-                                class="btn icon-item icon-item-sm shadow-none p-0 me-1 ms-md-2"
-                                type="button"
-                                data-event="prev"
-                                data-bs-toggle="tooltip"
-                                title="Previous"
-                              >
-                                <span class="fas fa-arrow-left"></span>
-                              </button>
-                              <button
-                                class="btn icon-item icon-item-sm shadow-none p-0 me-1 me-lg-2"
-                                type="button"
-                                data-event="next"
-                                data-bs-toggle="tooltip"
-                                title="Next"
-                              >
-                                <span class="fas fa-arrow-right"></span>
-                              </button>
-                            </div>
-                            <div class="col-auto col-md-auto order-md-2">
-                              <h4
-                                class="mb-0 fs-9 fs-sm-8 fs-lg-7 calendar-title"
-                              ></h4>
-                            </div>
-                            <div
-                              class="col col-md-auto d-flex justify-content-end order-md-3 mb-0 calendar-date"
-                            >
-                              <button
-                                class="btn btn-falcon-primary btn-sm"
-                                type="button"
-                                data-event="today"
-                              >
-                                Today
-                              </button>
-                            </div>
-                            <div class="col-md-auto d-md-none">
-                              <hr />
-                            </div>
-                            <div class="col-auto d-flex order-md-0">
-                              <button
-                                class="btn btn-primary btn-sm"
-                                type="button"
-                                data-bs-toggle="modal"
-                                data-bs-target="#addEventModal"
-                              >
-                                <span class="fas fa-plus me-2"></span>Add
-                                Schedule
-                              </button>
-                            </div>
-                            <div
-                              class="col d-flex justify-content-end order-md-2 view-btn mb-0"
-                            >
-                              <div class="dropdown font-sans-serif me-md-2">
-                                <button
-                                  class="btn btn-falcon-default text-600 btn-sm dropdown-toggle dropdown-caret-none"
-                                  type="button"
-                                  id="email-filter"
-                                  data-bs-toggle="dropdown"
-                                  data-boundary="viewport"
-                                  aria-haspopup="true"
-                                  aria-expanded="false"
-                                >
-                                  <span data-view-title="data-view-title"
-                                    >Month View</span
-                                  ><span class="fas fa-sort ms-2 fs-10"></span>
-                                </button>
-                                <div
-                                  class="dropdown-menu dropdown-menu-end border py-2"
-                                  aria-labelledby="email-filter"
-                                >
-                                  <a
-                                    class="active dropdown-item d-flex justify-content-between"
-                                    href="#!"
-                                    data-fc-view="dayGridMonth"
-                                    >Month View<span class="icon-check"
-                                      ><span
-                                        class="fas fa-check"
-                                        data-fa-transform="down-4 shrink-4"
-                                      ></span></span></a
-                                  ><a
-                                    class="dropdown-item d-flex justify-content-between"
-                                    href="#!"
-                                    data-fc-view="timeGridWeek"
-                                    >Week View<span class="icon-check"
-                                      ><span
-                                        class="fas fa-check"
-                                        data-fa-transform="down-4 shrink-4"
-                                      ></span></span></a
-                                  ><a
-                                    class="dropdown-item d-flex justify-content-between"
-                                    href="#!"
-                                    data-fc-view="timeGridDay"
-                                    >Day View<span class="icon-check"
-                                      ><span
-                                        class="fas fa-check"
-                                        data-fa-transform="down-4 shrink-4"
-                                      ></span></span></a
-                                  ><a
-                                    class="dropdown-item d-flex justify-content-between"
-                                    href="#!"
-                                    data-fc-view="listWeek"
-                                    >List View<span class="icon-check"
-                                      ><span
-                                        class="fas fa-check"
-                                        data-fa-transform="down-4 shrink-4"
-                                      ></span></span></a
-                                  ><a
-                                    class="dropdown-item d-flex justify-content-between"
-                                    href="#!"
-                                    data-fc-view="listYear"
-                                    >Year View<span class="icon-check"
-                                      ><span
-                                        class="fas fa-check"
-                                        data-fa-transform="down-4 shrink-4"
-                                      ></span></span
-                                  ></a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="card-body p-0 scrollbar">
-                          <div class="calendar-outline" id="appCalendar"></div>
-                        </div>
-                      </div>
 
+                      <div class="filter-header px-2">
+                        <h4 class="filter-title mb-1">Status Filter</h4>
+
+                        <button
+                          class="filter-clear-all"
+                          onclick="clearAllFilters()"
+                        >
+                          Clear all
+                        </button>
+                      </div>
                       <div
                         class="filter-options px-2 py-sm-3 ps-sm-4 pe-sm-6 scrollbar"
                       >
-                        <div class="filter-header">
-                          <h4 class="filter-title mb-1">Status Filter</h4>
-
-                          <button
-                            class="filter-clear-all"
-                            onclick="clearAllFilters()"
-                          >
-                            Clear all
-                          </button>
-                        </div>
                         <div class="filter-option">
                           <label for="status-none">None</label>
                           <input
@@ -1926,6 +1794,138 @@
                             data-value="100"
                             onchange="statusFilterChanged()"
                           />
+                        </div>
+                      </div>
+
+                      <div class="card overflow-hidden">
+                        <div class="card-header">
+                          <div
+                            class="row gx-0 align-items-center justify-content-start"
+                          >
+                            <div class="col-auto d-flex justify-content-end">
+                              <button
+                                class="btn icon-item icon-item-sm shadow-none p-0 me-1 ms-md-2"
+                                type="button"
+                                data-event="prev"
+                                data-bs-toggle="tooltip"
+                                title="Previous"
+                              >
+                                <span class="fas fa-arrow-left"></span>
+                              </button>
+                              <button
+                                class="btn icon-item icon-item-sm shadow-none p-0 me-1 me-lg-2"
+                                type="button"
+                                data-event="next"
+                                data-bs-toggle="tooltip"
+                                title="Next"
+                              >
+                                <span class="fas fa-arrow-right"></span>
+                              </button>
+                            </div>
+                            <div class="col-auto">
+                              <h4
+                                class="mb-0 fs-9 fs-sm-8 fs-lg-7 calendar-title"
+                              ></h4>
+                            </div>
+                            <div
+                              class="col d-flex justify-content-end mb-0 calendar-date"
+                            >
+                              <button
+                                class="btn btn-falcon-primary btn-sm"
+                                type="button"
+                                data-event="today"
+                              >
+                                Today
+                              </button>
+                            </div>
+                            <div class="">
+                              <hr />
+                            </div>
+                            <div class="col-auto d-flex">
+                              <button
+                                class="btn btn-primary btn-sm"
+                                type="button"
+                                data-bs-toggle="modal"
+                                data-bs-target="#addEventModal"
+                              >
+                                <span class="fas fa-plus me-2"></span>Add
+                                Schedule
+                              </button>
+                            </div>
+                            <div
+                              class="col d-flex justify-content-end view-btn mb-0"
+                            >
+                              <div class="dropdown font-sans-serif me-md-2">
+                                <button
+                                  class="btn btn-falcon-default text-600 btn-sm dropdown-toggle dropdown-caret-none"
+                                  type="button"
+                                  id="email-filter"
+                                  data-bs-toggle="dropdown"
+                                  data-boundary="viewport"
+                                  aria-haspopup="true"
+                                  aria-expanded="false"
+                                >
+                                  <span data-view-title="data-view-title"
+                                    >Month View</span
+                                  ><span class="fas fa-sort ms-2 fs-10"></span>
+                                </button>
+                                <div
+                                  class="dropdown-menu dropdown-menu-end border py-2"
+                                  aria-labelledby="email-filter"
+                                >
+                                  <a
+                                    class="active dropdown-item d-flex justify-content-between"
+                                    href="#!"
+                                    data-fc-view="dayGridMonth"
+                                    >Month View<span class="icon-check"
+                                      ><span
+                                        class="fas fa-check"
+                                        data-fa-transform="down-4 shrink-4"
+                                      ></span></span></a
+                                  ><a
+                                    class="dropdown-item d-flex justify-content-between"
+                                    href="#!"
+                                    data-fc-view="timeGridWeek"
+                                    >Week View<span class="icon-check"
+                                      ><span
+                                        class="fas fa-check"
+                                        data-fa-transform="down-4 shrink-4"
+                                      ></span></span></a
+                                  ><a
+                                    class="dropdown-item d-flex justify-content-between"
+                                    href="#!"
+                                    data-fc-view="timeGridDay"
+                                    >Day View<span class="icon-check"
+                                      ><span
+                                        class="fas fa-check"
+                                        data-fa-transform="down-4 shrink-4"
+                                      ></span></span></a
+                                  ><a
+                                    class="dropdown-item d-flex justify-content-between"
+                                    href="#!"
+                                    data-fc-view="listWeek"
+                                    >List View<span class="icon-check"
+                                      ><span
+                                        class="fas fa-check"
+                                        data-fa-transform="down-4 shrink-4"
+                                      ></span></span></a
+                                  ><a
+                                    class="dropdown-item d-flex justify-content-between"
+                                    href="#!"
+                                    data-fc-view="listYear"
+                                    >Year View<span class="icon-check"
+                                      ><span
+                                        class="fas fa-check"
+                                        data-fa-transform="down-4 shrink-4"
+                                      ></span></span
+                                  ></a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-body p-0 scrollbar">
+                          <div class="calendar-outline" id="appCalendar"></div>
                         </div>
                       </div>
                     </div>
