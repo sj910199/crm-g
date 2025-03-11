@@ -1191,9 +1191,19 @@ section {
 /* Add button container: Aligns the add button to the right on mobile */
 .addbutton-container {
   display: flex; /* Use flexbox to position the button */
-  justify-content: flex-end; /* Align the button to the right side */
+  justify-content: space-between; /* Align the button to the right side */
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
   margin-top: 15px;
   margin-bottom: 15px;
+}
+
+.addbutton-container button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
 }
 
 /* searchdropdown */
@@ -1275,6 +1285,11 @@ section {
   /* Hide desktop buttons on mobile and tablet */
   .button-container {
     display: none !important; /* Force hide on smaller screens */
+  }
+
+  .addbutton-container button {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 
   .card-body {
@@ -4059,4 +4074,62 @@ nav[aria-label="messages inbox"] .inbox-item .item-subject {
   .active-inbox-panel {
     margin-left: var(--fullscreen-inbox-nav-width);
   }
+}
+
+/*-----------------------------------------------
+|   Project List page
+-----------------------------------------------*/
+
+/* ensure that a content with scroll container will have this styling */
+.main .navbar-top + .project-container {
+  max-height: calc(100vh - var(--falcon-top-nav-height) - 1rem);
+  min-height: calc(100vh - var(--falcon-top-nav-height) - 1rem);
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eee; /* Separator line */
+}
+
+.filter-clear-all {
+  background: none;
+  border: none;
+  color: var(--falcon-primary);
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.filter-clear-all:hover {
+  text-decoration: underline;
+}
+
+.filter-options {
+  max-height: 300px; /* Adjust max height as needed */
+  overflow-y: auto; /* Enable scroll if options exceed max height */
+  padding-right: 5px; /* Space for scrollbar */
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* To space label and checkbox */
+  padding: 5px 0;
+}
+
+.filter-option label {
+  color: #555;
+  cursor: pointer;
+  margin-right: 15px; /* Add spacing between label and checkbox */
+}
+
+.filter-option input[type="checkbox"] {
+  /* No margin needed on the right now, adjust if needed */
+}
+
+.card-header .view-btn,
+.card-header .calendar-date {
+  flex: 1 0 0% !important;
 }
